@@ -4,6 +4,15 @@ import DetailOrder from "../components/DetailProducts/DetailOrder";
 import DetailTop from "../components/DetailProducts/DetailTop";
 
 export default function DetailProducts(){
+    const tabsData = [
+        { id: "goodsDetailTab", label: "상품정보", href: "#goodsDetailTabs" },
+        { id: "sizeTab", label: "사이즈&핏", href: "#goodsDetailTabs"},
+        { id: "reviewTab", label: "리뷰", href: "#goodsDetailTabs" },
+        { id: "recommendTab", label: "추천", href: "#goodsDetailTabs"}
+    ];
+    
+    
+    
     return (
         <>
         <div className="detail-wrap content-wrap">
@@ -15,7 +24,7 @@ export default function DetailProducts(){
                     <DetailOrder></DetailOrder>
                 </div>
 
-                <ProductMypage></ProductMypage>
+                <ProductMypage tabs={tabsData} />
                
         </div>
         </>
