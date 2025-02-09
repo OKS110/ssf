@@ -2,10 +2,33 @@ import Nav from '../commons/Nav.jsx';
 
 
 export default function Footer(){
+  // 푸터 메뉴 시작
+  const categories = [
+    { label: "회사소개", link: "#" },
+    { label: "이용약관", link: "#" },
+    { label: "개인정보처리방침", link: "#" },
+    { label: "이메일무단수집거부", link: "#" },
+
+  ];
+  
+  const subCategories = [
+    { label: "멤버십안내", link: "#" },
+    { label: "고객센터", link: "#" },
+    { label: "매장찾기", link: "#" },
+    { label: "공지사항", link: "#" },
+    { label: "단체주문", link: "#" }
+  ];
+  
+  const specialLinks = [
+    { label: "입점신청", link: "#" },
+    { label: "제휴문의", link: "#" },
+    { label: "입점사 대여 프로그램", link: "#" }
+  ];
+    // 푸터 메뉴 끝
     return (
     <footer>
         <div className='nav-area content-wrap'>
-          <Nav></Nav>
+          <Nav categories={categories} subCategories={subCategories} specialLinks={specialLinks}></Nav>
         </div>
         <div className='company-area content-wrap'>
             <h5 className='company-title'>삼성물산(주)패션부문</h5>

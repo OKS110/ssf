@@ -1,6 +1,6 @@
-export default function LoginTab2(){
+export default function LoginTab2({isActive}){
     return (
-        <div id="tab2" class="">
+        <div id="tab2" class={isActive ? "on": ""}>
         	            <h3 class="wa-hidden">비회원(주문조회) 입력</h3>
                         <form action="" method="post" id="nonMemberForm">
                             <input type="hidden" name="_csrf" value="aac16e3e-027a-4a43-be9d-b7d7af254ea4"/>

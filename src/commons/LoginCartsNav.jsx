@@ -1,12 +1,20 @@
-export default function LoginCartsNav(){
+export default function LoginCartsNav({ activeTab, setActiveTab, menuListName = [] }) {
     return (
-        <ul className="tab" style={{backgroundColor:"green"}}>
-                        <li>
-                            <a href="#tab1" className="on">회원</a>
-                        </li>
-                        <li>
-                            <a href="#tab2" id="noneLogin" >비회원(주문조회)</a>
-                        </li>
+        <ul className="tab" style={{ backgroundColor: "green" }}>
+            {menuListName.map((menu) => (
+                <li>
+                    <a 
+                        href={`#${menu.tab}`} 
+                        className={activeTab === menu.tab ? "on" : ""} 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setActiveTab(menu.tab);
+                        }}
+                    >
+                        {menu.label}
+                    </a>
+                </li>
+            ))}
         </ul>
     );
 }

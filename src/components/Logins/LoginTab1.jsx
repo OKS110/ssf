@@ -1,6 +1,6 @@
-export default function LoginTab1(){
+export default function LoginTab1({isActive}){
     return (
-        <div id="tab1" className="on">
+        <div id="tab1" className={isActive ? "on": ""}>
                         {/* <h1>회원정보 입력</h1> */}
                         <form action="">
                             <div className="signIn-form" style={{backgroundColor:"yellowgreen"}}>
