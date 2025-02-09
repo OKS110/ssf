@@ -21,7 +21,7 @@ const db = mysql.createPool({
 server.get('/products', async (req, res) => {
     try {
         const [rows] = await db.query("SELECT * FROM products"); // 상품 데이터 조회
-        console.log("상품 데이터 조회 완료:", rows[0].color[2]); // 터미널 로그 출력 - Red
+        console.log("상품 데이터 조회 완료:", rows[0].color[2]); // 터미널 로그 출력 - 첫 번째 상품의 2번지 색 출력 : Red
         res.json(rows); // JSON 응답으로 클라이언트에 데이터 전송
     } catch (error) {
         console.error("상품 데이터 조회 실패:", error); // 오류 로그 출력
