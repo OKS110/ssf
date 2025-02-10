@@ -50,8 +50,20 @@ create table shoppy_product(
     pname 	varchar(50)		not null,
     price 	int,
     description		varchar(200),
-    upload_file		varchar(100),
-    source_file		varchar(100),
+    upload_file		json,
+    source_file		json,
     pdate			datetime
 );
 desc shoppy_product;
+set sql_safe_updates = 0;
+delete from shoppy_product;
+commit;
+select * from shoppy_product;
+drop table shoppy_product;
+select 
+            pid, pname as name,
+            price, description as info,
+            concat('http://localhost:9000/', upload_file->>'$[0]') as image, 
+            source_file,
+            pdate
+        from shoppy_product;

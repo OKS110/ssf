@@ -1,5 +1,5 @@
 show databases;
-
+create database shopping_mall;
 USE shopping_mall;
 
 
@@ -53,8 +53,8 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
     address VARCHAR(255) NOT NULL DEFAULT '', -- 기본 주소 (필수 입력, 기본값은 빈 문자열)
     additional_address VARCHAR(255) DEFAULT NULL, -- 추가 주소 (선택 입력, 기본값 NULL)
     birth_date DATE, -- 고객의 생년월일 (선택 입력)
-    status JSON DEFAULT NULL, -- 고객 상태 정보 (예: ["Active", "Suspended"], JSON 형식)
-    gender JSON DEFAULT NULL, -- 고객 성별 정보 (예: ["Male"], ["Female"], JSON 형식)
+    status JSON default null, -- 고객 상태 정보 (예: ["Active", "Suspended"], JSON 형식)
+    gender JSON default null, -- 고객 성별 정보 (예: ["Male"], ["Female"], JSON 형식)
     membership_level ENUM('Bronze', 'Silver', 'Gold', 'Platinum') DEFAULT 'Silver', -- 회원 등급 (기본값: Silver)
     loyalty_points INT DEFAULT 0, -- 고객의 적립 포인트 (기본값: 0)
     last_login DATETIME, -- 마지막 로그인 시간 (선택 입력)
