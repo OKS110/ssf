@@ -32,11 +32,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_1_1.jpg",
-            "https://example.com/images/product_1_2.jpg",
-            "https://example.com/images/product_1_3.jpg",
-            "https://example.com/images/product_1_4.jpg",
-            "https://example.com/images/product_1_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/09/24/GM0024092433237_0_THNAIL_ORGINL_20240930113118712.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/09/24/GM0024092433237_4_THNAIL_ORGINL_20241008134129385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/09/24/GM0024092433237_5_THNAIL_ORGINL_20241008134129385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/09/24/GM0024092433237_6_THNAIL_ORGINL_20241008134129385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/09/24/GM0024092433237_7_THNAIL_ORGINL_20241008134129385.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -65,11 +65,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_2_1.jpg",
-            "https://example.com/images/product_2_2.jpg",
-            "https://example.com/images/product_2_3.jpg",
-            "https://example.com/images/product_2_4.jpg",
-            "https://example.com/images/product_2_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_0_THNAIL_ORGINL_20241113185234182.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_1_THNAIL_ORGINL_20241113185234182.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_4_THNAIL_ORGINL_20241113185234182.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_2_THNAIL_ORGINL_20241113185234182.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_3_THNAIL_ORGINL_20241113185234182.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -99,11 +99,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_3_1.jpg",
-            "https://example.com/images/product_3_2.jpg",
-            "https://example.com/images/product_3_3.jpg",
-            "https://example.com/images/product_3_4.jpg",
-            "https://example.com/images/product_3_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_0_THNAIL_ORGINL_20240828124633842.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_1_THNAIL_ORGINL_20240828124633842.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_0_THNAIL_ORGINL_20240816153656930.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_1_THNAIL_ORGINL_20240816153656930.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_2_THNAIL_ORGINL_20240816153656930.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -132,11 +132,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_4_1.jpg",
-            "https://example.com/images/product_4_2.jpg",
-            "https://example.com/images/product_4_3.jpg",
-            "https://example.com/images/product_4_4.jpg",
-            "https://example.com/images/product_4_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_0_THNAIL_ORGINL_20250102185057142.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_1_THNAIL_ORGINL_20250102185057142.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_2_THNAIL_ORGINL_20250102185057142.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_3_THNAIL_ORGINL_20250102185057142.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_4_THNAIL_ORGINL_20250102185057142.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -167,11 +167,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_5_1.jpg",
-            "https://example.com/images/product_5_2.jpg",
-            "https://example.com/images/product_5_3.jpg",
-            "https://example.com/images/product_5_4.jpg",
-            "https://example.com/images/product_5_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_0_THNAIL_ORGINL_20241010182917297.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_1_THNAIL_ORGINL_20241010182917297.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_4_THNAIL_ORGINL_20241010182917297.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_5_THNAIL_ORGINL_20241010182917297.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_6_THNAIL_ORGINL_20241010182917297.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -202,11 +202,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_6_1.jpg",
-            "https://example.com/images/product_6_2.jpg",
-            "https://example.com/images/product_6_3.jpg",
-            "https://example.com/images/product_6_4.jpg",
-            "https://example.com/images/product_6_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_0_THNAIL_ORGINL_20250122133413435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_1_THNAIL_ORGINL_20250122133413435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_2_THNAIL_ORGINL_20250122133413435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_0_THNAIL_ORGINL_20241203152746575.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_1_THNAIL_ORGINL_20241203152746575.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -237,11 +237,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_7_1.jpg",
-            "https://example.com/images/product_7_2.jpg",
-            "https://example.com/images/product_7_3.jpg",
-            "https://example.com/images/product_7_4.jpg",
-            "https://example.com/images/product_7_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_5_THNAIL_ORGINL_20241024151700162.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_0_THNAIL_ORGINL_20240826172501683.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_1_THNAIL_ORGINL_20240826172501683.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_2_THNAIL_ORGINL_20240826172501683.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_3_THNAIL_ORGINL_20240826172501683.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -272,11 +272,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_8_1.jpg",
-            "https://example.com/images/product_8_2.jpg",
-            "https://example.com/images/product_8_3.jpg",
-            "https://example.com/images/product_8_4.jpg",
-            "https://example.com/images/product_8_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_0_THNAIL_ORGINL_20241004181233832.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_1_THNAIL_ORGINL_20241004181233832.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_5_THNAIL_ORGINL_20241004181233832.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_6_THNAIL_ORGINL_20241004181233832.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_7_THNAIL_ORGINL_20241004181233832.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -307,11 +307,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_9_1.jpg",
-            "https://example.com/images/product_9_2.jpg",
-            "https://example.com/images/product_9_3.jpg",
-            "https://example.com/images/product_9_4.jpg",
-            "https://example.com/images/product_9_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_0_THNAIL_ORGINL_20241111191635088.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_3_THNAIL_ORGINL_20241111191635088.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_4_THNAIL_ORGINL_20241111191635088.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_5_THNAIL_ORGINL_20241111191635088.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_6_THNAIL_ORGINL_20241111191635088.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -341,11 +341,11 @@ json_data = """
             "XL"
         ],
         "image": [
-            "https://example.com/images/product_10_1.jpg",
-            "https://example.com/images/product_10_2.jpg",
-            "https://example.com/images/product_10_3.jpg",
-            "https://example.com/images/product_10_4.jpg",
-            "https://example.com/images/product_10_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_0_THNAIL_ORGINL_20250131200032156.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_1_THNAIL_ORGINL_20250131200032156.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_2_THNAIL_ORGINL_20250131200032156.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_3_THNAIL_ORGINL_20250131200032156.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_5_THNAIL_ORGINL_20250131200032156.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1389,11 +1389,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_41_1.jpg",
-            "https://example.com/images/product_41_2.jpg",
-            "https://example.com/images/product_41_3.jpg",
-            "https://example.com/images/product_41_4.jpg",
-            "https://example.com/images/product_41_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_0_THNAIL_ORGINL_20241227151458781.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_1_THNAIL_ORGINL_20241227151458781.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_2_THNAIL_ORGINL_20250103194601067.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_3_THNAIL_ORGINL_20250103194601067.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_4_THNAIL_ORGINL_20250103194601067.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1426,11 +1426,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_42_1.jpg",
-            "https://example.com/images/product_42_2.jpg",
-            "https://example.com/images/product_42_3.jpg",
-            "https://example.com/images/product_42_4.jpg",
-            "https://example.com/images/product_42_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_0_THNAIL_ORGINL_20241112165122435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_1_THNAIL_ORGINL_20241112165122435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_2_THNAIL_ORGINL_20241112165122435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_4_THNAIL_ORGINL_20241112165122435.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_6_THNAIL_ORGINL_20241112165122435.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1463,11 +1463,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_43_1.jpg",
-            "https://example.com/images/product_43_2.jpg",
-            "https://example.com/images/product_43_3.jpg",
-            "https://example.com/images/product_43_4.jpg",
-            "https://example.com/images/product_43_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_0_THNAIL_ORGINL_20241226143757897.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_1_THNAIL_ORGINL_20241226143757897.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_2_THNAIL_ORGINL_20250103194628841.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_3_THNAIL_ORGINL_20250103194628841.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_4_THNAIL_ORGINL_20250103194628841.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1499,11 +1499,9 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_44_1.jpg",
-            "https://example.com/images/product_44_2.jpg",
-            "https://example.com/images/product_44_3.jpg",
-            "https://example.com/images/product_44_4.jpg",
-            "https://example.com/images/product_44_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/B2/41/21/GQC9B24121856946_0_ORGINL_20241218231359932.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/B2/41/21/GQC9B24121856946_1_ORGINL_20241218231359932.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/B2/41/21/GQC9B24121856946_2_ORGINL_20241218231359932.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1535,11 +1533,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_45_1.jpg",
-            "https://example.com/images/product_45_2.jpg",
-            "https://example.com/images/product_45_3.jpg",
-            "https://example.com/images/product_45_4.jpg",
-            "https://example.com/images/product_45_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_0_THNAIL_ORGINL_20250107183327317.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_1_THNAIL_ORGINL_20250107183327317.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_10_THNAIL_ORGINL_20250107183327317.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_11_THNAIL_ORGINL_20250107183327317.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_12_THNAIL_ORGINL_20250107183327317.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1573,11 +1571,10 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_46_1.jpg",
-            "https://example.com/images/product_46_2.jpg",
-            "https://example.com/images/product_46_3.jpg",
-            "https://example.com/images/product_46_4.jpg",
-            "https://example.com/images/product_46_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/21/GM0024112102978_0_ORGINL_TB_20241121113923032.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/21/GM0024112102978_1_ORGINL_TB_20241121113923032.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/21/GM0024112102978_2_ORGINL_TB_20241121113923032.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/21/GM0024112102978_3_ORGINL_TB_20241121113923032.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1609,11 +1606,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_47_1.jpg",
-            "https://example.com/images/product_47_2.jpg",
-            "https://example.com/images/product_47_3.jpg",
-            "https://example.com/images/product_47_4.jpg",
-            "https://example.com/images/product_47_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_0_THNAIL_ORGINL_20240723164400153.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_1_THNAIL_ORGINL_20240723164400153.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_2_THNAIL_ORGINL_20240723164400153.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_0_THNAIL_ORGINL_20240722161842286.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_1_THNAIL_ORGINL_20240722161842286.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1646,11 +1643,10 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_48_1.jpg",
-            "https://example.com/images/product_48_2.jpg",
-            "https://example.com/images/product_48_3.jpg",
-            "https://example.com/images/product_48_4.jpg",
-            "https://example.com/images/product_48_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/25/01/23/GPD125012352716_0_ORGINL_20250123093851385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/25/01/23/GPD125012352716_1_ORGINL_20250123093851385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/25/01/23/GPD125012352716_2_ORGINL_20250123093851385.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/25/01/23/GPD125012352716_3_ORGINL_20250123093851385.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1684,11 +1680,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_49_1.jpg",
-            "https://example.com/images/product_49_2.jpg",
-            "https://example.com/images/product_49_3.jpg",
-            "https://example.com/images/product_49_4.jpg",
-            "https://example.com/images/product_49_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_0_ORGINL_20240910184243861.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_1_ORGINL_20240910184243861.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_2_ORGINL_20240910184243861.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_3_ORGINL_20240910184243861.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_4_ORGINL_20240910184243861.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
@@ -1720,11 +1716,11 @@ json_data = """
             "260"
         ],
         "image": [
-            "https://example.com/images/product_50_1.jpg",
-            "https://example.com/images/product_50_2.jpg",
-            "https://example.com/images/product_50_3.jpg",
-            "https://example.com/images/product_50_4.jpg",
-            "https://example.com/images/product_50_5.jpg"
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_0_THNAIL_ORGINL_20240903132710361.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_1_THNAIL_ORGINL_20240903132710361.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_2_THNAIL_ORGINL_20240903132710361.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_3_THNAIL_ORGINL_20240903132710361.jpg",
+            "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_4_THNAIL_ORGINL_20240903132710361.jpg"
         ],
         "likes": 0,
         "cart_count": 0,
