@@ -1541,3 +1541,37 @@ footer .etc .etc-right{
     height: 100%;
     box-sizing: border-box;
 }
+
+/* list-col-6 */
+.god-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    min-width: 0;
+    margin-bottom: 40px;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists .list-col-6 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists [class*=list-col-], .god-lists>ul {
+        display: grid;
+        margin: 0;
+        column-gap: 16px;
+        row-gap: 40px;
+    }
+}
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists [class*=list-col-] .god-item, .god-lists>ul .god-item {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        max-width: none;
+    }
+}

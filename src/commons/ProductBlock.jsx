@@ -9,13 +9,13 @@ export default function ProductBlock({detailList, ulClassName, liClassName}) {
             { detailList && detailList.map((item) => 
                 <li className={liClassName}>
                     <div>
-                        <Image img={item.img} alt={item.alt} className='' />
+                        <Image img={item.image[0]} alt={item.alt} className='' />
                     </div>
                     <div>
-                        <p>{item.brand}</p>
-                        <p>{item.title}</p>
-                        <p>{item.costprice}</p>
-                        <p><span>{item.discount}%</span><span>{item.saleprice}</span></p>
+                        <p>{item.sub_category}</p>
+                        <p>{item.name}</p>
+                        <p>{item.original_price}</p>
+                        <p><span>{item.discount_rate}%</span><span>{item.discounted_price}</span></p>
                         <p>
                             <span>
                                 <span><FaStar /></span>
@@ -23,7 +23,7 @@ export default function ProductBlock({detailList, ulClassName, liClassName}) {
                             </span>
                             <span>
                                 <span><FaHeart /></span>
-                                <span>{item.like}</span>
+                                <span>{item.likes}</span>
                             </span>
                         </p>
                     </div>

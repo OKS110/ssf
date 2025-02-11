@@ -53,6 +53,10 @@ server.get('/admins', async (req, res) => {
         res.status(500).json({ error: "서버 오류" });
     }
 });
+
+
+
+
 // 서버 실행
 server.listen(port, () => {
     console.log(`서버 실행 중: http://localhost:${port}`);
