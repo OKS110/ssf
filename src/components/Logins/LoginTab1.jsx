@@ -1,3 +1,5 @@
+import Button from "../../commons/Button.jsx";
+import React, {useState, useRef} from "react";
 export default function LoginTab1({isActive}){
 
 
@@ -45,6 +47,7 @@ export default function LoginTab1({isActive}){
                                     <a href="#" className="naver box" title="새창열림">네이버 로그인</a>
                                 </dd>
                         </dl>
+                        <Button title="비회원 주문" width="100%"></Button>
                     </div>
     );
 }

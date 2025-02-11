@@ -1,3 +1,5 @@
+import Button from "../../commons/Button";
+
 export default function OrderMain(){
     return (
             <table>
@@ -60,8 +62,8 @@ export default function OrderMain(){
                                     {/* <!-- #137759 [21년 2분기] 사은품 행사 셀링 강화 --> */}
                                 </div>
                                     <div className="alter">
-                                        <a href="#" className="btn" style={{backgroundColor:"yellowgreen"}}>옵션/수량 변경</a>
-
+                                        <a href="#" className="btn" style={{backgroundColor:"yellowgreen"}}></a>
+                                        <Button title="옵션/수량 변경"></Button>
                                     </div>
                                 </div>
                         </td>
@@ -83,7 +85,8 @@ export default function OrderMain(){
                                     </span>
                             </div>
                             <div className="fulfill">
-                                    <a href="#" className="btn bk" style={{backgroundColor:"yellowgreen"}}>바로구매</a>
+                                    {/* <a href="#" className="btn bk" style={{backgroundColor:"yellowgreen"}}>바로구매</a> */}
+                                    <Button className="bk" title="바로구매"></Button>
                             </div>
                         </td>
                     </tr>

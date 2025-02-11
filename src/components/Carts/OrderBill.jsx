@@ -1,3 +1,5 @@
+import Button from "../../commons/Button";
+
 export default function OrderBill(){
     return (
         <div className="bill" id="cartGroupBill0">
@@ -11,7 +13,8 @@ export default function OrderBill(){
                                     <span className="total"><em id="totalOrdAmt">166,800</em>원<i>총 주문금액</i></span>
                                 </div>
                                 <div className="submit_order">
-                                    <a className="btn bk" href="#" style={{backgroundColor:"yellowgreen"}}>주문하기</a>
+                                    {/* <a className="btn bk" href="#" style={{backgroundColor:"yellowgreen"}}>주문하기</a> */}
+                                    <Button className="bk" title="주문하기"></Button>
                                 </div>
                                 <section id="memberloginLayer" class="layerNotice">
                                     <h1 class="center">회원만 구매 가능한 상품입니다.<br></br>로그인 후 구매해주세요.</h1>
