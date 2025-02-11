@@ -1,5 +1,5 @@
 show databases;
-create database shopping_mall;
+
 USE shopping_mall;
 
 
@@ -21,6 +21,9 @@ INSERT INTO admins (username, email, password, role, is_active) VALUES
 ('manager1', 'manager1@naver.com', 'manager1123', 'product_manager', TRUE),
 ('manager2', 'manager2@daum.com', 'manager2123', 'product_manager', TRUE);
 select * from admins;
+select count(*) as result_rows
+        from admins
+        where username = 'superadmin' and password = 'superadmin123';
 -- DELETE FROM admins WHERE username IN ('superadmin', 'manager1', 'manager2');
 
 -- 관리자 권한 테이블
