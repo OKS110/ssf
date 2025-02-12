@@ -58,15 +58,14 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
     birth_date DATE, -- 고객의 생년월일 (선택 입력)
     status JSON default null, -- 고객 상태 정보 (예: ["Active", "Suspended"], JSON 형식)
     gender JSON default null, -- 고객 성별 정보 (예: ["Male"], ["Female"], JSON 형식)
-    membership_level ENUM('Bronze', 'Silver', 'Gold', 'Platinum') DEFAULT 'Silver', -- 회원 등급 (기본값: Silver)
+    membership_level ENUM('Bronze', 'Silver', 'Gold', 'Platinum') DEFAULT 'Bronze', -- 회원 등급 (기본값: Silver)
     loyalty_points INT DEFAULT 0, -- 고객의 적립 포인트 (기본값: 0)
     last_login DATETIME, -- 마지막 로그인 시간 (선택 입력)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 계정 생성 시간 (자동 기록)
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 계정 정보 수정 시간 (수정될 때마다 자동 갱신)
 );
 
-select * from customers;
--- 상품 테이블 (모든 관리자 접근 가능)
+select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
     id INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
     category VARCHAR(50), -- 상품의 주요 카테고리 (예: 아우터, 상의, 하의, 신발 등)

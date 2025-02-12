@@ -2,30 +2,64 @@ import Button from "../../commons/Button.jsx";
 import React, {useState, useRef} from "react";
 export default function LoginTab1({isActive}){
 
+    const initForm = { 'id': '', 'pwd': '' };
 
+    const [formData, setFormData] = useState({});
+    const [errMsg, setErrMsg] = useState(initForm);
+
+    const refs = {
+        idRef: useRef(null),
+        pwdRef: useRef(null)
+      };
+    const handleChangeForm = (event) => {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]: value});
+    
+        if (name === 'id') {
+            value === '' ? setErrMsg({...errMsg, ['id']: '아이디를 입력해주세요'}) : setErrMsg({...errMsg, ['id']: ''});
+        } else if (name === 'pwd') {
+            value === '' ? setErrMsg({...errMsg, ['pwd']: '비밀번호를 입력해주세요'}) : setErrMsg({...errMsg, ['pwd']: ''});  
+        }
+        // console.log(formData);
+        
+    };
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+    };
 
     return (
         <div id="tab1" className={isActive ? "on": ""}>
                         {/* <h1>회원정보 입력</h1> */}
-                        <form>
+                        <form onSubmit={handleLoginSubmit}>
                             <div className="signIn-form" style={{backgroundColor:"yellowgreen"}}>
                                 <div>
-
                                     <div className="input-box">
                                         <label for="userId" className="wa-hidden">아이디</label>
-                                        <input type="text" id="userId" name="userId" validate="required;xss2;" 
-                                        locale="ko" placeholder="아이디" className="reset" title="아이디"/>
+                                        <input type='text' 
+                                                name='id' 
+                                                ref={refs.idRef}
+                                                onChange={handleChangeForm} 
+                                                placeholder='아이디' />
+                                               
                                     </div>
-
+                                    
+                                    
                                     <div className="input-box">
                                         <label for="password" className="wa-hidden">비밀번호</label>
-                                        <input type="password" maxlength="20" name="password" id="password"
-                                         validate="required" locale="ko" placeholder="비밀번호" title="비밀번호"/>
+                                        <input type='password' 
+                                                name='pwd'
+                                                ref={refs.pwdRef}
+                                                onChange={handleChangeForm} 
+                                                placeholder='비밀번호' />
+                                                
                                     </div>
 
                                 </div>
                                 <button type="button">로그인</button>
                             </div>
+                                <p style={{height:"10px", textAlign:"left", padding:"5px", color:"red", fontSize:"0.7rem"}}>
+                                { errMsg.pwd !== '' && <>{errMsg.pwd}</> }{ errMsg.id !== '' && <>{errMsg.id}</> }</p>
 
                             <div className="save_id">
                                 <span className="checkbox">
