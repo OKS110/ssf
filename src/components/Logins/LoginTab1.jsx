@@ -1,5 +1,6 @@
 import Button from "../../commons/Button.jsx";
 import React, {useState, useRef} from "react";
+import axios from "axios";
 export default function LoginTab1({isActive}){
 
     const initForm = { 'id': '', 'pwd': '' };
@@ -24,9 +25,45 @@ export default function LoginTab1({isActive}){
         
     };
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
-    };
+    const handleLoginSubmit = (event) => {
+        event.preventDefault();
+        
+        if (validate()) {
+          console.log('send data --> ', formData);
+        }
+    
+        // 서버 전송
+        // axios.post('http://localhost:9001/admin/login', formData)
+        //     .then(res => {
+        //       console.log('res.data --> ', res.data);
+        //       if (res.data.result_rows === 1) {
+        //         alert('로그인 성공!');
+        //         localStorage.setItem("token", res.data.token);
+        //         setIsLoggedIn(true);
+        //         navigate('/admin/main');
+        //       } else if (refs.idRef.current.value !== '' && refs.pwdRef.current.value !== '' && res.data.result_rows === 0) {
+        //         alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+        //         // setErrMsg({...errMsg, ['err']: "아이디 또는 비밀번호가 일치하지 않습니다."});
+        //         refs.idRef.current.focus();
+        //       }
+        //     })
+        //     .catch(err => console.log(err));
+      }
+      
+      /** validate : 유효성 체크 **/
+      const validate = () => {
+        if (refs.idRef.current.value === '') {
+          alert('아이디를 입력해주세요.');
+          refs.idRef.current.focus();
+          return false;
+        } else if (refs.pwdRef.current.value === '') {
+          alert('비밀번호를 입력해주세요.');
+        //   setErrMsg({...errMsg, ['pwd']: '비밀번호를 입력해주세요.'});
+          refs.pwdRef.current.focus();
+          return false;
+        }
+        return true;
+      }
 
     return (
         <div id="tab1" className={isActive ? "on": ""}>
@@ -56,10 +93,10 @@ export default function LoginTab1({isActive}){
                                     </div>
 
                                 </div>
-                                <button type="button">로그인</button>
+                                <button type="submit">로그인</button>
                             </div>
                                 <p style={{height:"10px", textAlign:"left", padding:"5px", color:"red", fontSize:"0.7rem"}}>
-                                { errMsg.pwd !== '' && <>{errMsg.pwd}</> }{ errMsg.id !== '' && <>{errMsg.id}</> }</p>
+                                { errMsg.pwd !== '' && <>{errMsg.pwd}</> }</p>
 
                             <div className="save_id">
                                 <span className="checkbox">
