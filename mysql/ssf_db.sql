@@ -1,7 +1,8 @@
 show databases;
 create database shopping_mall;
-USE shopping_mall;
+USE shopping_mall; 
 
+show tables;
 
 -- 관리자 테이블
 CREATE TABLE admins ( -- 관리자 정보를 저장하는 테이블 생성
