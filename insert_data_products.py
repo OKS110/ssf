@@ -46,7 +46,8 @@ json_data = """
         "discount_rate": 13,
         "discounted_price": 101967,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1002,
@@ -79,7 +80,8 @@ json_data = """
         "discount_rate": 22,
         "discounted_price": 113293,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "GUCCI"
     },
     {
         "id": 1003,
@@ -113,7 +115,8 @@ json_data = """
         "discount_rate": 14,
         "discounted_price": 212583,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "GUCCI"
     },
     {
         "id": 1004,
@@ -146,7 +149,8 @@ json_data = """
         "discount_rate": 25,
         "discounted_price": 127895,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "GUCCI"
     },
     {
         "id": 1005,
@@ -181,7 +185,8 @@ json_data = """
         "discount_rate": 18,
         "discounted_price": 172490,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "GUCCI"
     },
     {
         "id": 1006,
@@ -216,7 +221,8 @@ json_data = """
         "discount_rate": 20,
         "discounted_price": 159324,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "GUCCI"
     },
     {
         "id": 1007,
@@ -251,7 +257,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 85357,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1008,
@@ -286,7 +293,8 @@ json_data = """
         "discount_rate": 10,
         "discounted_price": 168703,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1009,
@@ -321,7 +329,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 190264,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1010,
@@ -355,7 +364,8 @@ json_data = """
         "discount_rate": 11,
         "discounted_price": 124049,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1011,
@@ -394,7 +404,8 @@ json_data = """
         "discount_rate": 17,
         "discounted_price": 173265,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1012,
@@ -434,7 +445,8 @@ json_data = """
         "discount_rate": 25,
         "discounted_price": 134553,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1013,
@@ -473,7 +485,8 @@ json_data = """
         "discount_rate": 24,
         "discounted_price": 218930,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PRADA"
     },
     {
         "id": 1014,
@@ -510,7 +523,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 218249,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENCIAGA"
     },
     {
         "id": 1015,
@@ -539,7 +553,8 @@ json_data = """
         "discount_rate": 13,
         "discounted_price": 248826,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENCIAGA"
     },
     {
         "id": 1016,
@@ -569,7 +584,8 @@ json_data = """
         "discount_rate": 23,
         "discounted_price": 184873,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENCIAGA"
     },
     {
         "id": 1017,
@@ -602,7 +618,8 @@ json_data = """
         "discount_rate": 21,
         "discounted_price": 231255,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENCIAGA"
     },
     {
         "id": 1018,
@@ -631,7 +648,8 @@ json_data = """
         "discount_rate": 17,
         "discounted_price": 238229,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "NIKE"
     },
     {
         "id": 1019,
@@ -660,7 +678,8 @@ json_data = """
         "discount_rate": 21,
         "discounted_price": 111794,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "NIKE"
     },
     {
         "id": 1020,
@@ -691,7 +710,8 @@ json_data = """
         "discount_rate": 11,
         "discounted_price": 130354,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "NIKE"
     },
     {
         "id": 1021,
@@ -724,7 +744,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 110995,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "NIKE"
     },
     {
         "id": 1022,
@@ -757,7 +778,8 @@ json_data = """
         "discount_rate": 20,
         "discounted_price": 190786,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PUMA"
     },
     {
         "id": 1023,
@@ -792,7 +814,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 126736,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "PUMA"
     },
     {
         "id": 1024,
@@ -827,7 +850,8 @@ json_data = """
         "discount_rate": 18,
         "discounted_price": 239481,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1025,
@@ -860,7 +884,8 @@ json_data = """
         "discount_rate": 10,
         "discounted_price": 203203,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1026,
@@ -892,7 +917,8 @@ json_data = """
         "discount_rate": 22,
         "discounted_price": 175347,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1027,
@@ -927,7 +953,8 @@ json_data = """
         "discount_rate": 13,
         "discounted_price": 190615,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1028,
@@ -960,7 +987,8 @@ json_data = """
         "discount_rate": 19,
         "discounted_price": 222709,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1029,
@@ -993,7 +1021,8 @@ json_data = """
         "discount_rate": 22,
         "discounted_price": 190496,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BEANPOLE"
     },
     {
         "id": 1030,
@@ -1026,7 +1055,8 @@ json_data = """
         "discount_rate": 20,
         "discounted_price": 235438,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "ADIDAS"
     },
     {
         "id": 1031,
@@ -1059,7 +1089,8 @@ json_data = """
         "discount_rate": 17,
         "discounted_price": 231669,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "ADIDAS"
     },
     {
         "id": 1032,
@@ -1091,7 +1122,8 @@ json_data = """
         "discount_rate": 22,
         "discounted_price": 84998,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "ADIDAS"
     },
     {
         "id": 1033,
@@ -1126,7 +1158,8 @@ json_data = """
         "discount_rate": 24,
         "discounted_price": 80325,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "ADIDAS"
     },
     {
         "id": 1034,
@@ -1161,7 +1194,8 @@ json_data = """
         "discount_rate": 10,
         "discounted_price": 266999,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1035,
@@ -1195,7 +1229,8 @@ json_data = """
         "discount_rate": 24,
         "discounted_price": 93082,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1036,
@@ -1228,7 +1263,8 @@ json_data = """
         "discount_rate": 15,
         "discounted_price": 96258,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1037,
@@ -1261,7 +1297,8 @@ json_data = """
         "discount_rate": 14,
         "discounted_price": 106255,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1038,
@@ -1296,7 +1333,8 @@ json_data = """
         "discount_rate": 21,
         "discounted_price": 157051,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1039,
@@ -1330,7 +1368,8 @@ json_data = """
         "discount_rate": 10,
         "discounted_price": 184077,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1040,
@@ -1363,7 +1402,8 @@ json_data = """
         "discount_rate": 10,
         "discounted_price": 241197,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1041,
@@ -1400,7 +1440,8 @@ json_data = """
         "discount_rate": 23,
         "discounted_price": 190246,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1042,
@@ -1437,7 +1478,8 @@ json_data = """
         "discount_rate": 17,
         "discounted_price": 213091,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1043,
@@ -1474,7 +1516,8 @@ json_data = """
         "discount_rate": 18,
         "discounted_price": 222834,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1044,
@@ -1508,7 +1551,8 @@ json_data = """
         "discount_rate": 16,
         "discounted_price": 175289,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1045,
@@ -1544,7 +1588,8 @@ json_data = """
         "discount_rate": 18,
         "discounted_price": 115210,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "MUSINSA"
     },
     {
         "id": 1046,
@@ -1581,7 +1626,8 @@ json_data = """
         "discount_rate": 24,
         "discounted_price": 105153,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "NIKE"
     },
     {
         "id": 1047,
@@ -1617,7 +1663,8 @@ json_data = """
         "discount_rate": 17,
         "discounted_price": 152107,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENTINO"
     },
     {
         "id": 1048,
@@ -1653,7 +1700,8 @@ json_data = """
         "discount_rate": 21,
         "discounted_price": 220836,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENTINO"
     },
     {
         "id": 1049,
@@ -1691,7 +1739,8 @@ json_data = """
         "discount_rate": 14,
         "discounted_price": 199543,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENTINO"
     },
     {
         "id": 1050,
@@ -1727,7 +1776,8 @@ json_data = """
         "discount_rate": 18,
         "discounted_price": 101740,
         "created_at": "2025-02-07 03:12:30",
-        "updated_at": "2025-02-07 03:12:30"
+        "updated_at": "2025-02-07 03:12:30",
+        "brand": "BALENTINO"
     }
 ]
 """
@@ -1751,7 +1801,7 @@ for product in products:
 
     cursor.execute("""
         INSERT INTO products (
-            id, category, sub_category, name, color, size, image, likes, cart_count, star, 
+            pid, category, sub_category, name, color, size, image, likes, cart_count, star, 
             stock, original_price, discount_rate, discounted_price, created_at, updated_at
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)

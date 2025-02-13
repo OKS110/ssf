@@ -907,10 +907,10 @@ for customer in customers:
     updated_at = datetime.strptime(customer["updated_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
 
     cursor.execute("""
-        INSERT INTO customers (id, username, email, phone, name, password, address, birth_date, membership_level, last_login, created_at, updated_at)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO customers (username, email, phone, name, password, address, birth_date, membership_level, last_login, created_at, updated_at)
+        VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
-        customer["id"], customer["username"], customer["email"], customer["phone"], 
+        customer["username"], customer["email"], customer["phone"], 
         customer["name"], customer["password"], customer["address"], 
         customer["birth_date"], customer["membership_level"], 
         customer["last_login"], created_at, updated_at

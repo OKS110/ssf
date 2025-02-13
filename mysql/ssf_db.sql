@@ -1,11 +1,11 @@
 show databases;
-
+create database shopping_mall;
 USE shopping_mall;
 
 
 -- 관리자 테이블
 CREATE TABLE admins ( -- 관리자 정보를 저장하는 테이블 생성
-    id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 관리자 ID (자동 증가, 기본 키)
+    aid INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 관리자 ID (자동 증가, 기본 키)
     username VARCHAR(50) UNIQUE NOT NULL, -- 관리자 계정의 사용자명 (고유, 필수 입력)
     email VARCHAR(100) UNIQUE NOT NULL, -- 관리자 이메일 (고유, 필수 입력)
     password VARCHAR(255) NOT NULL, -- 관리자 비밀번호 (암호화된 형태로 저장)
@@ -31,7 +31,7 @@ CREATE TABLE admin_permissions ( -- 관리자별 권한을 저장하는 테이�
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 권한 ID (자동 증가, 기본 키)
     admin_id INT NOT NULL, -- 권한을 가진 관리자 ID (외래 키)
     permission ENUM('manage_customers', 'manage_orders', 'manage_products') NOT NULL, -- 권한 유형 (고객 관리, 주문 관리, 상품 관리)
-    FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE CASCADE -- 해당 관리자가 삭제되면 관련 권한도 자동 삭제
+    FOREIGN KEY (admin_id) REFERENCES admins(aid) ON DELETE CASCADE -- 해당 관리자가 삭제되면 관련 권한도 자동 삭제
 );
 
 -- super_admin은 모든 권한 보유
@@ -47,7 +47,7 @@ INSERT INTO admin_permissions (admin_id, permission) VALUES
 select * from admin_permissions;
 -- 고객 테이블 (super_admin만 접근 가능)
 CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 고객 ID (기본 키, JSON에서 직접 부여)
+    customer_id INT auto_increment PRIMARY KEY, -- 고유한 고객 ID (기본 키, JSON에서 직접 부여)
     username VARCHAR(50) UNIQUE NOT NULL, -- 고객의 사용자명 (고유, 필수 입력)
     email VARCHAR(100) UNIQUE NOT NULL, -- 고객의 이메일 (고유, 필수 입력)
     phone VARCHAR(20) NOT NULL, -- 고객의 전화번호 (필수 입력)
@@ -67,7 +67,7 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
 
 select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
+    pid INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
     category VARCHAR(50), -- 상품의 주요 카테고리 (예: 아우터, 상의, 하의, 신발 등)
     sub_category VARCHAR(50), -- 상품의 하위 카테고리 (예: 코트, 블라우스, 슬랙스, 샌들 등)
     name VARCHAR(255), -- 상품 이름 (최대 255자)
@@ -94,36 +94,36 @@ CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 �
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 접근 ID (자동 증가, 기본 키)
     admin_id INT NOT NULL, -- 상품을 관리하는 관리자 ID (외래 키)
     product_id INT NOT NULL, -- 관리 대상 상품 ID (외래 키)
-    FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE CASCADE, -- 관리자가 삭제되면 해당 관리 기록도 삭제
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE -- 상품이 삭제되면 해당 관리 기록도 삭제
+    FOREIGN KEY (admin_id) REFERENCES admins(aid) ON DELETE CASCADE, -- 관리자가 삭제되면 해당 관리 기록도 삭제
+    FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 해당 관리 기록도 삭제
 );
 select * from admin_product_access;
 -- 장바구니 테이블
 CREATE TABLE cart ( -- 고객의 장바구니 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 장바구니 ID (기본 키, JSON에서 직접 부여)
+    cid INT auto_increment primary KEY, -- 고유한 장바구니 ID (기본 키, JSON에서 직접 부여)
     customer_id INT NOT NULL, -- 장바구니를 사용하는 고객 ID (외래 키)
     product_id INT NOT NULL, -- 장바구니에 담긴 상품 ID (외래 키)
     quantity INT NOT NULL DEFAULT 1, -- 장바구니에 담은 상품 수량 (기본값: 1)
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 상품이 장바구니에 추가된 시간 (자동 기록)
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 장바구니 항목도 삭제
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE -- 상품이 삭제되면 장바구니에서 해당 상품도 삭제
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 장바구니 항목도 삭제
+    FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 장바구니에서 해당 상품도 삭제
 );
 
 
 -- 좋아요 테이블
 CREATE TABLE favorites ( -- 고객이 좋아요(찜)한 상품 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 좋아요 ID (기본 키, JSON에서 직접 부여)
+    fid INT auto_increment PRIMARY KEY, -- 고유한 좋아요 ID (기본 키, JSON에서 직접 부여)
     customer_id INT NOT NULL, -- 좋아요를 누른 고객 ID (외래 키)
     product_id INT NOT NULL, -- 좋아요한 상품 ID (외래 키)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 좋아요를 누른 시간 (자동 기록)
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 좋아요 기록도 삭제
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE -- 상품이 삭제되면 좋아요 기록도 삭제
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 좋아요 기록도 삭제
+    FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 좋아요 기록도 삭제
 );
-
+drop table favorites;
 
 -- 주문 테이블 (super_admin만 접근 가능)
 CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 주문 ID (기본 키, JSON에서 직접 부여)
+    oid INT auto_increment PRIMARY KEY, -- 고유한 주문 ID (기본 키, JSON에서 직접 부여)
     customer_id INT NOT NULL, -- 주문한 고객 ID (외래 키)
     order_number VARCHAR(20) UNIQUE NOT NULL, -- 주문 번호 (날짜+고객ID 형식 등으로 고유값 지정)
     total_price INT NOT NULL, -- 주문 총 금액 (필수 입력)
@@ -131,7 +131,7 @@ CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생�
     status ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled', 'Returned') DEFAULT 'Pending', -- 주문 상태 (기본값: 'Pending')
     refund_amount INT DEFAULT 0, -- 환불 금액 (기본값: 0, 환불이 없을 경우)
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 주문 날짜 및 시간 (자동 기록)
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
 );
 
 -- INSERT INTO orders (id, customer_id, order_number, total_price, shipping_address, status, refund_amount, order_date)
@@ -144,18 +144,18 @@ select * from orders;
 
 -- 주문 상세 테이블
 CREATE TABLE order_items ( -- 주문에 포함된 개별 상품 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 주문 상세 ID (기본 키, JSON에서 직접 부여)
+    id INT auto_increment PRIMARY KEY, -- 고유한 주문 상세 ID (기본 키, JSON에서 직접 부여)
     order_id INT NOT NULL, -- 주문 ID (해당 상품이 포함된 주문, 외래 키)
     product_id INT NOT NULL, -- 주문한 상품 ID (외래 키)
     quantity INT NOT NULL, -- 주문한 상품 수량 (필수 입력)
     price INT NOT NULL, -- 주문 당시 상품 가격 (필수 입력, 할인 적용 후 가격 저장)
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE, -- 주문이 삭제되면 해당 주문 내역도 삭제
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE -- 상품이 삭제되면 해당 주문 내역도 삭제
+    FOREIGN KEY (order_id) REFERENCES orders(oid) ON DELETE CASCADE, -- 주문이 삭제되면 해당 주문 내역도 삭제
+    FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 해당 주문 내역도 삭제
 );
 
 -- 리뷰 테이블
 CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
-    id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 리뷰 ID (자동 증가)
+    rid INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 리뷰 ID (자동 증가)
     customer_id INT NOT NULL, -- 리뷰를 작성한 고객 ID (외래 키)
     product_id INT NOT NULL, -- 리뷰 대상 상품 ID (외래 키)
     order_id INT NOT NULL, -- 리뷰가 속한 주문 ID (외래 키)
@@ -164,15 +164,15 @@ CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending', -- 리뷰 상태 (기본값: 보류)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 리뷰 작성 시간 (자동 기록)
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 리뷰 수정 시간 (수정될 때마다 자동 갱신)
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 고객의 리뷰도 삭제
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE, -- 상품이 삭제되면 해당 상품의 리뷰도 삭제
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE -- 주문이 삭제되면 해당 리뷰도 삭제
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 고객의 리뷰도 삭제
+    FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE, -- 상품이 삭제되면 해당 상품의 리뷰도 삭제
+    FOREIGN KEY (order_id) REFERENCES orders(oid) ON DELETE CASCADE -- 주문이 삭제되면 해당 리뷰도 삭제
 );
 
 
 -- 관리자 승인 요청 테이블 (super_admin만 접근 가능)
 CREATE TABLE admin_approval ( -- 관리자가 승인해야 하는 요청 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 승인 요청 ID (기본 키, JSON에서 직접 부여)
+    id INT auto_increment PRIMARY KEY, -- 고유한 승인 요청 ID (기본 키, JSON에서 직접 부여)
     request_type ENUM('Cancel', 'Return', 'Exchange', 'Refund') NOT NULL, -- 요청 유형 (주문 취소, 반품, 교환, 환불)
     order_id INT NOT NULL, -- 관련된 주문 ID (외래 키)
     customer_id INT NOT NULL, -- 요청을 한 고객 ID (외래 키)
@@ -180,15 +180,15 @@ CREATE TABLE admin_approval ( -- 관리자가 승인해야 하는 요청 정보�
     reason VARCHAR(255) DEFAULT NULL, -- 요청 사유 (선택 입력, 기본값 NULL)
     admin_id INT NOT NULL, -- 해당 요청을 처리하는 관리자 ID (외래 키)
     decision_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 요청이 처리된 날짜 및 시간 (자동 기록)
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE, -- 주문이 삭제되면 해당 요청도 삭제
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 요청도 삭제
-    FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE CASCADE -- 관리자가 삭제되면 해당 승인 요청도 삭제
+    FOREIGN KEY (order_id) REFERENCES orders(oid) ON DELETE CASCADE, -- 주문이 삭제되면 해당 요청도 삭제
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 요청도 삭제
+    FOREIGN KEY (admin_id) REFERENCES admins(aid) ON DELETE CASCADE -- 관리자가 삭제되면 해당 승인 요청도 삭제
 );
 
 
--- 비회원 
+-- 비회원 테이블
 CREATE TABLE guests ( -- 비회원(게스트) 정보를 저장하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 비회원 ID (기본 키, JSON에서 직접 부여)
+    gid INT auto_increment PRIMARY KEY, -- 고유한 비회원 ID (기본 키, JSON에서 직접 부여)
     name VARCHAR(100) NOT NULL, -- 비회원 이름 (필수 입력)
     phone VARCHAR(20) NOT NULL, -- 비회원 전화번호 (필수 입력)
     order_number VARCHAR(20) UNIQUE NOT NULL, -- 비회원 주문 번호 (고유값, 주문 조회용)
@@ -199,30 +199,30 @@ CREATE TABLE guests ( -- 비회원(게스트) 정보를 저장하는 테이블 �
 
 ALTER TABLE orders -- 주문 테이블에 비회원 주문을 위한 컬럼 추가
 ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원 주문 시 해당 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 관련 주문도 삭제
+ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 관련 주문도 삭제
 
 ALTER TABLE cart -- 장바구니 테이블에 비회원 장바구니 사용을 위한 컬럼 추가
 ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 장바구니를 사용할 경우 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 장바구니도 삭제
+ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 장바구니도 삭제
 
 ALTER TABLE favorites -- 좋아요 테이블에 비회원 좋아요 사용을 위한 컬럼 추가
 ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 좋아요를 남길 경우 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 좋아요 기록도 삭제
+ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 좋아요 기록도 삭제
 
 CREATE TABLE admin_guest_management ( -- 관리자가 비회원 정보를 관리하는 테이블 생성
-    id INT PRIMARY KEY, -- 고유한 관리 기록 ID (기본 키, JSON에서 직접 부여)
+    id INT auto_increment PRIMARY KEY, -- 고유한 관리 기록 ID (기본 키, JSON에서 직접 부여)
     admin_id INT NOT NULL, -- 비회원 정보를 관리한 관리자 ID (외래 키)
     guest_id INT NOT NULL, -- 관리 대상 비회원 ID (외래 키)
     action ENUM('View', 'Modify', 'Delete') NOT NULL, -- 관리자 수행 작업 유형 (조회, 수정, 삭제)
     action_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 작업 수행 시간 (자동 기록)
-    FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE CASCADE, -- 관리자가 삭제되면 해당 기록도 삭제
-    FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE CASCADE -- 비회원 정보가 삭제되면 관련 관리 기록도 삭제
+    FOREIGN KEY (admin_id) REFERENCES admins(aid) ON DELETE CASCADE, -- 관리자가 삭제되면 해당 기록도 삭제
+    FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE -- 비회원 정보가 삭제되면 관련 관리 기록도 삭제
 );
 
 
 -- 관리자와 연결된 모든 테이블 조회( 이해하기 쉽게 컬럼이 바뀔 때 그 컬럼의 이름_id로 구분함 )
 SELECT 
-    admins.id AS admin_id, -- 관리자 ID
+    admins.aid AS admin_id, -- 관리자 ID
     admins.username, -- 관리자 사용자명
     admins.email, -- 관리자 이메일
     admins.role, -- 관리자 역할 (super_admin 또는 product_manager)
@@ -240,37 +240,37 @@ SELECT
     admin_approval.order_id, -- 관련 주문 ID
     admin_approval.status -- 승인 상태 (Pending, Approved, Rejected)
 FROM admins
-LEFT JOIN admin_permissions ON admins.id = admin_permissions.admin_id -- 관리자 권한 연결
-LEFT JOIN admin_guest_management ON admins.id = admin_guest_management.admin_id -- 비회원 관리 로그 연결
-LEFT JOIN admin_approval ON admins.id = admin_approval.admin_id; -- 관리자 승인 요청 연결
+LEFT JOIN admin_permissions ON admins.aid = admin_permissions.admin_id -- 관리자 권한 연결
+LEFT JOIN admin_guest_management ON admins.aid = admin_guest_management.admin_id -- 비회원 관리 로그 연결
+LEFT JOIN admin_approval ON admins.aid = admin_approval.admin_id; -- 관리자 승인 요청 연결
 
 -- 고객 테이블과 연결된 모든 테이블 조회
 SELECT 
-    customers.id AS customer_id, -- 고객 ID
+    customers.customer_id AS customer_id, -- 고객 ID
     customers.username, -- 고객 사용자명
     customers.email, -- 고객 이메일
     customers.phone, -- 고객 전화번호
 
-    orders.id AS order_id, -- 주문 ID
+    orders.oid AS order_id, -- 주문 ID
     orders.order_number, -- 주문 번호
     orders.total_price, -- 주문 총 금액
     orders.status, -- 주문 상태 (Pending, Shipped, Delivered, Cancelled, Returned)
 
-    cart.id AS cart_id, -- 장바구니 ID
+    cart.cid AS cart_id, -- 장바구니 ID
     cart.product_id AS cart_product_id, -- 장바구니에 담긴 상품 ID
     cart.quantity AS cart_quantity, -- 장바구니에 담긴 수량
 
-    favorites.id AS favorite_id, -- 좋아요 ID
+    favorites.fid AS favorite_id, -- 좋아요 ID
     favorites.product_id AS favorite_product_id -- 고객이 좋아요한 상품 ID
 FROM customers
-LEFT JOIN orders ON customers.id = orders.customer_id -- 고객이 한 주문과 연결
-LEFT JOIN cart ON customers.id = cart.customer_id -- 고객의 장바구니와 연결
-LEFT JOIN favorites ON customers.id = favorites.customer_id; -- 고객의 좋아요와 연결
+LEFT JOIN orders ON customers.customer_id = orders.customer_id -- 고객이 한 주문과 연결
+LEFT JOIN cart ON customers.customer_id = cart.customer_id -- 고객의 장바구니와 연결
+LEFT JOIN favorites ON customers.customer_id = favorites.customer_id; -- 고객의 좋아요와 연결
 
 
 -- 상품테이블과 연결된 모든 테이블 조회
 SELECT 
-    products.id AS product_id, -- 상품 ID
+    products.pid AS product_id, -- 상품 ID
     products.name AS product_name, -- 상품 이름
     products.category AS product_category, -- 상품 카테고리
     products.sub_category AS product_sub_category, -- 상품 하위 카테고리
@@ -280,16 +280,16 @@ SELECT
     order_items.order_id AS order_id, -- 주문 ID (해당 상품이 속한 주문)
     order_items.quantity AS order_item_quantity, -- 주문한 상품 수량
 
-    cart.id AS cart_id, -- 장바구니 ID
+    cart.cid AS cart_id, -- 장바구니 ID
     cart.customer_id AS cart_customer_id, -- 장바구니에 담은 고객 ID (회원)
     cart.guest_id AS cart_guest_id, -- 장바구니에 담은 비회원 ID
     cart.quantity AS cart_quantity, -- 장바구니에 담긴 상품 수량
 
-    favorites.id AS favorite_id, -- 좋아요 ID
+    favorites.fid AS favorite_id, -- 좋아요 ID
     favorites.customer_id AS favorite_customer_id, -- 좋아요한 고객 ID (회원)
     favorites.guest_id AS favorite_guest_id -- 좋아요한 비회원 ID
 FROM products
-LEFT JOIN order_items ON products.id = order_items.product_id -- 상품이 포함된 주문 내역과 연결
-LEFT JOIN cart ON products.id = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
-LEFT JOIN favorites ON products.id = favorites.product_id; -- 상품이 좋아요된 내역과 연결
+LEFT JOIN order_items ON products.pid = order_items.product_id -- 상품이 포함된 주문 내역과 연결
+LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
+LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
  
