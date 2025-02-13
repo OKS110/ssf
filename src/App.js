@@ -9,9 +9,11 @@ import Carts from './pages/Carts.jsx';
 import Person from './pages/Person.jsx';
 import Products from './pages/Products.jsx';
 import DetailProducts from './pages/DetailProducts.jsx';
+import { AuthProvider } from './auth/AuthContext.js';
 function App() {
   return (
     <>
+    <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Layout/>}>
@@ -25,6 +27,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+     </AuthProvider>
     </>
   );
 }

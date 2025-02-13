@@ -1,7 +1,14 @@
 import Button from "../../commons/Button.jsx";
 import React, {useState, useRef} from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/AuthContext.js";
 import axios from "axios";
 export default function LoginTab1({isActive}){
+
+    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+
 
     const initForm = { 'id': '', 'pwd': '' };
 
@@ -16,11 +23,11 @@ export default function LoginTab1({isActive}){
         const {name, value} = event.target;
         setFormData({...formData, [name]: value});
     
-        if (name === 'id') {
-            value === '' ? setErrMsg({...errMsg, ['id']: '아이디를 입력해주세요'}) : setErrMsg({...errMsg, ['id']: ''});
-        } else if (name === 'pwd') {
-            value === '' ? setErrMsg({...errMsg, ['pwd']: '비밀번호를 입력해주세요'}) : setErrMsg({...errMsg, ['pwd']: ''});  
-        }
+        // if (name === 'id') {
+        //     value === '' ? setErrMsg({...errMsg, ['id']: '아이디를 입력해주세요'}) : setErrMsg({...errMsg, ['id']: ''});
+        // } else if (name === 'pwd') {
+        //     value === '' ? setErrMsg({...errMsg, ['pwd']: '비밀번호를 입력해주세요'}) : setErrMsg({...errMsg, ['pwd']: ''});  
+        // }
         // console.log(formData);
         
     };
@@ -33,21 +40,21 @@ export default function LoginTab1({isActive}){
         }
     
         // 서버 전송
-        // axios.post('http://localhost:9001/admin/login', formData)
-        //     .then(res => {
-        //       console.log('res.data --> ', res.data);
-        //       if (res.data.result_rows === 1) {
-        //         alert('로그인 성공!');
-        //         localStorage.setItem("token", res.data.token);
-        //         setIsLoggedIn(true);
-        //         navigate('/admin/main');
-        //       } else if (refs.idRef.current.value !== '' && refs.pwdRef.current.value !== '' && res.data.result_rows === 0) {
-        //         alert('아이디 또는 비밀번호가 일치하지 않습니다.');
-        //         // setErrMsg({...errMsg, ['err']: "아이디 또는 비밀번호가 일치하지 않습니다."});
-        //         refs.idRef.current.focus();
-        //       }
-        //     })
-        //     .catch(err => console.log(err));
+        axios.post('http://localhost:9000/user/login', formData)
+            .then(res => {
+              console.log('res.data --> ', res.data);
+              if (res.data.result_rows === 1) {
+                alert('로그인 성공!');
+                localStorage.setItem("token", res.data.token);
+                setIsLoggedIn(true);
+                navigate('/');
+              } else if (refs.idRef.current.value !== '' && refs.pwdRef.current.value !== '' && res.data.result_rows === 0) {
+                alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+                // setErrMsg({...errMsg, ['err']: "아이디 또는 비밀번호가 일치하지 않습니다."});
+                refs.idRef.current.focus();
+              }
+            })
+            .catch(err => console.log(err));
       }
       
       /** validate : 유효성 체크 **/
