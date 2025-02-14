@@ -120,8 +120,33 @@ create table shoppy_cart(
 show tables;
 desc shoppy_cart;
 select * from shoppy_cart;
--- TRUNCATE TABLE shoppy_cart; 
+select * from shoppy_product;
+TRUNCATE TABLE shoppy_cart; 
+
+insert into shoppy_cart(size, qty, cdate, id, pid)
+	values('xs', 1, now(), 'test11', 4);
     
+select * from shoppy_product where pid = 3;
+
+-- shoppy_cart, shoppy_member, shoppy_product 조인
+select sc.cid,
+		sc.size,
+        sc.qty,
+        sm.id,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat("http://localhost:9000/", sp.upload_file->>'$[0]') as image
+	from 
+		shoppy_cart sc,
+		shoppy_member sm,
+		shoppy_product sp
+	where sc.id = sm.id and sc.pid = sp.pid and sm.id = 'test11';
+
+
 
     
     

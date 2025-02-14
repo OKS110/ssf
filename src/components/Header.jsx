@@ -5,6 +5,12 @@ import Nav from "../commons/Nav.jsx";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { AiOutlineShopping } from "react-icons/ai";
+import { AuthContext } from "../auth/AuthContext.js";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+
+export default function Header(){
 // 헤더 메뉴 시작
 const categories = [
   { label: "여성", link: "#" },
@@ -32,9 +38,27 @@ const specialLinks = [
 ];
 // 헤더 메뉴 끝
 
+    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
 
-export default function Header(){
 
+    const handleLoginToggle = () => {
+      if(isLoggedIn){ //Logout 버튼 클릭!!
+          const select = window.confirm("정말로 로그아웃 하시겠습니까?");
+          if(select){
+              localStorage.removeItem('token');
+              // localStorage.removeItem('user_id');
+              setIsLoggedIn(false);     
+
+              // 상태 업데이트 후 약간의 지연 후 메인 페이지 이동
+              setTimeout(() => {
+                  navigate('/');
+              }, 0);
+              }
+      }else{ // 로그인 버튼 클릭
+          navigate('/login');
+      }
+  };
 
     
     return (
@@ -44,7 +68,7 @@ export default function Header(){
             {/* <li><a href='#'>마이페이지</a></li> */}
             <Link to='/person' className="person">마이페이지</Link>
             {/* <li><a href='#'>로그인</a></li> */}
-            <Link to='/login' className="login">로그인</Link>
+            <Link to='/login' className="login" onClick={handleLoginToggle}>{isLoggedIn ? "로그아웃":"로그인"}</Link>
           </ul>
         </div>
 

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext.js";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export default function LoginTab1({isActive}){
 
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -22,6 +23,7 @@ export default function LoginTab1({isActive}){
     const handleChangeForm = (event) => {
         const {name, value} = event.target;
         setFormData({...formData, [name]: value});
+        setErrMsg({...errMsg, ['err']: ""});
     
         // if (name === 'id') {
         //     value === '' ? setErrMsg({...errMsg, ['id']: '아이디를 입력해주세요'}) : setErrMsg({...errMsg, ['id']: ''});
@@ -50,7 +52,11 @@ export default function LoginTab1({isActive}){
                 navigate('/');
               } else if (refs.idRef.current.value !== '' && refs.pwdRef.current.value !== '' && res.data.result_rows === 0) {
                 alert('아이디 또는 비밀번호가 일치하지 않습니다.');
-                // setErrMsg({...errMsg, ['err']: "아이디 또는 비밀번호가 일치하지 않습니다."});
+                setErrMsg({...errMsg, ['err']: "아이디 또는 비밀번호가 일치하지 않습니다."});
+                
+                refs.idRef.current.value = '';
+                refs.pwdRef.current.value = '';
+
                 refs.idRef.current.focus();
               }
             })
@@ -103,7 +109,7 @@ export default function LoginTab1({isActive}){
                                 <button type="submit">로그인</button>
                             </div>
                                 <p style={{height:"10px", textAlign:"left", padding:"5px", color:"red", fontSize:"0.7rem"}}>
-                                { errMsg.pwd !== '' && <>{errMsg.pwd}</> }</p>
+                                { <>{errMsg.err}</> }</p>
 
                             <div className="save_id">
                                 <span className="checkbox">
@@ -125,7 +131,7 @@ export default function LoginTab1({isActive}){
                                     <a href="#" className="naver box" title="새창열림">네이버 로그인</a>
                                 </dd>
                         </dl>
-                        <Button title="비회원 주문" width="100%"></Button>
+                        <Link to ='/order'><Button title="비회원 주문" width="100%"></Button></Link>
                     </div>
     );
 }

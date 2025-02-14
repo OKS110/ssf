@@ -1626,3 +1626,59 @@ footer .etc .etc-right{
         max-width: none;
     }
 }
+
+
+/* 주문 */
+#order h1 {
+    margin-bottom: 40px;
+    font-size: var(--F40);
+    line-height: 48px;
+    color: var(--gray900);
+    text-align: center;
+}
+.grid_wrap {
+    width: 100%;
+    font-size: var(--F14);
+}
+.grid_wrap td {
+    padding: 25px 0;
+    line-height: 18px;
+    color: var(--gray600);
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid var(--gray250);
+}
+
+section#order .form_wrap {
+    margin-top: 70px;
+    border-top: 1px solid var(--gray800);
+}
+section#order .form_wrap form>h4 {
+    font-weight: 700;
+    margin-top: 42px;
+}
+section#order .form_wrap form>h4 {
+    margin-top: 56px;
+    line-height: 28px;
+    font-size: 19px;
+    color: var(--gray900);
+}
+section#order .form_wrap form>h4>.btns {
+    position: absolute;
+    width: 540px;
+    text-align: right;
+    margin-top: -34px;
+}
+section#order .form_wrap .btns .btn.gray {
+    font-size: 1rem;
+    line-height: 38px;
+    color: var(--white);
+    background: var(--gray800);
+    border: 1px solid var(--gray800);
+}
+
+
+.input_wrap{
+    background-color: yellow;
+    margin-top: 20px;
+}
