@@ -1640,6 +1640,14 @@ footer .etc .etc-right{
     width: 100%;
     font-size: var(--F14);
 }
+.grid_wrap th{
+    padding: 25px 0;
+    line-height: 18px;
+    color: var(--gray600);
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid var(--gray600);
+}
 .grid_wrap td {
     padding: 25px 0;
     line-height: 18px;
@@ -1651,13 +1659,26 @@ footer .etc .etc-right{
 
 section#order .form_wrap {
     margin-top: 70px;
-    border-top: 1px solid var(--gray800);
 }
-section#order .form_wrap form>h4 {
+section#order .form_wrap>form tr{
+    margin-top: 56px;
+    line-height: 28px;
+    font-size: 19px;
+    color: var(--gray900);
+}
+section#order .form_wrap>form h4{
+    padding: 20px 0;
+    margin-top: 56px;
+    line-height: 28px;
+    font-size: 19px;
+    color: var(--gray900);
+    border-top: 1px solid var(--gray600);
+}
+section#order .form_wrap>form th {
     font-weight: 700;
     margin-top: 42px;
 }
-section#order .form_wrap form>h4 {
+section#order .form_wrap form td {
     margin-top: 56px;
     line-height: 28px;
     font-size: 19px;
@@ -1681,4 +1702,215 @@ section#order .form_wrap .btns .btn.gray {
 .input_wrap{
     background-color: yellow;
     margin-top: 20px;
+}
+.form_wrap .row {
+    position: relative;
+    padding-left: 102px;
+    margin-top: 30px;
+}
+.row>label {
+    position: absolute;
+    left: 0;
+    top: 9px;
+    display: block;
+    line-height: 22px;
+    font-size: var(--F15);
+}
+.form_wrap .row>label.required:after {
+    position: absolute;
+    top: 4px;
+}
+.form_wrap .input_wrap .row {
+    /* width: 540px; */
+    margin-top: 20px;
+    /* padding-left: 140px; */
+    box-sizing: border-box;
+}
+.input_box {
+    position: relative;
+}
+.input_box .skills {
+    position: absolute;
+    top: 60%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+.input_box .skills .reset_txt {
+    /* display: none; */
+    display: block;
+    width: 22px;
+    height: 28px;
+    background: url(https://www.ssfshop.com/v3/images/ui/btn_x.svg) no-repeat center center / 12px auto;
+    cursor: pointer;
+}
+.input_box input{
+    flex: 1;
+    width: 434px;
+    height: 40px;
+    line-height: 38px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--gray250);
+}
+.pay_with {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+.payment_tit+.pay_with {
+    margin-top: 30px;
+}
+.pay_with li {
+    position: relative;
+    background-color: yellow;
+}
+.pay_with li label {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 90px;
+}
+.pay_with li input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.pay_with li label>span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 18px;
+    text-align: center;
+    font-size: var(--F14);
+    color: var(--black);
+    font-weight: 400;
+    font-size: var(--F13);
+    line-height: var(--F13L);
+    border: 1px solid var(--gray250);
+    border-radius: var(--radius);
+    --label-offset: calc(13px);
+    --label-height: calc(28px + 44px);
+}
+
+.pay_with li label.toss>span::before {
+    background-position: center calc((var(--label-height))* -4 - var(--label-offset));
+}
+.pay_with li label.naver>span::before {
+    background-position: center calc((var(--label-height))* -5 - var(--label-offset));
+}
+.pay_with li label.kakao>span::before {
+    background-position: center calc((var(--label-height))* -3 - var(--label-offset));
+}
+.pay_with li label.payco>span::before {
+    background-position: center calc((var(--label-height))* -8 - var(--label-offset));
+}
+.pay_with li label>span::before {
+    content: "";
+    display: inline-block;
+    height: 28px;
+    width: 100%;
+    margin-bottom: 3px;
+    background: url(https://www.ssfshop.com/v3/images/ui/ico_paywith.png?timestamp=20231010) no-repeat center calc(var(--label-offset)* -1) / 80px auto;
+}
+.pay_with li label>span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 18px;
+    text-align: center;
+    font-size: var(--F14);
+    color: var(--black);
+    font-weight: 400;
+    font-size: var(--F13);
+    line-height: var(--F13L);
+    border: 1px solid var(--gray250);
+    border-radius: var(--radius);
+    --label-offset: calc(13px);
+    --label-height: calc(28px + 44px);
+}
+.pay_with li label em {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    border-radius: var(--radius);
+    background: rgba(0, 0, 0, .6);
+    padding: 2px 10px;
+}
+
+.form_wrap .gray_box {
+    margin-top: 40px;
+    padding: 60px 50px;
+    width: 838px;
+    background-color: #fafafa;
+    border: 1px solid gray;
+}
+.form_wrap .gray_box h5 {
+    text-align: left;
+    margin-bottom: 8px;
+    color: #8e8e8e;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.form_wrap .gray_box>p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form_wrap .gray_box>p>span{
+    margin: 0;
+}
+.form_wrap .gray_box .price {
+    margin-left: auto;
+    text-align: right;
+    font-size: 23px;
+    font-weight: 700;
+}
+.form_wrap .gray_box .price em {
+    font-weight: 400;
+}
+.form_wrap .gray_box .shipping_cost {
+    display: block;
+    color: #8e8e8e;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.form_wrap .submit_order{
+    text-align: center;
+}
+.form_wrap .submit_order>p{
+    margin: 20px 30px
+}
+
+/* 본인인증 */
+
+.confirm_wrap .txt {
+    margin-top: 30px;
+    line-height: 20px;
+    color: var(--gray600);
+}
+.form_wrap .certify {
+    margin: 45px auto 0;
+    width: auto;
+    text-align: center;
+}
+.form_wrap .certify a{
+    display: block;
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid var(--gray600);
+    font-size: 1.3rem;
+    position: relative;
+
+}
+.form_wrap .certify a>span{
+    position: absolute;
+    top: 60%; left: 50%; transform: translate(-50%,-50%);
+}
+.certify>a.mobile {
+    background: url(https://www.ssfshop.com/v3/images/ui/bg_auth02.png) no-repeat center 45px !important;
 }

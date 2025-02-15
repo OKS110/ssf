@@ -1,7 +1,7 @@
 show databases;
 create database shopping_mall;
 USE shopping_mall; 
-
+drop database shopping_mall;
 show tables;
 
 -- 관리자 테이블
@@ -134,6 +134,10 @@ CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생�
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 주문 날짜 및 시간 (자동 기록)
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
 );
+ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수단
+
+ALTER TABLE orders
+ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 
 -- INSERT INTO orders (id, customer_id, order_number, total_price, shipping_address, status, refund_amount, order_date)
 -- VALUES
@@ -197,7 +201,13 @@ CREATE TABLE guests ( -- 비회원(게스트) 정보를 저장하는 테이블 �
     address VARCHAR(255) DEFAULT NULL, -- 비회원 배송 주소 (선택 입력)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 비회원 정보 생성 시간 (자동 기록)
 );
+INSERT INTO guests (name, phone, order_number, email, address)
+VALUES ('홍길동', '01012345678', 'abc1234', 'honggildong@example.com', '서울 동작구 동작대로 3');
 
+select * from orders;
+select count(*) as result_rows
+from guests
+where name = '홍길동' and phone = '01012345678' and order_number = 'abc1234';
 ALTER TABLE orders -- 주문 테이블에 비회원 주문을 위한 컬럼 추가
 ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원 주문 시 해당 guest_id 저장
 ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 관련 주문도 삭제
@@ -293,4 +303,6 @@ FROM products
 LEFT JOIN order_items ON products.pid = order_items.product_id -- 상품이 포함된 주문 내역과 연결
 LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
 LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
+ 
+ 
  

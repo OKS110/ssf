@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import LoginCartsNav from "../commons/LoginCartsNav";
 
-import OrderBill from "../components/Carts/OrderBill";
-import OrderDesc from "../components/Carts/OrderDesc";
+import CartOrderBill from "../components/Carts/CartOrderBill";
+import CartOrderDesc from "../components/Carts/CartOrderDesc";
 import OrderGrayBox from "../components/Carts/OrderGrayBox";
-import OrderHead from "../components/Carts/OrderHead";
-import OrderMain from "../components/Carts/OrderMain";
+import CartOrderHead from "../components/Carts/CartOrderHead";
+import CartOrderMain from "../components/Carts/CartOrderMain";
 
 export default function Carts(){
     const [activeTab, setActiveTab] = useState("tab1");
@@ -27,18 +27,18 @@ export default function Carts(){
         
                         
                         <div className="order_wrap on all-group">
-                            <OrderHead></OrderHead>
+                            <CartOrderHead></CartOrderHead>
                             {/* 장바구니에 상품이 없는 경우 Head에서 관리*/}
                             <div className="order_set" id="cartSubGroup1">
-                                <OrderMain></OrderMain>
+                                <CartOrderMain></CartOrderMain>
                                 {/* table을 컴포넌트로 */}
                                 <OrderGrayBox></OrderGrayBox>
                             </div>
 
-                           <OrderBill></OrderBill>
+                           <CartOrderBill></CartOrderBill>
 
 
-                            <OrderDesc></OrderDesc>
+                            <CartOrderDesc></CartOrderDesc>
                             
                         </div>    
                 </div>

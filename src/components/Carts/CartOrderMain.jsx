@@ -1,6 +1,6 @@
 import Button from "../../commons/Button";
 
-export default function OrderMain(){
+export default function CartOrderMain(){
     return (
             <table>
                 {/* <caption>장바구니 일반배송</caption> */}

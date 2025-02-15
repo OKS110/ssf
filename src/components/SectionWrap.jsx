@@ -15,7 +15,7 @@ export default function SectionWrap({id, title, children}) {
         .catch(error => console.log(error));
         
     }, [])
-    console.log(detailList);
+    console.log("detailList", detailList);
     
 
     return (

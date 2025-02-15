@@ -1,6 +1,6 @@
 import Button from "../../commons/Button";
 
-export default function OrderHead(){
+export default function CartOrderHead(){
     return (
         <div className="order_set order_set_head">
                                 {/* <p class="null">장바구니에 담긴 상품이 없습니다.</p> */}

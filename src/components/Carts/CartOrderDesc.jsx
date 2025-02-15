@@ -1,4 +1,4 @@
-export default function OrderDesc(){
+export default function CartOrderDesc(){
     return (
         <ul id="cartInfoMessage">
                 <li>장바구니에 담긴 상품은 30일간 저장됩니다.</li>
