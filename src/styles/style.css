@@ -1914,3 +1914,714 @@ section#order .form_wrap .btns .btn.gray {
 .certify>a.mobile {
     background: url(https://www.ssfshop.com/v3/images/ui/bg_auth02.png) no-repeat center 45px !important;
 }
+
+/*****************하온추가*********************************/
+.goods-info-middle{
+    border-bottom: 1px solid var(--gray400);
+    padding: 20px 0;
+    /* margin-bottom: 20px; */
+    text-align: left;
+}
+
+.goods-info-middle > ul > li {
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+.goods-info-middle > ul > li > span:first-child{
+    /* background-color: rgb(158, 216, 182); */
+    width: 100px;
+    display: inline-block;
+    color: #767676;
+}
+.goods-info-middle > ul > li > span:nth-child(3){
+    padding-right: 10px;
+    /* background-color: #00A197; */
+}
+.goods-info-middle > ul > li:last-child >a{
+    /* background-color: red; */
+    text-align: right;
+}
+.goods-info-middle > ul > li > a{
+    /* background-color: red; */
+    color: #767676;
+    text-decoration: underline;
+}
+.goods-info-middle > ul > li:last-child > span:nth-child(2){
+    font-weight: 600;
+}
+.goods-info-middle > ul > li:last-child > a >span {
+    padding-right: 5px;
+}
+.goods-info-middle > ul > li:last-child > a {
+    text-decoration: none;
+}
+.goods-info-middle > ul > li:last-child > span:nth-child(4){
+    display: inline-block;
+    width: 260px;
+}
+.goods-info-middle > ul > li:first-child > span:nth-child(2),
+.goods-info-middle > ul > li:nth-child(2) > span:nth-child(2){
+    /* background-color: red; */
+    padding-right: 7px;
+}
+
+
+.goods-info-bottom{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding: 20px 0;
+    font-size: 15px;
+}
+.goods-info-bottom-color, .goods-info-bottom-size{
+    /* border: 1px solid red; */
+    margin-bottom: 11px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.goods-info-bottom-color > span ,.goods-info-bottom-color>ul,
+.goods-info-bottom-size > span ,.goods-info-bottom-size>ul {
+    margin: 0;
+}
+.goods-info-bottom-color > span{
+    display: block;
+    width: 100px;
+    /* border: 1px solid black; */
+    font-weight: 600;
+}
+.goods-info-bottom-size > span{
+    display: block;
+    width: 105px;
+    /* border: 1px solid black; */
+    font-weight: 600;
+}
+.goods-info-bottom-color>ul ,.goods-info-bottom-size>ul{
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.goods-info-bottom-size>ul>li{
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 3px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 50px; 
+}
+.goods-info-bottom-color>ul>li {
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 3px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 50px; 
+    margin: 0;
+    border-radius: 7px;
+    width: 50px;
+    height: 70px;
+}
+
+
+
+
+
+.goods-info-count-price{
+    /* border: 1px solid red; */
+    padding: 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.goods-info-count{
+    margin: 0;
+    display: flex;
+    align-items: center;
+   
+}
+.goods-info-count>button{
+    display: inline-block;
+    width: 40px;
+    height: 40px;    
+    background-color: white;
+    text-align: center;
+    border: 1px solid gray;
+}
+.goods-info-count>button:nth-child(1){
+    border-radius: 5px 0 0 5px;
+}
+.goods-info-count>button:nth-child(3){
+    border-radius: 0 5px 5px 0;
+}
+
+.goods-info-price{
+    margin: 0;
+}
+.goods-info-price>span:first-child{
+    font-size: 25px;
+    font-weight: 700;
+}
+.goods-info-price>span:last-child{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+
+.goods-info-btns>button{
+    width: 50%;
+    height: 60px;
+    font-size: 16px;
+}
+.goods-info-btns>button:first-child{
+    background-color: #000;
+    border-radius: 5px 0 0 5px;
+}
+.goods-info-btns>button:last-child{
+    background-color: #7E00FF;
+    border-radius: 0 5px 5px 0;
+}
+.goods-info-btns>button>a{
+    color: white;
+}
+
+
+
+
+.review-info > span , .review-info> a {
+    margin: 0;
+}
+.review-info > span:nth-child(4){
+    /* border: 1px solid red; */
+    padding: 0 10px;
+}
+.review-info > span:nth-child(5){
+    font-weight: 700;
+    color: var(--black);
+}
+
+
+
+/* 슬라이드 */
+/* @keyframes slider {
+    0% {
+      transform: translateX(0);
+    }
+  
+    26% {
+      transform: translateX(0);
+    }
+    33% {
+      transform: translateX(-100%);
+      animation-timing-function: step-end;
+    }
+    93% {
+      transform: translateX(100%);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  } */
+
+  .slide {
+    display: flex;
+    transition: transform 0.5s ease;    
+    &.active {
+      transform: translateX(0);
+    }
+    &:not(.active) {
+      transform: translateX(100%);
+    }
+}
+.aa {
+    border: 1px solid red;
+    z-index: 100;
+}
+
+/* translatex = 0 이면 그냥 화면 중간임 여기서 -이면 중간기준 왼쪽으로 가고 
++ 이면 중간기준 오른쪽으로감 */
+
+.trans-1{
+    border: 1px solid red;
+    width: 100px;
+    transform: translateX(0);
+
+}
+
+.trans-2{
+    border: 1px solid blue;
+    width: 100px;
+    transform: translateX(100px);
+
+}
+
+
+
+.slide-box{
+    /* border: 1px solid red; */
+    margin: auto;
+    width: 100%;  
+    display: flex;
+    /* justify-content: space-between; */
+    position: relative;
+    overflow: hidden;
+}
+.slide-box>div{
+    margin: 0;
+    /* position: relative; */
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+.slide-box>div>img{
+    width: 100%;
+    margin: 0;
+    filter: brightness(80%);
+}
+.slide-leftBtn{
+    position: absolute;
+    top: 370px;
+    font-size: 40px;
+    color: #ffffff;
+    left: 10px;
+    opacity: 0.5;
+    padding: 10px;
+    z-index: 100;
+}
+.slide-rightBtn{
+    position: absolute;
+    font-size: 40px;
+    right: 65px;
+    top: 370px;
+    color: #ffffff;
+    opacity: 0.5;
+    padding: 10px 5px 10px 10px;
+}
+.slide-stopBtn{
+    position: absolute;
+    font-size: 40px;
+    right: 10px;
+    top: 370px;
+    color: #ffffff;
+    opacity: 0.5;
+    padding: 10px 10px 10px 5px;
+}
+.slide-playBtn {
+    position: absolute;
+    font-size: 40px;
+    right: 10px;
+    top: 370px;
+    color: #ffffff;
+    opacity: 0.5;
+    padding: 10px 10px 10px 5px;
+}
+.slide-leftBtn-hover{
+    position: absolute;
+    top: 370px;
+    font-size: 40px;
+    color: #ffffff;
+    left: 10px;
+    opacity: 0.5;
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    z-index: 100;
+}
+.slide-rightBtn-hover{
+    position: absolute;
+    font-size: 40px;
+    right: 65px;
+    top: 370px;
+    color: #ffffff;
+    opacity: 0.5;
+    padding: 10px 5px 10px 10px;
+    background-color: black;
+    border-radius: 10px 0 0 10px;
+}
+.slide-playBtn-hover, .slide-stopBtn-hover{
+    position: absolute;
+    font-size: 40px;
+    right: 10px;
+    top: 370px;
+    color: #ffffff;
+    opacity: 0.5;
+    padding: 10px 10px 10px 5px;
+    background-color: black;
+    border-radius: 0 10px 10px 0;
+}
+.slide-title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    /* border: 1px solid red; */
+    padding: 10px 0;
+}
+.slide-desc1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    /* border: 1px solid red; */
+    padding: 10px 0;
+
+
+}
+.slide-desc2{
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    /* border: 1px solid red; */
+    padding: 10px 0;
+
+}
+.original{
+    text-align: center;
+    /* border: 1px solid blue; */
+    top: 305px;
+    position: absolute;
+    width: 100%;
+}
+
+.top-up{
+    text-align: center;
+    /* border: 1px solid blue; */
+    top: 330px;
+    position: absolute;
+    width: 100%;
+}
+.top-middle{
+    text-align: center;
+    /* border: 1px solid blue; */
+    top: 320px;
+    position: absolute;
+    width: 100%;
+}
+
+/* 회원가입- 하온//////////////////////// */
+.signupBox{
+    margin: 0 auto;
+    width: 1440px;
+    /* border: 2px solid blue; */
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+.signup-wrap{
+    width: 480px;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+.signup-wrap>h1{
+    font-size: 35px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+.signup-wrap >form > ul{
+    text-align: left;
+}
+.signup-wrap >form> ul >li {
+    padding: 10px 0;
+}
+.signup-top >label {
+    display: block;
+    padding-bottom: 3px;
+}
+.signup-top:last-child >label{
+    font-weight: 700;
+}
+.signup-top > input:not(.test) {
+    width: 100%;
+    height: 35px;
+}
+.textarea{
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+.signup-wrap  >form> button {
+    width: 100%;
+    padding: 20px 0;
+    background-color: var(--purple500);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.signup-bottom {
+    text-align: left;
+    padding: 10px 0;
+}
+.signup-bottom > table {
+    text-align: center;
+    font-size: 14px;
+}
+.signup-bottom  > table > tr {
+    border: 1px solid black;
+}
+.signup-bottom  > table > tr>th{
+    padding: 10px 0;
+}
+.signup-bottom  > table > tr> td {
+    padding: 5px 0;
+}
+.signup-bottom  > p {
+    font-size: 14px;
+}
+.signup-bottom > label {
+    padding-bottom: 3px;
+    display: block;
+    font-weight: 700;
+}
+
+.signup-top:nth-child(7) > input {
+    width: 290px;
+}
+.emailEmt{
+    padding: 0 10px;
+}
+.signup-top:nth-child(7) > select {
+    width: 150px;
+    height: 38px;
+}
+.signup-err{
+    color: white;
+    text-align: left;
+    padding: 0;
+    /* display: none; */
+    font-size: 14px;
+}
+
+.dupliId{
+    border: 1px solid var(--purple500);
+    background-color: var(--purple500);
+    /* padding: 5px 10px; */
+    height: 35px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+    width: 20%;
+    border-radius: 6px;
+}
+.dupliInput{
+    width: 75%;
+    height: 35px;
+    display: inline-block;
+    margin: 0;
+    padding-right: 10px;
+}
+.dupliBox{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: space-between;
+}
+.select-err:focus {
+    border: 1px solid red !important;
+}
+
+/* 1440px myPqge */
+.mypage-box{
+    width: 1440px;
+    margin: auto;
+}
+.mypage-top-menu{
+    text-align: left;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+}
+.mypage-top-menu > span , .mypage-top-menu-icon{
+    margin: 0;
+    font-size: 13px;
+}
+.mypage-top-menu > span:first-child, .mypage-top-menu-icon{
+    color: #767676;
+}
+.mypage-top-menu-icon{
+    font-size: 11px;
+    padding: 0 4px;
+}
+.mypage-top-box{
+    text-align: center;
+    width: 100%;
+    font-size: 35px;
+    padding: 20px 0;
+}
+.mypage-bottom-box{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+.mypage-bottom-left{
+    margin: 0;
+    /* border: 1px solid red; */
+    padding-right: 50px;
+}
+.mypage-bottom-right{
+    margin: 0;
+    /* border: 1px solid blue; */
+    width: 1200px;
+}
+.mypage-bottom-left > h3{
+    font-size: 17px;
+    padding-bottom: 10px;
+    font-weight: 600;
+
+}
+.mypage-bottom-left >ul>li{
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+.mypage-bottom-left >ul>li>a{
+    color: #767676;
+}
+.mypage-bottom-left >ul>li:last-child{
+    padding-bottom: 20px;
+}
+.mypage-bottom-my{
+    /* border: 1px solid red; */
+    background-color: rgb(232, 240, 247);
+    border-radius: 3px;
+    margin: 10px 0 60px 0;
+    text-align: center;
+    padding: 30px;
+}
+.mypage-bottom-my-top{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-bottom-my-top > div{
+    margin: 0;
+}
+.mypage-bottom-my-top-left, .mypage-bottom-my-top-right{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+
+}
+.mypage-bottom-my-top-left > span:nth-child(2){
+    font-size: 30px;
+    font-weight: 700;
+}
+.mypage-bottom-my-top-left > span:first-child{
+    font-size: 23px;
+}
+.mypage-bottom-my-top-left > span:last-child{
+    font-size: 20px;
+}
+.mypage-bottom-my-top-right{
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 5px 7px;
+}
+.mypage-bottom-my-top-right>span{
+    font-size: 14px;
+}
+.mypage-bottom-my-bottom{
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.mypage-bottom-my-bottom>ul{
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+}
+.mypage-bottom-my-bottom>ul>a{
+    color: black;
+    border-right: 1px solid rgb(192, 192, 192);
+    /* border: 1px solid red; */
+    width: 25%;
+}
+.mypage-bottom-my-bottom>ul>a:last-child{
+    border: none;
+}
+.mypage-order-product{
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    padding: 20px 0;
+}
+.mypage-order-product-top{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-order-product-top>h2{
+    margin: 0;
+}
+.mypage-order-product-top>div{
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.mypage-order-product-bottom{
+    text-align: center;
+    padding: 20px 0;
+}
+.mypage-active{
+    padding: 20px 0;
+
+}
+.mypage-active-box{
+    padding: 20px 0;
+}
+.mypage-active-box >ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 0;
+    border: 1px solid gray;
+    border-radius: 7px;
+}
+.mypage-active-box >ul >a{
+    color: black;
+    border-right: 1px solid rgb(192, 192, 192);
+    /* border: 1px solid red; */
+    text-align: center;
+    width: 25%;
+
+}
+.mypage-wishList{
+    border-bottom: 3px solid black;
+    padding: 20px 0;
+}
+.mypage-wishList-top {
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-wishList-top>h2 , .mypage-wishList-top>div {
+    margin: 0;
+}
+.mypage-wishList-top>div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+}
+.mypage-wishList-tab{
+    border: 1px solid black;
+    margin-bottom: 40px;
+}
+.mypage-wishList-tab>ul{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-wishList-tab>ul>li{
+    text-align: center;
+    width: 460px;
+    padding: 20px 0;
+}
+.mypage-wishList-tab-active{
+    background-color: black;
+    color: white;
+}
+.mypage-wishList-items{
+    border: 1px solid blue;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+.mypage-wishList-items>div{
+    border: 1px solid red;
+}
