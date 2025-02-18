@@ -8,6 +8,8 @@ export const getCategoryItems = async(req, res) => {
 }
 
 export const getRankItems = async(req, res) => {
+    console.log(result);
+    
     const result = await repository.getRankItems(req.body);
     res.json(result);
     res.end();

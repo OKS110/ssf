@@ -37,7 +37,7 @@ export const getProductData = async() => {
     console.log('1111');
     
     const sql = `
-        select pid,
+        select  pid,
                 category,
                 sub_category,
                 name,
