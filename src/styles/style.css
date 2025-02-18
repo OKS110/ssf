@@ -1593,39 +1593,6 @@ footer .etc .etc-right{
     overflow: hidden;
     white-space: nowrap;
 }
-/* 아우터로 더하는~ */
-.god-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: none;
-    min-width: 0;
-    margin-bottom: 40px;
-    padding: 0 8px;
-    box-sizing: border-box;
-}
-
-@supports (display:grid) and (column-gap:16px) {
-    .god-lists .list-col-6 {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-@supports (display:grid) and (column-gap:16px) {
-    .god-lists [class*=list-col-], .god-lists>ul {
-        display: grid;
-        margin: 0;
-        column-gap: 16px;
-        row-gap: 40px;
-    }
-}
-@supports (display:grid) and (column-gap:16px) {
-    .god-lists [class*=list-col-] .god-item, .god-lists>ul .god-item {
-        margin: 0;
-        padding: 0;
-        width: auto;
-        max-width: none;
-    }
-}
 
 
 /* 주문 */
@@ -2624,4 +2591,204 @@ section#order .form_wrap .btns .btn.gray {
 }
 .mypage-wishList-items>div{
     border: 1px solid red;
+}
+
+/* 아우터로 더하는~ */
+/**************************
+ * category(대분류) tab
+ * YuNa
+**************************/
+.category-select {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+.category-select-click-tabMenu {
+    border: 1px solid #fff;
+    background-color: #000;
+    width: 100px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+}
+.category-select-tabMenu {
+    border: 1px solid #000;
+    background-color: #fff;
+    width: 100px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.category-tab {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.category-tab-list {
+    width: 220px;
+    height: auto;
+}
+.category-list-img {
+    width: 100%;
+}
+.category-list-info {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: normal;
+}
+.category-list-title {
+    height: 45px;
+    line-height: 20px;
+}
+.category-list-price-wrap > p {
+    height: 25px;
+    line-height: 25px;
+    align-items: center;
+}
+.category-list-costprice {
+    text-decoration: line-through;
+    color: gray;
+    padding: 0;
+}
+.category-list-price-container {
+    font-weight: bold;
+}
+.category-list-price-container > span:first-child {
+    color: var(--purple500);
+    padding-right: 5px;
+}
+.category-list-star-likes-container {
+    font-size: 0.9rem;
+    color: silver;
+}
+.category-list-star-wrap {
+    margin-right: 10px;
+}
+.category-list-star-wrap > span:first-child,
+.category-list-likes-wrap > span:first-child {
+    margin-right: 3px;
+}
+/* .god-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    min-width: 0;
+    margin-bottom: 40px;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists .list-col-6 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists [class*=list-col-], .god-lists>ul {
+        display: grid;
+        margin: 0;
+        column-gap: 16px;
+        row-gap: 40px;
+    }
+}
+@supports (display:grid) and (column-gap:16px) {
+    .god-lists [class*=list-col-] .god-item, .god-lists>ul .god-item {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        max-width: none;
+    }
+} */
+
+/**************************
+ * sub-category(소분류) rank
+ * YuNa
+**************************/
+.sub-category-select {
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    margin: 0 auto;
+}
+.sub-category-tab {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.sub-category-tab-list {
+    height: auto;
+}
+
+.sub-category-list-img > p {
+    font-size: 1rem;
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
+}
+
+.sub-category-select-click-tabMenu {
+    color: #000;
+    font-size: 1.3rem;
+    height: 30px;
+    border-bottom: 3px solid #000;
+}
+
+.sub-category-select-tabMenu {
+    color: silver;
+    font-size: 1.3rem;
+}
+.sub-category-list-img {
+    width: 100%;
+}
+.sub-category-list-info {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: normal;
+}
+.sub-category-list-title {
+    /* display: inline-block; */
+    height: auto;
+}
+.sub-category-list-price-wrap > p {
+    height: 25px;
+    line-height: 25px;
+    align-items: center;
+}
+.sub-category-list-costprice {
+    text-decoration: line-through;
+    color: gray;
+    padding: 0;
+}
+.sub-category-list-price-container {
+    font-weight: bold;
+}
+.sub-category-list-price-container > span:first-child {
+    color: var(--purple500);
+    padding-right: 5px;
+}
+.sub-category-list-star-likes-container {
+    font-size: 0.9rem;
+    color: silver;
+}
+.sub-category-list-star-wrap {
+    margin-right: 10px;
+}
+.sub-category-list-star-wrap > span:first-child,
+.sub-category-list-likes-wrap > span:first-child {
+    margin-right: 3px;
+}
+
+.sub-category-btn {
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 15px 60px;
+    margin-top: 30px;
+    color: rgb(53, 53, 53);
+    background-color: #fff;
+    font-size: 1rem;
 }
