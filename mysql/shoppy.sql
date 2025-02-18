@@ -153,5 +153,6 @@ select count(*) from shoppy_cart where id = 'test11';
 select * from shoppy_cart
 	where id ='test11';
     
-    
+DELETE FROM shoppy_cart WHERE cid = 1;
+
     
