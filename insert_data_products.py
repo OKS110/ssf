@@ -47,7 +47,8 @@ json_data = """
         "discounted_price": 101967,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "charged"
     },
     {
         "id": 1002,
@@ -81,7 +82,8 @@ json_data = """
         "discounted_price": 113293,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "charged"
     },
     {
         "id": 1003,
@@ -116,7 +118,8 @@ json_data = """
         "discounted_price": 212583,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "charged"
     },
     {
         "id": 1004,
@@ -150,7 +153,8 @@ json_data = """
         "discounted_price": 127895,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "charged"
     },
     {
         "id": 1005,
@@ -186,7 +190,8 @@ json_data = """
         "discounted_price": 172490,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "charged"
     },
     {
         "id": 1006,
@@ -222,7 +227,8 @@ json_data = """
         "discounted_price": 159324,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "charged"
     },
     {
         "id": 1007,
@@ -258,7 +264,8 @@ json_data = """
         "discounted_price": 85357,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1008,
@@ -294,7 +301,8 @@ json_data = """
         "discounted_price": 168703,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "charged"
     },
     {
         "id": 1009,
@@ -330,7 +338,8 @@ json_data = """
         "discounted_price": 190264,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1010,
@@ -365,7 +374,8 @@ json_data = """
         "discounted_price": 124049,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1011,
@@ -405,7 +415,8 @@ json_data = """
         "discounted_price": 173265,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1012,
@@ -446,7 +457,8 @@ json_data = """
         "discounted_price": 134553,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1013,
@@ -486,7 +498,8 @@ json_data = """
         "discounted_price": 218930,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "charged"
     },
     {
         "id": 1014,
@@ -524,7 +537,8 @@ json_data = """
         "discounted_price": 218249,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "free"
     },
     {
         "id": 1015,
@@ -554,7 +568,8 @@ json_data = """
         "discounted_price": 248826,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "free"
     },
     {
         "id": 1016,
@@ -585,7 +600,8 @@ json_data = """
         "discounted_price": 184873,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "free"
     },
     {
         "id": 1017,
@@ -619,7 +635,8 @@ json_data = """
         "discounted_price": 231255,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1018,
@@ -649,7 +666,8 @@ json_data = """
         "discounted_price": 238229,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1019,
@@ -679,7 +697,8 @@ json_data = """
         "discounted_price": 111794,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1020,
@@ -711,7 +730,8 @@ json_data = """
         "discounted_price": 130354,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1021,
@@ -745,7 +765,8 @@ json_data = """
         "discounted_price": 110995,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1022,
@@ -779,7 +800,8 @@ json_data = """
         "discounted_price": 190786,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1023,
@@ -815,7 +837,8 @@ json_data = """
         "discounted_price": 126736,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "free"
     },
     {
         "id": 1024,
@@ -851,7 +874,8 @@ json_data = """
         "discounted_price": 239481,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1025,
@@ -885,7 +909,8 @@ json_data = """
         "discounted_price": 203203,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1026,
@@ -918,7 +943,8 @@ json_data = """
         "discounted_price": 175347,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1027,
@@ -954,7 +980,8 @@ json_data = """
         "discounted_price": 190615,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1028,
@@ -988,7 +1015,8 @@ json_data = """
         "discounted_price": 222709,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1029,
@@ -1022,7 +1050,8 @@ json_data = """
         "discounted_price": 190496,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1030,
@@ -1056,7 +1085,8 @@ json_data = """
         "discounted_price": 235438,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1031,
@@ -1090,7 +1120,8 @@ json_data = """
         "discounted_price": 231669,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1032,
@@ -1123,7 +1154,8 @@ json_data = """
         "discounted_price": 84998,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "free"
     },
     {
         "id": 1033,
@@ -1159,7 +1191,8 @@ json_data = """
         "discounted_price": 80325,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "free"
     },
     {
         "id": 1034,
@@ -1195,7 +1228,8 @@ json_data = """
         "discounted_price": 266999,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "free"
     },
     {
         "id": 1035,
@@ -1230,7 +1264,8 @@ json_data = """
         "discounted_price": 93082,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1036,
@@ -1264,7 +1299,8 @@ json_data = """
         "discounted_price": 96258,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "PRADA",
+        "delivery_fee": "free"
     },
     {
         "id": 1037,
@@ -1298,7 +1334,8 @@ json_data = """
         "discounted_price": 106255,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1038,
@@ -1334,7 +1371,8 @@ json_data = """
         "discounted_price": 157051,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1039,
@@ -1369,7 +1407,8 @@ json_data = """
         "discounted_price": 184077,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1040,
@@ -1403,7 +1442,8 @@ json_data = """
         "discounted_price": 241197,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1041,
@@ -1441,7 +1481,8 @@ json_data = """
         "discounted_price": 190246,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1042,
@@ -1479,7 +1520,8 @@ json_data = """
         "discounted_price": 213091,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1043,
@@ -1517,7 +1559,8 @@ json_data = """
         "discounted_price": 222834,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1044,
@@ -1552,7 +1595,8 @@ json_data = """
         "discounted_price": 175289,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1045,
@@ -1589,7 +1633,8 @@ json_data = """
         "discounted_price": 115210,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "MUSINSA",
+        "delivery_fee": "free"
     },
     {
         "id": 1046,
@@ -1627,7 +1672,8 @@ json_data = """
         "discounted_price": 105153,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "NIKE"
+        "brand": "NIKE",
+        "delivery_fee": "free"
     },
     {
         "id": 1047,
@@ -1664,7 +1710,8 @@ json_data = """
         "discounted_price": 152107,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "GUCCI"
+        "brand": "GUCCI",
+        "delivery_fee": "free"
     },
     {
         "id": 1048,
@@ -1701,7 +1748,8 @@ json_data = """
         "discounted_price": 220836,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1049,
@@ -1740,7 +1788,8 @@ json_data = """
         "discounted_price": 199543,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     },
     {
         "id": 1050,
@@ -1777,7 +1826,8 @@ json_data = """
         "discounted_price": 101740,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BEANPOLE"
+        "brand": "BEANPOLE",
+        "delivery_fee": "free"
     }
 ]
 """
@@ -1802,9 +1852,9 @@ for product in products:
     cursor.execute("""
         INSERT INTO products (
             pid, category, sub_category, name, color, size, image, likes, cart_count, star, 
-            stock, original_price, discount_rate, discounted_price, created_at, updated_at, brand
+            stock, original_price, discount_rate, discounted_price, created_at, updated_at, brand, delivery_fee
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
         product_id, 
         product["category"], 
@@ -1822,7 +1872,8 @@ for product in products:
         product["discounted_price"], 
         product["created_at"], 
         product["updated_at"],
-        product["brand"]
+        product["brand"],
+        product["delivery_fee"]
     ))
 
 # 변경사항 저장

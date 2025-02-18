@@ -88,7 +88,8 @@ CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
 );
 ALTER TABLE products 
 ADD COLUMN brand VARCHAR(100);
-
+ALTER TABLE products 
+ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
 select * from products;
 DELETE FROM products WHERE pid BETWEEN 1001 AND 1050;
