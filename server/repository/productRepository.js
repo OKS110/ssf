@@ -34,6 +34,8 @@ export const getCustomerData = async() => {
 
 /** 관리자 페이지 상품 정보 호출**/
 export const getProductData = async() => {
+    console.log('1111');
+    
     const sql = `
         select pid,
                 category,
