@@ -146,7 +146,12 @@ select sc.cid,
 		shoppy_product sp
 	where sc.id = sm.id and sc.pid = sp.pid and sm.id = 'test11';
 
+select * from shoppy_cart;
+truncate table shoppy_cart;
+select count(*) from shoppy_cart where id = 'test11';
 
-
+select * from shoppy_cart
+	where id ='test11';
+    
     
     

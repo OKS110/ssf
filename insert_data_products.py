@@ -47,7 +47,7 @@ json_data = """
         "discounted_price": 101967,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "NIKE"
     },
     {
         "id": 1002,
@@ -294,7 +294,7 @@ json_data = """
         "discounted_price": 168703,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PRADA"
+        "brand": "NIKE"
     },
     {
         "id": 1009,
@@ -524,7 +524,7 @@ json_data = """
         "discounted_price": 218249,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENCIAGA"
+        "brand": "GUCCI"
     },
     {
         "id": 1015,
@@ -554,7 +554,7 @@ json_data = """
         "discounted_price": 248826,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENCIAGA"
+        "brand": "PRADA"
     },
     {
         "id": 1016,
@@ -585,7 +585,7 @@ json_data = """
         "discounted_price": 184873,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENCIAGA"
+        "brand": "GUCCI"
     },
     {
         "id": 1017,
@@ -619,7 +619,7 @@ json_data = """
         "discounted_price": 231255,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENCIAGA"
+        "brand": "BEANPOLE"
     },
     {
         "id": 1018,
@@ -779,7 +779,7 @@ json_data = """
         "discounted_price": 190786,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PUMA"
+        "brand": "NIKE"
     },
     {
         "id": 1023,
@@ -815,7 +815,7 @@ json_data = """
         "discounted_price": 126736,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "PUMA"
+        "brand": "GUCCI"
     },
     {
         "id": 1024,
@@ -1056,7 +1056,7 @@ json_data = """
         "discounted_price": 235438,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "ADIDAS"
+        "brand": "NIKE"
     },
     {
         "id": 1031,
@@ -1090,7 +1090,7 @@ json_data = """
         "discounted_price": 231669,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "ADIDAS"
+        "brand": "NIKE"
     },
     {
         "id": 1032,
@@ -1123,7 +1123,7 @@ json_data = """
         "discounted_price": 84998,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "ADIDAS"
+        "brand": "PRADA"
     },
     {
         "id": 1033,
@@ -1159,7 +1159,7 @@ json_data = """
         "discounted_price": 80325,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "ADIDAS"
+        "brand": "PRADA"
     },
     {
         "id": 1034,
@@ -1195,7 +1195,7 @@ json_data = """
         "discounted_price": 266999,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "GUCCI"
     },
     {
         "id": 1035,
@@ -1264,7 +1264,7 @@ json_data = """
         "discounted_price": 96258,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "MUSINSA"
+        "brand": "PRADA"
     },
     {
         "id": 1037,
@@ -1664,7 +1664,7 @@ json_data = """
         "discounted_price": 152107,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENTINO"
+        "brand": "GUCCI"
     },
     {
         "id": 1048,
@@ -1701,7 +1701,7 @@ json_data = """
         "discounted_price": 220836,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENTINO"
+        "brand": "BEANPOLE"
     },
     {
         "id": 1049,
@@ -1740,7 +1740,7 @@ json_data = """
         "discounted_price": 199543,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENTINO"
+        "brand": "BEANPOLE"
     },
     {
         "id": 1050,
@@ -1777,7 +1777,7 @@ json_data = """
         "discounted_price": 101740,
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
-        "brand": "BALENTINO"
+        "brand": "BEANPOLE"
     }
 ]
 """
@@ -1802,9 +1802,9 @@ for product in products:
     cursor.execute("""
         INSERT INTO products (
             pid, category, sub_category, name, color, size, image, likes, cart_count, star, 
-            stock, original_price, discount_rate, discounted_price, created_at, updated_at
+            stock, original_price, discount_rate, discounted_price, created_at, updated_at, brand
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
         product_id, 
         product["category"], 
@@ -1821,7 +1821,8 @@ for product in products:
         product["discount_rate"], 
         product["discounted_price"], 
         product["created_at"], 
-        product["updated_at"]
+        product["updated_at"],
+        product["brand"]
     ))
 
 # 변경사항 저장
