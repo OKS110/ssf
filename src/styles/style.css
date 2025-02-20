@@ -1345,7 +1345,7 @@ footer .etc .etc-right{
     background: url(https://www.ssfshop.com/v3/images/ui/bg_zoom_pattern.png);
 }
 .gods-summary .godsImg-area .preview-img .preview-zoom {
-    display: none;
+    /* display: none; */
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -1355,7 +1355,7 @@ footer .etc .etc-right{
     height: 100%;
     background-repeat: no-repeat !important;
     background-color: blue;
-    opacity: 10%;
+    opacity: 30%;
 }
 .gods-summary .godsImg-area .preview-img .preview-btn {
     position: absolute;
