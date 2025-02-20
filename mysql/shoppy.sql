@@ -155,4 +155,5 @@ select * from shoppy_cart
     
 DELETE FROM shoppy_cart WHERE cid = 1;
 
+
     
