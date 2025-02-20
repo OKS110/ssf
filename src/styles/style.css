@@ -1291,17 +1291,19 @@ footer .etc .etc-right{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 0 12px;
-    width: calc(750* 100% / 1400);
+    gap: 0;
+    /* width: calc(750* 100% / 1400); */
+    width: 55%;
     min-width: 717px;
     box-sizing: border-box;
 }
 .gods-summary .godsImg-area .preview-thumb {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 10px;
     min-width: 164px;
     max-width: 164px;
+    border: 1px solid red;
 }
 .gods-summary .godsImg-area .preview-img {
     position: relative;
@@ -1355,7 +1357,7 @@ footer .etc .etc-right{
     height: 100%;
     background-repeat: no-repeat !important;
     background-color: blue;
-    opacity: 30%;
+    /* opacity: 30%; */
 }
 .gods-summary .godsImg-area .preview-img .preview-btn {
     position: absolute;
