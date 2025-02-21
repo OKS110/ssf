@@ -34,7 +34,7 @@ export default function Signup(){
                 return false;
             } else {
                 axios
-                    .post('http://localhost:9000/user/signup',data)
+                    .post('http://localhost:9000/member/signup',data)
                     .then(res =>{
                         console.log(res.data);
                         if(res.data.result === 1 ){
