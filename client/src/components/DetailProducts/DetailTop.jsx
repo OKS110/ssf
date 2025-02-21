@@ -41,11 +41,11 @@ export default function DetailTop(){
                     ):
                     (
                     <div onMouseLeave={handleLeave}> 
-                        <span class="haon-share" > 
-                                <a class="haon-facebook" href="#none;" ><FaFacebook /></a>
-                                <a class="haon-twitter" href="#none;"><FaTwitter /></a>
-                                <a class="haon-pinterest" href="#none;" ><FaPinterest /></a>
-                                <a class="haon-url" href="#none;"><SiGitconnected /></a>
+                        <span > 
+                                <a class="over-facebook" href="#none;" ><FaFacebook /></a>
+                                <a class="over-twitter" href="#none;"><FaTwitter /></a>
+                                <a class="over-pinterest" href="#none;" ><FaPinterest /></a>
+                                <a class="over-url" href="#none;"><SiGitconnected /></a>
                         </span>
                     </div>
                     )

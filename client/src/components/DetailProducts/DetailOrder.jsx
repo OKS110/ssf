@@ -60,14 +60,6 @@ export default function DetailOrder(){
                                     <span><CiCircleQuestion /></span>
                                     <span>무료배송</span>                                    
                                     <a href=""><span>배송방법 더보기</span><TfiArrowCircleDown /></a>   
-                                    {/* <div> 여기 작업해야함 
-                                        <span>매장픽업</span>   
-                                        <span><CiCircleQuestion /></span>                                     
-                                    </div>  
-                                    <div>
-                                        <span>빠른배송</span>  
-                                        <span><CiCircleQuestion /></span>                                      
-                                    </div>  */}
                                 </li>
                             </ul>
                         </div>
@@ -75,7 +67,7 @@ export default function DetailOrder(){
                             <div className="goods-info-bottom-color">
                                 <span>색상</span>
                                 <ul>
-                                    {/* 색상은 json에 잇는 색상 가져와서 보여주기 나중에 수정 */}
+                                    {/* 색상은 db에 잇는 색상 가져와서 보여주기 나중에 수정 */}
                                     <li style={{'backgroundColor':'red'}}></li>
                                     <li style={{'backgroundColor':'blue'}}></li>
                                     <li style={{'backgroundColor':'black'}}></li>
@@ -90,6 +82,12 @@ export default function DetailOrder(){
                                     <li htmlFor="">L</li>
                                     <li htmlFor="">XL</li>
                                     <li htmlFor="">XXL</li>
+                                </ul>
+                            </div>
+                            <div className="goods-info-bottom-delivery">
+                                <span>배송방법</span>
+                                <ul>
+                                    <li>무료배송</li>
                                 </ul>
                             </div>
                         </div>
