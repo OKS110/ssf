@@ -141,6 +141,9 @@ CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생�
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
 );
 ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수단
+ALTER TABLE orders 
+ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
+ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상세주소 (필수 입력)
 
 ALTER TABLE orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
