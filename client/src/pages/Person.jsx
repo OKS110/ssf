@@ -7,8 +7,20 @@ import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
 import PersonUIform from "../components/person/PersonUIform.jsx";
+import WishListTab from "../components/person/WishListTab.jsx";
 
 export default function Person(){
+    const tabsData = [
+        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct" },
+        { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand"},
+        { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" }
+    ];
+    // productMypage , DetailProducts 참고해서 버튼클릭햇을시 해당하는거로 넘어가게 해
+
+
+
+
+
     return (
         <div className="mypage-box">
             <div className="mypage-top-menu">
@@ -87,13 +99,7 @@ export default function Person(){
                                 <span><MdKeyboardArrowRight /></span>
                             </div>
                         </div>
-                        <div className="mypage-wishList-tab" >
-                            <ul>
-                                <li className="mypage-wishList-tab-active mypage-wishList-tab-none">상품</li>
-                                <li className=" mypage-wishList-tab-none">브랜드</li>
-                                <li className=" mypage-wishList-tab-none">콘텐츠</li>
-                            </ul>
-                        </div>
+                        <WishListTab tabs={tabsData}/>
                         <div className="mypage-wishList-items">
                             <div>
                             아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
