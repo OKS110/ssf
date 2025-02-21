@@ -90,7 +90,7 @@ button, label{
 a.btn, button.btn {
     display: inline-block;
     box-sizing: border-box;
-    padding: 0 20px;
+    /* padding: 0 20px; */ /*하온수정*/
     line-height: 34px;
     font-size: 1.4rem;
     color: gray;
@@ -1261,12 +1261,14 @@ footer .etc .etc-right{
     border: 1px solid purple;
 }
 .share .sns.on{
-    display: flex;
-    width: 300px;
+    /* display: flex; */ /*호버시에만 나오니까 우선 숨김*/
+    display: none;
+    /* width: 300px; */
     height: 100%;
     background-color: yellow;
+    align-items: center;
 }
-.share .sns .facebook {
+/* .share .sns .facebook {
     background: url(https://www.ssfshop.com/v3/images/svgs/facebook.svg) left center / 24px auto no-repeat;
 }
 .share .sns .twitter {
@@ -1277,7 +1279,7 @@ footer .etc .etc-right{
 }
 .share .sns .url {
     background: url(https://www.ssfshop.com/v3/images/svgs/copy-url.svg) left center / 24px auto no-repeat;
-}
+} */
 
 
 .gods-summary {
@@ -1386,11 +1388,12 @@ footer .etc .etc-right{
     margin-bottom: 12px;
 }
 .tags {
-    display: flex;
+    /* display: flex; */ /*하온수정*/
     flex-wrap: wrap;
     font-size: var(--F12);
     line-height: var(--F12L);
     color: var(--gray900);
+    text-align: left; /*하온수정*/
 }
 .gods-summary .godsInfo-area .brand-name {
     margin-bottom: 8px;
@@ -1447,18 +1450,23 @@ footer .etc .etc-right{
     font-size: var(--F20);
     font-weight: 700;
 }
+.gods-summary .gods-price .sale span { /*하온수정*/
+    display: inline-block;
+    margin-right: 2px;
+    font-size: var(--F20);
+    font-weight: 700;
+}
 .gods-summary .godsInfo-area .price-info .btn.sm {
     width: 120px;
     border-radius: var(--radius);
 }
 .gods-summary .godsInfo-area .review-info {
-    border: 1px solid red;
+    border-bottom: 1px solid var(--gray400); /*하온수정*/
     display: flex;
     gap: 5px;
     justify-content: flex-start;
     align-items: center;
     margin-top: 24px;
-    margin-bottom: 11px;
     padding: 12px 0;
     font-size: var(--F14);
     line-height: var(--F14L);
@@ -1480,6 +1488,8 @@ footer .etc .etc-right{
 }
 .gods-summary .review-info>a{
     margin: 0;
+    text-decoration: underline;
+    color: #5e5e5e;
 }
 
 
@@ -1943,7 +1953,7 @@ section#order .form_wrap .btns .btn.gray {
     padding: 20px 0;
     font-size: 15px;
 }
-.goods-info-bottom-color, .goods-info-bottom-size{
+.goods-info-bottom-color, .goods-info-bottom-size, .goods-info-bottom-delivery{
     /* border: 1px solid red; */
     margin-bottom: 11px;
     display: flex;
@@ -1951,7 +1961,8 @@ section#order .form_wrap .btns .btn.gray {
     align-items: center;
 }
 .goods-info-bottom-color > span ,.goods-info-bottom-color>ul,
-.goods-info-bottom-size > span ,.goods-info-bottom-size>ul {
+.goods-info-bottom-size > span ,.goods-info-bottom-size>ul 
+, .goods-info-bottom-delivery >span , .goods-info-bottom-delivery>ul{
     margin: 0;
 }
 .goods-info-bottom-color > span{
@@ -1965,6 +1976,19 @@ section#order .form_wrap .btns .btn.gray {
     width: 105px;
     /* border: 1px solid black; */
     font-weight: 600;
+}
+.goods-info-bottom-delivery >span {
+    display: block;
+    width: 100px;
+    /* border: 1px solid black; */
+    font-weight: 600;
+}
+.goods-info-bottom-delivery>ul>li{
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 3px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 70px; 
 }
 .goods-info-bottom-color>ul ,.goods-info-bottom-size>ul{
     display: flex; 
@@ -2415,12 +2439,26 @@ section#order .form_wrap .btns .btn.gray {
     font-size: 11px;
     padding: 0 4px;
 }
-.mypage-top-box{
+
+.mypage-top-box-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-top-box-empty{
     text-align: center;
-    width: 100%;
+    width: 240px;
     font-size: 35px;
     padding: 20px 0;
+    /* border: 1px solid red; */
 }
+.mypage-top-box{
+    text-align: center;
+    width: 1200px;
+    font-size: 35px;
+    padding: 20px 0;
+    /* border: 1px solid red; */
+}
+
 .mypage-bottom-box{
     display: flex;
     justify-content: space-between;
@@ -2531,6 +2569,20 @@ section#order .form_wrap .btns .btn.gray {
     text-align: center;
     padding: 20px 0;
 }
+.mypage-order-product-bottom>div{
+    padding: 6px 0;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 4px;
+    width: 200px;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    
+}
+.mypage-order-product-bottom>div>span{
+    color: black;
+
+}
 .mypage-active{
     padding: 20px 0;
 
@@ -2596,6 +2648,7 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-wishList-items>div{
     border: 1px solid red;
 }
+
 
 /* 아우터로 더하는~ */
 /**************************
@@ -2795,4 +2848,124 @@ section#order .form_wrap .btns .btn.gray {
     color: rgb(53, 53, 53);
     background-color: #fff;
     font-size: 1rem;
+}
+/* ******************************************** */
+/* 마이페이지 주문/교환/반품/취소 내역 */
+/* ************************************************ */
+
+.mypage-Title {
+    border-bottom: 3px solid black;
+    font-weight: 500;
+    font-size: 35px;
+}
+.order-list-date{
+    /* border: 1px solid red; */
+    padding: 30px 0;
+}
+.order-date{
+    /* border: 1px solid red; */
+    margin: auto;
+    padding-bottom: 20px;
+
+}
+.order-date > ul {
+    display: flex;
+    gap: 10px;
+    justify-content:flex-end;
+}
+.order-date > ul > li {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-list{
+    height: 300px;
+}
+.order-list >ul{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.order-list >ul > li {
+    padding: 18px 40px;
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+    width: 100%;
+}
+.order-list-active{
+    background-color: black;
+    color: white;
+}
+.order-list >div{
+    text-align: center;
+    padding: 30px 0;
+}
+.order-list-ordertab{
+    border-top: 1px solid black;
+    padding: 15px 0;
+}
+.mypage-link {
+    color: black;
+}
+
+
+/* ******************************************** */
+/* 마이페이지 회원정보관리 */
+/* ************************************************ */
+.mypage-user-info{
+    /* border: 1px solid red; */
+}
+.mypage-user-info > ul > li{
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(179, 178, 178);
+    font-size: 18px;
+}
+.mypage-user-info > ul > li:first-child{
+    font-size: 23px ;
+    font-weight: 700;
+}
+.mypage-user-info-tab{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-user-info-tab > span{
+    margin: 0;
+}
+.mypage-user-info-tab > span:last-child{
+    padding-right: 30px;
+}
+/* ******************************************** */
+/* 상품상세페이지 url 호버 시 메뉴 바뀌는 부분  */
+/* ************************************************ */
+.over-facebook , .over-twitter , .over-pinterest, .notover>span:first-child{
+    padding: 0px 10px;
+}
+.over-facebook , .over-twitter , .over-pinterest, .over-url ,.notover>span{
+    font-size: 25px;
+    color: black;
+}
+.over-url, .notover>span>:last-child {
+    padding-left: 10px;
+}
+.detail-top-right{
+    display: flex;
+    align-items: center;
+}
+.detail-top-right>span{
+    font-size: 25px;
+    color: black;
+   
+}
+/* 상세페이지 */
+.brand-name > a{ 
+    text-decoration: none;
+    color: #000000;
+}
+.tags > span{ /*하온추가*/
+    border: 1px solid rgb(156, 153, 153);
+    border-radius: 4px;
+    padding: 0 3px;
+}
+.price-info > .btn{ /*하온추가*/
+    font-size: 14px;
 }

@@ -7,4 +7,5 @@ const router = express.Router();
 router.post('/login', controller.checkUserLogin)
     .post('/guestLogin', checkGuestLogin);
 
+
 export default router;
