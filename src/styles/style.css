@@ -1281,21 +1281,23 @@ footer .etc .etc-right{
 
 
 .gods-summary {
-    background-color: gray;
+    background-color: rgb(187, 187, 187);
     display: flex;
-    justify-content: space-between;
     margin-bottom: 120px;
+    overflow: hidden;
 }
 .gods-summary .godsImg-area {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 0;
     /* width: calc(750* 100% / 1400); */
-    width: 55%;
+    width: 56%;
     min-width: 717px;
     box-sizing: border-box;
+    border: 1px solid yellow;
+    margin: 0;
+
 }
 .gods-summary .godsImg-area .preview-thumb {
     display: flex;
