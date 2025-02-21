@@ -23,7 +23,7 @@ export default function DetailProducts(){
 
                     <DetailOrder></DetailOrder>
                 </div>
-
+        
                 <ProductMypage tabs={tabsData} />
                
         </div>
