@@ -1505,7 +1505,14 @@ footer .etc .etc-right{
 .gods-detail .tab-rects {
     margin-bottom: 0;
 }
-
+/* 스크롤 고정 이벤트 */
+.product-mypage-container.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* 배경색 추가 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
 
 
 
