@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useFixedScroll from "../hooks/useFixedScroll.js";
+
 import ProductMypage from "../commons/ProductMypage";
 import DetailImage from "../components/DetailProducts/DetailImage";
 import DetailOrder from "../components/DetailProducts/DetailOrder";
@@ -16,8 +18,18 @@ export default function DetailProducts() {
         { id: "recommendTab", label: "추천", href: "#goodsDetailTabs", content: <Recommend /> }
     ];
 
-    // 부모에서 활성화된 탭 상태를 관리
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
+    const contentRef = useRef(null); // 콘텐츠 위치 추적 Ref
+    const { ref: tabRef, isFixed } = useFixedScroll(); // 커스텀 훅 사용하여 스크롤 고정 관리
+
+    // 탭 클릭 시 해당 콘텐츠로 스크롤 이동
+    const handleTabClick = (tabId) => {
+        setActiveTab(tabId);
+        
+        if (contentRef.current) {
+            contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
 
     // 현재 활성화된 탭의 콘텐츠 찾기
     const renderContent = () => {
@@ -26,22 +38,34 @@ export default function DetailProducts() {
     };
 
     return (
-        <div className="detail-wrap content-wrap">
+        <div className="detail-wrap content-wrap" style={{ position: "relative" }}>
             <DetailTop />
             <div className="gods-summary" view-section="summary">
                 <DetailImage />
                 <DetailOrder />
             </div>
 
-            {/* 탭 컴포넌트에 상태 전달 */}
-            <ProductMypage 
-                tabs={tabsData} 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-            />
+            {/* 탭 고정 */}
+            <div
+                ref={tabRef}
+                className={`product-mypage-container ${isFixed ? "fixed" : ""}`}
+                style={{
+                    position: isFixed ? "fixed" : "relative",
+                    top: isFixed ? "0" : "auto",
+                    width: "100%",
+                    maxWidth: "1440px",
+                    zIndex: 1000,
+                }}
+            >
+                <ProductMypage
+                    tabs={tabsData}
+                    activeTab={activeTab}
+                    setActiveTab={handleTabClick} // 클릭 시 스크롤 이동 추가
+                />
+            </div>
 
-            {/* 부모에서 콘텐츠 렌더링 */}
-            <div style={{ border: "1px solid red" }}>
+            {/* 기존 컨텐츠 영역 활용 & 스크롤 이동 */}
+            <div ref={contentRef} style={{ border: "1px solid red" }}>
                 {renderContent()}
             </div>
         </div>

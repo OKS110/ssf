@@ -10,7 +10,7 @@ export default function ProductMypage({ tabs = [], activeTab, setActiveTab }) {
                             id={tab.id}
                             role="tab"
                             aria-selected={activeTab === tab.id}
-                            onClick={() => setActiveTab(tab.id)} // ✅ 클릭 시 부모의 상태 변경
+                            onClick={() => setActiveTab(tab.id)} // 클릭 시 부모컴포넌트의 상태 변경
                         >
                             <a href={tab.href} role="button" tabIndex="0">
                                 {tab.label}
