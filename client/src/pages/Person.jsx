@@ -6,6 +6,7 @@ import { BiParty } from "react-icons/bi";
 import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import PersonUIform from "../components/person/PersonUIform.jsx";
 // import WishListTab from "../components/person/WishListTab.jsx";
 import ProductMypage from "../commons/ProductMypage.jsx";
@@ -22,6 +23,14 @@ export default function Person(){
     // productMypage , DetailProducts 참고해서 버튼클릭햇을시 해당하는거로 넘어가게 해
 
 
+    // 부모에서 활성화된 탭 상태를 관리
+    const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
+
+    // 현재 활성화된 탭의 콘텐츠 찾기
+    const renderContent = () => {
+        const activeContent = tabsData.find(tab => tab.id === activeTab);
+        return activeContent ? activeContent.content : null;
+    };
 
 
 
@@ -104,7 +113,15 @@ export default function Person(){
                             </div>
                         </div>
                         {/* <WishListTab tabs={tabsData}/> */}
-                        <ProductMypage tabs={tabsData}/>
+                        <ProductMypage 
+                            tabs={tabsData} 
+                            activeTab={activeTab} 
+                            setActiveTab={setActiveTab} 
+                        />
+                        <div style={{ border: "1px solid red" }}>
+                            {renderContent()}
+                        </div>
+
                         <div className="mypage-wishList-items">
                             <div>
                             아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
