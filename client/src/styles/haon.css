@@ -1,0 +1,200 @@
+/****************************************  */
+/* ************마이페이지 주문교환반품취소       */
+/*****************************************  */
+.order-list-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.order-list-bottom>span{
+    margin: 0;
+}
+.order-list-bottom>span:last-child{
+    padding-right: 20px;
+}
+.order-list-deliverymap{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 40px;
+    z-index: 1;
+}
+.order-list-deliverymap>div>p:first-child{
+    background-color: black;
+    color: white;
+    border-radius: 100%;
+    border: 1px solid black;
+    width: 20px;
+    font-size: 17px;
+}
+.order-list-deliverymap>div>p{
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.order-list-deliverymap>div>ul{
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 5px ;
+    width: 100px;
+}
+.order-list-deliverymap>div>ul>li{
+    list-style-type: circle;
+
+}
+.order-list-deliverymap>div>ul>li:not(:last-child){
+    padding-bottom: 5px;
+}
+.order-list-deliverylist{
+    border-bottom: 1px solid gray;
+    margin-bottom: 40px;
+}
+.order-list-deliverylist>ul>li{
+    padding: 15px;
+    border-top: 1px solid gray;
+    font-size: 14px;
+}
+.order-list-deliverylist>ul>li>span:first-child{
+    font-weight: 600;
+    padding-right: 10px;
+}
+.order-list-deliverylist>ul>li>span:nth-child(2){
+    font-weight: 600;
+    padding-right: 10px;
+    width: 100px;
+    display: inline-block;
+}
+.order-list-delivery{
+    position: relative;
+    /* background-color: red; */
+}
+.order-list-deliverydots{
+    border-top: 1px dotted black;
+    position: absolute;
+    width: 960px;
+    margin-left: 120px;
+    top: 11%;
+    text-align: center;
+}
+
+
+/****************************************  */
+/* ************마이페이지 상품리뷰       */
+/*****************************************  */
+.mypage-review-box{
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px ;
+    padding: 30px 20px;
+    align-items: center;
+}
+.mypage-review-box>div{
+    margin: 0;
+    padding: 0;
+}
+.mypage-review-box>div:last-child>ul{
+    display: flex;
+    /* gap: 30px; */
+}
+.mypage-review-box>div:first-child > h4{
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 8px;
+}
+.mypage-review-box>div:first-child >h5{
+    color: gray;
+    font-weight: 400;
+    font: 13px;
+}
+.mypage-review-box>div:last-child>ul>li:not(:last-child){
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    border-right: 1px solid gray;
+    padding: 0 20px;
+}
+.mypage-review-box>div:last-child>ul>li{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 20px;
+}
+.mypage-review-box>div:last-child>ul>li>span{
+    padding: 0 20px 0 0px;
+    font-size: 28px;
+    font-weight: 100;
+}
+.mypage-review-box>div:last-child>ul>li>div>h4{
+    font-size: 14px;
+    font-weight: 100;
+}
+.mypage-review-table{
+    margin-top: 40px;
+    border-top: 1px solid gray;
+}
+.mypage-review-table>table{
+    width: 100%;
+}
+.mypage-review-table-head{
+    background-color: rgb(236, 236, 236);
+}
+.mypage-review-table-head>th{
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+
+}
+.mypage-review-table-head>th:first-child{
+    width: 600px;
+}
+.mypage-review-table-body{
+    border-bottom: 1px solid gray;
+}
+.mypage-review-table-body>td{
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+.mypage-review-table-body>td:first-child{
+    text-align: left;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+}
+.mypage-review-table-body>td:first-child>span{
+    margin: 0;
+}
+.mypage-review-table-body>td:first-child>img{
+    margin: 0;
+    padding-right: 10px;
+}
+.mypage-review-table-body>td:first-child>span:last-child{
+    padding-left: 15px;
+    /* background-color: red; */
+}
+.mypage-review-register{
+    background-color: rgb(232, 214, 255);
+    font-weight: 500;
+}
+.mypage-review-desc{
+    border-top: 1px solid black;
+    padding: 20px 0;
+}
+.mypage-review-desc-tab{
+    display: flex;
+    justify-content: space-between;
+}
+.mypage-review-desc-tab>span{
+    margin: 0;
+}
+.mypage-review-desc-tab>span:last-child{
+    padding-right: 20px;
+}

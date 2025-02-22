@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-
+// 마이페이지 왼쪽 탭중 만들고있는 컴포넌트는 빨간색표시함
 
 export default function PersonUIform() {
     return (
                 <nav className="mypage-bottom-left">
                     <h3>주문관리</h3>
                     <ul>
-                        <li><Link to='/person/orderChangeReturnCancle'>주문/교환/반품/취소 내역</Link></li>
+                        <li><Link to='/person/orderChangeReturnCancle' style={{color:'red'}}>주문/교환/반품/취소 내역</Link></li>
                         <li><a href="">매장 구매내역</a></li>
                     </ul>
                     <h3>나의 혜택</h3>
@@ -19,7 +19,7 @@ export default function PersonUIform() {
                     </ul>
                     <h3>나의 활동</h3>
                     <ul>
-                        <li><a href="">상품리뷰</a></li>
+                        <li><Link to='/Person/productReview' style={{color:'red'}}>상품리뷰</Link></li>
                         <li><a href="">상품Q&A</a></li>
                         <li><a href="">최근 본 상품</a></li>
                         <li><a href="">위시리스트</a></li>
@@ -28,7 +28,7 @@ export default function PersonUIform() {
                     </ul>
                     <h3>나의 정보</h3>
                     <ul>
-                        <li><Link to='/person/editMemberInfo'>회원정보 관리</Link></li>
+                        <li><Link to='/person/editMemberInfo'style={{color:'red'}}>회원정보 관리</Link></li>
                         <li><a href="">마케팅정보 수신 동의</a></li>
                         <li><a href="">배송지 관리</a></li>
                     </ul>

@@ -2858,6 +2858,11 @@ section#order .form_wrap .btns .btn.gray {
     font-weight: 500;
     font-size: 35px;
 }
+.mypage-Title-notborder {
+    /* border-bottom: 3px solid black; */
+    font-weight: 500;
+    font-size: 35px;
+}
 .order-list-date{
     /* border: 1px solid red; */
     padding: 30px 0;
@@ -2873,32 +2878,28 @@ section#order .form_wrap .btns .btn.gray {
     gap: 10px;
     justify-content:flex-end;
 }
-.order-date > ul > li {
+.order-date > ul>li:hover{
+    cursor: pointer;
+}
+.order-date-active { 
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-date-none{
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px 10px;
 }
 .order-list{
-    height: 300px;
+    /* height: 300px; */
+    /* border: 1px solid red; */
 }
-.order-list >ul{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-}
-.order-list >ul > li {
-    padding: 18px 40px;
-    text-align: center;
-    border: 1px solid rgb(0, 0, 0);
-    width: 100%;
-}
-.order-list-active{
-    background-color: black;
-    color: white;
-}
+
 .order-list >div{
     text-align: center;
-    padding: 30px 0;
+    /* padding: 30px 0; */
+    align-items: center;
 }
 .order-list-ordertab{
     border-top: 1px solid black;

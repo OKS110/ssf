@@ -1,8 +1,8 @@
 import React from 'react';
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
-import EditMyInfo from './orderCancle/EditMyInfo';
 import PersonUIform from './PersonUIform.jsx';
+import EditMyInfo from './OrderCancle/EditMyInfo.jsx';
 
 export default function EditMember() {
     // const category = {
@@ -46,7 +46,7 @@ export default function EditMember() {
                     </ul>
                 </div>                
             {/* 해당하는탭클릭하면 그 컴포넌트로이동하게 만들어 온클릭해서  */}
-                <EditMyInfo />
+                {/* <EditMyInfo /> */}
             </article>
         </div>
     </div>
