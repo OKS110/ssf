@@ -49,7 +49,7 @@ export default function useFixedScroll() {
         // 스크롤 이벤트 추가 (사용자가 스크롤할 때 `handleScroll` 실행)
         window.addEventListener("scroll", handleScroll);
 
-        // 컴포넌트가 언마운트될 때 이벤트 리스너 제거 (클린업)
+        // 컴포넌트가 언마운트될 때 이벤트 리스너 제거 (클린업 함수)
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
