@@ -21,6 +21,7 @@ export default function DetailProducts() {
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
     const contentRef = useRef(null); // 콘텐츠 위치 추적 Ref
     const { ref: tabRef, isFixed } = useFixedScroll(); // 커스텀 훅 사용하여 스크롤 고정 관리
+        //ref를 tabRef로 별칭 사용
 
     // 탭 클릭 시 해당 콘텐츠로 스크롤 이동
     const handleTabClick = (tabId) => {
@@ -50,7 +51,7 @@ export default function DetailProducts() {
                 ref={tabRef}
                 className={`product-mypage-container ${isFixed ? "fixed" : ""}`}
                 style={{
-                    position: isFixed ? "fixed" : "relative",
+                    position: isFixed ? "fixed" : "relative", //useFiexdScroll에서 받아온 isFixed의 불리언 값에 따라 고정 여부 확인
                     top: isFixed ? "0" : "auto",
                     width: "100%",
                     maxWidth: "1440px",
