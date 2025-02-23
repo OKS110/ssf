@@ -2,10 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import OrderContents from '../components/Order/OrderContents.jsx';
 import OrderCertify from "../components/Order/OrderCertify.jsx";
+import OrderModal from "../components/Order/OrderModal.jsx";
 
 export default function Order() {
     const navigate = useNavigate();
-    
+
+    // 모달 상태
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // 주문할 상품 리스트
     const orderItems = [
         { id: 1, image: "https://via.placeholder.com/100", name: "상품 A", discount: "10%", shipping: "무료 배송", price: "10000" },
@@ -84,9 +88,16 @@ export default function Order() {
         console.log("입력 폼 정보:", formData);
 
         alert("결제완료");
-        // navigate('/');
+   
+        // 모달 열기
+        setIsModalOpen(true);
     };
 
+    // 주문 내역 확인 버튼 클릭 시 마이페이지로 이동
+    const handleConfirmOrder = () => {
+        setIsModalOpen(false);
+        navigate("/person");
+    };
     return (
         <section id="order" className="content-wrap content-wrap-padding">
             <h1>주문/결제</h1>
@@ -127,6 +138,12 @@ export default function Order() {
                     />
                 </form>
             </div>
+
+            {/* 결제 성공 시 주문내역 확인 모달 */}
+            <OrderModal
+            isModalOpen={isModalOpen}
+            handleConfirmOrder={handleConfirmOrder}
+            setIsModalOpen={setIsModalOpen}/>
         </section>
     );
 }
