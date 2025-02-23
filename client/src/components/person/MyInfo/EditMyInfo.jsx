@@ -18,7 +18,15 @@ export default function EditMyInfo() {
         <div className="mypage-bottom-box">
             <PersonUIform />
             <article className="mypage-bottom-right">                      
-                    여기에 만들엉
+                    <h5 className='mypage-myinfo-pwdCheck'>개인정보보호를 위해 비밀번호를 입력해 주세요.</h5>
+                    <div className='mypage-myinfo-pwdCheck-box'>
+                        <label htmlFor="">비밀번호</label>                        
+                        <input type="password" 
+                            placeholder='비밀번호를 입력해주세요'/>
+                    </div>
+                    <div className='mypage-myinfo-pwdCheckBtn'>
+                        <Link to='/person/editMemberInfo/updateInfo'><button>확인</button></Link>
+                    </div>
             </article>
         </div>
     </div>

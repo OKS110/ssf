@@ -1,15 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import PersonUIform from './PersonUIform.jsx';
-import EditMyInfo from './OrderCancle/EditMyInfo.jsx';
 
 export default function EditMember() {
-    // const category = {
-    //     'myinfo':myinfo
-    // };
-    // 이거 카테고리 눌러서 넘어가는거 쇼피에 잇자나 그거 참고행
-
 
     return (
         <div className="mypage-box">
@@ -28,25 +22,25 @@ export default function EditMember() {
                 <div className='mypage-user-info'>
                     <ul>
                         <li>내정보 관리</li>
-                        <li className='mypage-user-info-tab' >
+                        <Link to ='/person/editMemberInfo/myinfo'>
+                            <li className='mypage-user-info-tab'>
                             <span>회원정보 수정</span><span><SlArrowRight /></span>
                             </li>
+                        </Link>
                         <li className='mypage-user-info-tab'>
                             <span>사이즈 관리</span><span><SlArrowRight /></span>
-                            </li>
+                        </li>
                         <li className='mypage-user-info-tab'>
                             <span>환불계좌 관리</span><span><SlArrowRight /></span>
-                            </li>
+                        </li>
                         <li className='mypage-user-info-tab'>
                             <span>마케팅정보 수신 동의</span><span><SlArrowRight /></span>
-                            </li>
+                        </li>
                         <li className='mypage-user-info-tab'>
                             <span>배송지 관리</span><span><SlArrowRight /></span>
-                            </li>
+                        </li>
                     </ul>
                 </div>                
-            {/* 해당하는탭클릭하면 그 컴포넌트로이동하게 만들어 온클릭해서  */}
-                {/* <EditMyInfo /> */}
             </article>
         </div>
     </div>

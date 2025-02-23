@@ -2913,13 +2913,11 @@ section#order .form_wrap .btns .btn.gray {
 /* ******************************************** */
 /* 마이페이지 회원정보관리 */
 /* ************************************************ */
-.mypage-user-info{
-    /* border: 1px solid red; */
-}
-.mypage-user-info > ul > li{
+.mypage-user-info > ul  li{
     padding: 20px 0;
     border-bottom: 1px solid rgb(179, 178, 178);
     font-size: 18px;
+    color: black;
 }
 .mypage-user-info > ul > li:first-child{
     font-size: 23px ;

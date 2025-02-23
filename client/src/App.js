@@ -15,6 +15,8 @@ import { AuthProvider } from './auth/AuthContext.js';
 import OrderCancle from './components/Person/OrderCancle.jsx';
 import EditMember from './components/Person/EditMember.jsx';
 import ProductReview from './components/Person/ProductReview.jsx';
+import EditMyInfo from './components/Person/MyInfo/EditMyInfo.jsx';
+import UpdateInfo from './components/Person/MyInfo/UpdateInfo.jsx';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
                     <Route path='/Person/orderChangeReturnCancle' element={<OrderCancle/>}></Route> 
                     <Route path='/Person/editMemberInfo' element={<EditMember/>}></Route>
                     <Route path='/Person/productReview' element={<ProductReview/>}></Route>
+                    <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
+                    <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
                     <Route path={`/detail`} element={<DetailProducts/>}></Route>
                     <Route path='/order' element={<Order></Order>}></Route>
             </Route>
