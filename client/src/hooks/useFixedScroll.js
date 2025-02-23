@@ -22,10 +22,12 @@ export default function useFixedScroll() {
 
     useEffect(() => {
         // 컴포넌트가 처음 마운트될 때 실행
-        if (ref.current) {
+        if (ref.current) { // 탭 메뉴가 있을 떄            // console.log(ref.current); // <div> ...<div/>
             // 요소의 처음 위치를 저장 (화면 상단에서부터 해당 요소까지의 거리)
             initialOffset.current = ref.current.getBoundingClientRect().top + window.scrollY;
+            //window.scrollY - 현재 문서(웹페이지)에서 세로 방향으로 얼마나 스크롤되었는지를 나타내는 숫자(픽셀 값) 
             console.log("[초기 위치]:", initialOffset.current);
+ 
         }
 
         // 스크롤 이벤트 핸들러
@@ -34,9 +36,6 @@ export default function useFixedScroll() {
 
             // 현재 스크롤 위치
             const scrollY = window.scrollY;
-
-            // 요소의 현재 화면 내 위치 계산
-            const tabTop = ref.current.getBoundingClientRect().top + window.scrollY;
 
             // 요소가 최초 위치보다 위로 올라가면 고정 (`isFixed` 상태를 true로 변경)
             if (scrollY >= initialOffset.current) {
