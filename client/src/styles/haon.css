@@ -4,6 +4,8 @@
 .order-list-bottom{
     display: flex;
     justify-content: space-between;
+    /* background-color: red; */
+    padding: 15px 0;
 }
 .order-list-bottom>span{
     margin: 0;
@@ -18,7 +20,7 @@
     text-align: center;
     padding-bottom: 30px;
     padding-top: 40px;
-    z-index: 1;
+    z-index: 10;
 }
 .order-list-deliverymap>div>p:first-child{
     background-color: black;
@@ -50,12 +52,12 @@
 }
 .order-list-deliverylist{
     border-bottom: 1px solid gray;
-    margin-bottom: 40px;
 }
 .order-list-deliverylist>ul>li{
     padding: 15px;
     border-top: 1px solid gray;
     font-size: 14px;
+    text-align: left;
 }
 .order-list-deliverylist>ul>li>span:first-child{
     font-weight: 600;
@@ -78,6 +80,7 @@
     margin-left: 120px;
     top: 11%;
     text-align: center;
+    z-index: 1;
 }
 
 
@@ -134,11 +137,14 @@
     font-size: 14px;
     font-weight: 100;
 }
-.mypage-review-table{
+.mypage-review-table {
     margin-top: 40px;
-    border-top: 1px solid gray;
 }
-.mypage-review-table>table{
+.mypage-review-table-notmargin{
+    border-top: 1px solid gray;
+
+}
+.mypage-review-table>table, .mypage-review-table-notmargin>table{
     width: 100%;
 }
 .mypage-review-table-head{
