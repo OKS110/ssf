@@ -3,8 +3,9 @@ import mysql from 'mysql2/promise'; // MySQL 연동을 위한 패키지
 import cors from 'cors';
 import loginRouter from './router/loginRouter.js'
 import productRouter from './router/productRouter.js';
+import SignupRouter from './router/signupRouter.js';
 import adminRouter from './router/adminRouter.js';
-// import { db } from './repository/db.js';
+
 // 서버 생성 및 포트 지정
 const server = express();
 const port = 9000;
@@ -17,6 +18,7 @@ server.use(express.urlencoded()); //form데이터를 express 서버로 전송할
 //로그인 폼(유저, 게스트) 
 server.use('/user', loginRouter);
 server.use('/product', productRouter);
+server.use('/member', SignupRouter);
 // server.use('/admin', adminRouter);
 
 

@@ -1,11 +1,54 @@
 import React, { useState } from "react";
+import DaumPostcode from "react-daum-postcode";
+import Modal from "react-modal"; // react-modal 추가 npm install react-modal
 
-export default function OrderForm({ formData, setFormData, resetForm }) {
-    // 입력 값 변경 핸들러
+
+// 모달 스타일 설정
+const modalStyles = {
+    overlay: {
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // 배경 투명도 조정
+        zIndex: 1000,
+    },
+    content: {
+        width: "400px",
+        height: "500px",
+        margin: "auto",
+        padding: "20px",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
+        position: "relative",
+        textAlign: "center"
+    },
+};
+
+export default function OrderForm({ formData, setFormData, resetForm, refs }) {
+    const [isOpen, setIsOpen] = useState(false); // 모달 열림/닫힘 상태
+
+    // 모든 input 변경을 관리하는 핸들러 함수
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value }); // 부모 컴포넌트의 상태 업데이트
-        console.log(`${name}: ${value}`); // 실시간 콘솔 출력
+
+        // 휴대폰 번호 입력 시 숫자만 허용
+        if (name === "phone") {
+            setFormData({ ...formData, [name]: value.replace(/[^0-9]/g, "") });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
+    };
+
+    // 모달 열기/닫기 핸들러
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    // DaumPostcode 검색 완료 시 실행되는 함수
+    const completeHandler = (data) => {
+        setFormData({
+            ...formData,
+            address: data.address,  // 주소 저장
+            zipcode: data.zonecode  // 우편번호 저장
+        });
+        setIsOpen(false); // 주소 선택 후 모달 닫기
     };
 
     return (
@@ -22,34 +65,63 @@ export default function OrderForm({ formData, setFormData, resetForm }) {
                 <div className="row">
                     <label htmlFor="name" className="required">이름</label>
                     <span className="input_box">
-                        <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} placeholder="이름 입력" className="reset" />
+                        <input id="name" name="name" type="text" ref={refs.nameRef} value={formData.name} onChange={handleChange} placeholder="이름 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
                     <label htmlFor="phone" className="required">휴대폰</label>
                     <span className="input_box">
-                        <input id="phone" name="phone" type="text" value={formData.phone} onChange={handleChange} placeholder="휴대폰 입력" className="reset" />
+                        <input id="phone" name="phone" type="text" ref={refs.phoneRef} value={formData.phone} onChange={handleChange} placeholder="휴대폰 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
                     <label htmlFor="email" className="required">이메일 주소</label>
                     <span className="input_box">
-                        <input id="email" name="email" type="text" value={formData.email} onChange={handleChange} placeholder="이메일 입력" className="reset" />
+                        <input id="email" name="email" type="text" ref={refs.emailRef} value={formData.email} onChange={handleChange} placeholder="이메일 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
                     <label htmlFor="address" className="required">배송 주소</label>
-                    <span className="input_box">
-                        <input id="address" name="address" type="text" value={formData.address} onChange={handleChange} placeholder="배송 주소 입력" className="reset" />
-                    </span>
+                    
+                        <span className="input_box" >
+                            <input id="zipcode" name="zipcode" type="text" style={{display:"inline-block", margin:"0", width:"25%"}}
+                                value={formData.zipcode} placeholder="우편번호" readOnly className="reset" />
+                                
+                            <button type="button" className="btn" onClick={handleToggle} style={{display:"inline-block", margin:"0 0 0 6px"}}
+                             >주소 찾기</button>
+
+                            <input id="address" name="address" type="text" style={{display:"block", margin:"0"}}
+                                value={formData.address} ref={refs.addressRef} onChange={handleChange} placeholder="배송 주소 입력" className="reset" readOnly />
+                            <input id="detailAddress" name="detailAddress" type="text" style={{display:"block", margin:"0"}}
+                                value={formData.detailAddress} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
+                        </span>
+                    
                 </div>
                 <div className="row">
                     <label htmlFor="message" className="required">배송 메시지</label>
                     <span className="input_box">
-                        <input id="message" name="message" type="text" value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
+                        <input id="message" name="message" type="text" ref={refs.messageRef} value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
                     </span>
                 </div>
             </div>
+
+            {/* react-modal을 활용한 DaumPostcode 모달 */}
+            <Modal isOpen={isOpen} onRequestClose={handleToggle} style={modalStyles} ariaHideApp={false}>
+                <h2>주소 검색</h2>
+                <DaumPostcode onComplete={completeHandler} />
+                <button onClick={handleToggle} style={{
+                    display: "block", 
+                    margin: "20px auto 0", 
+                    padding: "10px 20px", 
+                    border: "none", 
+                    backgroundColor: "#C05850", 
+                    color: "#fff", 
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                }}>
+                    닫기
+                </button>
+            </Modal>
         </>
     );
 }

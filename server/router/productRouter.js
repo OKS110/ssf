@@ -6,7 +6,5 @@ const router = express.Router();
 router
     .post('/all', controller.getProductAll)
     .post('/item', controller.getItem);
-    // .post('/category', controller.getCategoryItems)
-    // .post('/rank', controller.getRankItems);
 
 export default router;

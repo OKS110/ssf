@@ -508,7 +508,7 @@ json_data = """
         "name": "Luxury Refined Urban Tee",
         "color": [
             "White",
-            "Sky Blue"
+            "SkyBlue"
         ],
         "size": [
             "S",
