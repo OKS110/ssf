@@ -1,41 +1,51 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaStar, FaHeart } from "react-icons/fa";
 import Image from './Image.jsx';
 
 export default function ProductBlock({detailList, ulClassName, liClassName, className}) {
     const name = className.substring(0, 12);
+    const [image, setImage] = useState();
 
     return (
         <ul className={ulClassName}>
             { detailList && detailList.map((item, i) => 
                 <li className={liClassName}>
-                    <div className={`${className}-img`}>
-                        {name === "sub-category" && <p>{i+1}</p>}
-                        <Image img={item.img} alt={item.alt} className='' />
-                    </div>
-                    <div className={`${className}-info`}>
-                        <p className={`${className}-brand`}>{item.brand && item.brand}</p>
-                        <p className={`${className}-title`}>{item.title}</p>
-                        <p className={`${className}-price-wrap`}>
-                            <p className={`${className}-costprice`}>{item.costprice}</p>
-                            <p className={`${className}-price-container`}>
-                                <span>{item.discount}%</span><span>{item.saleprice}</span>
+                    {/* <Link to={`/detail/${item.pid}`}> */}
+                    <a href={`/detail/${item.pid}`}>
+                        <div className={`${className}-img`}>
+                            {name === "sub-category" && <p>{i+1}</p>}
+                            <Image img={item.img} alt={item.alt} className='' />
+                        {/* {
+                            item.image.map((item, i) => 
+                                i === 0 && <Image img={item[i]} alt={item.alt} className='' />
+                            )
+                        } */}
+                        </div>
+                        <div className={`${className}-info`}>
+                            <p className={`${className}-brand`}>{item.brand}</p>
+                            <p className={`${className}-title`}>{item.title}</p>
+                            <p className={`${className}-price-wrap`}>
+                                <p className={`${className}-costprice`}>{item.costprice}</p>
+                                <p className={`${className}-price-container`}>
+                                    <span>{item.discount}%</span><span>{item.saleprice}</span>
+                                </p>
                             </p>
-                        </p>
-
-                        <p className={`${className}-star-likes-container`}>
-                            <span className={`${className}-star-wrap`}>
-                                <span><FaStar /></span>
-                                <span>{item.star}</span>
-                                <span>({item.reviewCount})</span>
-                            </span>
-                            <span className={`${className}-likes-wrap`}>
-                                <span><FaHeart /></span>
-                                <span>{item.likes}</span>
-                            </span>
-                        </p>
-                    </div>
+                            <p className={`${className}-star-likes-container`}>
+                                <span className={`${className}-star-wrap`}>
+                                    <span><FaStar /></span>
+                                    <span>{item.star}</span>
+                                    <span>({item.reviewCount})</span>
+                                </span>
+                                <span className={`${className}-likes-wrap`}>
+                                    <span><FaHeart /></span>
+                                    <span>{item.likes}</span>
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                    {/* </Link> */}
                 </li>
             ) }
         </ul>
@@ -49,3 +59,5 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
  *  className : 세부 태그들 클래스명 지정 위해 사용
  * 데이터 수정 필요
 **/
+
+// a 태그 -> 텍스트 수정

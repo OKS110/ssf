@@ -1,15 +1,16 @@
 import * as repository from '../repository/productRepository.js';
 
-export const getCategoryItems = async(req, res) => {
-    const result = await repository.getCategoryItems(req.body);
+/** 상품 데이터 전체 호출 **/
+export const getProductAll = async(req, res) => {
+    const result = await repository.getProductAll(req.body);
     res.json(result);
     res.end();
 }
 
-export const getRankItems = async(req, res) => {
-    // console.log(result);  result가 나오기 전에 선언되어서 에러가 발생
-    
-    const result = await repository.getRankItems(req.body);
+/** 카테고리 별 데이터 호출 **/
+export const getItem = async(req, res) => {
+    const result = await repository.getItem(req.body);
+    console.log("controller :: result --> ", result);
     res.json(result);
     res.end();
 }

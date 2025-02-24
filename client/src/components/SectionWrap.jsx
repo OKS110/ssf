@@ -1,18 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductBlock from '../commons/ProductBlock';
 import { FaStar, FaHeart } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import Image from '../commons/Image.jsx';
 import Button from '../commons/Button.jsx';
+import { ProductContext } from '../context/ProductContext.js';
+import { useProduct } from '../hooks/useProduct.js';
+
 
 
 export default function SectionWrap({id, title, children}) {
+    const { pid } = useParams();
+    const { productList } = useContext(ProductContext); // 전체 상품 데이터
+    const { getProductList } = useProduct();
+
     const [category, setCategory] = useState("상의"); // 아우터로~ 탭 메뉴 관리
     const [subCategory, setSubCategory] = useState("하의"); // 랭킹 탭 메뉴 관리
-    const [products, setProducts] = useState([]); // category tab 전체 상품 데이터
     const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
     const [rankList, setRankList] = useState([]); // 필터링을 거친 상품 데이터(중분류용)
+    const [issueList, setIssueList] = useState([]); // 브랜드 이슈 리스트
 
     const tabList = [
         { tabName: "상의" },
@@ -20,32 +28,47 @@ export default function SectionWrap({id, title, children}) {
         { tabName: "아우터" },
         { tabName: "신발" }
     ];
+
+    const brandList = [
+        { brandName: "NIKE" },
+        { brandName: "GUCCI" },
+        { brandName: "PRADA" }
+    ];
     
     useEffect(() => {
-        axios.post("http://localhost:9000/product/category")
-                .then(res => {
-                    setProducts(res.data);
+        // 전체 상품 데이터 호출
+        getProductList();
+        if (productList) {
+            // 아우터로~ 섹션 카테고리 데이터
+            const filterCategory = productList.filter(list => list.category === category);
+            const categoryList = filterCategory.filter((item, i) => i < 6 && item);
+            setDetailList(categoryList);
+    
+            // 랭킹 카테고리 데이터
+            const filterSubCategory = productList.filter(list => list.category === subCategory);
+            const subCategoryList = filterSubCategory.filter((item, i) => i < 8 && item);
+            setRankList(subCategoryList);
+        }
 
-                    const filterCategory = products.filter(list => list.category === category);
-                    const categoryList = filterCategory.filter((item, i) => i < 6 && item);
+    }, [category, subCategory]); // productList 무한루프
 
-                    setDetailList(categoryList);
-                })
-                .catch(err => console.log(err));
-    }, [category, detailList]);
+    // useEffect(() => {
+        
+    // });
 
+    // 이 주의 브랜드 이슈
     useEffect(() => {
-        axios.post("http://localhost:9000/product/rank")
-                .then(res => {
-                    setProducts(res.data);
+        axios
+            .get("/data/weekly_issue.json")
+            .then(res => setIssueList(res.data))
+            .catch(error => console.log(error));
+    }, []);
 
-                    const filterSubCategory = products.filter(list => list.category === subCategory);
-                    const subCategoryList = filterSubCategory.filter((item, i) => i < 8 && item);
+    const brand1 = productList.filter((list) => list.brand === "NIKE");
+    const brand2 = productList.filter((list) => list.brand === "GUCCI");
+    const brand3 = productList.filter((list) => list.brand === "BEANPOLE");
 
-                    setRankList(subCategoryList);
-                })
-                .catch(err => console.log(err));
-    }, [subCategory, rankList]);
+    // console.log('isOpened --> ', isOpened);
 
     return (
         <section id={id} style={{backgroundColor:"green"}}>
@@ -114,6 +137,51 @@ export default function SectionWrap({id, title, children}) {
                     </ul>
                     <ProductBlock detailList={rankList} ulClassName="sub-category-tab" liClassName="sub-category-tab-list" className="sub-category-list" />
                     <button type='button' className='sub-category-btn'>랭킹 바로가기<IoIosArrowForward /></button>
+                </div>
+            }
+            {
+                id === "brands" &&
+                <div className='contents-box god-lists'>
+                    <div className='hotBrand-container'>
+                        <div className='hotBrand-img'>
+                            <img src="/image/example.jpg" alt="" />
+                        </div>
+                        <ProductBlock detailList={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                    </div>
+                    <div className='hotBrand-container'>
+                        <div className='hotBrand-img'>
+                            <img src="/image/example.jpg" alt="" />
+                        </div>
+                        <ProductBlock detailList={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                    </div>
+                    <div className='hotBrand-container'>
+                        <div className='hotBrand-img'>
+                            <img src="/image/example.jpg" alt="" />
+                        </div>
+                        <ProductBlock detailList={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                    </div>
+                </div>
+            }
+            {
+                id === "issue" &&
+                <div className='contents-box god-lists'>
+                    <ul className='issue-section'>
+                        { issueList && issueList.map((list) => 
+                            <li className='issue-list'>
+                                <div className='issue-list-img'>
+                                    <img src={list.img} alt="image" />
+                                </div>
+                                <div className='issue-list-info'>
+                                    <p className='issue-list-info-des'>
+                                        {list.description.split("\n").map((item) => 
+                                            <p>{item}</p>
+                                        )}
+                                    </p>
+                                    <p className='issue-list-info-brand'>{list.brand}</p>
+                                </div>
+                            </li>
+                        ) }
+                    </ul>
                 </div>
             }
             {children}

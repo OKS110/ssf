@@ -7,6 +7,8 @@ import Issue from "../components/mainContents/Issue.jsx";
 import SlideWrap from "../components/mainContents/MainSlide/SlideWrap.jsx";
 import SubSlideWrap from "../components/mainContents/SubSlide/SubSlideWrap.jsx";
 import HotBrand from "../components/mainContents/HotBrands/HotBrand.jsx";
+import PopUp from '../components/mainContents/PopUp.jsx';
+
 export default function Home(){
 
     const sectionList = [
@@ -103,14 +105,14 @@ export default function Home(){
             key={section.id}
             id={section.id}
             title={section.title}
-           >
+          >
             {/* Render children if they exist */}
           {Array.isArray(section.children) &&
             section.children.map((child) => renderComponent(child))}
           </SectionWrap>
       ))}    
 {/* 컨텐츠 끝 */}
-
+      <PopUp />
     </div>
   </div>
 </main>

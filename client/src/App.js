@@ -1,4 +1,5 @@
 import style from './styles/style.css';
+import './styles/yuna.css';
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-dom에서 제공하는 컴포넌트
 import Layout from './pages/Layout.jsx';
@@ -11,9 +12,12 @@ import Products from './pages/Products.jsx';
 import DetailProducts from './pages/DetailProducts.jsx';
 import Order from './pages/Order.jsx';
 import { AuthProvider } from './auth/AuthContext.js';
+import { ProductProvider } from './context/ProductContext.js';
+
 function App() {
   return (
     <>
+    <ProductProvider>
     <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -24,12 +28,13 @@ function App() {
                     <Route path='/signup' element={<Signup/>}></Route>    
                     <Route path='/carts' element={<Carts/>}></Route>    
                     <Route path='/person' element={<Person/>}></Route>
-                    <Route path={`/detail`} element={<DetailProducts/>}></Route>
+                    <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order' element={<Order></Order>}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
-     </AuthProvider>
+    </AuthProvider>
+    </ProductProvider>
     </>
   );
 }
