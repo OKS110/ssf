@@ -20,10 +20,11 @@ import EditMyInfo from './components/person/MyInfo/EditMyInfo.jsx';
 import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
 import { ProductProvider } from './context/ProductContext.js';
 import ScrollToTop from './location/scrollToTop.js';
+import { MypageProvider } from './context/MypageContext.js';
 function App() {
   return (
     <>
-    
+    <MypageProvider>
     <ProductProvider>
     <AuthProvider>
         <BrowserRouter>
@@ -49,7 +50,7 @@ function App() {
         </BrowserRouter>
      </AuthProvider>
      </ProductProvider>
-     
+     </MypageProvider>
     </>
   );
 }

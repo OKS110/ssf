@@ -14,7 +14,16 @@ import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
 
+import axios from 'axios';
+import { MypageContext } from "../context/MypageContext.js";
+import {useContext} from 'react';   
+
 export default function Person(){
+
+    // const {customerInfo,setCustomerInfo} = useContext(MypageContext);
+    //     console.log('zzz',customerInfo);
+    // const [data, setData] = useState();
+
     const tabsData = [
         { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content:<WishListProduct/> },
         { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content:<WishListBrand/>},
@@ -31,7 +40,14 @@ export default function Person(){
         const activeContent = tabsData.find(tab => tab.id === activeTab);
         return activeContent ? activeContent.content : null;
     };
+    
+    // const id = localStorage.getItem('user_id');
+    // axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
+    //     .then(res => setData(res.data))
+    //     .catch(error=> console.log(error));
 
+    // console.log(data);
+    
 
 
     return (
