@@ -3,6 +3,8 @@ create database shopping_mall;
 USE shopping_mall; 
 drop database shopping_mall;
 show tables;
+desc customers;
+
 
 -- 관리자 테이블
 CREATE TABLE admins ( -- 관리자 정보를 저장하는 테이블 생성

@@ -1,42 +1,176 @@
-import {  useState } from "react";
-import {signupValidate,handleIdCheck,handlePasswordCheck} from '../utils/validate.js';
+import { useRef, useState } from "react";
+import {signupValidate} from '../utils/validate.js';
 import React from 'react';
-import {initDatas,useRefDatas} from '../utils/initDatas.js';
-import axios from "axios";
-import {useNavigate} from 'react-router-dom';
-
+import DaumPostcode from "react-daum-postcode";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Signup(){
+    const [adata, setAdata] = useState({});
+    
+    /** 주소검색 버튼Toggle */
+    const [isOpen, setIsOpen] = useState(false);
+    /** 주소 검색 버튼 */
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+    //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
+    const themeObj = {
+        bgColor: "#FFFFFF",
+        pageBgColor: "#FFFFFF",
+        postcodeTextColor: "#C05850",
+        emphTextColor: "#222222",
+    };
+    const postCodeStyle = {
+        width: "480px",
+        height: "480px",
+    };
+
+    const completeHandler = (data) => {
+        // console.log(data.zonecode);
+        // console.log(data.address);     
+        setAdata({...adata, zoneCode: data.zonecode, address: data.address });
+    };
+    // console.log('주소',adata);
+
+    const closeHandler = (state) => {
+        if (state === "FORCE_CLOSE") {
+        setIsOpen(false);
+        } else if (state === "COMPLETE_CLOSE") {
+        setIsOpen(false);
+        }
+    };
+    //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
+
     const navigate = useNavigate();
 
-    const {names,placeholder,labelsKr, formData} = initDatas();
-    const {refs,msgRefs} = useRefDatas(names);  
-    const [data, setData] = useState(formData);      
-    const [error, setError] = useState(formData);
-    const[idCheckResult,setIdCheckResult] = useState('default');  
+    const formData = {'id':'',
+                    'pwd':'',
+                    'cpwd':'',
+                    'username':'',
+                    'phone':'',
+                    'address':'',
+                    'zoneCode':'',
+                    'addressDetail':'',
+                    'email':'',
+                    'emailDomain':''
+                }
+  
+    const [data, setData] = useState(formData);
+    const [error, setError] = useState({});
 
-    const [isChecked1, setIsChecked1] = useState(false); //체크박스 상태 관리
-    const [isChecked2, setIsChecked2] = useState(false); //체크박스 상태 관리
+    const refs = {
+        'idRef':useRef(null),
+        'idCheckRef':useRef(null),
+        'pwdRef':useRef(null),
+        'cpwdRef':useRef(null),
+        'usernameRef':useRef(null),
+        'phoneRef':useRef(null),
+        'addressRef':useRef(null),
+        'zoneCodeRef':useRef(null),
+        'addressDetailRef':useRef(null),
+        'emailRef':useRef(null),
+        'emailDomainRef':useRef(null)
+    };
 
-    const handleChecked1 = (e) => {setIsChecked1(e.target.checked);}
-    const handleChecked2 = (e) => {setIsChecked2(e.target.checked);}    
-
-    const handleSignupForm = (e) => {
-        const {name, value} = e.target;       
-        setData({...data, [name]:value});
+    const msgRefs = {
+        'idMsgRef':useRef(null),
+        'pwdMsgRef':useRef(null)
     }
 
+    //체크박스 상태 관리
+    const [isChecked1, setIsChecked1] = useState(false);
+    const [isChecked2, setIsChecked2] = useState(false);
+    const handleChecked1 = (e) => {setIsChecked1(e.target.checked);}
+    const handleChecked2 = (e) => {setIsChecked2(e.target.checked);}
+    // 아디중복체크 눌럿는지 안눌럿는지
+    const [idCheckClick,setIdCheckClick] = useState(false);
+
+    const handleSignupForm = (e) => {
+        const {name, value} = e.target;
+        // 아이디 변경 시 중복 체크 초기화
+        if (name === 'id') {
+            setIdCheckClick(false);
+        }        
+        setData({...data, [name]:value});
+    }
+    // console.log(data);
+
+    // 아이디 중복체크 클릭여부 함수
+    const handleIdCheck = () => {
+        
+        //서버연동해서 아이디 중복체크 진행
+            const idV = refs.idRef.current;
+            if(idV.value===''){
+                setError({...error, ['id']:'아이디를 입력해주세요'});
+                idV.focus();
+            }else if(idV.value.length < 6){
+                setError({...error, ['id']:'6자 이상 아이디를 입력해주세요'});
+                idV.value = '';
+                idV.focus();     
+            }else {
+                axios
+                    .post('http://localhost:9000/member/idCheck',{'id' : idV.value})
+                    .then(res =>{ 
+                        // console.log('sqlresult',res.data.count);
+                        if(res.data.count === 1){
+                            setError({...error,['id']:'사용중인 아이디입니다'});
+                            msgRefs.idMsgRef.current.style.setProperty('color','red');
+                            idV.value = '';
+                            idV.focus();
+                        }else{
+                            setError({...error,['id']:'사용가능한 아이디입니다'});
+                            msgRefs.idMsgRef.current.style.setProperty('color','blue');
+                            refs.pwdRef.current.focus();
+                        }
+                    })
+                    .catch(error => console.log(error));
+            }
+            setIdCheckClick(true);
+        }
+    
+    const handlePasswordCheck = () => {
+        const pwdCheck = refs.pwdRef.current;
+        const cpwdCheck = refs.cpwdRef.current;
+        
+        if(pwdCheck.value===''){
+            setError({...error,['pwd']:'비밀번호를 입력해주세요'});
+            pwdCheck.focus();
+        } else if(cpwdCheck.value===''){
+            setError({...error,['pwd']:'비밀번호 확인을 입력해주세요'});
+            cpwdCheck.focus();            
+        }else if(pwdCheck.value.length < 10){
+            setError({...error, ['pwd']:'10자 이상 비밀번호를 입력해주세요'});
+            pwdCheck.value = '';
+            cpwdCheck.value='';
+            pwdCheck.focus();     
+            return false;   
+        }else{
+            if(pwdCheck.value===cpwdCheck.value){
+                setError({...error,['pwd']:'비밀번호가 일치합니다'});
+                msgRefs.pwdMsgRef.current.style.setProperty('color','blue');
+            }else{
+                setError({...error,['pwd']:'비밀번호가 동일하지않습니다 다시 입력해주세요'});
+                pwdCheck.value='';
+                cpwdCheck.value='';
+                pwdCheck.focus();
+            }
+        }
+    }
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(signupValidate(refs,msgRefs,isChecked1,isChecked2)){  
-            if(idCheckResult==='default'){
+        if(signupValidate(refs,error,setError,isChecked1,isChecked2)){
+            // 서버 연동 
+            if(idCheckClick !== true){
                 alert('아이디 중복체크를 진행해주세요');
                 return false;
             } else {
                 axios
-                    .post('http://localhost:9000/member/signup',data)
+                    .post('http://localhost:9000/member/signup',{data,adata})
                     .then(res =>{
-                        console.log(res.data);
+                        // console.log('회원가입성공데이터',res.data);
                         if(res.data.result === 1 ){
                             alert('회원가입성공'); 
                             navigate('/login');
@@ -44,10 +178,10 @@ export default function Signup(){
                     })
                     .catch(error => console.log(error));
 
-            }   
-        } 
+            }  
+        }
+        // console.log('폼',data,adata);
     }
-    console.log('회원가입data',data);
     
     return (
         <>
@@ -56,82 +190,123 @@ export default function Signup(){
                 <h1>회원가입</h1> 
                 <form action="" onSubmit={handleSubmit}>
                 <ul>
-                    {names && names.map((name)=>(
                     <li className="signup-top ">
-                            <label htmlFor="">{labelsKr[name]}</label>
-                                { name === 'email' ? (
-                                    <>
-                                        <input type="text"  
-                                            onChange={handleSignupForm} 
-                                            name={name}
-                                            ref={refs.current[name.concat('Ref')]} 
-                                            placeholder={placeholder[name]}/>
-                                        <span className="emailEmt">@</span>
-                                        <select name="emailDomain" id="" onChange={handleSignupForm}
-                                            ref={refs.current['emailDomainRef']} className="select-err">
-                                            <option value="default">선택</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                            <option value="daum.net">daum.net</option>
-                                        </select>
-                                    </>
-                                    ):(
-                                    name === 'id' ? (
-                                        <>
-                                        <div className="dupliBox">
-                                            <input type="text"  
-                                                onChange={handleSignupForm} 
-                                                name= {name}
-                                                ref= {refs.current[name.concat('Ref')]}  
-                                                className="dupliInput"
-                                                placeholder={placeholder[name]}/>
-                                            <button type='button'  
-                                                className="dupliId"
-                                                ref ={refs.idCheckRef} 
-                                                onClick={()=>{handleIdCheck(
-                                                    refs.current['idRef'],
-                                                    msgRefs.current['idMsgRef'],
-                                                    refs.current['pwdRef'],
-                                                    setIdCheckResult,
-                                                    setError,error
-                                                )}}>
-                                                중복확인
-                                            </button>
-                                            <input type="hidden" 
-                                              value={idCheckResult} />
-                                        </div>
-                                        </>
-                                        ) : (
-                                        <input type={(name==='pwd' || name==='cpwd') ? 'password': 
-                                            (
-                                                (name === 'phone') ? 'tel' : 'text'
-                                            )} 
-                                            onChange={handleSignupForm} 
-                                            name= {name}
-                                            ref= {refs.current[name.concat('Ref')]} 
-                                            placeholder={placeholder[name]}
-                                            onBlur={
-                                                (name==='cpwd') ? ()=>{handlePasswordCheck(
-                                                    refs.current['pwdRef'],
-                                                    refs.current['cpwdRef'],
-                                                    refs.current['usernameRef'],
-                                                    msgRefs.current['pwdMsgRef'],
-                                                    msgRefs.current['cpwdMsgRef']
-                                                )} : null 
-                                            }/>
-                                        )
-                                    )
-                                }
-                            <span className="signup-err" 
-                                ref={msgRefs.current[name.concat('MsgRef')]}>
-                                    {idCheckResult === 'default' ? placeholder[name] : (
-                                        name === 'id' ? error.id : placeholder[name]
-                                    )}
-                                    </span>           
-
-
-                        </li>
-                    ))}                  
+                        <label htmlFor="">아이디</label>
+                            <div className="dupliBox">
+                                <input type="text"  
+                                    onChange={handleSignupForm} 
+                                    name= 'id'
+                                    ref={refs.idRef} 
+                                    className="dupliInput"
+                                    placeholder="6~20자 사이로 입력해주세요"/>
+                                <button type='button' onClick={handleIdCheck} className="dupliId"
+                                    ref ={refs.idCheckRef}>
+                                    중복확인
+                                </button>
+                            </div>
+                        <span className="signup-err"  style={{color:'red'}}
+                        ref={msgRefs.idMsgRef}                        
+                           >{error.id}</span>
+                    </li>
+                    <li className="signup-top">
+                        <label htmlFor="">비밀번호</label>
+                        <input type="password" 
+                            onChange={handleSignupForm} 
+                            name= 'pwd'
+                            ref={refs.pwdRef}
+                            placeholder="10~16자 사이로 입력해주세요"/>
+                        <span className="signup-err"  style={{color:'red'}}  
+                        ref={msgRefs.pwdMsgRef}
+                             >{error.pwd}</span>
+                    </li>
+                    <li className="signup-top">
+                        <label htmlFor="">비밀번호 확인</label>
+                        <input type="password"  
+                            onChange={handleSignupForm} 
+                            onBlur={handlePasswordCheck}
+                            name = 'cpwd'
+                            ref={refs.cpwdRef}
+                            placeholder="비밀번호를 한 번 더 입력해주세요"/>
+                        <span className="signup-err"  style={{color:'red'}}                                  
+                            >{error.cpwd}</span>
+                    </li>
+                    <li className="signup-top">
+                        <label htmlFor="">이름</label>
+                        <input type="text"  
+                            onChange={handleSignupForm} 
+                            name= "username"
+                            ref={refs.usernameRef}
+                            placeholder="이름을 입력해주세요"/>
+                        <span className="signup-err"   style={{color:'red'}}                              
+                            >{error.username}</span>
+                    </li>
+                    <li className="signup-top">
+                        <label htmlFor="">연락처</label>
+                        <input type="number"  
+                            onChange={handleSignupForm} 
+                                name="phone"
+                            ref={refs.phoneRef}
+                            placeholder="-제외 11자리를 입력해주세요"/>
+                        <span className="signup-err"   style={{color:'red'}}                           
+                             >{error.phone}</span>
+                    </li>
+                    <li className="signup-top ">
+                        <div className="signup-address">
+                            <label htmlFor="">주소</label>
+                            <button className="signup-address-btn" type = 'button'onClick={handleToggle}>배송지 선택</button>
+                        </div>
+                        {isOpen &&
+                        <div>
+                            <DaumPostcode
+                                className="postmodal"
+                                theme={themeObj}
+                                style={postCodeStyle}
+                                onComplete={completeHandler} 
+                                onClose={closeHandler}
+                            />
+                        </div>
+                        }
+                        <div className="signup-address-line">
+                            <input type="text" name="zoneCode" 
+                                value={adata.zoneCode}
+                                placeholder="우편번호" 
+                                ref={refs.zoneCodeRef}
+                                onChange={handleSignupForm}/>
+                            <input type="text"  
+                                onChange={handleSignupForm} 
+                                name="address"
+                                ref={refs.addressRef}
+                                value={adata.address}
+                                placeholder="배송주소를 선택해주세요"/>
+                        </div>
+                        <input className="signup-address-extra"
+                            type="text" 
+                            ref={refs.addressDetailRef}
+                            placeholder="상세 주소를 입력해주세요" 
+                            onChange={handleSignupForm}
+                            name="addressDetail"/>
+                        <span className="signup-err"  style={{color:'red'}}                               
+                            >{error.address}</span>
+                    </li>
+                    <li className="signup-top ">
+                        <label htmlFor="">이메일</label>
+                        <input type="text"  
+                            onChange={handleSignupForm} 
+                            name="email"
+                            className="signup-email-line"
+                            ref={refs.emailRef}
+                            placeholder="이메일 주소를 입력해주세요"/>
+                        <span className="emailEmt">@</span>
+                        <select name="emailDomain" id="" onChange={handleSignupForm}
+                            ref={refs.emailDomainRef} className="select-err">
+                            <option value="default">선택</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
+                        <span className="signup-err"    style={{color:'red'}}                        
+                            >{error.email}</span>
+                    </li>
                     <li className="signup-top">
                         <label htmlFor="">이용약관</label>
                         <div className="textarea">
@@ -196,6 +371,3 @@ export default function Signup(){
         </>
     );
 }
-
-
-

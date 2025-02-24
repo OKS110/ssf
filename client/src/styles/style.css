@@ -2335,8 +2335,38 @@ section#order .form_wrap .btns .btn.gray {
 .signup-top:last-child >label{
     font-weight: 700;
 }
-.signup-top > input:not(.test) {
+.signup-top > input:not(.signup-address-extra) {
     width: 100%;
+    height: 35px;
+}
+.signup-address{
+    padding-bottom: 5px;
+}
+.signup-address-btn{
+    background-color: var(--purple500);
+    color: white;
+    padding: 5px 7px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.signup-address-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.signup-address-line>input{
+    height: 35px;
+}
+.signup-address-line>input:first-child{
+    width: 100px;
+}
+.signup-address-line>input:last-child{
+    width: 100%;
+    margin-left: 5px;
+}
+.signup-address-extra{
+    width: 476px;
+    margin-top: 10px;
     height: 35px;
 }
 .textarea{
@@ -2525,6 +2555,7 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-bottom-my-top-left > span:nth-child(2){
     font-size: 30px;
     font-weight: 700;
+    color: black;
 }
 .mypage-bottom-my-top-left > span:first-child{
     font-size: 23px;
@@ -2869,6 +2900,11 @@ section#order .form_wrap .btns .btn.gray {
     font-weight: 500;
     font-size: 35px;
 }
+.mypage-Title-notborder {
+    /* border-bottom: 3px solid black; */
+    font-weight: 500;
+    font-size: 35px;
+}
 .order-list-date{
     /* border: 1px solid red; */
     padding: 30px 0;
@@ -2884,13 +2920,21 @@ section#order .form_wrap .btns .btn.gray {
     gap: 10px;
     justify-content:flex-end;
 }
-.order-date > ul > li {
+.order-date > ul>li:hover{
+    cursor: pointer;
+}
+.order-date-active { 
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-date-none{
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px 10px;
 }
 .order-list{
-    height: 300px;
+    /* height: 300px; */
 }
 .order-list >ul{
     display: flex;
@@ -2909,11 +2953,11 @@ section#order .form_wrap .btns .btn.gray {
 }
 .order-list >div{
     text-align: center;
-    padding: 30px 0;
+    align-items: center;
 }
 .order-list-ordertab{
-    border-top: 1px solid black;
-    padding: 15px 0;
+    /* border-top: 1px solid black; */
+    /* padding: 15px 0; */
 }
 .mypage-link {
     color: black;
@@ -2926,10 +2970,11 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-user-info{
     /* border: 1px solid red; */
 }
-.mypage-user-info > ul > li{
+.mypage-user-info > ul  li{
     padding: 20px 0;
     border-bottom: 1px solid rgb(179, 178, 178);
     font-size: 18px;
+    color: black;
 }
 .mypage-user-info > ul > li:first-child{
     font-size: 23px ;
