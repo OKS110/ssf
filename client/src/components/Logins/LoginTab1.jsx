@@ -55,7 +55,8 @@ export default function LoginTab1({ isActive }) {
                     console.log('res.data --> ', res.data);
                     if (res.data.result_rows === 1) {
                         alert('로그인 성공!');
-                        localStorage.setItem("token", res.data.token);
+                        localStorage.setItem("token", res.data.token); 
+                        localStorage.setItem('user_id',formData.id);                        
                         setIsLoggedIn(true);
                         navigate('/');
 
