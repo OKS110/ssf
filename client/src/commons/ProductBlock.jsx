@@ -12,17 +12,12 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
         <ul className={ulClassName}>
             { detailList && detailList.map((item, i) => 
                 <li className={liClassName}>
-                    {/* <Link to={`/detail/${item.pid}`}> */}
-                    <a href={`/detail/${item.pid}`}>
+                    <Link to={`/detail/${item.pid}`}>
                         <div className={`${className}-img`}>
                             {name === "sub-category" && <p>{i+1}</p>}
                             <Image img={item.img} alt={item.alt} className='' />
-                        {/* {
-                            item.image.map((item, i) => 
-                                i === 0 && <Image img={item[i]} alt={item.alt} className='' />
-                            )
-                        } */}
                         </div>
+                        
                         <div className={`${className}-info`}>
                             <p className={`${className}-brand`}>{item.brand}</p>
                             <p className={`${className}-title`}>{item.title}</p>
@@ -44,8 +39,7 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
                                 </span>
                             </p>
                         </div>
-                    </a>
-                    {/* </Link> */}
+                    </Link>
                 </li>
             ) }
         </ul>

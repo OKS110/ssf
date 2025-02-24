@@ -7,27 +7,24 @@ import OrderForm from './OrderForm.jsx';
 export default function OrderContents({ 
     handleOrderSubmit, 
     selectedPayMethod, 
-    setSelectedPayMethod 
+    setSelectedPayMethod, 
+    refs,
+    formData,
+    setFormData
 }) {
-    // 주문서 입력 데이터
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        address: "",
-        message: ""
-    });
+
 
     // 입력 값 초기화 함수
     const resetForm = () => {
-        setFormData({ name: "", phone: "", email: "", address: "", message: "" });
+        setFormData({ name: "", phone: "", email: "", zipcode: "", address: "", detailAddress: "",  message: "" });
         console.log("입력값 초기화 완료");
     };
+    console.log("현재 입력된 formData:", formData);
 
     return (
         <>
             {/* 주문서 입력 폼 */}
-            <OrderForm formData={formData} setFormData={setFormData} resetForm={resetForm} />
+            <OrderForm formData={formData} setFormData={setFormData} resetForm={resetForm} refs={refs} />
 
             {/* 결제 수단 선택 */}
             <PayOption onPaymentMethodChange={setSelectedPayMethod} />
