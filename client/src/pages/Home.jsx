@@ -8,7 +8,10 @@ import SlideWrap from "../components/mainContents/MainSlide/SlideWrap.jsx";
 import SubSlideWrap from "../components/mainContents/SubSlide/SubSlideWrap.jsx";
 import HotBrand from "../components/mainContents/HotBrands/HotBrand.jsx";
 import PopUp from '../components/mainContents/PopUp.jsx';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 export default function Home(){
 
     const sectionList = [
@@ -112,7 +115,11 @@ export default function Home(){
           </SectionWrap>
       ))}    
 {/* 컨텐츠 끝 */}
+<<<<<<< HEAD
       <PopUp />
+=======
+      <PopUp/>
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     </div>
   </div>
 </main>

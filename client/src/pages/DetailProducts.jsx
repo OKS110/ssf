@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { useState, useRef, useContext, useEffect  } from "react";
 import useFixedScroll from "../hooks/useFixedScroll.js";
 import { useParams } from 'react-router-dom';
+=======
+import { useState, useRef } from "react";
+import useFixedScroll from "../hooks/useFixedScroll.js";
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
 import ProductMypage from "../commons/ProductMypage";
 import DetailImage from "../components/DetailProducts/DetailImage";
@@ -10,6 +15,7 @@ import GoodsDetail from "../components/DetailProducts/tabsData/GoodsDetail";
 import Recommend from "../components/DetailProducts/tabsData/Recommend";
 import Review from "../components/DetailProducts/tabsData/Review";
 import Size from "../components/DetailProducts/tabsData/Size";
+<<<<<<< HEAD
 
 import { useProduct } from '../hooks/useProduct.js';
 import { ProductContext } from '../context/ProductContext.js';
@@ -24,6 +30,10 @@ export default function DetailProducts() {
     }, []);
     // console.log('pidItem --> ', pidItem);
 
+=======
+
+export default function DetailProducts() {
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     const tabsData = [
         { id: "goodsDetailTab", label: "상품정보", href: "#goodsDetailTabs", content: <GoodsDetail /> },
         { id: "sizeTab", label: "사이즈&핏", href: "#goodsDetailTabs", content: <Size /> },

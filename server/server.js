@@ -18,7 +18,7 @@ server.use(express.urlencoded()); //form데이터를 express 서버로 전송할
 
 //로그인 폼(유저, 게스트) 
 server.use('/user', loginRouter);
-server.use('/product', productRouter);
+server.use('/product', productRouter);  
 server.use('/member', SignupRouter);
 server.use('/mypage',mypageRouter);
 // server.use('/admin', adminRouter);

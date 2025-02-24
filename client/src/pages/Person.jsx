@@ -6,15 +6,22 @@ import { BiParty } from "react-icons/bi";
 import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import { useState } from "react";
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 import PersonUIform from "../components/person/PersonUIform.jsx";
 import ProductMypage from "../commons/ProductMypage.jsx";
 import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
+<<<<<<< HEAD
 import axios from 'axios';
 import { MypageContext } from "../context/MypageContext.js";
 import {useContext} from 'react';   
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
 export default function Person(){
     // const {customerInfo,setCustomerInfo} = useContext(MypageContext);
@@ -26,6 +33,7 @@ export default function Person(){
         { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content:<WishListBrand/>},
         { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" ,content:<WishListContent/>}
     ];
+<<<<<<< HEAD
 
     // 부모에서 활성화된 탭 상태를 관리
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
@@ -44,6 +52,17 @@ export default function Person(){
 
     // console.log(data);
     
+=======
+
+    // 부모에서 활성화된 탭 상태를 관리
+    const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
+
+    // 현재 활성화된 탭의 콘텐츠 찾기
+    const renderContent = () => {
+        const activeContent = tabsData.find(tab => tab.id === activeTab);
+        return activeContent ? activeContent.content : null;
+    };
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
     return (
         <div className="mypage-box">
@@ -128,9 +147,15 @@ export default function Person(){
                             activeTab={activeTab} 
                             setActiveTab={setActiveTab} 
                         />
+<<<<<<< HEAD
                         <div style={{ border: "1px solid red" }}>
                             {renderContent()}
                         </div>                      
+=======
+                        <div style={{ border: "1px solid red" , marginTop:'30px'}}>
+                            {renderContent()}
+                        </div>
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
                     </div>
                     <div className="mypage-active">
                         <h2>활동내역</h2>

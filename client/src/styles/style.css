@@ -1497,6 +1497,10 @@ footer .etc .etc-right{
 
 /* 상품 정보 리스트 */
 .gods-detail {
+<<<<<<< HEAD
+=======
+    /* min-height: calc(100vh - 544px); */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     padding-top: 0 !important;
 }
 .tab-rects {
@@ -1513,9 +1517,12 @@ footer .etc .etc-right{
     background-color: white; /* 배경색 추가 */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 .tab-rects>ul {
     position: relative;
     display: flex;
@@ -2935,6 +2942,7 @@ section#order .form_wrap .btns .btn.gray {
 }
 .order-list{
     /* height: 300px; */
+<<<<<<< HEAD
 }
 .order-list >ul{
     display: flex;
@@ -2950,9 +2958,17 @@ section#order .form_wrap .btns .btn.gray {
 .order-list-active{
     background-color: black;
     color: white;
+=======
+    /* border: 1px solid red; */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 }
+
 .order-list >div{
     text-align: center;
+<<<<<<< HEAD
+=======
+    /* padding: 30px 0; */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     align-items: center;
 }
 .order-list-ordertab{
@@ -2967,9 +2983,12 @@ section#order .form_wrap .btns .btn.gray {
 /* ******************************************** */
 /* 마이페이지 회원정보관리 */
 /* ************************************************ */
+<<<<<<< HEAD
 .mypage-user-info{
     /* border: 1px solid red; */
 }
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 .mypage-user-info > ul  li{
     padding: 20px 0;
     border-bottom: 1px solid rgb(179, 178, 178);
