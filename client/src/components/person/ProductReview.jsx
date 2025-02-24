@@ -10,9 +10,20 @@ import ReviewCheck from './Review/ReviewCheck.jsx';
 
 export default function ProductReview() {
     const tabsData = [
-        { id: "mypageReviewEdit", label: "리뷰 작성하기", href: "#mypageReviewEdit" },
-        { id: "mypageReviewCheck", label: "작성한 리뷰", href: "#mypageReviewCheck"},
+        { id: "mypageReviewEdit", label: "리뷰 작성하기", href: "#mypageReviewEdit" , content:<ReviewResite />},
+        { id: "mypageReviewCheck", label: "작성한 리뷰", href: "#mypageReviewCheck", content:<ReviewCheck /> },
+         
     ];
+    
+    // 부모에서 활성화된 탭 상태를 관리
+    const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
+
+    // 현재 활성화된 탭의 콘텐츠 찾기
+    const renderContent = () => {
+        const activeContent = tabsData.find(tab => tab.id === activeTab);
+        return activeContent ? activeContent.content : null;
+    };
+
    const [open,setOpen] = useState(true);
    const handleDesc = (name) => {
     setOpen(name);
@@ -31,11 +42,15 @@ export default function ProductReview() {
         <div className="mypage-bottom-box">
                 <PersonUIform />
             <article className="mypage-bottom-right">
-               <ProductMypage tabs={tabsData}/>
-               {/* 리뷰작성하기 탭*/}
-                {/* <ReviewResite /> */}
-               {/* 작성한리뷰탭*/}
-               <ReviewCheck />               
+               <ProductMypage 
+                    tabs={tabsData} 
+                    activeTab={activeTab} 
+                    setActiveTab={setActiveTab} 
+                />
+                <div style={{ border: "1px solid red" }}>
+                    {renderContent()}
+                </div>
+                             
                 <div className='mypage-review-desc'>
                     <div className='mypage-review-desc-tab'>
                         <span>상품리뷰 안내</span>

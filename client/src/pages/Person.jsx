@@ -6,15 +6,29 @@ import { BiParty } from "react-icons/bi";
 import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
-import PersonUIform from "../components/Person/PersonUIform.jsx";
+import { useState } from "react";
+import PersonUIform from "../components/person/PersonUIform.jsx";
 import ProductMypage from "../commons/ProductMypage.jsx";
+import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
+import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
+import WishListContent from "../components/person/tabsData/WishListContent.jsx";
 
 export default function Person(){
     const tabsData = [
-        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct" },
-        { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand"},
-        { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" }
+        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content:<WishListProduct/> },
+        { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content:<WishListBrand/>},
+        { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" ,content:<WishListContent/>}
     ];
+
+    // 부모에서 활성화된 탭 상태를 관리
+    const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
+
+    // 현재 활성화된 탭의 콘텐츠 찾기
+    const renderContent = () => {
+        const activeContent = tabsData.find(tab => tab.id === activeTab);
+        return activeContent ? activeContent.content : null;
+    };
+
     return (
         <div className="mypage-box">
             <div className="mypage-top-menu">
@@ -93,7 +107,15 @@ export default function Person(){
                                 <span><MdKeyboardArrowRight /></span>
                             </div>
                         </div>
-                        <ProductMypage tabs={tabsData}/>
+                        <ProductMypage 
+                            tabs={tabsData} 
+                            activeTab={activeTab} 
+                            setActiveTab={setActiveTab} 
+                        />
+                        <div style={{ border: "1px solid red" }}>
+                            {renderContent()}
+                        </div>
+                        
                         <div className="mypage-wishList-items">
                             <div>
                             아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑

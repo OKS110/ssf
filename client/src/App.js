@@ -12,11 +12,11 @@ import Products from './pages/Products.jsx';
 import DetailProducts from './pages/DetailProducts.jsx';
 import Order from './pages/Order.jsx';
 import { AuthProvider } from './auth/AuthContext.js';
-import OrderCancle from './components/Person/OrderCancle.jsx';
-import EditMember from './components/Person/EditMember.jsx';
-import ProductReview from './components/Person/ProductReview.jsx';
-import EditMyInfo from './components/Person/MyInfo/EditMyInfo.jsx';
-import UpdateInfo from './components/Person/MyInfo/UpdateInfo.jsx';
+import OrderCancle from './components/person/OrderCancle.jsx';
+import EditMember from './components/person/EditMember.jsx';
+import ProductReview from './components/person/ProductReview.jsx';
+import EditMyInfo from './components/person/MyInfo/EditMyInfo.jsx';
+import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
 
 function App() {
   return (
