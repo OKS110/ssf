@@ -1,4 +1,5 @@
 import style from './styles/style.css';
+import haon from './styles/haon.css';
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-dom에서 제공하는 컴포넌트
 import Layout from './pages/Layout.jsx';
@@ -13,7 +14,9 @@ import Order from './pages/Order.jsx';
 import { AuthProvider } from './auth/AuthContext.js';
 import OrderCancle from './components/person/OrderCancle.jsx';
 import EditMember from './components/person/EditMember.jsx';
-
+import ProductReview from './components/person/ProductReview.jsx';
+import EditMyInfo from './components/person/MyInfo/EditMyInfo.jsx';
+import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
 function App() {
   return (
     <>
@@ -29,6 +32,9 @@ function App() {
                     <Route path='/person' element={<Person/>}></Route>
                     <Route path='/person/orderChangeReturnCancle' element={<OrderCancle/>}></Route>
                     <Route path='/person/editMemberInfo' element={<EditMember/>}></Route>
+                    <Route path='/person/productReview' element={<ProductReview/>}></Route>
+                    <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
+                    <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
                     <Route path={`/detail`} element={<DetailProducts/>}></Route>
                     <Route path='/order' element={<Order></Order>}></Route>
             </Route>
