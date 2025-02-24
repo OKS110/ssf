@@ -24,7 +24,7 @@ export default function useFixedScroll() {
         // 컴포넌트가 처음 마운트될 때 실행
         if (ref.current) { // 탭 메뉴가 있을 떄            // console.log(ref.current); // <div> ...<div/>
             // 요소의 처음 위치를 저장 (화면 상단에서부터 해당 요소까지의 거리)
-            initialOffset.current = ref.current.getBoundingClientRect().top + window.scrollY;
+            initialOffset.current = ref.current.getBoundingClientRect().top + window.scrollY + 200; // 스크롤 시 메뉴랑 아래 컨텐츠가 살짝 띄워지는 오류 수정
             //window.scrollY - 현재 문서(웹페이지)에서 세로 방향으로 얼마나 스크롤되었는지를 나타내는 숫자(픽셀 값) 
             console.log("[초기 위치]:", initialOffset.current);
  

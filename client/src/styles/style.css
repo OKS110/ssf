@@ -1285,7 +1285,7 @@ footer .etc .etc-right{
 
 
 .gods-summary {
-    background-color: rgb(187, 187, 187);
+    /* background-color: rgb(187, 187, 187); */
     display: flex;
     margin-bottom: 120px;
     overflow: hidden;
@@ -1296,21 +1296,37 @@ footer .etc .etc-right{
     justify-content: space-between;
     align-items: flex-start;
     /* width: calc(750* 100% / 1400); */
-    width: 56%;
+    width: 51%;
     min-width: 717px;
     box-sizing: border-box;
     border: 1px solid yellow;
     margin: 0;
 
 }
-.gods-summary .godsImg-area .preview-thumb {
+/* 기본 스타일 (flex 세로 정렬) */
+.preview-thumb {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
     min-width: 164px;
     max-width: 164px;
     border: 1px solid red;
 }
+
+/* 3개 이상일 때 Grid 적용 */
+.preview-thumb.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* 3개 미만일 때 Flex 적용 (세로 정렬) */
+.preview-thumb.flex-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .gods-summary .godsImg-area .preview-img {
     position: relative;
     width: calc(750* 100% / 750);
@@ -1354,10 +1370,10 @@ footer .etc .etc-right{
 }
 .gods-summary .godsImg-area .preview-img .preview-zoom {
     /* display: none; */
-    overflow: hidden;
+    /* overflow: hidden; */
     position: absolute;
     top: 0;
-    left: calc(100% + 20px);
+    left: calc(100% + 30px);
     z-index: 12;
     width: 100%;
     height: 100%;
@@ -1383,7 +1399,7 @@ footer .etc .etc-right{
 }
 
 .gods-summary .godsInfo-area {
-    width: calc(550* 100% / 1400);
+    /* width: calc(550* 100% / 1400); */
     min-width: 483px;
 }
 .gods-summary .godsInfo-area .tags {
@@ -1944,13 +1960,13 @@ section#order .form_wrap .btns .btn.gray {
 }
 .goods-info-middle > ul > li:last-child > a >span {
     padding-right: 5px;
+    padding-left: 10px;
 }
 .goods-info-middle > ul > li:last-child > a {
     text-decoration: none;
 }
 .goods-info-middle > ul > li:last-child > span:nth-child(4){
     display: inline-block;
-    width: 260px;
 }
 .goods-info-middle > ul > li:first-child > span:nth-child(2),
 .goods-info-middle > ul > li:nth-child(2) > span:nth-child(2){
@@ -2021,7 +2037,6 @@ section#order .form_wrap .btns .btn.gray {
     width: 50px; 
     margin: 0;
     border-radius: 7px;
-    width: 50px;
     height: 70px;
 }
 
@@ -2074,8 +2089,8 @@ section#order .form_wrap .btns .btn.gray {
 
 .goods-info-btns>button{
     width: 50%;
-    height: 60px;
     font-size: 16px;
+    padding: 14px;
 }
 .goods-info-btns>button:first-child{
     background-color: #000;

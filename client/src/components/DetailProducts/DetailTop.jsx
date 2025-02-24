@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { useState } from "react";
 import { SiGitconnected } from "react-icons/si";
 
-export default function DetailTop(){
+export default function DetailTop({pidItem}){
     const [isHover, setIsHover] = useState(true);
 
     const handleEnter = () => {
@@ -22,12 +22,11 @@ export default function DetailTop(){
                     <ol>
                         <li><a href="/">Home</a></li>
                         <li>
-                            <a href="#none;" onclick="javascript:goAction(this); return false;" ctgryno="SFMA42">남성</a>
+                            <a href="#none;">{pidItem.category}</a>
                         </li>
                         <li>
-                            <a href="#none;" onclick="javascript:goAction(this); return false;" ctgryno="SFMA42A03">니트</a>
+                            {pidItem.sub_category}
                         </li>
-                        <li>풀오버</li>
                     </ol>
                 </div>
                 

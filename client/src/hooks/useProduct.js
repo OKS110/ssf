@@ -14,6 +14,7 @@ export function useProduct() {
     /** 상품 아이디 별 데이터 호출 **/
     const getPidItem = async(pid) => {
         const result = await axios.post("http://localhost:9000/product/item", {"pid": pid});
+        
         setPidItem(result.data);
     }
 

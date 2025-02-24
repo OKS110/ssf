@@ -19,12 +19,15 @@ import ProductReview from './components/person/ProductReview.jsx';
 import EditMyInfo from './components/person/MyInfo/EditMyInfo.jsx';
 import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
 import { ProductProvider } from './context/ProductContext.js';
+import ScrollToTop from './location/scrollToTop.js';
 function App() {
   return (
     <>
+    
     <ProductProvider>
     <AuthProvider>
         <BrowserRouter>
+        <ScrollToTop/> {/* 화면이 렌더링 될 때 스크롤을 최상단으로 이동시키는 함수 */}
           <Routes>
             <Route path='/' element={<Layout/>}>
                     <Route index element={<Home/>}></Route>
@@ -39,12 +42,14 @@ function App() {
                     <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
                     <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
                     <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
-                    <Route path='/order' element={<Order></Order>}></Route>
+                    <Route path='/order/:pid' element={<Order/>}></Route>
             </Route>
           </Routes>
+          {/* </ScrollToTop>  ScrollTop */} 
         </BrowserRouter>
      </AuthProvider>
      </ProductProvider>
+     
     </>
   );
 }

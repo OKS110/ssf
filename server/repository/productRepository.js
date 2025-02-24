@@ -83,6 +83,7 @@ export const getItem = async({pid}) => {
     const sql = `
         select pid,
                 category,
+                sub_category,
                 name as title,
                 image,
                 image->>'$[0]' as img,
@@ -92,7 +93,10 @@ export const getItem = async({pid}) => {
                 format(original_price, 0) as costprice,
                 discount_rate as discount,
                 format(discounted_price, 0) as saleprice,
-                brand
+                brand,
+                size,
+                color,
+                delivery_fee as deliveryFee
         from products
         where pid = ?
     `;

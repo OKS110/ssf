@@ -22,7 +22,6 @@ export default function DetailProducts() {
     useEffect(() => {
         getPidItem(pid);
     }, []);
-    // console.log('pidItem --> ', pidItem);
 
     const tabsData = [
         { id: "goodsDetailTab", label: "상품정보", href: "#goodsDetailTabs", content: <GoodsDetail /> },
@@ -53,10 +52,10 @@ export default function DetailProducts() {
 
     return (
         <div className="detail-wrap content-wrap" style={{ position: "relative" }}>
-            <DetailTop />
+            <DetailTop pidItem={pidItem}/>
             <div className="gods-summary" view-section="summary">
-                <DetailImage />
-                <DetailOrder />
+                <DetailImage pidItem={pidItem}/>
+                <DetailOrder pidItem={pidItem}/>
             </div>
 
             {/* 탭 고정 */}
@@ -72,6 +71,7 @@ export default function DetailProducts() {
                 }}
             >
                 <ProductMypage
+                    pidItem={pidItem}
                     tabs={tabsData}
                     activeTab={activeTab}
                     setActiveTab={handleTabClick} // 클릭 시 스크롤 이동 추가
