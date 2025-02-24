@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import OrderContents from '../components/Order/OrderContents.jsx';
 import OrderCertify from "../components/Order/OrderCertify.jsx";
 import OrderModal from "../components/Order/OrderModal.jsx";
+import axios from "axios";
+import { useProduct } from "../hooks/useProduct.js";
+import { ProductContext } from '../context/ProductContext.js';
 
 export default function Order() {
     const navigate = useNavigate();
-
+    const { pid } = useParams();
+    const { pidItem } = useContext(ProductContext); // 전체 상품 데이터
+    const { getPidItem } = useProduct();
     // 모달 상태
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,6 +22,24 @@ export default function Order() {
         { id: 1, image: "https://via.placeholder.com/100", name: "상품 A", discount: "10%", shipping: "무료 배송", price: "10000" },
         { id: 2, image: "https://via.placeholder.com/100", name: "상품 B", discount: "5%", shipping: "유료 배송 (₩3,000)", price: "20000" }
     ];
+
+    useEffect(() => {
+        const pullProductData = async () => {
+            try {
+                await getPidItem(pid);
+                
+            } catch (error) {
+                console.error("❌ 상품 데이터 가져오기 실패:", error);
+            }
+        };
+    
+        if (pid) {
+            pullProductData();
+        }
+    }, [pid]);
+    
+    console.log("pidItem" , pidItem);
+    
 
     // `formData` 상태 유지
     const [formData, setFormData] = useState({
@@ -98,6 +123,8 @@ export default function Order() {
         setIsModalOpen(false);
         navigate("/person");
     };
+
+
     return (
         <section id="order" className="content-wrap content-wrap-padding">
             <h1>주문/결제</h1>
@@ -113,7 +140,7 @@ export default function Order() {
                             </tr>
                         </thead>
                         <tbody className="all-group">
-                            {orderItems.map((item) => (
+                            {/* {orderItems.map((item) => (
                                 <tr key={item.id}>
                                     <td><img src={item.image} alt={item.name} width="100" /></td>
                                     <td>{item.name}</td>
@@ -121,7 +148,14 @@ export default function Order() {
                                     <td>{item.shipping}</td>
                                     <td>{item.price}</td>
                                 </tr>
-                            ))}
+                            ))} */}
+                            <tr key={pidItem.pid}>
+                                <td><img src={pidItem.image[0]} alt={pidItem.title} style={{width:"100px", margin:"0"}} /></td>
+                                <td>{pidItem.title}</td>
+                                <td>{pidItem.discount}%</td>
+                                <td>{pidItem.deliveryFee}</td>
+                                <td>{pidItem.saleprice}</td>
+                            </tr>
                         </tbody>
                     </table>
 

@@ -6,14 +6,22 @@ import Image from './Image.jsx';
 
 export default function ProductBlock({detailList, ulClassName, liClassName, className}) {
     const name = className.substring(0, 12);
-    const [image, setImage] = useState();
+    // const [image, setImage] = useState();
+
+    useEffect(() => {
+        if (detailList.length > 0) {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 0);
+        }
+    }, [detailList]);
+    
 
     return (
         <ul className={ulClassName}>
             { detailList && detailList.map((item, i) => 
                 <li className={liClassName}>
-                    {/* <Link to={`/detail/${item.pid}`}> */}
-                    <a href={`/detail/${item.pid}`}>
+                    <Link to={`/detail/${item.pid}`}>
                         <div className={`${className}-img`}>
                             {name === "sub-category" && <p>{i+1}</p>}
                             <Image img={item.img} alt={item.alt} className='' />
@@ -40,8 +48,7 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
                                 </span>
                             </p>
                         </div>
-                    </a>
-                    {/* </Link> */}
+                    </Link>
                 </li>
             ) }
         </ul>

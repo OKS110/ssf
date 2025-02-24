@@ -1,21 +1,28 @@
-export default function DetailThumb() {
+export default function DetailThumb({ pidItem, setClickActive, clickActive }) {
+    const thumbImgList = pidItem.image || []; // 배열이 없을 경우 빈 배열 처리
+
+    // 썸네일 클릭 시 active 상태 변경
+    const handleThumbImage = (index) => {
+        setClickActive(index);
+        console.log("현재 활성화된 썸네일 index:", index);
+    };
+
     return (
-        <div class="preview-thumb" id="godImgThumb">
-            <div class="thumb-item active" data="/goods/ORBR/24/10/14/GPDN24101477500_0_THNAIL_ORGINL_20241023161548815.jpg">
-                <button type="button">
-                    <img src="https://img.ssfshop.com/cmd/RB_100x133/src/https://img.ssfshop.com/goods/ORBR/24/10/14/GPDN24101477500_0_THNAIL_ORGINL_20241023161548815.jpg" onerror="javascript:this.src='/v3/images/common/noImg_477.gif'" alt="" />
-                </button>
-            </div>
-            <div class="thumb-item" data="/goods/ORBR/24/10/14/GPDN24101477500_1_THNAIL_ORGINL_20241023161548815.jpg">
-                <button type="button">
-                    <img src="https://img.ssfshop.com/cmd/RB_100x133/src/https://img.ssfshop.com/goods/ORBR/24/10/14/GPDN24101477500_1_THNAIL_ORGINL_20241023161548815.jpg" onerror="javascript:this.src='/v3/images/common/noImg_477.gif'" alt="" />
-                </button>
-            </div>
-            <div class="thumb-item" data="/goods/ORBR/24/10/14/GPDN24101477500_2_THNAIL_ORGINL_20241023161548815.jpg">
-                <button type="button">
-                    <img src="https://img.ssfshop.com/cmd/RB_100x133/src/https://img.ssfshop.com/goods/ORBR/24/10/14/GPDN24101477500_2_THNAIL_ORGINL_20241023161548815.jpg" onerror="javascript:this.src='/v3/images/common/noImg_477.gif'" alt="" />
-                </button>
-            </div>
+        <div
+            className={`preview-thumb ${thumbImgList.length > 3 ? "grid-layout" : "flex-layout"}`}
+            id="godImgThumb"
+        >
+            {thumbImgList.map((item, index) => (
+                <div
+                    key={index}
+                    className={`thumb-item ${clickActive === index ? "active" : ""}`} // 활성화된 썸네일 스타일 적용
+                    onClick={() => handleThumbImage(index)}
+                >
+                    <button type="button">
+                        <img src={item} alt={`Thumbnail ${index}`} />
+                    </button>
+                </div>
+            ))}
         </div>
     );
-};
+}
