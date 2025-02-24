@@ -1,5 +1,6 @@
-import style from './styles/style.css';
-import haon from './styles/haon.css';
+import './styles/style.css';
+import './styles/haon.css';
+import './styles/yuna.css';
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-dom에서 제공하는 컴포넌트
 import Layout from './pages/Layout.jsx';
@@ -17,9 +18,11 @@ import EditMember from './components/person/EditMember.jsx';
 import ProductReview from './components/person/ProductReview.jsx';
 import EditMyInfo from './components/person/MyInfo/EditMyInfo.jsx';
 import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
+import { ProductProvider } from './context/ProductContext.js';
 function App() {
   return (
     <>
+    <ProductProvider>
     <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -35,12 +38,13 @@ function App() {
                     <Route path='/person/productReview' element={<ProductReview/>}></Route>
                     <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
                     <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
-                    <Route path={`/detail`} element={<DetailProducts/>}></Route>
+                    <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order' element={<Order></Order>}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
      </AuthProvider>
+     </ProductProvider>
     </>
   );
 }

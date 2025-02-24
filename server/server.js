@@ -4,7 +4,8 @@ import cors from 'cors';
 import loginRouter from './router/loginRouter.js'
 import productRouter from './router/productRouter.js';
 import SignupRouter from './router/signupRouter.js';
-// import { db } from './repository/db.js';
+import adminRouter from './router/adminRouter.js';
+
 // 서버 생성 및 포트 지정
 const server = express();
 const port = 9000;
@@ -18,6 +19,7 @@ server.use(express.urlencoded()); //form데이터를 express 서버로 전송할
 server.use('/user', loginRouter);
 server.use('/product', productRouter);
 server.use('/member', SignupRouter);
+// server.use('/admin', adminRouter);
 
 
 
