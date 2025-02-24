@@ -5,6 +5,7 @@ import loginRouter from './router/loginRouter.js'
 import productRouter from './router/productRouter.js';
 import SignupRouter from './router/signupRouter.js';
 import adminRouter from './router/adminRouter.js';
+import mypageRouter from './router/mypageRouter.js';
 
 // 서버 생성 및 포트 지정
 const server = express();
@@ -19,6 +20,7 @@ server.use(express.urlencoded()); //form데이터를 express 서버로 전송할
 server.use('/user', loginRouter);
 server.use('/product', productRouter);
 server.use('/member', SignupRouter);
+server.use('/mypage',mypageRouter);
 // server.use('/admin', adminRouter);
 
 

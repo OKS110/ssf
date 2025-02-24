@@ -8,15 +8,6 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
     const name = className.substring(0, 12);
     // const [image, setImage] = useState();
 
-    useEffect(() => {
-        if (detailList.length > 0) {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 0);
-        }
-    }, [detailList]);
-    
-
     return (
         <ul className={ulClassName}>
             { detailList && detailList.map((item, i) => 
