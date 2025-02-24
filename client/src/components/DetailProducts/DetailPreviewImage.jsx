@@ -28,14 +28,14 @@ export default function DetailPreviewImage() {
         // 마우스 위치를 이미지 내의 비율(0~1)로 변환
         const xRatio = (e.clientX - left) / width; 
         const yRatio = (e.clientY - top) / height;
-        console.log('x', xRatio);
-        console.log('y', yRatio);
+        // console.log('x', xRatio);
+        // console.log('y', yRatio);
         
         // 확대된 배경 이미지의 위치 계산 (0% ~ 100%)
         const bgX = xRatio * 100;
         const bgY = yRatio * 100;
-        console.log('bgx', bgX);
-        console.log('bgy', bgY);
+        // console.log('bgx', bgX);
+        // console.log('bgy', bgY);
         
         setZoomPosition({ x: bgX, y: bgY }); // 확대된 이미지의 배경 위치 업데이트
     };
