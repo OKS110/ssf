@@ -253,7 +253,11 @@ export default function Signup(){
                     <li className="signup-top ">
                         <div className="signup-address">
                             <label htmlFor="">주소</label>
+<<<<<<< HEAD
                             <button className="signup-address-btn" type = 'button'onClick={handleToggle}>배송지 선택</button>
+=======
+                            <button type = 'button'onClick={handleToggle}>배송지 선택</button>
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
                         </div>
                         {isOpen &&
                         <div>

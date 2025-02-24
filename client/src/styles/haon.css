@@ -1,6 +1,7 @@
 /****************************************  */
 /* ************마이페이지 주문교환반품취소       */
 /*****************************************  */
+<<<<<<< HEAD
 .order-list-ordertab{
     /* background-color: rgb(218, 218, 218); */
     margin: 0;
@@ -9,6 +10,12 @@
 .order-list-bottom{
     display: flex;
     justify-content: space-between;
+=======
+.order-list-bottom{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     padding: 15px 0;
 }
 .order-list-bottom>span{
@@ -56,7 +63,10 @@
 }
 .order-list-deliverylist{
     border-bottom: 1px solid gray;
+<<<<<<< HEAD
     /* background-color: red; */
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 }
 .order-list-deliverylist>ul>li{
     padding: 15px;
@@ -147,8 +157,11 @@
 }
 .mypage-review-table-notmargin{
     border-top: 1px solid gray;
+<<<<<<< HEAD
     /* background-color: aqua; */
     /* margin-bottom: 50px; */
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
 }
 .mypage-review-table>table, .mypage-review-table-notmargin>table{
