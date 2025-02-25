@@ -71,9 +71,7 @@ return (
                         <div style={{ border: "1px solid red" }}>
                             {renderContent()}
                         </div>                                           
-                        <div style={{ border: "1px solid red" , marginTop:'30px'}}>
-                            {renderContent()}
-                        </div>
+
                     </div>
                 </div>                
             </article>
