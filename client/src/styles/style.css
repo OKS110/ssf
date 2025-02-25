@@ -2354,6 +2354,45 @@ section#order .form_wrap .btns .btn.gray {
     width: 100%;
     height: 35px;
 }
+.signup-top > input:not(.signup-address-extra) {
+    width: 100%;
+    height: 35px;
+}
+.signup-address{
+    padding-bottom: 5px;
+}
+.signup-address-btn{ 
+    background-color: var(--purple500);
+    color: white;
+    padding: 5px 7px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.signup-address-line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.signup-address-line>input{
+    height: 35px;
+}
+.signup-address-line>input:first-child{
+    width: 100px;
+}
+.signup-address-line>input:last-child{
+    width: 100%;
+    margin-left: 5px;
+}
+.signup-address-extra{
+    width: 476px;
+    margin-top: 10px;
+    height: 35px;
+}
+    
+    
+    
+    
+        
 .textarea{
     width: 100%;
     height: 400px;
@@ -2540,7 +2579,14 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-bottom-my-top-left > span:nth-child(2){
     font-size: 30px;
     font-weight: 700;
+    color: black;
 }
+.mypage-Title-notborder {
+    /* border-bottom: 3px solid black; */
+    font-weight: 500;
+    font-size: 35px;
+}
+    
 .mypage-bottom-my-top-left > span:first-child{
     font-size: 23px;
 }
@@ -2894,6 +2940,19 @@ section#order .form_wrap .btns .btn.gray {
     padding-bottom: 20px;
 
 }
+.order-date-active {
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-date-none{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+    
+
 .order-date > ul {
     display: flex;
     gap: 10px;
@@ -2904,9 +2963,14 @@ section#order .form_wrap .btns .btn.gray {
     border-radius: 5px;
     padding: 5px 10px;
 }
-.order-list{
-    height: 300px;
+.order-date > ul>li:hover{
+    cursor: pointer;
 }
+
+    
+/* .order-list{  높이를 지정하는 순간 고정된 높이로 인해 내용물이 많아질 수록 넘치는 에러 발생.
+    height: 300px;
+} */
 .order-list >ul{
     display: flex;
     justify-content: space-between;
@@ -2924,12 +2988,53 @@ section#order .form_wrap .btns .btn.gray {
 }
 .order-list >div{
     text-align: center;
-    padding: 30px 0;
+    align-items: center;
 }
-.order-list-ordertab{
+.mypage-user-info > ul  li{
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(179, 178, 178);
+    font-size: 18px;
+    color: black;
+}
+/* .order-list-ordertab{
     border-top: 1px solid black;
     padding: 15px 0;
+} */
+.order-list-ordertab{
+    /* background-color: rgb(218, 218, 218); */
+    margin: 0;
 }
+.order-list-bottom{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+.order-list-deliverylist{
+    border-bottom: 1px solid gray;
+    /* background-color: red; */
+}
+.order-list-deliverylist>ul>li{
+    padding: 15px;
+    border-top: 1px solid gray;
+    font-size: 14px;
+    text-align: left;
+}
+.mypage-review-table {
+    margin-top: 40px;
+    }
+.mypage-review-table-notmargin{
+    border-top: 1px solid gray;
+    /* background-color: aqua; */
+    /* margin-bottom: 50px; */
+     
+}
+.mypage-review-table>table, .mypage-review-table-notmargin>table{
+    width: 100%;
+}
+    
+        
+    
+    
 .mypage-link {
     color: black;
 }

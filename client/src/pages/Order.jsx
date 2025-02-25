@@ -150,13 +150,15 @@ export default function Order() {
                                     <td>{item.price}</td>
                                 </tr>
                             ))} */}
+                            {pidItem && 
                             <tr key={pidItem.pid}>
-                                <td><img src={pidItem.image[0]} alt={pidItem.title} style={{width:"100px", margin:"0"}} /></td>
+                                <td><img src={pidItem.image?.[0]} alt={pidItem.title || "상품 이미지"} style={{width:"100px", margin:"0"}} /></td>
                                 <td>{pidItem.title}</td>
                                 <td>{pidItem.discount}%</td>
                                 <td>{pidItem.deliveryFee}</td>
                                 <td>{pidItem.saleprice}</td>
-                            </tr>
+                            </tr>}
+                            
                         </tbody>
                     </table>
 
