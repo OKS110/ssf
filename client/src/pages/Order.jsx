@@ -20,7 +20,7 @@ export default function Order() {
     const { getPidItem } = useProduct();
 
     const {customersList} = useContext(CustomersContext); // 고객 데이터 전체
-    const { getCustomersList } = useCustomers();
+    const { getCustomersList, getCustomer } = useCustomers();
 
     const {guestList} = useContext(GuestContext);
     const {getGuestList} = useGuests();
@@ -36,7 +36,8 @@ export default function Order() {
     useEffect(() => {
         const customersList = async () => {
             try {
-                await getCustomersList();
+                const name = "dxzf76";
+                await getCustomer({name});
             } catch (error) {
                 console.error("❌ 고객 데이터 가져오기 실패:", error);
             }
