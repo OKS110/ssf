@@ -321,6 +321,7 @@ main>.key-visual {
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
+    border: 1px solid blueviolet;
 }
 .swiper-slide {
     flex-shrink: 0;
