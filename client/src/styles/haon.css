@@ -1,7 +1,6 @@
 /****************************************  */
 /* ************마이페이지 주문교환반품취소       */
 /*****************************************  */
-<<<<<<< HEAD
 .order-list-ordertab{
     /* background-color: rgb(218, 218, 218); */
     margin: 0;
@@ -10,12 +9,7 @@
 .order-list-bottom{
     display: flex;
     justify-content: space-between;
-=======
-.order-list-bottom{
-    display: flex;
-    justify-content: space-between;
     /* background-color: red; */
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     padding: 15px 0;
 }
 .order-list-bottom>span{
@@ -63,10 +57,7 @@
 }
 .order-list-deliverylist{
     border-bottom: 1px solid gray;
-<<<<<<< HEAD
     /* background-color: red; */
-=======
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 }
 .order-list-deliverylist>ul>li{
     padding: 15px;
@@ -157,11 +148,8 @@
 }
 .mypage-review-table-notmargin{
     border-top: 1px solid gray;
-<<<<<<< HEAD
     /* background-color: aqua; */
     /* margin-bottom: 50px; */
-=======
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
 }
 .mypage-review-table>table, .mypage-review-table-notmargin>table{
@@ -336,7 +324,7 @@
     font-size: 24px;
     padding: 20px 0;
 }
-.mypage-myinfo-update-box >ul>li{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-none-update-idbox, .mypage-myinfo-update-addressbox){
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
@@ -352,7 +340,30 @@
     margin-right: 10px;
     border-radius: 5px;
     border: 1px solid gainsboro;
+}
+.mypage-myinfo-none-update-idbox{
+    padding: 10px 0;
+}
+.mypage-myinfo-none-update-idbox>input{
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-left: 8px;
+}
+.mypage-myinfo-update-input{
+    background-color: white;
+}
+.mypage-myinfo-none-update-input{
     background: gainsboro;
+
+}
+.mypage-myinfo-none-update-idbox>label{
+    width: 250px;
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+    /* border: 1px solid red; */
 }
 .mypage-myinfo-update-box >ul>li>button{
     padding: 15px 10px;
@@ -420,4 +431,38 @@
 }
 .mypage-myinfo-update-desc>ul>li>h4,.mypage-myinfo-update-desc>ul>li>h5{
     padding: 5px 0;
+}
+
+.mypage-myinfo-update-addressbox {
+    padding: 10px 0;
+}
+.mypage-myinfo-update-addressbox > label{
+    /* border: 3px solid red; */
+    margin: 0;
+    width: 250px;
+}
+.mypage-myinfo-update-addressbox > input {
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-left: 8px;
+}
+.mypage-myinfo-update-addressbox >button{
+    padding: 15px 10px;
+    border-radius: 5px;
+    background-color: white;
+    width: 180px;
+    border: 1px solid black;
+    margin-left: 6px;
+}
+.mypage-myinfo-update-addressbox2{
+    padding: 10px 0;
+}
+.mypage-myinfo-update-addressbox2>input{
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-left: 258px;
 }
