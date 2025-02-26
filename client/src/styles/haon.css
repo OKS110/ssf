@@ -330,11 +330,11 @@
     justify-content: space-between;
     align-items: center;
 }
-.mypage-myinfo-update-box >ul>li>label{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>label{
     width: 250px;
     display: inline-block;
 }
-.mypage-myinfo-update-box >ul>li>input{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>input{
     padding: 15px;
     width: 710px;
     margin-right: 10px;
@@ -365,7 +365,7 @@
     margin: 0;
     /* border: 1px solid red; */
 }
-.mypage-myinfo-update-box >ul>li>button{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>button{
     padding: 15px 10px;
     border-radius: 5px;
     background-color: white;
@@ -435,26 +435,35 @@
 
 .mypage-myinfo-update-addressbox {
     padding: 10px 0;
+    display: flex;
+    /* border: 1px solid green; */
+    /* justify-content: space-between; */
 }
 .mypage-myinfo-update-addressbox > label{
     /* border: 3px solid red; */
     margin: 0;
-    width: 250px;
+    /* margin-right: 5px; */
+    display: inline-block;
+    width: 260px;
 }
+
 .mypage-myinfo-update-addressbox > input {
     padding: 15px;
-    width: 100%;
     border-radius: 5px;
     border: 1px solid gainsboro;
-    margin-left: 8px;
+    margin: 0;
+    width: 710px;
+    /* display: inline-block; */
+    /* margin-left: 8px; */
 }
+
 .mypage-myinfo-update-addressbox >button{
     padding: 15px 10px;
     border-radius: 5px;
     background-color: white;
-    width: 180px;
+    width: 178px;
     border: 1px solid black;
-    margin-left: 6px;
+    margin-left: 15px;
 }
 .mypage-myinfo-update-addressbox2{
     padding: 10px 0;

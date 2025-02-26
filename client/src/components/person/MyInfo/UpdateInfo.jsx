@@ -1,17 +1,48 @@
-import React,{useState, useEffect, useRef} from 'react';
+import React,{useState, useEffect, useRef, useContext} from 'react';
 import { SlArrowRight } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import PersonUIform from '../PersonUIform.jsx';
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
-import axios from 'axios';
 import DaumPostcode from "react-daum-postcode";
+import { CustomersContext } from '../../../context/CustomersContext.js';
+import { useCustomers } from '../../../hooks/useCustomers.js';
+import axios from 'axios';
 
 export default function UpdateInfo() {
+    const [addressValue, setAddressValue] = useState('');
+    const handleChangeInputAddressData = (e) => {
+        setAddressValue(e.target.value);
+    };
+    // console.log('addressValue',addressValue);
+    
+
+
+    const [adata, setAdata] = useState({});
+    
+    /** 주소검색 버튼Toggle */
+    const [isOpen, setIsOpen] = useState(false);
+    /** 주소 검색 버튼 */
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const {customer} = useContext(CustomersContext);
+    const { getCustomer } = useCustomers();
+
+    useEffect( () => {
+        const fetchCustoerList = async() => {
+            const id = localStorage.getItem('user_id');
+            await getCustomer(id);
+        }
+        fetchCustoerList();
+    }, [])
+    
+    // console.log('customer',customer); 
+
     const navigate = useNavigate();
     const [updateData, setUpdateData] = useState({});   // 회원정보 변경 되면 여기 저장됨
     const [open,setOpen] = useState(false);
-    const [data, setData ] = useState([]);
     // 변경을 누르면 true 가 되고 변경완료를 누르면 false 가 된다
     const [btnChangeClick, setBtnChangeClick] = useState({
         'id':false,
@@ -19,22 +50,14 @@ export default function UpdateInfo() {
         'name':false,
         'phone':false,
         'email':false,
-        'address':false
+        'address':false,
+        'extra':false,
+        'zoneCode':false
     });
     const [isChecked1, setIsChecked1] = useState(false); //체크박스 상태 관리
     const [isChecked2, setIsChecked2] = useState(false); //체크박스 상태 관리
     const handleChecked1 = (e) => {setIsChecked1(e.target.checked);}
     const handleChecked2 = (e) => {setIsChecked2(e.target.checked);}    
-    
-    useEffect(()=>{
-        const id = localStorage.getItem('user_id');
-        axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
-            .then(res => 
-            setData(res.data)
-            )
-            .catch(error => console.log(error)
-            );
-    },[]);
 
     const handleDesc = (name) => {
         setOpen(name);
@@ -47,14 +70,40 @@ export default function UpdateInfo() {
         }));
        
     };
+    //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
+    const themeObj = {
+        bgColor: "#FFFFFF",
+        pageBgColor: "#FFFFFF",
+        postcodeTextColor: "#C05850",
+        emphTextColor: "#222222",
+    };
+    const postCodeStyle = {
+        width: "700px",
+        height: "700px",
+    };
+
+    const completeHandler = (data) => {
+        // console.log(data.zonecode);
+        // console.log('주소',data.address);     
+        setAdata({...adata, zoneCode: data.zonecode, address: data.address , fullAddress:data.zonecode.concat(data.address)});
+        setAddressValue(data.zonecode.concat(data.address));
+    };
+    // console.log('주소',adata);
+
+    const closeHandler = (state) => {
+        if (state === "FORCE_CLOSE") {
+        setIsOpen(false);
+        } else if (state === "COMPLETE_CLOSE") {
+        setIsOpen(false);
+        }
+    };
+    //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
 
     const handleChangeInputData = (e) =>  {
         const { name , value} = e.target;
-        setUpdateData({...updateData, [name]:value});               
+        setUpdateData({...updateData, [name]:value});   
+                       
     }
-    // console.log('c',updateData);
-    
-
 
     const refs = {
         'idRef':useRef(null),
@@ -108,49 +157,21 @@ export default function UpdateInfo() {
             alert('기본배송지로 저장되었습니다');
         }else if(updateValidate) {
             // 서버로 바뀐 내용 전달 updateData  axios.update 일꺼임
+            axios.put('http://localhost:9000/mypage/updateInfo',{"addressValue":addressValue,"updateData":updateData})
+                .then(res => console.log(res.data)
+                )
+                .catch(error => console.log(error)
+                );
             alert('회원정보 수정이 완료되었습니다');
             navigate('/person');
         }
-        console.log(updateData);
+        // console.log(updateData);
         
     }    
 
 
-        const [adata, setAdata] = useState({});
-    
-        /** 주소검색 버튼Toggle */
-        const [isOpen, setIsOpen] = useState(false);
-        /** 주소 검색 버튼 */
-        const handleToggle = () => {
-            setIsOpen(!isOpen);
-        };
-        //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
-        const themeObj = {
-            bgColor: "#FFFFFF",
-            pageBgColor: "#FFFFFF",
-            postcodeTextColor: "#C05850",
-            emphTextColor: "#222222",
-        };
-        const postCodeStyle = {
-            width: "700px",
-            height: "700px",
-        };
-    
-        const completeHandler = (data) => {
-            // console.log(data.zonecode);
-            // console.log(data.address);     
-            setAdata({...adata, zoneCode: data.zonecode, address: data.address });
-        };
-        // console.log('주소',adata);
-    
-        const closeHandler = (state) => {
-            if (state === "FORCE_CLOSE") {
-            setIsOpen(false);
-            } else if (state === "COMPLETE_CLOSE") {
-            setIsOpen(false);
-            }
-        };
-        //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
+
+
 
     return (
         <form onSubmit={handleUpdateInfo}>
@@ -173,7 +194,7 @@ export default function UpdateInfo() {
                                 <li className='mypage-myinfo-none-update-idbox'>
                                     <label htmlFor="">아이디</label>
                                     <input type="text" className='mypage-myinfo-update-input'
-                                        value={data.username}/>
+                                        value={customer.username}/>
                                 </li>
                                 <li>
                                     <label htmlFor="">비밀번호</label>
@@ -183,8 +204,9 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.pwd === true ? handleChangeInputData : null}
                                         className={btnChangeClick.pwd ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.pwd ? null : (
-                                            updateData.pwd === undefined ? data.password : updateData.pwd
-                                            )}/>   
+                                            updateData.pwd === undefined ? customer.password : updateData.pwd
+                                            )}
+                                            />   
                                     <button type='button'  onClick={()=>{handle('pwd')}}>
                                         {btnChangeClick.pwd ? '변경 완료' : '변경'}
                                     </button>
@@ -197,8 +219,9 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.name === true ? handleChangeInputData : null}
                                         className={btnChangeClick.name ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.name ? null : (
-                                            updateData.name === undefined ? data.name : updateData.name
-                                            )}/>   
+                                            updateData.name === undefined ? customer.name : updateData.name
+                                            )}
+                                            />   
                                     <button type='button'  onClick={()=>{handle('name')}}>
                                         {btnChangeClick.name ? '변경 완료' : '변경'}
                                     </button>
@@ -211,8 +234,9 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.phone === true ? handleChangeInputData : null}
                                         className={btnChangeClick.phone ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.phone ? null : (
-                                            updateData.phone === undefined ? data.phone : updateData.phone
-                                            )}/>   
+                                            updateData.phone === undefined ? customer.phone : updateData.phone
+                                            )}
+                                            />   
                                     <button type='button'  onClick={()=>{handle('phone')}}>
                                         {btnChangeClick.phone ? '변경 완료' : '변경'}
                                     </button>
@@ -225,22 +249,23 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.email === true ? handleChangeInputData : null}
                                         className={btnChangeClick.email ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.email ? null : (
-                                            updateData.email === undefined ? data.email : updateData.email
-                                            )}/>   
+                                            updateData.email === undefined ? customer.email : updateData.email
+                                            )}
+                                            />   
                                     <button type='button'  onClick={()=>{handle('email')}}>
                                         {btnChangeClick.email ? '변경 완료' : '변경'}
                                     </button>
                                 </li>
                                 <li className='mypage-myinfo-update-addressbox'>
                                     <label htmlFor="">주소</label>
-                                    <input type={btnChangeClick.address ? 'text' : 'readonly'}
+                                    <input type={btnChangeClick.address ? 'readonly' : 'readonly'}
                                         ref={refs.addressRef}
                                         name='address'
-                                        onChange={btnChangeClick.address === true ? handleChangeInputData : null}
+                                        onChange={btnChangeClick.email === true ? handleChangeInputAddressData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.address ? null : (
-                                            updateData.address === undefined ? data.address : adata.address
-                                            )}/>   
+                                            addressValue === '' ? customer.address : adata.fullAddress
+                                            )}/>                                               
                                     <button type='button'  onClick={()=>{
                                             handle('address');
                                             handleToggle();
@@ -252,11 +277,12 @@ export default function UpdateInfo() {
                                     <input type={btnChangeClick.address ? 'text' : 'readonly'}
                                         ref={refs.extraAddressRef}
                                         name='extra'
-                                        onChange={btnChangeClick.extra === true ? handleChangeInputData : null}
+                                        onChange={btnChangeClick.address === true ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.extra ? null : (
-                                            updateData.extra === undefined ? '' : updateData.extra
-                                            )}/>
+                                            updateData.extra === undefined ? customer.additional_address : updateData.extra
+                                            )}
+                                            />
                                 </li>
                                     {isOpen &&
                                         <div>
