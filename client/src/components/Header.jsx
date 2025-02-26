@@ -51,8 +51,10 @@ export default function Header() {
             const select = window.confirm("정말로 로그아웃 하시겠습니까?");
             if (select) {
                 localStorage.removeItem("token");
+                localStorage.removeItem('user_id'); 
                 setIsLoggedIn(false);
                 setIsGuest(false); // 비회원 여부 초기화
+                localStorage.removeItem("user_id");
                 
                 // 상태 업데이트 후 메인 페이지 이동
                 setTimeout(() => {
