@@ -1,10 +1,10 @@
 import { db } from './db.js';
 
 // 고객 테이블 전체
-export const getCustomers = async() => { // 수정 필요 : 테이블명, 컬럼명
+export const getCustomers = async() => { 
     const sql = `
         select 
-            customer_id, username
+            customer_id, username,
             email, phone, name, password, address, 
             additional_address, birth_date, status, gender, membership_level,
             loyalty_points, last_login, created_at, updated_at 
@@ -16,18 +16,18 @@ export const getCustomers = async() => { // 수정 필요 : 테이블명, 컬럼
     return result;
 }
 //  고객 테이블에서 한 명 가져오기
-export const getCustomer = async({customer_id}) => { // 수정 필요 : 테이블명, 컬럼명
+export const getCustomer = async(username) => {
     const sql = `
         select 
-            customer_id, username
-            email, phone, name, password, address, 
+            customer_id, username,
+            email, phone, name, password, zipcode, address, 
             additional_address, birth_date, status, gender, membership_level,
             loyalty_points, last_login, created_at, updated_at 
         from customers
-        where customer_id = ?;
+        where binary username = ? ;
     `;
-
-    const [result] = await db.execute(sql, [customer_id]);
+    // binary 대소문자 구분 X
+    const [result] = await db.execute(sql, [username]);
 
     return result[0];
 }
