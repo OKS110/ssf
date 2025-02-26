@@ -8,6 +8,7 @@ import Image from '../commons/Image.jsx';
 import Button from '../commons/Button.jsx';
 import { ProductContext } from '../context/ProductContext.js';
 import { useProduct } from '../hooks/useProduct.js';
+import ProductSlider from '../commons/ProductSlider.jsx';
 
 
 
@@ -51,11 +52,7 @@ export default function SectionWrap({id, title, children}) {
         }
 
     }, [category, subCategory]); // productList 무한루프
-
-    // useEffect(() => {
-        
-    // });
-
+    
     // 이 주의 브랜드 이슈
     useEffect(() => {
         axios
@@ -146,24 +143,28 @@ export default function SectionWrap({id, title, children}) {
                         <div className='hotBrand-img'>
                             <img src="/image/example.jpg" alt="" />
                         </div>
-                        <ProductBlock detailList={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        <ProductSlider slideArray={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        {/* <ProductBlock detailList={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                     <div className='hotBrand-container'>
                         <div className='hotBrand-img'>
                             <img src="/image/example.jpg" alt="" />
                         </div>
-                        <ProductBlock detailList={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        <ProductSlider slideArray={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        {/* <ProductBlock detailList={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                     <div className='hotBrand-container'>
                         <div className='hotBrand-img'>
                             <img src="/image/example.jpg" alt="" />
                         </div>
-                        <ProductBlock detailList={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        <ProductSlider slideArray={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
+                        {/* <ProductBlock detailList={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                 </div>
             }
             {
                 id === "issue" &&
+                <>
                 <div className='contents-box god-lists'>
                     <ul className='issue-section'>
                         { issueList && issueList.map((list) => 
@@ -183,6 +184,11 @@ export default function SectionWrap({id, title, children}) {
                         ) }
                     </ul>
                 </div>
+                {/* <h2>슬라이더 테스트</h2>
+                <div className='contents-box god-lists'>
+                    <Slider slideArray={issueList} />
+                </div> */}
+                </>
             }
             {children}
         </section>

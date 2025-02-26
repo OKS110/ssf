@@ -242,60 +242,7 @@
  * 주목할 브랜드
  * YuNa
 **************************/
-.hotBrand-container {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 100px;
-}
-.hotBrand-tab-list {
-    width: 170px;
-    height: 350px;
-    overflow: hidden;
-}
-.hotBrand-img > img {
-    display: block;
-    width: 600px;
-    height: 380px;
-    overflow: hidden;
-}
 
-.hotBrand-tab {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.hotBrand-list-info {
-    font-size: 0.9rem;
-    text-align: left;
-}
-.hotBrand-list-info > p {
-    /* border: 1px solid green; */
-    line-height: 21px;
-    color: #000;
-}
-.hotBrand-list-title {
-    height: 50px;
-}
-.hotBrand-list-info p:not(:first-child) {
-    font-weight: normal;
-}
-.hotBrand-list-costprice {
-    color: gray;
-    text-decoration: line-through;
-}
-.hotBrand-list-price-container > span {
-    font-weight: bold;
-}
-.hotBrand-list-price-container > span:first-child {
-    color: var(--purple500);
-    margin-right: 5px;
-}
-.hotBrand-list-star-likes-container {
-    margin-top: 7px;
-}
-.hotBrand-list-star-likes-container span {
-    color: silver;
-}
 
 /**************************
  * 광고 팝업창
@@ -332,4 +279,172 @@
 }
 .mainAdPopup-btns > button:first-child {
     color: silver;
+}
+
+/**************************
+ * 이미지 슬라이더
+ * YuNa
+**************************/
+.slider-btn {
+    cursor: pointer;
+    font-size: 3rem;
+}
+.slider-wrap {
+    border: 1px solid red;
+    /* width: 600px; */
+    height: 400px;
+    position: relative;
+    /* overflow: hidden; */
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.slider-image-container {
+    /* display: flex; */
+    width: 100%;
+}
+.slide {
+    border: 1px solid blue;
+    /* display: flex; */
+    /* transition: transfrom 0.5s ease; */
+    transform: translateX(-100%);
+}
+.active {
+    transform: translateX(0);
+}
+.slide-image {
+    position: absolute;
+    width: 300px;
+    left: 40%;
+}
+
+.train {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+.show {
+    border: 1px solid blue;
+    width: 750px;
+    height: 350px;
+    display: flex;
+    /* overflow: hidden; */
+}
+.compartment {
+    width: 100%;
+    height: 500px;
+    flex-shrink: 0; /* 구역 안에 생기는 영역들이 공간을 분배해 가지지 않도록 함 */
+}
+.compartment > img {
+    width: 200px;
+}
+.train > .prev-button, 
+.train > .next-button {
+    cursor: pointer;
+}
+
+/**************************
+ * 주목할 브랜드 - 상품 슬라이더
+ * YuNa
+**************************/
+.hotBrand-container {
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    margin-bottom: 100px;
+    align-items: center;
+}
+.hotBrand-img > img {
+    display: block;
+    width: 700px;
+    height: 450px;
+    overflow: hidden;
+}
+.productSlide-content-wrap {
+    /* border: 1px solid blue; */
+    width: 780px;
+    height: 350px;
+    display: flex;
+}
+.productSlide-contents {
+    width: 540px;
+    height: 350px;
+    display: flex;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.hotBrand-tab { /* ulClass */
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.hotBrand-tab-list { /* liClass */
+    width: 170px;
+    height: 350px;
+}
+
+.hotBrand-list-info {
+    font-size: 0.9rem;
+    text-align: left;
+}
+.hotBrand-list-info > p {
+    line-height: 21px;
+    color: #000;
+}
+.hotBrand-list-title {
+    height: 50px;
+}
+.hotBrand-list-info p:not(:first-child) {
+    font-weight: normal;
+}
+.hotBrand-list-costprice {
+    color: gray;
+    text-decoration: line-through;
+}
+.hotBrand-list-price-container > span {
+    font-weight: bold;
+}
+.hotBrand-list-price-container > span:first-child {
+    color: var(--purple500);
+    margin-right: 5px;
+}
+.hotBrand-list-star-likes-container {
+    margin-top: 7px;
+}
+.hotBrand-list-star-likes-container span {
+    color: silver;
+}
+
+.productSlide-prev-button,
+.productSlide-next-button {
+    font-size: 1.8rem;
+}
+
+/**************************
+ * 인덱스 상단 - 이미지 슬라이더
+ * YuNa
+**************************/
+.swiper {
+    /* border: 1px solid blueviolet; */
+    width: 100%;
+    /* overflow: hidden; */
+}
+.swiper-btn-container {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+}
+.swiper-btn-container > button {
+    border: 1px solid red;
+    border-radius: 15px;
+    margin: 0px;
+    font-size: 3.1rem;
+    /* color: #fff; */
+    width: 70px;
+    height: 70px;
+    line-height: 35px;
 }

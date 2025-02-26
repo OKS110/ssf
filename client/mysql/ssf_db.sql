@@ -149,7 +149,7 @@ ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상�
 
 ALTER TABLE orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
-
+desc orders;
 -- INSERT INTO orders (id, customer_id, order_number, total_price, shipping_address, status, refund_amount, order_date)
 -- VALUES
 -- (2001, 3, 'ORD-20250122-2001', 296818, 'Seoul, Korea', 'Returned', 94617, '2025-01-22 12:18:10'),
@@ -157,7 +157,18 @@ ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 -- (2003, 2, 'ORD-20250205-2003', 119320, 'Incheon, Korea', 'Pending', 0, '2025-02-05 09:10:23');
 select * from orders;
 -- DELETE FROM orders WHERE id IN (2001, 2002, 2003);
-
+desc orders;
+select customer_id, username
+email, phone, name, password, address, 
+additional_address, birth_date, status, gender, membership_level,
+loyalty_points, last_login, created_at, updated_at 
+from customers;
+select * from customers where customer_id = 1;
+select gid, name, phone, order_number, email, address, created_at from guests;
+        select gid, name, phone, order_number, email, address, created_at 
+        from guests
+        where gid = 1;
+select * from products;
 -- 주문 상세 테이블
 CREATE TABLE order_items ( -- 주문에 포함된 개별 상품 정보를 저장하는 테이블 생성
     id INT auto_increment PRIMARY KEY, -- 고유한 주문 상세 ID (기본 키, JSON에서 직접 부여)
@@ -315,5 +326,5 @@ LEFT JOIN order_items ON products.pid = order_items.product_id -- 상품이 포�
 LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
 LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
  
- 
+ select * from orders;
  
