@@ -1,7 +1,7 @@
 import * as repository from '../repository/orderRepository.js';
 
-export const orderItem = async(req, res) => {
-    const result = await repository.orderItem(req.body);
+export const addOrderItem = async(req, res) => {
+    const result = await repository.addOrderItem(req.body);
     res.json(result);
     res.end();
 }
