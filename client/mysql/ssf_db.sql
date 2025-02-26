@@ -65,6 +65,8 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 계정 생성 시간 (자동 기록)
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 계정 정보 수정 시간 (수정될 때마다 자동 갱신)
 );
+ALTER TABLE customers 
+ADD COLUMN zipcode VARCHAR(20) AFTER password; -- 우편번호 (필수 입력)
 
 select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
@@ -161,7 +163,9 @@ email, phone, name, password, address,
 additional_address, birth_date, status, gender, membership_level,
 loyalty_points, last_login, created_at, updated_at 
 from customers;
+SELECT * FROM customers WHERE Binary username='myw020';
 select * from customers where customer_id = 1;
+SHOW COLUMNS FROM customers LIKE 'username';
 select gid, name, phone, order_number, email, address, created_at from guests;
         select gid, name, phone, order_number, email, address, created_at 
         from guests

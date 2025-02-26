@@ -53,6 +53,7 @@ export default function Header() {
                 localStorage.removeItem("token");
                 setIsLoggedIn(false);
                 setIsGuest(false); // 비회원 여부 초기화
+                localStorage.removeItem("user_id");
                 
                 // 상태 업데이트 후 메인 페이지 이동
                 setTimeout(() => {
