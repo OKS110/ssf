@@ -128,7 +128,7 @@ CREATE TABLE favorites ( -- 고객이 좋아요(찜)한 상품 정보를 저장�
     FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 좋아요 기록도 삭제
 );
 select * from favorites;
-drop table favorites;
+
 
 -- 주문 테이블 (super_admin만 접근 가능)
 CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생성
@@ -146,18 +146,43 @@ ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수
 ALTER TABLE orders 
 ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
 ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상세주소 (필수 입력)
-
+select * from orders;
 ALTER TABLE orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
-desc orders;
+
 -- INSERT INTO orders (id, customer_id, order_number, total_price, shipping_address, status, refund_amount, order_date)
 -- VALUES
 -- (2001, 3, 'ORD-20250122-2001', 296818, 'Seoul, Korea', 'Returned', 94617, '2025-01-22 12:18:10'),
 -- (2002, 5, 'ORD-20250130-2002', 174589, 'Busan, Korea', 'Shipped', 0, '2025-01-30 14:45:32'),
 -- (2003, 2, 'ORD-20250205-2003', 119320, 'Incheon, Korea', 'Pending', 0, '2025-02-05 09:10:23');
 select * from orders;
+
+select * from guest_orders;
 -- DELETE FROM orders WHERE id IN (2001, 2002, 2003);
-desc orders;
+
+
+-- 주문 테이블 (super_admin만 접근 가능)
+CREATE TABLE guest_orders ( -- 고객의 주문 정보를 저장하는 테이블 생성
+    g_oid INT auto_increment PRIMARY KEY, -- 고유한 주문 ID (기본 키, JSON에서 직접 부여)
+    guest_id INT NOT NULL, -- 주문한 고객 ID (외래 키)
+    order_number VARCHAR(20) UNIQUE NOT NULL, -- 주문 번호 (날짜+고객ID 형식 등으로 고유값 지정)
+    total_price INT NOT NULL, -- 주문 총 금액 (필수 입력)
+    shipping_address VARCHAR(255) NOT NULL DEFAULT '', -- 배송지 주소 (기본값: 빈 문자열)
+    status ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled', 'Returned') DEFAULT 'Pending', -- 주문 상태 (기본값: 'Pending')
+    refund_amount INT DEFAULT 0, -- 환불 금액 (기본값: 0, 환불이 없을 경우)
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 주문 날짜 및 시간 (자동 기록)
+    FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
+);
+select * from guest_orders;
+ALTER TABLE guest_orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수단
+ALTER TABLE guest_orders 
+ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
+ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상세주소 (필수 입력)
+
+ALTER TABLE guest_orders
+ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
+
+
 select customer_id, username
 email, phone, name, password, address, 
 additional_address, birth_date, status, gender, membership_level,
@@ -232,17 +257,14 @@ select * from orders;
 select count(*) as result_rows
 from guests
 where name = '홍길동' and phone = '01012345678' and order_number = 'abc1234';
-ALTER TABLE orders -- 주문 테이블에 비회원 주문을 위한 컬럼 추가
-ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원 주문 시 해당 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 관련 주문도 삭제
 
-ALTER TABLE cart -- 장바구니 테이블에 비회원 장바구니 사용을 위한 컬럼 추가
-ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 장바구니를 사용할 경우 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 장바구니도 삭제
+-- ALTER TABLE cart -- 장바구니 테이블에 비회원 장바구니 사용을 위한 컬럼 추가
+-- ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 장바구니를 사용할 경우 guest_id 저장
+-- ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 장바구니도 삭제
 
-ALTER TABLE favorites -- 좋아요 테이블에 비회원 좋아요 사용을 위한 컬럼 추가
-ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 좋아요를 남길 경우 guest_id 저장
-ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 좋아요 기록도 삭제
+-- ALTER TABLE favorites -- 좋아요 테이블에 비회원 좋아요 사용을 위한 컬럼 추가
+-- ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 좋아요를 남길 경우 guest_id 저장
+-- ADD FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE; -- 비회원 정보가 삭제되면 좋아요 기록도 삭제
 
 CREATE TABLE admin_guest_management ( -- 관리자가 비회원 정보를 관리하는 테이블 생성
     id INT auto_increment PRIMARY KEY, -- 고유한 관리 기록 ID (기본 키, JSON에서 직접 부여)
@@ -317,7 +339,7 @@ SELECT
 
     cart.cid AS cart_id, -- 장바구니 ID
     cart.customer_id AS cart_customer_id, -- 장바구니에 담은 고객 ID (회원)
-    cart.guest_id AS cart_guest_id, -- 장바구니에 담은 비회원 ID
+   -- cart.guest_id AS cart_guest_id, -- 장바구니에 담은 비회원 ID
     cart.quantity AS cart_quantity, -- 장바구니에 담긴 상품 수량
 
     favorites.fid AS favorite_id, -- 좋아요 ID
@@ -329,4 +351,5 @@ LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 �
 LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
  
  select * from orders;
+ desc products;
  
