@@ -51,6 +51,7 @@ export default function SubSlideWrap(){
     </div> { /* swiper-slide */ }
     {/* 컴포넌트 끌 - 이 부분을 map으로 돌리면 됩니다. 나머지는 아래를 참고해서 데이터 뽑아주시면 됩니다. */}
 
+    
     <div className="swiper-slide swiper-slide-next" role="group" aria-label="2 / 8" style={{"width": "692px", "marginRight": "16px"}}>
         <div className="gods-area">
             <div className="gods-main">
@@ -169,7 +170,6 @@ export default function SubSlideWrap(){
             </div> {/* gods-list */}
         </div> {/* gods-area */}
     </div> { /* swiper-slide */ }
-
     <div className="swiper-slide" role="group" aria-label="4 / 8" style={{"width": "692px", "marginRight": "16px"}}>
         <div className="gods-area">
             <div className="gods-main">
@@ -287,7 +287,6 @@ export default function SubSlideWrap(){
             </div> {/* gods-list */}
         </div> {/* gods-area */}
     </div> { /* swiper-slide */ }
-
     <div className="swiper-slide" role="group" aria-label="6 / 8" style={{"width": "692px", "marginRight": "16px"}}>
         <div className="gods-area">
             <div className="gods-main">
@@ -407,7 +406,6 @@ export default function SubSlideWrap(){
             </div> {/* gods-list */}
         </div> {/* gods-area */}
     </div> { /* swiper-slide */ }
-
     <div className="swiper-slide" role="group" aria-label="8 / 8" style={{"width": "692px", "margin-right": "16px"}}>
         <div className="gods-area">
             <div className="gods-main">

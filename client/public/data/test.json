@@ -216,211 +216,292 @@
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_1_KOR_20240306165740.png",
                     "tit": "빈폴"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_2_KOR_20240306165827.png",
                     "tit": "에잇세컨즈"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_3_KOR_20240306165900.png",
                     "tit": "비이커"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_5_KOR_20240306170026.png",
                     "tit": "메종키츠네"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_6_KOR_20240306170202.png",
                     "tit": "구호"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_8_KOR_20240306170407.png",
                     "tit": "구호플러스"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_4_KOR_20240306165934.png",
                     "tit": "띠어리"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_14_KOR_20240401153332.png",
                     "tit": "아미"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_9_KOR_20240306170453.png",
                     "tit": "이세이미야케"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_16_KOR_20240830132450.png",
                     "tit": "노스페이스"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_17_KOR_20250103161410.png",
                     "tit": "울랄라"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346054_18_KOR_20250103161449.png",
                     "tit": "제너럴아이디어"
                 }
             ]
         },
-        { "items" : [
+        { "items": [
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_13_KOR_20250103161604.png",
                     "tit": "듀베티카"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_21_KOR_20240805144610.png",
                     "tit": "라코스테"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_26_KOR_20250103161709.png",
                     "tit": "고비"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_5_KOR_20240306171237.png",
                     "tit": "토리버치"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_27_KOR_20250103161825.png",
                     "tit": "꼼데가르송"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_28_KOR_20250103161921.png",
                     "tit": "준지"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_29_KOR_20250103162023.png",
                     "tit": "시프트지"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_10_KOR_20240306171547.png",
                     "tit": "텐 꼬르소 꼬모"
-                }
-            ]
-        },
-        { "items" : [
+                },
                 {
                     "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_4_KOR_20240306171155.png",
                     "tit": "르베이지"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_30_KOR_20250103162232.png",
+                    "tit": "소니"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_31_KOR_20250103164559.png",
+                    "tit": "바겐슈타이거"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_32_KOR_20250103162347.png",
+                    "tit": "올세인츠"
                 }
             ]
         },
         { "items" : [
                 {
-                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_30_KOR_20250103162232.png",
-                    "tit": "소니"
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_29_KOR_20250103163639.png",
+                    "tit": "리바이스"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_33_KOR_20250103163813.png",
+                    "tit": "코이"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_39_KOR_20250116094502.png",
+                    "tit": "리틀뎁"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_35_KOR_20250103163942.png",
+                    "tit": "가니"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_36_KOR_20250103164017.png",
+                    "tit": "단톤"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_37_KOR_20250103164054.png",
+                    "tit": "르메르"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_6_KOR_20240306172201.png",
+                    "tit": "로가디스"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_11_KOR_20240306172508.png",
+                    "tit": "갤럭시라이프스타일"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_10_KOR_20240521103738.png",
+                    "tit": "갤럭시"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_38_KOR_20250103164150.png",
+                    "tit": "코텔로"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_2_KOR_20240306171918.png",
+                    "tit": "스튜디오니콜슨"
+                },
+                {
+                    "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_28_KOR_20241204152243.png",
+                    "tit": "랙앤본"
                 }
             ]
-        },
-        { 
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_31_KOR_20250103164559.png",
-            "tit": "바겐슈타이거"
+        }
+    ],
+    "subSlide" : [
+        {
+            "mainImage" : "/image/silde 1-1.webp",
+            "subImage1" : "/image/silde 1-2.webp",
+            "subImage2" : "/image/silde 1-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346055_32_KOR_20250103162347.png",
-            "tit": "올세인츠"
+            "mainImage" : "/image/silde 2-1.webp",
+            "subImage1" : "/image/silde 2-2.webp",
+            "subImage2" : "/image/silde 2-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_29_KOR_20250103163639.png",
-            "tit": "리바이스"
+            "mainImage" : "/image/silde 3-1.webp",
+            "subImage1" : "/image/silde 3-2.jpg",
+            "subImage2" : "/image/silde 3-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_33_KOR_20250103163813.png",
-            "tit": "코이"
+            "mainImage" : "/image/silde 4-1.jpg",
+            "subImage1" : "/image/silde 4-2.webp",
+            "subImage2" : "/image/silde 4-3.jpg",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_39_KOR_20250116094502.png",
-            "tit": "리틀뎁"
+            "mainImage" : "/image/silde 5-1.webp",
+            "subImage1" : "/image/silde 5-2.webp",
+            "subImage2" : "/image/silde 5-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_35_KOR_20250103163942.png",
-            "tit": "가니"
+            "mainImage" : "/image/silde 6-1.webp",
+            "subImage1" : "/image/silde 6-2.webp",
+            "subImage2" : "/image/silde 6-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_36_KOR_20250103164017.png",
-            "tit": "단톤"
+            "mainImage" : "/image/silde 7-1.webp",
+            "subImage1" : "/image/silde 7-2.webp",
+            "subImage2" : "/image/silde 7-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         },
         {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_37_KOR_20250103164054.png",
-            "tit": "르메르"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_6_KOR_20240306172201.png",
-            "tit": "로가디스"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_11_KOR_20240306172508.png",
-            "tit": "갤럭시라이프스타일"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_10_KOR_20240521103738.png",
-            "tit": "갤럭시"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_38_KOR_20250103164150.png",
-            "tit": "코텔로"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_2_KOR_20240306171918.png",
-            "tit": "스튜디오니콜슨"
-        },
-        {
-            "img": "https://img.ssfshop.com/display/category/THM/A30/A16/contents/23368_346056_28_KOR_20241204152243.png",
-            "tit": "랙앤본"
+            "mainImage" : "/image/silde 8-1.webp",
+            "subImage1" : "/image/silde 8-2.webp",
+            "subImage2" : "/image/silde 8-3.webp",
+            "tit": "",
+            "desc": "",
+            "brand1": "",
+            "name1": "",
+            "oprice1": "",
+            "drate1": "",
+            "dprice1": "",
+            "brand2": "",
+            "name2": "",
+            "oprice2": "",
+            "drate2": "",
+            "dprice2": ""
         }
     ]
 }
