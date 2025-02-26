@@ -16,7 +16,7 @@ export const getCustomers = async() => { // 수정 필요 : 테이블명, 컬럼
     return result;
 }
 //  고객 테이블에서 한 명 가져오기
-export const getCustomer = async({customer_id}) => { // 수정 필요 : 테이블명, 컬럼명
+export const getCustomer = async({username}) => { // 수정 필요 : 테이블명, 컬럼명
     const sql = `
         select 
             customer_id, username
@@ -27,7 +27,7 @@ export const getCustomer = async({customer_id}) => { // 수정 필요 : 테이�
         where customer_id = ?;
     `;
 
-    const [result] = await db.execute(sql, [customer_id]);
+    const [result] = await db.execute(sql, [username]);
 
     return result[0];
 }

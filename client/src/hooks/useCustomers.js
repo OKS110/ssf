@@ -14,8 +14,8 @@ export function useCustomers() {
     }
 
     /** 고객 별 데이터 호출 **/
-    const getCustomer = async(customer_id) => {
-        const result = await axios.post("http://localhost:9000/customers/member", {"customer_id":customer_id});
+    const getCustomer = async(username) => {
+        const result = await axios.post("http://localhost:9000/customers/member", {"username":username});
         
         setCustomer(result.data);
     }
