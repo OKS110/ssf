@@ -5,11 +5,8 @@ import { useParams } from "react-router-dom";
 import OrderContents from '../components/Order/OrderContents.jsx';
 import OrderCertify from "../components/Order/OrderCertify.jsx";
 import OrderModal from "../components/Order/OrderModal.jsx";
-<<<<<<< HEAD
 import axios from "axios";
 import ReactModal from "react-modal";
-=======
->>>>>>> 1b73f6f15f10d41e40a2c13b8750375642774cf2
 import { useProduct } from "../hooks/useProduct.js";
 import { ProductContext } from '../context/ProductContext.js';
 import { useCustomers } from "../hooks/useCustomers.js"; 
