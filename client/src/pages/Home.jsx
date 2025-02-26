@@ -8,6 +8,10 @@ import SlideWrap from "../components/mainContents/MainSlide/SlideWrap.jsx";
 import SubSlideWrap from "../components/mainContents/SubSlide/SubSlideWrap.jsx";
 import HotBrand from "../components/mainContents/HotBrands/HotBrand.jsx";
 import PopUp from '../components/mainContents/PopUp.jsx';
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+import { useEffect, useState } from "react";
+import SlideWrapTest from "../components/mainContents/MainSlide/SlideWrapTest.jsx";
 
 export default function Home(){
 
