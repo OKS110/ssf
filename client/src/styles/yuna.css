@@ -419,6 +419,7 @@
 .productSlide-prev-button,
 .productSlide-next-button {
     font-size: 1.8rem;
+<<<<<<< HEAD
 }
 
 /**************************
@@ -447,4 +448,6 @@
     width: 70px;
     height: 70px;
     line-height: 35px;
+=======
+>>>>>>> 9c503e81e311a9df56004d60cfd254abe16e3b7a
 }

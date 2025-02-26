@@ -7,5 +7,4 @@ router
     .post('/all', controller.getProductAll)
     .post('/item', controller.getItem);
 
-
 export default router;
