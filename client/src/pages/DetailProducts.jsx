@@ -1,6 +1,6 @@
-import { useState, useRef, useContext, useEffect  } from "react";
-import useFixedScroll from "../hooks/useFixedScroll.js";
+import { useState, useRef, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import useFixedScroll from "../hooks/useFixedScroll.js";
 
 import ProductMypage from "../commons/ProductMypage";
 import DetailImage from "../components/DetailProducts/DetailImage";

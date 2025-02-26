@@ -47,12 +47,7 @@ export default function ProductReview() {
                     activeTab={activeTab} 
                     setActiveTab={setActiveTab} 
                 />
-<<<<<<< HEAD
                 <div style={{ border: "1px solid red" }}>
-                    {renderContent()}
-                </div>                               
-=======
-                <div style={{ border: "1px solid red" , marginTop:'30px'}}>
                     {renderContent()}
                 </div>
                              
@@ -132,7 +127,6 @@ export default function ProductReview() {
                         </div>
                     }
                 </div>
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
             </article>
         </div>
     </div>
