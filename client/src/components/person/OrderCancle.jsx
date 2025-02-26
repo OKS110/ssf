@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import { SlArrowRight } from "react-icons/sl";
 import PersonUIform from './PersonUIform.jsx';
 import ProductMypage from '../../commons/ProductMypage.jsx';
-<<<<<<< HEAD
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
 import MypageCancle from './orderCancle/tabsData/MypageCancle.jsx';
@@ -34,10 +33,7 @@ export default function OrderCancle() {
     const click = (name) => {
         setSelect(name);
     }
-    
-    const handleDesc = (name) => {
-        setOpen(name);
-    }
+
 
 return (
     <div className="mypage-box">
@@ -67,11 +63,15 @@ return (
                         </ul>
                     </div>
                     <div className='order-list'>
-                        <ProductMypage tabs={tabsData}/>
-                        
-                        <div>
-                            내역이 없습니다
-                        </div>
+                         <ProductMypage 
+                            tabs={tabsData} 
+                            activeTab={activeTab} 
+                            setActiveTab={setActiveTab} 
+                        />
+                        <div style={{ border: "1px solid red" }}>
+                            {renderContent()}
+                        </div>                                           
+
                     </div>
                 </div>                
             </article>

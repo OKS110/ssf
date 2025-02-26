@@ -5,7 +5,6 @@ import PersonUIform from './PersonUIform.jsx';
 
 export default function EditMember() {
 
-
     return (
         <div className="mypage-box">
         <div className="mypage-top-menu">
