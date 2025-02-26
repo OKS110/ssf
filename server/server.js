@@ -22,12 +22,13 @@ server.use(express.urlencoded()); //form데이터를 express 서버로 전송할
 server.use('/user', loginRouter);
 server.use('/product', productRouter);
 server.use('/member', SignupRouter);
+
+
 server.use('/mypage',mypageRouter);
-server.use('/order', orderRouter);
 server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
 // server.use('/admin', adminRouter);
-
+// server.use('/order', orderRouter);
 
 
 // 여기는 테스트
