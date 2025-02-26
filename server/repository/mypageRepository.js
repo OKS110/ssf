@@ -35,7 +35,7 @@ export const getMyinfo = async({id}) => {
     
     const sql1=`
                 select customer_id,
-                    name, email, phone,password,address
+                    name, email, phone,password,address, username
                      from customers 
                      where username=?
                 `;
