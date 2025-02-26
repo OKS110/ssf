@@ -52,11 +52,7 @@ export default function SectionWrap({id, title, children}) {
         }
 
     }, [category, subCategory]); // productList 무한루프
-
-    // useEffect(() => {
-        
-    // });
-
+    
     // 이 주의 브랜드 이슈
     useEffect(() => {
         axios
