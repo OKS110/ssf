@@ -8,10 +8,7 @@ import SlideWrap from "../components/mainContents/MainSlide/SlideWrap.jsx";
 import SubSlideWrap from "../components/mainContents/SubSlide/SubSlideWrap.jsx";
 import HotBrand from "../components/mainContents/HotBrands/HotBrand.jsx";
 import PopUp from '../components/mainContents/PopUp.jsx';
-<<<<<<< HEAD
 
-=======
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 export default function Home(){
 
     const sectionList = [
@@ -58,17 +55,54 @@ export default function Home(){
           </Component>
         );
       };
+
+      // 이미지 슬라이드 버튼 관련
+      const [ curSlide, setCurSlide ] = useState(0); // 이미지 인덱스 번호
+      const [ interval, setInteval ] = useState(null);
+
+      const FIRST_SLIDE_INDEX = 0;
+      const LAST_SLIDE_INDEX = 9; // 이미지 슬라이드 끝 번호
+      const MOVE_SLIDE_INDEX = 1; // 이미지 슬라이드 이동값
+  
+      const moveToSlide = (value) => {
+          if (value === 'next') {
+              // 슬라이드 마지막에 도달했을 때 curSlide의 값을 바꿔 처음으로 돌아가게 함
+              setCurSlide((prevState) => 
+                  prevState < LAST_SLIDE_INDEX
+                  ? prevState + MOVE_SLIDE_INDEX
+                  : FIRST_SLIDE_INDEX
+              );
+          }
+          if (value === 'prev') {
+              // 슬라이드 시작점에 도달했을 때 curSlide의 값을 바꿔 마지막으로 돌아가게 함
+              setCurSlide((prevState) => 
+                  prevState > FIRST_SLIDE_INDEX
+                  ? prevState - MOVE_SLIDE_INDEX
+                  : LAST_SLIDE_INDEX
+              );
+          }
+      }
+
+      // 무한 슬라이드 관리
       
     return (
 <main id='content'>
     {/* 슬라이드 시작 */}
   <div className="key-visual">
     <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-watch-progress" data-component="[object Object]">
+        <div className="swiper-btn-container">
+          <button onClick={() => moveToSlide('prev')}><IoIosArrowBack /></button>
+          <button onClick={() => moveToSlide('next')}><IoIosArrowForward /></button>
+        </div>
         <div className="swiper-wrapper" id="swiper-wrapper-816f92e3f693e1c3" aria-live="off"
-                  style={{"transition-duration": "0ms", "transform": "translate3d(-3372px, 0px, 0px)"}}>
-                    
-            <SlideWrap/>
-
+                  style={{
+                    transform: `translateX(${-100 * curSlide}%)`,
+                    // transform: `translateX(${-1686 * curSlide}px)`,
+                    transition: 'all 0.4s ease-in-out'
+                }}
+                  >
+            {/* <SlideWrap/> */}
+            <SlideWrapTest />
         </div>
                 
         {/* <div className="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-816f92e3f693e1c3"></div>
@@ -89,7 +123,6 @@ export default function Home(){
                         <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite">
                             <SubSlideWrap></SubSlideWrap>            
                         </div>
-
                                 {/* 슬라이드 버튼 - 컴포넌트로 생각 중 미정*/}
                             <div className="swiper-button-control">
                                 <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
@@ -108,18 +141,14 @@ export default function Home(){
             key={section.id}
             id={section.id}
             title={section.title}
-           >
+          >
             {/* Render children if they exist */}
           {Array.isArray(section.children) &&
             section.children.map((child) => renderComponent(child))}
           </SectionWrap>
       ))}    
 {/* 컨텐츠 끝 */}
-<<<<<<< HEAD
       <PopUp />
-=======
-      <PopUp/>
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     </div>
   </div>
 </main>

@@ -16,6 +16,10 @@ import axios from 'axios';
 import { MypageContext } from "../context/MypageContext.js";
 import {useContext} from 'react';   
 
+import axios from 'axios';
+import { MypageContext } from "../context/MypageContext.js";
+import {useContext} from 'react';   
+
 export default function Person(){
     const {customerInfo} = useContext(MypageContext);
     console.log('customerInfo',customerInfo);  // 왜왱애ㅙ오애ㅐㅐㅐㅐ

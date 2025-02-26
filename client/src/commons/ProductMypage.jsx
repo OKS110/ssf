@@ -1,4 +1,4 @@
-export default function ProductMypage({ tabs = [], activeTab, setActiveTab }) {
+export default function ProductMypage({pidItem, tabs = [], activeTab, setActiveTab }) {
     return (
         <div className="gods-detail">
             <div className="tab-rects" role="tablist" 

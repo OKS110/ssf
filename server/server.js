@@ -4,8 +4,10 @@ import cors from 'cors';
 import loginRouter from './router/loginRouter.js'
 import productRouter from './router/productRouter.js';
 import SignupRouter from './router/signupRouter.js';
-import adminRouter from './router/adminRouter.js';
 import mypageRouter from './router/mypageRouter.js';
+import orderRouter from './router/orderRouter.js';
+import customerRouter from './router/customerRouter.js'
+import guestRouter from './router/guestRouter.js';
 
 // 서버 생성 및 포트 지정
 const server = express();
@@ -21,6 +23,9 @@ server.use('/user', loginRouter);
 server.use('/product', productRouter);  
 server.use('/member', SignupRouter);
 server.use('/mypage',mypageRouter);
+server.use('/order', orderRouter);
+server.use('/customers', customerRouter);
+server.use('/guest', guestRouter);
 // server.use('/admin', adminRouter);
 
 

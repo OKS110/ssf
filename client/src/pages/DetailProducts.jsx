@@ -1,24 +1,17 @@
-<<<<<<< HEAD
 import { useState, useRef, useContext, useEffect  } from "react";
 import useFixedScroll from "../hooks/useFixedScroll.js";
 import { useParams } from 'react-router-dom';
-=======
-import { useState, useRef } from "react";
-import useFixedScroll from "../hooks/useFixedScroll.js";
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 
 import ProductMypage from "../commons/ProductMypage";
 import DetailImage from "../components/DetailProducts/DetailImage";
 import DetailOrder from "../components/DetailProducts/DetailOrder";
 import DetailTop from "../components/DetailProducts/DetailTop";
+import { useProduct } from '../hooks/useProduct.js';
+import { ProductContext } from '../context/ProductContext.js';
 import GoodsDetail from "../components/DetailProducts/tabsData/GoodsDetail";
 import Recommend from "../components/DetailProducts/tabsData/Recommend";
 import Review from "../components/DetailProducts/tabsData/Review";
 import Size from "../components/DetailProducts/tabsData/Size";
-<<<<<<< HEAD
-
-import { useProduct } from '../hooks/useProduct.js';
-import { ProductContext } from '../context/ProductContext.js';
 
 export default function DetailProducts() {
     const { pidItem } = useContext(ProductContext);
@@ -28,18 +21,14 @@ export default function DetailProducts() {
     useEffect(() => {
         getPidItem(pid);
     }, []);
-    // console.log('pidItem --> ', pidItem);
 
-=======
-
-export default function DetailProducts() {
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     const tabsData = [
         { id: "goodsDetailTab", label: "상품정보", href: "#goodsDetailTabs", content: <GoodsDetail /> },
         { id: "sizeTab", label: "사이즈&핏", href: "#goodsDetailTabs", content: <Size /> },
         { id: "reviewTab", label: "리뷰", href: "#goodsDetailTabs", content: <Review /> },
         { id: "recommendTab", label: "추천", href: "#goodsDetailTabs", content: <Recommend /> }
     ];
+    
 
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
     const contentRef = useRef(null); // 콘텐츠 위치 추적 Ref
@@ -63,10 +52,10 @@ export default function DetailProducts() {
 
     return (
         <div className="detail-wrap content-wrap" style={{ position: "relative" }}>
-            <DetailTop />
+            <DetailTop pidItem={pidItem}/>
             <div className="gods-summary" view-section="summary">
-                <DetailImage />
-                <DetailOrder />
+                <DetailImage pidItem={pidItem}/>
+                <DetailOrder pidItem={pidItem}/>
             </div>
 
             {/* 탭 고정 */}
@@ -82,12 +71,12 @@ export default function DetailProducts() {
                 }}
             >
                 <ProductMypage
+                    pidItem={pidItem}
                     tabs={tabsData}
                     activeTab={activeTab}
                     setActiveTab={handleTabClick} // 클릭 시 스크롤 이동 추가
                 />
             </div>
-
             {/* 기존 컨텐츠 영역 활용 & 스크롤 이동 */}
             <div ref={contentRef} style={{ border: "1px solid red" }}>
                 {renderContent()}

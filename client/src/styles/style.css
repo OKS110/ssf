@@ -321,6 +321,7 @@ main>.key-visual {
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
+    border: 1px solid blueviolet;
 }
 .swiper-slide {
     flex-shrink: 0;
@@ -1285,7 +1286,7 @@ footer .etc .etc-right{
 
 
 .gods-summary {
-    background-color: rgb(187, 187, 187);
+    /* background-color: rgb(187, 187, 187); */
     display: flex;
     margin-bottom: 120px;
     overflow: hidden;
@@ -1296,21 +1297,37 @@ footer .etc .etc-right{
     justify-content: space-between;
     align-items: flex-start;
     /* width: calc(750* 100% / 1400); */
-    width: 56%;
+    width: 51%;
     min-width: 717px;
     box-sizing: border-box;
     border: 1px solid yellow;
     margin: 0;
 
 }
-.gods-summary .godsImg-area .preview-thumb {
+/* 기본 스타일 (flex 세로 정렬) */
+.preview-thumb {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
     min-width: 164px;
     max-width: 164px;
     border: 1px solid red;
 }
+
+/* 3개 이상일 때 Grid 적용 */
+.preview-thumb.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* 3개 미만일 때 Flex 적용 (세로 정렬) */
+.preview-thumb.flex-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .gods-summary .godsImg-area .preview-img {
     position: relative;
     width: calc(750* 100% / 750);
@@ -1354,10 +1371,10 @@ footer .etc .etc-right{
 }
 .gods-summary .godsImg-area .preview-img .preview-zoom {
     /* display: none; */
-    overflow: hidden;
+    /* overflow: hidden; */
     position: absolute;
     top: 0;
-    left: calc(100% + 20px);
+    left: calc(100% + 30px);
     z-index: 12;
     width: 100%;
     height: 100%;
@@ -1383,7 +1400,7 @@ footer .etc .etc-right{
 }
 
 .gods-summary .godsInfo-area {
-    width: calc(550* 100% / 1400);
+    /* width: calc(550* 100% / 1400); */
     min-width: 483px;
 }
 .gods-summary .godsInfo-area .tags {
@@ -1951,13 +1968,13 @@ section#order .form_wrap .btns .btn.gray {
 }
 .goods-info-middle > ul > li:last-child > a >span {
     padding-right: 5px;
+    padding-left: 10px;
 }
 .goods-info-middle > ul > li:last-child > a {
     text-decoration: none;
 }
 .goods-info-middle > ul > li:last-child > span:nth-child(4){
     display: inline-block;
-    width: 260px;
 }
 .goods-info-middle > ul > li:first-child > span:nth-child(2),
 .goods-info-middle > ul > li:nth-child(2) > span:nth-child(2){
@@ -2028,7 +2045,6 @@ section#order .form_wrap .btns .btn.gray {
     width: 50px; 
     margin: 0;
     border-radius: 7px;
-    width: 50px;
     height: 70px;
 }
 
@@ -2081,8 +2097,8 @@ section#order .form_wrap .btns .btn.gray {
 
 .goods-info-btns>button{
     width: 50%;
-    height: 60px;
     font-size: 16px;
+    padding: 14px;
 }
 .goods-info-btns>button:first-child{
     background-color: #000;
@@ -2562,7 +2578,6 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-bottom-my-top-left > span:nth-child(2){
     font-size: 30px;
     font-weight: 700;
-    color: black;
 }
 .mypage-bottom-my-top-left > span:first-child{
     font-size: 23px;
@@ -2922,6 +2937,19 @@ section#order .form_wrap .btns .btn.gray {
     padding-bottom: 20px;
 
 }
+.order-date-active {
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-date-none{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+    
+
 .order-date > ul {
     display: flex;
     gap: 10px;
@@ -2941,9 +2969,13 @@ section#order .form_wrap .btns .btn.gray {
     padding: 5px 10px;
 }
 .order-list{
-    /* height: 300px; */
-<<<<<<< HEAD
+    height: 300px;
 }
+
+    
+/* .order-list{  높이를 지정하는 순간 고정된 높이로 인해 내용물이 많아질 수록 넘치는 에러 발생.
+    height: 300px;
+} */
 .order-list >ul{
     display: flex;
     justify-content: space-between;
@@ -2965,15 +2997,11 @@ section#order .form_wrap .btns .btn.gray {
 
 .order-list >div{
     text-align: center;
-<<<<<<< HEAD
-=======
-    /* padding: 30px 0; */
->>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
-    align-items: center;
+    padding: 30px 0;
 }
 .order-list-ordertab{
-    /* border-top: 1px solid black; */
-    /* padding: 15px 0; */
+    border-top: 1px solid black;
+    padding: 15px 0;
 }
 .mypage-link {
     color: black;

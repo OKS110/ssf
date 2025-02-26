@@ -9,7 +9,7 @@ export const MypageProvider = ({children}) => {
    
     return ( 
         <MypageContext.Provider 
-                value ={{customerInfo,setCustomerInfo }}>                                 
+                value ={{customerInfo,setCustomerInfo }}>                                                 
             {children}
         </MypageContext.Provider>
     );
