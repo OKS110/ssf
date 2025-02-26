@@ -5,7 +5,7 @@ import { db } from './db.js';
  * @param {Object} orderData - 주문 정보 객체
  * @returns {Object} 삽입된 주문 정보 반환
  */
-export const orderItem = async (orderData) => {
+export const addOrderItem = async (orderData) => {
     const sql = `
         INSERT INTO orders (
             customer_id, 
@@ -16,7 +16,6 @@ export const orderItem = async (orderData) => {
             detail_address, 
             status, 
             refund_amount, 
-            guest_id,
             payment_method
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
@@ -52,3 +51,5 @@ export const orderItem = async (orderData) => {
         throw error;
     }
 };
+
+

@@ -26,7 +26,7 @@ export const getCustomer = async(username) => {
         from customers
         where binary username = ? ;
     `;
-
+    // binary 대소문자 구분 X
     const [result] = await db.execute(sql, [username]);
 
     return result[0];
