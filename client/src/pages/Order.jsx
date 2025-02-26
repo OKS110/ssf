@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import OrderContents from '../components/Order/OrderContents.jsx';
 import OrderCertify from "../components/Order/OrderCertify.jsx";
 import OrderModal from "../components/Order/OrderModal.jsx";
-<<<<<<< HEAD
 import axios from "axios";
 import ReactModal from "react-modal";
 import { useProduct } from "../hooks/useProduct.js";
@@ -14,10 +13,7 @@ import { useCustomers } from "../hooks/useCustomers.js";
 import { CustomersContext } from "../context/CustomersContext.js";
 import { useGuests } from "../hooks/useGuest.js";
 import { GuestContext } from "../context/GuestContext.js";
-=======
-import ReactModal from "react-modal";
 
->>>>>>> 9c503e81e311a9df56004d60cfd254abe16e3b7a
 export default function Order() {
     const navigate = useNavigate();
     const { pid } = useParams();

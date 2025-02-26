@@ -10,17 +10,11 @@ import { ProductContext } from '../context/ProductContext.js';
 import { useProduct } from '../hooks/useProduct.js';
 import ProductSlider from '../commons/ProductSlider.jsx';
 
-
-
 export default function SectionWrap({id, title, children}) {
-    const { pid } = useParams();
-    const { productList } = useContext(ProductContext); // 전체 상품 데이터
-    const { getProductList } = useProduct();
+    // const { pid } = useParams();
+    const { productList, detailList, rankList, category, subCategory, setCategory, setSubCategory } = useContext(ProductContext); // 전역 관리
+    const { getFilterProducts } = useProduct(); // custom hooks
 
-    const [category, setCategory] = useState("상의"); // 아우터로~ 탭 메뉴 관리
-    const [subCategory, setSubCategory] = useState("하의"); // 랭킹 탭 메뉴 관리
-    const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
-    const [rankList, setRankList] = useState([]); // 필터링을 거친 상품 데이터(중분류용)
     const [issueList, setIssueList] = useState([]); // 브랜드 이슈 리스트
 
     const tabList = [
@@ -36,22 +30,11 @@ export default function SectionWrap({id, title, children}) {
         { brandName: "PRADA" }
     ];
     
-    useEffect(() => {
-        // 전체 상품 데이터 호출
-        getProductList();
-        if (productList) {
-            // 아우터로~ 섹션 카테고리 데이터
-            const filterCategory = productList.filter(list => list.category === category);
-            const categoryList = filterCategory.filter((item, i) => i < 6 && item);
-            setDetailList(categoryList);
     
-            // 랭킹 카테고리 데이터
-            const filterSubCategory = productList.filter(list => list.category === subCategory);
-            const subCategoryList = filterSubCategory.filter((item, i) => i < 8 && item);
-            setRankList(subCategoryList);
-        }
-
-    }, [category, subCategory]); // productList 무한루프
+    useEffect(() => {
+        // 필터링 완료된 상품 데이터 호출
+        const result = getFilterProducts(category, subCategory);
+    }, [category, subCategory]);
     
     // 이 주의 브랜드 이슈
     useEffect(() => {
@@ -141,24 +124,21 @@ export default function SectionWrap({id, title, children}) {
                 <div className='contents-box god-lists'>
                     <div className='hotBrand-container'>
                         <div className='hotBrand-img'>
-                            <img src="/image/example.jpg" alt="" />
+                            <img src="/image/nike.png" alt="" />
                         </div>
                         <ProductSlider slideArray={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
-                        {/* <ProductBlock detailList={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                     <div className='hotBrand-container'>
                         <div className='hotBrand-img'>
                             <img src="/image/example.jpg" alt="" />
                         </div>
                         <ProductSlider slideArray={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
-                        {/* <ProductBlock detailList={brand2} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                     <div className='hotBrand-container'>
                         <div className='hotBrand-img'>
-                            <img src="/image/example.jpg" alt="" />
+                            <img src="/image/beanpole.webp" alt="" />
                         </div>
                         <ProductSlider slideArray={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" />
-                        {/* <ProductBlock detailList={brand3} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list" /> */}
                     </div>
                 </div>
             }
