@@ -1,18 +1,17 @@
-import { useState, useRef, useContext, useEffect  } from "react";
-import useFixedScroll from "../hooks/useFixedScroll.js";
+import { useState, useRef, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import useFixedScroll from "../hooks/useFixedScroll.js";
 
 import ProductMypage from "../commons/ProductMypage";
 import DetailImage from "../components/DetailProducts/DetailImage";
 import DetailOrder from "../components/DetailProducts/DetailOrder";
 import DetailTop from "../components/DetailProducts/DetailTop";
+import { useProduct } from '../hooks/useProduct.js';
+import { ProductContext } from '../context/ProductContext.js';
 import GoodsDetail from "../components/DetailProducts/tabsData/GoodsDetail";
 import Recommend from "../components/DetailProducts/tabsData/Recommend";
 import Review from "../components/DetailProducts/tabsData/Review";
 import Size from "../components/DetailProducts/tabsData/Size";
-
-import { useProduct } from '../hooks/useProduct.js';
-import { ProductContext } from '../context/ProductContext.js';
 
 export default function DetailProducts() {
     const { pidItem } = useContext(ProductContext);
@@ -29,6 +28,7 @@ export default function DetailProducts() {
         { id: "reviewTab", label: "리뷰", href: "#goodsDetailTabs", content: <Review /> },
         { id: "recommendTab", label: "추천", href: "#goodsDetailTabs", content: <Recommend /> }
     ];
+    
 
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
     const contentRef = useRef(null); // 콘텐츠 위치 추적 Ref
@@ -77,7 +77,6 @@ export default function DetailProducts() {
                     setActiveTab={handleTabClick} // 클릭 시 스크롤 이동 추가
                 />
             </div>
-
             {/* 기존 컨텐츠 영역 활용 & 스크롤 이동 */}
             <div ref={contentRef} style={{ border: "1px solid red" }}>
                 {renderContent()}
