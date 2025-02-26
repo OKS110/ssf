@@ -20,31 +20,24 @@ export default function Carts(){
             <h1>장바구니</h1>   
             <section className="carts-wrap">
                 <div className="tabs carts">
-                        {/* 공통 컴포넌트 사용 */}
-                        <LoginCartsNav activeTab={activeTab} setActiveTab={setActiveTab}
-                                 menuListName={menuListName} />
-                     
-        
+                    {/* 공통 컴포넌트 사용 */}
+                    <LoginCartsNav activeTab={activeTab} setActiveTab={setActiveTab}
+                                    menuListName={menuListName} />
+                    
+                    <div className="order_wrap on all-group">
+                        <CartOrderHead></CartOrderHead>
+                        {/* 장바구니에 상품이 없는 경우 Head에서 관리*/}
+                        <div className="order_set" id="cartSubGroup1">
+                            <CartOrderMain></CartOrderMain>
+                            {/* table을 컴포넌트로 */}
+                            <OrderGrayBox></OrderGrayBox>
+                        </div>
+                        <CartOrderBill></CartOrderBill>
+                        <CartOrderDesc></CartOrderDesc>
                         
-                        <div className="order_wrap on all-group">
-                            <CartOrderHead></CartOrderHead>
-                            {/* 장바구니에 상품이 없는 경우 Head에서 관리*/}
-                            <div className="order_set" id="cartSubGroup1">
-                                <CartOrderMain></CartOrderMain>
-                                {/* table을 컴포넌트로 */}
-                                <OrderGrayBox></OrderGrayBox>
-                            </div>
-
-                           <CartOrderBill></CartOrderBill>
-
-
-                            <CartOrderDesc></CartOrderDesc>
-                            
-                        </div>    
+                    </div>    
                 </div>
 
-
-               
             </section>
 
         </section>
