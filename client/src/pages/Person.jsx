@@ -6,23 +6,39 @@ import { BiParty } from "react-icons/bi";
 import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonUIform from "../components/person/PersonUIform.jsx";
-// import WishListTab from "../components/person/WishListTab.jsx";
 import ProductMypage from "../commons/ProductMypage.jsx";
 import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
+import axios from 'axios';
+import { MypageContext } from "../context/MypageContext.js";
+import {useContext} from 'react';   
 
 import axios from 'axios';
 import { MypageContext } from "../context/MypageContext.js";
 import {useContext} from 'react';   
 
 export default function Person(){
+    const {customerInfo} = useContext(MypageContext);
+    console.log('customerInfo',customerInfo);  // 왜왱애ㅙ오애ㅐㅐㅐㅐ
+    
 
-    // const {customerInfo,setCustomerInfo} = useContext(MypageContext);
-    //     console.log('zzz',customerInfo);
-    // const [data, setData] = useState();
+    // const [data, setData ] = useState([]);  그냥 이렇게만 하면 아주 잘 데이터 가져옴
+    // useEffect(()=>{
+    //     const id = localStorage.getItem('user_id');
+    //     axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
+    //         .then(res => 
+    //         setData(res.data)
+    //         )
+    //         .catch(error => console.log(error)
+    //         );
+    // },[]);
+    // console.log(data); 
+    
+
+
 
     const tabsData = [
         { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content:<WishListProduct/> },
@@ -40,14 +56,7 @@ export default function Person(){
         const activeContent = tabsData.find(tab => tab.id === activeTab);
         return activeContent ? activeContent.content : null;
     };
-    
-    // const id = localStorage.getItem('user_id');
-    // axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
-    //     .then(res => setData(res.data))
-    //     .catch(error=> console.log(error));
-
-    // console.log(data);
-    
+ 
 
 
     return (
@@ -68,7 +77,7 @@ export default function Person(){
                         <div className="mypage-bottom-my-top">   
                             <div className="mypage-bottom-my-top-left">
                                 <span><MdOutlineCardMembership /></span>
-                                <span>홍길동님</span>
+                                <span>{customerInfo.name}님</span>
                                 <span><SlArrowRight /></span>
                             </div>
                             <div className="mypage-bottom-my-top-right">
@@ -120,7 +129,7 @@ export default function Person(){
                             </div>
                         </div>
                     </div>
-                    <div className="mypage-wishList" >
+                    <div className="mypage-wishList" > {/* 위시리스트는 찜한게 있어야 나오게 해야한다  */}
                         <div className="mypage-wishList-top" >
                             <h2>위시리스트</h2>
                             <div>
@@ -128,7 +137,6 @@ export default function Person(){
                                 <span><MdKeyboardArrowRight /></span>
                             </div>
                         </div>
-                        {/* <WishListTab tabs={tabsData}/> */}
                         <ProductMypage 
                             tabs={tabsData} 
                             activeTab={activeTab} 

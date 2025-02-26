@@ -1514,6 +1514,10 @@ footer .etc .etc-right{
 
 /* 상품 정보 리스트 */
 .gods-detail {
+<<<<<<< HEAD
+=======
+    /* min-height: calc(100vh - 544px); */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
     padding-top: 0 !important;
 }
 .tab-rects {
@@ -1530,9 +1534,12 @@ footer .etc .etc-right{
     background-color: white; /* 배경색 추가 */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 .tab-rects>ul {
     position: relative;
     display: flex;
@@ -2351,10 +2358,6 @@ section#order .form_wrap .btns .btn.gray {
 .signup-top:last-child >label{
     font-weight: 700;
 }
-.signup-top > input:not(.test) {
-    width: 100%;
-    height: 35px;
-}
 .signup-top > input:not(.signup-address-extra) {
     width: 100%;
     height: 35px;
@@ -2362,7 +2365,7 @@ section#order .form_wrap .btns .btn.gray {
 .signup-address{
     padding-bottom: 5px;
 }
-.signup-address-btn{ 
+.signup-address-btn{
     background-color: var(--purple500);
     color: white;
     padding: 5px 7px;
@@ -2389,11 +2392,6 @@ section#order .form_wrap .btns .btn.gray {
     margin-top: 10px;
     height: 35px;
 }
-    
-    
-    
-    
-        
 .textarea{
     width: 100%;
     height: 400px;
@@ -2580,14 +2578,7 @@ section#order .form_wrap .btns .btn.gray {
 .mypage-bottom-my-top-left > span:nth-child(2){
     font-size: 30px;
     font-weight: 700;
-    color: black;
 }
-.mypage-Title-notborder {
-    /* border-bottom: 3px solid black; */
-    font-weight: 500;
-    font-size: 35px;
-}
-    
 .mypage-bottom-my-top-left > span:first-child{
     font-size: 23px;
 }
@@ -2931,6 +2922,11 @@ section#order .form_wrap .btns .btn.gray {
     font-weight: 500;
     font-size: 35px;
 }
+.mypage-Title-notborder {
+    /* border-bottom: 3px solid black; */
+    font-weight: 500;
+    font-size: 35px;
+}
 .order-list-date{
     /* border: 1px solid red; */
     padding: 30px 0;
@@ -2959,13 +2955,21 @@ section#order .form_wrap .btns .btn.gray {
     gap: 10px;
     justify-content:flex-end;
 }
-.order-date > ul > li {
+.order-date > ul>li:hover{
+    cursor: pointer;
+}
+.order-date-active { 
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.order-date-none{
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px 10px;
 }
-.order-date > ul>li:hover{
-    cursor: pointer;
+.order-list{
+    height: 300px;
 }
 
     
@@ -2986,56 +2990,19 @@ section#order .form_wrap .btns .btn.gray {
 .order-list-active{
     background-color: black;
     color: white;
+=======
+    /* border: 1px solid red; */
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
 }
+
 .order-list >div{
     text-align: center;
-    align-items: center;
+    padding: 30px 0;
 }
-.mypage-user-info > ul  li{
-    padding: 20px 0;
-    border-bottom: 1px solid rgb(179, 178, 178);
-    font-size: 18px;
-    color: black;
-}
-/* .order-list-ordertab{
+.order-list-ordertab{
     border-top: 1px solid black;
     padding: 15px 0;
-} */
-.order-list-ordertab{
-    /* background-color: rgb(218, 218, 218); */
-    margin: 0;
 }
-.order-list-bottom{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-}
-.order-list-deliverylist{
-    border-bottom: 1px solid gray;
-    /* background-color: red; */
-}
-.order-list-deliverylist>ul>li{
-    padding: 15px;
-    border-top: 1px solid gray;
-    font-size: 14px;
-    text-align: left;
-}
-.mypage-review-table {
-    margin-top: 40px;
-    }
-.mypage-review-table-notmargin{
-    border-top: 1px solid gray;
-    /* background-color: aqua; */
-    /* margin-bottom: 50px; */
-     
-}
-.mypage-review-table>table, .mypage-review-table-notmargin>table{
-    width: 100%;
-}
-    
-        
-    
-    
 .mypage-link {
     color: black;
 }
@@ -3044,13 +3011,17 @@ section#order .form_wrap .btns .btn.gray {
 /* ******************************************** */
 /* 마이페이지 회원정보관리 */
 /* ************************************************ */
+<<<<<<< HEAD
 .mypage-user-info{
     /* border: 1px solid red; */
 }
-.mypage-user-info > ul > li{
+=======
+>>>>>>> 8f2b396a26c60b0a53bc347c862d0b60cb5c020c
+.mypage-user-info > ul  li{
     padding: 20px 0;
     border-bottom: 1px solid rgb(179, 178, 178);
     font-size: 18px;
+    color: black;
 }
 .mypage-user-info > ul > li:first-child{
     font-size: 23px ;
