@@ -21,9 +21,13 @@ import UpdateInfo from './components/person/MyInfo/UpdateInfo.jsx';
 import { ProductProvider } from './context/ProductContext.js';
 import ScrollToTop from './location/scrollToTop.js';
 import { MypageProvider } from './context/MypageContext.js';
+import { CustomersProvider } from './context/CustomersContext.js';
+import { GuestProvider } from './context/GuestContext.js';
 function App() {
   return (
     <>
+    <CustomersProvider>
+    <GuestProvider>
     <MypageProvider>
     <ProductProvider>
     <AuthProvider>
@@ -48,9 +52,11 @@ function App() {
           </Routes>
           {/* </ScrollToTop>  ScrollTop */} 
         </BrowserRouter>
-    </AuthProvider>
-    </ProductProvider>
-    </MypageProvider>
+     </AuthProvider>
+     </ProductProvider>
+     </MypageProvider>
+     </GuestProvider>
+     </CustomersProvider>
     </>
   );
 }
