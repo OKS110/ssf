@@ -10,7 +10,7 @@ export const getProductAll = async(req, res) => {
 /** 카테고리 별 데이터 호출 **/
 export const getItem = async(req, res) => {
     const result = await repository.getItem(req.body);
-    console.log("controller :: result --> ", result);
+    // console.log("controller :: result --> ", result);
     res.json(result);
     res.end();
 }

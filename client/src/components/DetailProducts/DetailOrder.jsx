@@ -1,6 +1,7 @@
 import { CiCircleQuestion } from "react-icons/ci";
 import { TfiArrowCircleDown } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 export default function DetailOrder({pidItem}){
@@ -9,12 +10,12 @@ export default function DetailOrder({pidItem}){
     console.log("size", sizePidItemList);
     console.log("color", colorPidItemList);
     
-
+    
 
     return (
         <div className="godsInfo-area">
                         <div class="tags">
-                            <span>{pidItem.delivery_fee === "free" ? '무료배송':"유료배송 3000원"}</span>
+                            <span>{pidItem.deliveryFee === "free" ? '무료배송':"유료배송 3000원"}</span>
                         </div>
                         <h2 class="brand-name">
                             <a href="/Clove/main?brandShopNo=BDMA19E27&amp;brndShopId=RTCLO&amp;dspCtgryNo=">{pidItem.brand}</a>
@@ -94,7 +95,7 @@ export default function DetailOrder({pidItem}){
                                 <span>배송방법</span>
                                 <ul>
                                     <li>
-                                        <span>{pidItem.delivery_fee === "free" ? '무료배송':"유료배송"}</span>
+                                        <span>{pidItem.deliveryFee === "free" ? '무료배송':"유료배송"}</span>
                                     </li>
                                 </ul>
                             </div>
