@@ -21,7 +21,8 @@ export const registCustomer = async(req,res) => {
         'username':req.body.data.username,
         'phone':ph,
         'address':req.body.adata.address.concat(' ',req.body.data.addressDetail),
-        'email': req.body.data.email.concat('@',req.body.data.emailDomain) 
+        'email': req.body.data.email.concat('@',req.body.data.emailDomain) ,
+        'zoneCode':req.body.adata.zoneCode
     }
        
 

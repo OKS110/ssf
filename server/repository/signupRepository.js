@@ -19,7 +19,7 @@ export const getId = async({id}) => {
 export const registCustomer = async(data) => {
     
     console.log('teste',data);
-    
+    //  테이블에 zipcode 만들어지면 sql 에 zipcode 추가해 컬럼명 이건지 확인하고
     const sql = `
                 insert into customers(
                         username, 
@@ -40,6 +40,7 @@ export const registCustomer = async(data) => {
         data.username,
         data.pwd,
         data.address
+        // ,data.zoneCode
     ]
     
     const [result] = await db.execute(sql,values);
