@@ -40,7 +40,7 @@ export default function Person(){
     // },[]);
     // console.log(data); 
     
-
+    
 
 
     const tabsData = [

@@ -13,14 +13,15 @@ import { useCustomers } from "../hooks/useCustomers.js";
 import { CustomersContext } from "../context/CustomersContext.js";
 import { useGuests } from "../hooks/useGuest.js";
 import { GuestContext } from "../context/GuestContext.js";
-
+import { OrderContext } from "../context/OrderContext.js";
+import { useOrder } from "../hooks/useOrder.js";
 export default function Order() {
     const navigate = useNavigate();
     const { pid } = useParams();
     const { pidItem } = useContext(ProductContext); // ✅ 개별 상품 데이터
     const { getPidItem } = useProduct();
 
-    const { customer } = useContext(CustomersContext); // ✅ 고객 정보
+    const { customer } = useContext(CustomersContext); // ✅ 고객 정보(회원)
     const { getCustomer } = useCustomers();
 
     const { guestList } = useContext(GuestContext); // ✅ 비회원 리스트
@@ -28,6 +29,11 @@ export default function Order() {
 
     const [isVerified, setIsVerified] = useState(false); // ✅ 휴대폰 인증 상태
     const [isAgreed, setIsAgreed] = useState(false); // ✅ 구매 동의 상태
+
+    const {orderList, setOrderList,
+        orderPrice, setOrderPrice,
+        member, setMember } = useContext(OrderContext);
+    const { saveToOrder, getOrderList, saveGuestOrder } = useOrder();  // ✅ 주문 데이터(테이블 insert)
 
     const [formData, setFormData] = useState({
         name: "",
@@ -43,6 +49,7 @@ export default function Order() {
     const phoneRef = useRef(null);
     const emailRef = useRef(null);
     const addressRef = useRef(null);
+    const detail_addressRef = useRef(null);
     const messageRef = useRef(null);
 
     const [token, setToken] = useState(null);
@@ -111,21 +118,21 @@ export default function Order() {
         }
     }, [customer]);
 
-    // ✅ 비회원 정보가 로드되면 `formData` 자동 업데이트
-    useEffect(() => {
-        if (token?.startsWith("guest_token_") && guestList.length > 0) {
-            const latestGuest = guestList[guestList.length - 1]; // 마지막 비회원 데이터
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                name: latestGuest.name || "",
-                phone: latestGuest.phone || "",
-                email: latestGuest.email || "",
-                address: latestGuest.address || "",
-                zipcode: latestGuest.zipcode || "",
-                detail_address: latestGuest.detail_address || "",
-            }));
-        }
-    }, [guestList, token]);
+    // // ✅ 비회원 정보가 로드되면 `formData` 자동 업데이트
+    // useEffect(() => {
+    //     if (token?.startsWith("guest_token_") && guestList.length > 0) {
+    //         const latestGuest = guestList[guestList.length - 1]; // 마지막 비회원 데이터
+    //         setFormData((prevFormData) => ({
+    //             ...prevFormData,
+    //             name: latestGuest.name || "",
+    //             phone: latestGuest.phone || "",
+    //             email: latestGuest.email || "",
+    //             address: latestGuest.address || "",
+    //             zipcode: latestGuest.zipcode || "",
+    //             detail_address: latestGuest.detail_address || "",
+    //         }));
+    //     }
+    // }, [guestList, token]);
 
     // ✅ 토큰 여부 설정
     useEffect(() => {
@@ -133,7 +140,7 @@ export default function Order() {
         setToken(storedToken);
     }, []);
 
-    const isAuthorized = token && !token.startsWith("guest_token_");
+    const isAuthorized = token && !token.startsWith("guest_token_"); // 회원 비회원 여부 확인
 
     // ✅ 유효성 검사 함수
     const validateOrder = () => {
@@ -143,6 +150,7 @@ export default function Order() {
         if (!formData.phone || !phoneRef.current?.value) missingFields.push("휴대폰 번호");
         if (!formData.email || !emailRef.current?.value) missingFields.push("이메일");
         if (!formData.address || !addressRef.current?.value) missingFields.push("배송 주소");
+        if (!formData.detail_address || !detail_addressRef.current?.value) missingFields.push("배송 상세 주소");
         if (!formData.message || !messageRef.current?.value) missingFields.push("배송 메시지");
 
         if (missingFields.length > 0) {
@@ -157,50 +165,76 @@ export default function Order() {
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
         if (storedToken) {
-            setIsVerified(true); // ✅ 토큰이 존재하면 인증 완료로 설정
+            setIsVerified(true); // ✅ 토큰이 존재하면 인증 완료로 설정 (휴대폰 인증)
         }
     }, []);
 
     // ✅ 주문폼 제출 핸들러
-    const handleOrderSubmit = (e) => {
+    const handleOrderSubmit = async (e) => {
         e.preventDefault();
 
         console.log("결제 버튼 클릭 - 현재 토큰:", token);
 
 
-        if (!isVerified) {
+        if (!isVerified) { // 휴대폰 인증(토큰이 없을 때)
             alert("휴대폰 인증을 먼저 완료해주세요.");
             return;
         }
 
-        if (!validateOrder()) {
+        if (!validateOrder()) { // 폼 유효성 검사
             return;
         }
 
         // ✅ 주문 데이터 객체 생성
         const orderData = {
-            ...(isAuthorized 
-                ? {customer_id: customer.customer_id}  // 🔹 로그인된 경우 -> orders 테이블로 값 전달
-                : { guest_id: `guest_${Date.now()}`}  // 🔹 비회원인 경우 -> guest_orders 테이블로 값 전달
-            ),
-            order_number: `ORD-${Date.now()}`,
-            total_price: pidItem?.saleprice || 0,
-            zipcode: formData.zipcode || "",
-            shipping_address: formData.address || "",
-            detail_address: formData.detail_address || "",
+            total_price: Number(pidItem?.saleprice.replace(/,/g, "")) || 0, // ✅ 쉼표 제거 후 숫자로 변환
+            zipcode: formData.zipcode || null, // undefined이면 null
+            shipping_address: formData.address || null,
+            delivery_message: formData.message || null,
+            detail_address: formData.detail_address || null,
             status: "Pending",
             refund_amount: 0,
-            payment_method: selectedPayMethod,
+            payment_method: selectedPayMethod || null,
         };
         console.log("📌 최종 주문 데이터:", orderData);
 
+        try{
+            if(isAuthorized){ // 회원일 때 회원 주문 저장
+                await saveToOrder({ ...orderData, customer_id: customer.customer_id }); // ✅ MYSQL orders 테이블에 삽입. (회원)
+            }else { //비회원일 때
+                // ✅ 비회원 주문 처리
+                const guestData = { //비회원 테이블에 넣을 폼 형성
+                    name: formData.name,
+                    phone: formData.phone,
+                    email: formData.email,
+                    address: formData.address,
+                    zipcode: formData.zipcode,
+                    detail_address: formData.detail_address
+                    // order_number는 백엔드에서 생성
+                };
+    
+                // ✅ 서버에서 비회원 저장 후 gid 반환
+                    const response = await saveGuestOrder(guestData, orderData);
+                    const guestId = response.guest_id;
+                    console.log("로컬스토리지에 들어갈 gid", response);
+                    
+                    localStorage.setItem("guest_id", guestId); //gid 로컬 스토리지에 저장
+                    console.log("📌 guest_id가 localStorage에 저장됨:", guestId);
+            }
 
-        if (!isAgreed) {
-            alert("구매 동의에 체크해주세요.");
-            return;
+            if (!isAgreed) {
+                alert("구매 동의에 체크해주세요.");
+                return;
+            }
+            setIsModalOpen(true); // 마이페이지로 이동하는 모달 창
+        }catch(error){
+            console.error("❌ 주문 처리 중 오류 발생:", error);
         }
-        setIsModalOpen(true);
+
+
+        
     };
+
 
     return (
         <section id="order" className="content-wrap content-wrap-padding">
@@ -241,7 +275,7 @@ export default function Order() {
                         orderItems={pidItem}
                         selectedPayMethod={selectedPayMethod}
                         setSelectedPayMethod={setSelectedPayMethod}
-                        refs={{ nameRef, phoneRef, emailRef, addressRef, messageRef }}
+                        refs={{ nameRef, phoneRef, emailRef, addressRef, detail_addressRef, messageRef }}
                         isAgreed={isAgreed} // ✅ 구매동의 버튼 상태 전달
                         setIsAgreed={setIsAgreed} // ✅ 구매 동의 버튼 상태 업데이트 함수 전달
                         isVerified={isVerified} // ✅ 휴대폰 인증 상태 전달

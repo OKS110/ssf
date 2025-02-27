@@ -155,9 +155,12 @@ ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 -- (2001, 3, 'ORD-20250122-2001', 296818, 'Seoul, Korea', 'Returned', 94617, '2025-01-22 12:18:10'),
 -- (2002, 5, 'ORD-20250130-2002', 174589, 'Busan, Korea', 'Shipped', 0, '2025-01-30 14:45:32'),
 -- (2003, 2, 'ORD-20250205-2003', 119320, 'Incheon, Korea', 'Pending', 0, '2025-02-05 09:10:23');
-select * from orders;
-
+select * from orders where customer_id = 2;
+desc orders;
 select * from guest_orders;
+select * from guests;
+select * from customers;
+select * from products;
 -- DELETE FROM orders WHERE id IN (2001, 2002, 2003);
 
 
@@ -245,14 +248,42 @@ CREATE TABLE guests ( -- 비회원(게스트) 정보를 저장하는 테이블 �
     gid INT auto_increment PRIMARY KEY, -- 고유한 비회원 ID (기본 키, JSON에서 직접 부여)
     name VARCHAR(100) NOT NULL, -- 비회원 이름 (필수 입력)
     phone VARCHAR(20) NOT NULL, -- 비회원 전화번호 (필수 입력)
-    order_number VARCHAR(20) UNIQUE NOT NULL, -- 비회원 주문 번호 (고유값, 주문 조회용)
+    -- order_number VARCHAR(20) UNIQUE NOT NULL, -- 비회원 주문 번호 (고유값, 주문 조회용)
     email VARCHAR(100) DEFAULT NULL, -- 비회원 이메일 (선택 입력)
     address VARCHAR(255) DEFAULT NULL, -- 비회원 배송 주소 (선택 입력)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 비회원 정보 생성 시간 (자동 기록)
 );
 INSERT INTO guests (name, phone, order_number, email, address)
 VALUES ('홍길동', '01012345678', 'abc1234', 'honggildong@example.com', '서울 동작구 동작대로 3');
+ALTER TABLE guests
+ADD COLUMN zipcode VARCHAR(20) DEFAULT NULL AFTER address, -- ✅ 우편번호 추가
+ADD COLUMN detail_address VARCHAR(255) DEFAULT NULL AFTER zipcode; -- ✅ 상세 주소 추가
 
+ALTER TABLE guest_orders
+MODIFY COLUMN order_number VARCHAR(50) NOT NULL;
+ALTER TABLE guests ADD CONSTRAINT unique_guest UNIQUE (name, email, phone);
+
+SELECT 
+    go.*, 
+    g.name, 
+    g.phone, 
+    g.email, 
+    g.address, 
+    g.zipcode, 
+    g.detail_address
+FROM guest_orders AS go
+JOIN guests AS g ON go.guest_id = g.gid;
+
+select * from customers;
+select * from guest_orders;
+select * from orders;
+select * from guests;
+SELECT * FROM guest_orders ORDER BY order_date DESC LIMIT 5;
+-- ALTER TABLE guests DROP COLUMN order_number;
+
+desc guest_orders;
+desc guests;
+desc orders;
 select * from orders;
 select count(*) as result_rows
 from guests
@@ -352,4 +383,6 @@ LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아�
  
  select * from customers;
  desc products;
+ select * from orders; -- oid, customer_id, order_number, total_price, zipcode, shipping_address, delivery_message, detail_address, status
+						-- refund_amount, order_date, payment_method
  

@@ -1,9 +1,9 @@
 import { db } from './db.js';
 
-export const getGuestList = async() => { // 수정 필요 : 테이블명, 컬럼명
+export const getGuestList = async() => { 
     const sql = `
         select 
-            gid, name, phone, order_number, email, address, created_at 
+            gid, name, phone, email, address, created_at 
         from guests;
     `;
 
@@ -12,9 +12,9 @@ export const getGuestList = async() => { // 수정 필요 : 테이블명, 컬럼
     return result[0];
 }
 
-export const getGuest = async({gid}) => { // 수정 필요 : 테이블명, 컬럼명
+export const getGuest = async({gid}) => { 
     const sql = `
-        select gid, name, phone, order_number, email, address, created_at 
+        select gid, name, phone, email, address, created_at 
         from guests
         where gid = ?
     `;
@@ -22,4 +22,85 @@ export const getGuest = async({gid}) => { // 수정 필요 : 테이블명, 컬�
     const [result] = await db.execute(sql, [gid]);
 
     return result[0];
-}
+};
+
+export const addGuest = async (guestData) => {
+    try {
+        // 1️⃣ 먼저 동일한 name, email, phone이 있는지 확인
+        const checkSql = `
+            SELECT gid FROM guests WHERE name = ? AND email = ? AND phone = ?;
+        `;
+        const [existingGuest] = await db.execute(checkSql, [
+            guestData.name, 
+            guestData.email || null, 
+            guestData.phone
+        ]);
+
+        if (existingGuest.length > 0) {
+            console.log("✅ 기존 비회원 정보 있음:", existingGuest[0]);
+            return { gid: existingGuest[0].gid }; // 기존 `gid` 반환
+        }
+
+        // 2️⃣ 중복이 없으면 새로운 비회원 정보 삽입
+        const insertSql = `
+            INSERT INTO guests (name, phone, email, address, zipcode, detail_address)
+            VALUES (?, ?, ?, ?, ?, ?);
+        `;
+        const [result] = await db.execute(insertSql, [
+            guestData.name,
+            guestData.phone,
+            guestData.email || null,
+            guestData.address || null,
+            guestData.zipcode || null,
+            guestData.detail_address || null
+        ]);
+
+        console.log("✅ 새로운 비회원 저장 완료:", result);
+        return { gid: result.insertId }; // 신규 `gid` 반환
+    } catch (error) {
+        console.error("❌ 비회원 정보 저장 오류:", error);
+        throw error;
+    }
+};
+
+
+export const addGuestOrder = async (guestOrderData) => {
+    const sql = `
+        INSERT INTO guest_orders (
+            guest_id, 
+            order_number, 
+            total_price, 
+            zipcode,
+            shipping_address, 
+            delivery_message,
+            detail_address, 
+            status, 
+            refund_amount, 
+            order_date,
+            payment_method
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?);
+    `;
+
+    try {
+        const orderNumber = `G_ORD-${Date.now()}-${guestOrderData.guest_id}`;
+
+        const [result] = await db.execute(sql, [
+            guestOrderData.guest_id || null, // ✅ `guest_id`가 없으면 NULL 저장
+            orderNumber,
+            guestOrderData.total_price ?? 0,
+            guestOrderData.zipcode || null,
+            guestOrderData.shipping_address || null,
+            guestOrderData.delivery_message || null,
+            guestOrderData.detail_address || null,
+            guestOrderData.status || "Pending",
+            guestOrderData.refund_amount ?? 0,
+            guestOrderData.payment_method || null,
+        ]);
+
+        console.log("✅ guest_orders 저장 완료:", result);
+        return { order_id: result.insertId, order_number: orderNumber, guest_id:guestOrderData.guest_id };
+    } catch (error) {
+        console.error("❌ guest_orders 저장 오류:", error);
+        throw error;
+    }
+};
