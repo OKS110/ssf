@@ -29,10 +29,6 @@ export default function LoginTab2({ isActive }) {
       const cleaned = value.replace(/\D/g, "");
       // 상태(formData) 업데이트 - 숫자만 유지됨
       setFormData({ ...formData, [name]: cleaned });
-    } else if (name === "ordNo") {
-      // 주문번호는 숫자와 영어만 허용
-      const cleaned = value.replace(/[^a-zA-Z0-9]/g, "");
-      setFormData({ ...formData, [name]: cleaned });
     } else {
       // 다른 입력 필드는 그대로 값 저장
       setFormData({ ...formData, [name]: value });
@@ -50,13 +46,18 @@ export default function LoginTab2({ isActive }) {
         return;
     }
 
-    axios.post('http://localhost:9000/user/guestLogin', formData)
+    axios.post('http://localhost:9000/user/guestLogin', {
+      name: formData.guestNm,
+      phone: formData.mobileNo,
+      order_number: formData.ordNo,
+  })
         .then(res => {
             console.log('res.data --> ', res.data);
 
             if (res.data.result_rows === 1) {
                 alert('비회원 로그인 성공!');
                 localStorage.setItem("token", res.data.token);
+                localStorage.setItem("guest_id", res.data.guest_id);
                 setIsLoggedIn(true);
                 navigate('/');
             } else {
