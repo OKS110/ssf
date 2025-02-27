@@ -12,13 +12,20 @@ import ProductMypage from "../commons/ProductMypage.jsx";
 import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
-import axios from 'axios';
-import { MypageContext } from "../context/MypageContext.js";
-import {useContext} from 'react';   
+// import axios from 'axios';
+// import { MypageContext } from "../context/MypageContext.js";
+// import {useContext} from 'react';   
+// import { CustomersContext } from '../../../context/CustomersContext.js';
+// import { useCustomers } from '../../../hooks/useCustomers.js';
 
 export default function Person(){
-    const {customerInfo} = useContext(MypageContext);
-    console.log('customerInfo',customerInfo);  // 왜왱애ㅙ오애ㅐㅐㅐㅐ
+    // const {customersList} = useContext(CustomersContext);
+    // const { getCustomersList } = useCustomers();
+    // useEffect( async () => {
+    //     await getCustomersList();
+    // }, [])
+    
+    // console.log('customersLisㅇㅇㅇㅇt',customersList); // 음..
     
 
     // const [data, setData ] = useState([]);  그냥 이렇게만 하면 아주 잘 데이터 가져옴
@@ -73,7 +80,7 @@ export default function Person(){
                         <div className="mypage-bottom-my-top">   
                             <div className="mypage-bottom-my-top-left">
                                 <span><MdOutlineCardMembership /></span>
-                                <span>{customerInfo.name}님</span>
+                                {/* <span>{customerInfo.name}님</span> */}
                                 <span><SlArrowRight /></span>
                             </div>
                             <div className="mypage-bottom-my-top-right">

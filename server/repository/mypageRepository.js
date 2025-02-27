@@ -45,3 +45,18 @@ export const getMyinfo = async({id}) => {
     
     return result[0];
 }
+
+
+export const updateMyinfo = async({addressValue,updateData}) => {
+    console.log('addressValue',addressValue);
+    console.log('updateData',updateData);
+    
+    
+    const sql =`
+    
+                `;
+
+    const result = db.execute(sql,[]);
+    return result;
+
+}
