@@ -20,9 +20,10 @@ export const registCustomer = async(req,res) => {
         'pwd':req.body.data.pwd,
         'username':req.body.data.username,
         'phone':ph,
-        'address':req.body.adata.address.concat(' ',req.body.data.addressDetail),
+        'address':req.body.adata.address,
         'email': req.body.data.email.concat('@',req.body.data.emailDomain) ,
-        'zoneCode':req.body.adata.zoneCode
+        'zoneCode':req.body.adata.zoneCode,
+        'addressDetail':req.body.data.addressDetail
     }
        
 

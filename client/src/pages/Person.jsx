@@ -6,40 +6,26 @@ import { BiParty } from "react-icons/bi";
 import { SlArrowRight } from "react-icons/sl";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PersonUIform from "../components/person/PersonUIform.jsx";
 import ProductMypage from "../commons/ProductMypage.jsx";
 import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
-// import axios from 'axios';
-// import { MypageContext } from "../context/MypageContext.js";
-// import {useContext} from 'react';   
-// import { CustomersContext } from '../../../context/CustomersContext.js';
-// import { useCustomers } from '../../../hooks/useCustomers.js';
+import { CustomersContext } from '../context/CustomersContext.js';
+import {useCustomers} from '../hooks/useCustomers.js';
 
 export default function Person(){
-    // const {customersList} = useContext(CustomersContext);
-    // const { getCustomersList } = useCustomers();
-    // useEffect( async () => {
-    //     await getCustomersList();
-    // }, [])
-    
-    // console.log('customersLisㅇㅇㅇㅇt',customersList); // 음..
-    
-
-    // const [data, setData ] = useState([]);  그냥 이렇게만 하면 아주 잘 데이터 가져옴
-    // useEffect(()=>{
-    //     const id = localStorage.getItem('user_id');
-    //     axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
-    //         .then(res => 
-    //         setData(res.data)
-    //         )
-    //         .catch(error => console.log(error)
-    //         );
-    // },[]);
-    // console.log(data); 
-    
+      const {customer} = useContext(CustomersContext);
+      const { getCustomer } = useCustomers();
+  
+      useEffect( () => {
+          const fetchCustoerList = async() => {
+              const id = localStorage.getItem('user_id');
+              await getCustomer(id);
+          }
+          fetchCustoerList();
+      }, [])
 
 
 
@@ -48,8 +34,6 @@ export default function Person(){
         { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content:<WishListBrand/>},
         { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" ,content:<WishListContent/>}
     ];
-    // productMypage , DetailProducts 참고해서 버튼클릭햇을시 해당하는거로 넘어가게 해
-
 
     // 부모에서 활성화된 탭 상태를 관리
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
@@ -80,7 +64,7 @@ export default function Person(){
                         <div className="mypage-bottom-my-top">   
                             <div className="mypage-bottom-my-top-left">
                                 <span><MdOutlineCardMembership /></span>
-                                {/* <span>{customerInfo.name}님</span> */}
+                                <span>{customer.name}님</span>
                                 <span><SlArrowRight /></span>
                             </div>
                             <div className="mypage-bottom-my-top-right">
@@ -148,28 +132,8 @@ export default function Person(){
                         <div style={{ border: "1px solid red" }}>
                             {renderContent()}
                         </div>
-
                         <div className="mypage-wishList-items">
-                            <div>
-                            아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
-                             얘 5개 복붙
-                            </div>
-                            <div>
-                            아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
-                             얘 5개 복붙
-                            </div>
-                            <div>
-                            아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
-                             얘 5개 복붙
-                            </div>
-                            <div>
-                            아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
-                             얘 5개 복붙
-                            </div>
-                            <div>
-                            아이템 컴포넌트 이거는 언니가 메인화면에 만든거 써랑
-                             얘 5개 복붙
-                            </div>
+                            위시리스트 있을때만 얘 칸 보이게 
                         </div>
                     </div>
                     <div className="mypage-active">
