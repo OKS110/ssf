@@ -350,6 +350,6 @@ LEFT JOIN order_items ON products.pid = order_items.product_id -- 상품이 포�
 LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
 LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
  
- select * from orders;
+ select * from customers;
  desc products;
  
