@@ -1,19 +1,38 @@
+import { useState } from "react";
 import Brands from "./Brands.jsx";
 
 export default function HotBrand(){
+    // 이미지 슬라이드 버튼 관련
+    const [ curSlide, setCurSlide ] = useState(0); // 이미지 인덱스 번호
+
+    const moveToSlide = (value) => {
+        if (value === 'next' && curSlide < 2) {
+            setCurSlide(curSlide + 1);
+        }
+        if (value === 'prev' && curSlide > 0) {
+            setCurSlide(curSlide - 1);
+        }
+    }
+
     return (
         <section className="hot-brand">
-            <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight swiper-backface-hidden">
-                <div className="swiper-wrapper" id="swiper-wrapper-513dfba940703eb2" aria-live="polite" style={{"height": "260px"}}>
-                    <Brands></Brands> 
+            <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight swiper-backface-hidden"
+                style={{overflow: "hidden"}}>
+                <div className="swiper-wrapper" id="swiper-wrapper-513dfba940703eb2" aria-live="polite" 
+                    style={{
+                        "height": "260px",
+                        transform: `translateX(${-100 * curSlide}%)`,
+                        transition: 'all 0.4s ease-in-out'
+                    }}>
+                    <Brands />
                 </div>
                 
 
                 {/* 슬라이드 버튼 - 컴포넌트로 만들 지 고민 중 */}
                 <div className="swiper-button-control">
-                    <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="true"></div>
-                    <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">1</span> / <span className="swiper-pagination-total">3</span></div>
-                    <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="false"></div>
+                    <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="true" onClick={() => moveToSlide("prev")}></div>
+                    <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">{curSlide + 1}</span> / <span className="swiper-pagination-total">3</span></div>
+                    <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="false" onClick={() => moveToSlide("next")}></div>
                 </div>
             <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
         </section>

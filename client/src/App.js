@@ -23,9 +23,11 @@ import ScrollToTop from './location/scrollToTop.js';
 import { MypageProvider } from './context/MypageContext.js';
 import { CustomersProvider } from './context/CustomersContext.js';
 import { GuestProvider } from './context/GuestContext.js';
+import { OrderProvider } from './context/OrderContext.js';
 function App() {
   return (
     <>
+    <OrderProvider>
     <CustomersProvider>
     <GuestProvider>
     <MypageProvider>
@@ -57,6 +59,7 @@ function App() {
      </MypageProvider>
      </GuestProvider>
      </CustomersProvider>
+     </OrderProvider>
     </>
   );
 }
