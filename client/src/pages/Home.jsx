@@ -11,7 +11,6 @@ import PopUp from '../components/mainContents/PopUp.jsx';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
-import SlideWrapTest from "../components/mainContents/MainSlide/SlideWrapTest.jsx";
 
 export default function Home(){
 
@@ -86,8 +85,6 @@ export default function Home(){
               );
           }
       }
-
-      // 무한 슬라이드 관리
       
     return (
 <main id='content'>
@@ -106,7 +103,7 @@ export default function Home(){
                 }}
                   >
             {/* <SlideWrap/> */}
-            <SlideWrapTest />
+            <SlideWrap />
         </div>
                 
         {/* <div className="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-816f92e3f693e1c3"></div>
@@ -123,18 +120,19 @@ export default function Home(){
   <div className='contents content-wrap'>
   <div className="corner-section">
     <section className="our-picks-gods" cnr="23360" id="ourPickOURPICK_AType23360" utag="utag=ref_tpl:111942$ref_cnr:23360">
-                <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                        <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite">
-                            <SubSlideWrap></SubSlideWrap>            
-                        </div>
-                                {/* 슬라이드 버튼 - 컴포넌트로 생각 중 미정*/}
-                            <div className="swiper-button-control">
-                                <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
-                                <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">1</span> / <span className="swiper-pagination-total">4</span></div>
-                                <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="false"></div>
-                            </div>
-                    <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                </section>
+      <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+              <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite">
+                  <SubSlideWrap></SubSlideWrap>            
+              </div>
+              {/* 슬라이드 버튼 - 컴포넌트로 생각 중 미정*/}
+              <div className="swiper-button-control">
+                  <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
+                  <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">1</span> / <span className="swiper-pagination-total">4</span></div>
+                  <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="false"></div>
+              </div>
+          <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+      </section>
 
 
         <HotBrand></HotBrand>

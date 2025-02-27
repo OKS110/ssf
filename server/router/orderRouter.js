@@ -4,7 +4,7 @@ import * as controller from '../controller/orderController.js';
 const router = express.Router();
 
 router
-    .post('/item', controller.orderItem);
+    .post('/add', controller.addOrderItem);
 
 
 export default router;
