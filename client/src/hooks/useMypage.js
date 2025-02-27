@@ -10,7 +10,7 @@ export function useMypage(){
         const id = localStorage.getItem("user_id");
         // console.log("plzplz", id); // 값이 제대로 나오는지 확인
         const result = await axios.post("http://localhost:9000/mypage/myinfo", { 'id':id});
-        setCustomerInfo('qqqqqqqqqq',result.data);
+        setCustomerInfo(result.data);
 
     
     return {getMypageInfo};     

@@ -7,3 +7,10 @@ export const getMyinfo = async(req,res) => {
     res.end();
     
 }
+
+export const updateMyinfo = async(req,res)=>{
+        // console.log('yeeye',req.body);
+        // const result = await repository.getMyinfo(req.body);
+        // res.json(result);
+        res.end();
+}
