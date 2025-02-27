@@ -41,22 +41,18 @@ export const getMyinfo = async({id}) => {
                 `;
 
     const [result] = await db.execute(sql1,[id]);
-    console.log('haon',result[0]);
+    // console.log('haon',result[0]);
     
     return result[0];
 }
+// =======================================================
 
-
-export const updateMyinfo = async({addressValue,updateData}) => {
-    console.log('addressValue',addressValue);
-    console.log('updateData',updateData);
-    
-    
-    const sql =`
-    
-                `;
-
-    const result = db.execute(sql,[]);
-    return result;
-
+export const updateMyinfo = async({id,colName,value}) => {
+    const sql1 =`update customers set ${colName} = ? where username = ? `;                    
+    // const values1 = updateData;
+    console.log(sql1);  
+    const [result] = await db.execute(sql1,[value,id]);
+    return {'result':result.affectedRows};
 }
+
+

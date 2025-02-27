@@ -19,9 +19,11 @@ export default function EditMyInfo() {
             );
     },[]);
 
+    // console.log(data);
+    
     const handlePwd = (e) => {
         // console.log(e.target.value);
-        setPw(...pw, e.target.value);
+        setPw(e.target.value);
     }
     const checkPwd = () => {
         if(data.password === pw){

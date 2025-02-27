@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
     .post('/myinfo', controller.getMyinfo)
-    .put('/updateInfo',controller.updateMyinfo);
+    .post('/updateInfo',controller.updateMyinfo);
 
 
 export default router;

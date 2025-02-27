@@ -1,16 +1,17 @@
 import * as repository from '../repository/mypageRepository.js';
 
-export const getMyinfo = async(req,res) => {
+export const getMyinfo = async (req, res) => {
     // console.log('yeeye',req.body);
     const result = await repository.getMyinfo(req.body);
     res.json(result);
     res.end();
-    
+
 }
 
-export const updateMyinfo = async(req,res)=>{
-        // console.log('yeeye',req.body);
-        // const result = await repository.getMyinfo(req.body);
-        // res.json(result);
+export const updateMyinfo = async (req, res) => {
+    console.log(req.body);                      
+        const result = await repository.updateMyinfo(req.body);
+        res.json(result);
         res.end();
+   
 }
