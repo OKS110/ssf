@@ -149,7 +149,7 @@ export default function Home(){
             section.children.map((child) => renderComponent(child))}
           </SectionWrap>
       ))}    
-{/* 컨텐츠 끝 */}
+{/* 컨텐츠 끝   */}
       <PopUp />
     </div>
   </div>
