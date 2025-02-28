@@ -37,9 +37,11 @@ export default function EditMember() {
                         <li className='mypage-user-info-tab'>
                             <span>마케팅정보 수신 동의</span><span><SlArrowRight /></span>
                         </li>
-                        <li className='mypage-user-info-tab'>
-                            <span>배송지 관리</span><span><SlArrowRight /></span>
-                        </li>
+                        <Link to ='/person/editMemberInfo/delivery'>
+                            <li className='mypage-user-info-tab'>
+                                <span>배송지 관리</span><span><SlArrowRight /></span>
+                            </li>
+                        </Link>
                     </ul>
                 </div>                
             </article>

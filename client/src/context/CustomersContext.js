@@ -6,9 +6,14 @@ export const CustomersProvider = ({children}) => {
     // 전역 공간에서 자동 업데이트 되도록 관리
     const [customersList, setCustomersList] = useState([]); 
     const [customer, setCustomer] = useState([]);
+    // 테스트중
+    const [email,setEmail] = useState('');
+    const [emailDomain, setEmailDomain] = useState('');
 
     return (
-        <CustomersContext.Provider value={{ customersList, setCustomersList, customer, setCustomer }}>
+        <CustomersContext.Provider value={{ customersList, setCustomersList, customer, setCustomer 
+            ,emailDomain, setEmailDomain, email,setEmail
+        }}>
             {children}
         </CustomersContext.Provider>
     );
