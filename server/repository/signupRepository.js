@@ -10,7 +10,7 @@ export const getId = async({id}) => {
                 `;
     
     const [result] = await db.execute(sql,[id]);
-    console.log('idcheckresult',result[0]);
+    // console.log('idcheckresult',result[0]);
     
     return result[0];
 }
@@ -27,10 +27,12 @@ export const registCustomer = async(data) => {
                         phone, 
                         name, 
                         password, 
-                        address
+                        zipcode,
+                        address,
+                        additional_address
                         )
                     values(
-                    ?,?,?,?,?,?
+                    ?,?,?,?,?,?,?,?
                     )
                 `;
     const values = [
@@ -39,8 +41,9 @@ export const registCustomer = async(data) => {
         data.phone,
         data.username,
         data.pwd,
-        data.address
-        // ,data.zoneCode
+        data.zoneCode,
+        data.address,
+        data.addressDetail
     ]
     
     const [result] = await db.execute(sql,values);

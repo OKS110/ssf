@@ -324,17 +324,18 @@
     font-size: 24px;
     padding: 20px 0;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-none-update-idbox, .mypage-myinfo-update-addressbox){
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-none-update-idbox, 
+    .mypage-myinfo-update-addressbox, .mypage-myinfo-update-emailbox){
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>label{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox,.mypage-myinfo-update-emailbox)>label{
     width: 250px;
     display: inline-block;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>input{
+.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox,.mypage-myinfo-update-emailbox)>input{
     padding: 15px;
     width: 710px;
     margin-right: 10px;
@@ -371,6 +372,35 @@
     background-color: white;
     width: 180px;
     border: 1px solid black;
+}
+.mypage-myinfo-update-emailbox{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    /* justify-content: space-between; */
+}
+.mypage-myinfo-update-emailbox > label, .mypage-myinfo-update-emailbox>input,
+.mypage-myinfo-update-emailbox>select, .mypage-myinfo-update-emailbox>button {
+    margin: 0;    
+}
+.mypage-myinfo-update-emailbox > label {
+    /* background-color: aqua; */
+    width: 260px;
+}
+.mypage-myinfo-update-emailbox > input{
+    padding: 15px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-right: 10px;
+}
+.mypage-myinfo-update-emailbox>select{
+    padding: 15px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-right: 13px;
 }
 .mypage-myinfo-update-check1{
     margin-left: 260px;
