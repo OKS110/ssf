@@ -11,12 +11,11 @@ import axios from 'axios';
 
 export default function UpdateInfo() {
     const [addressValue, setAddressValue] = useState('');
+
     const handleChangeInputAddressData = (e) => {
         setAddressValue(e.target.value);
     };
     // console.log('addressValue',addressValue);
-    
-
 
     const [adata, setAdata] = useState({});
     
@@ -27,18 +26,16 @@ export default function UpdateInfo() {
         setIsOpen(!isOpen);
     };
 
-    const {customer} = useContext(CustomersContext);
+    const id = localStorage.getItem('user_id');
+    const {customer, emailDomain,  email} = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
 
     useEffect( () => {
         const fetchCustoerList = async() => {
-            const id = localStorage.getItem('user_id');
             await getCustomer(id);
         }
         fetchCustoerList();
-    }, [])
-    
-    // console.log('customer',customer); 
+    }, [])    
 
     const navigate = useNavigate();
     const [updateData, setUpdateData] = useState({});   // 회원정보 변경 되면 여기 저장됨
@@ -87,6 +84,7 @@ export default function UpdateInfo() {
         // console.log('주소',data.address);     
         setAdata({...adata, zoneCode: data.zonecode, address: data.address , fullAddress:data.zonecode.concat(data.address)});
         setAddressValue(data.zonecode.concat(data.address));
+        setUpdateData({...updateData, zoneCode: data.zonecode, address: data.address})
     };
     // console.log('주소',adata);
 
@@ -101,9 +99,10 @@ export default function UpdateInfo() {
 
     const handleChangeInputData = (e) =>  {
         const { name , value} = e.target;
-        setUpdateData({...updateData, [name]:value});   
-                       
+        setUpdateData({...updateData, [name]:value});                          
     }
+    // console.log('upda',updateData);
+    
 
     const refs = {
         'idRef':useRef(null),
@@ -111,70 +110,79 @@ export default function UpdateInfo() {
         'nameRef':useRef(null),
         'phoneRef':useRef(null),
         'emailRef':useRef(null),
+        'emailDomainRef':useRef(null),
         'addressRef':useRef(null),
         'extraAddressRef':useRef(null)
     }
 
     const updateValidate = () => {
-        if(refs.idRef.current.value === ''){
-            alert('아이디를 입력해주세요');
-            refs.idRef.current.focus();
-            return false;
-        }else if(refs.pwRef.current.value === ''){
-            alert('비밀번호를 입력해주세요');
-            refs.pwRef.current.focus();
-            return false;
-        }else if(refs.nameRef.current.value === ''){
-            alert('이름을 입력해주세요');
-            refs.nameRef.current.focus();
-            return false;
-        }else if(refs.phoneRef.current.value === ''){
-            alert('폰번호를 입력해주세요');
-            refs.phoneRef.current.focus();
-            return false;
-        }else if(refs.emailRef.current.value === ''){
-            alert('이메일을 입력해주세요');
-            refs.emailRef.current.focus();
-            return false;
-        }else if(refs.addressRef.current.value === ''){
-            alert('주소를 입력해주세요');
-            refs.addressRef.current.focus();
-            return false;
-        }
-    }
+        console.log('d');
+        
+        //  if(refs.pwRef.current.value === undefined){
+        //     alert('비밀번호를 입력해주세요');
+        //     refs.pwRef.current.focus();
+        //     return false;
+        // }
+        // else if(refs.nameRef.current.value === ''){
+        //     alert('이름을 입력해주세요');
+        //     refs.nameRef.current.focus();
+        //     return false;
+        // }else if(refs.phoneRef.current.value === ''){
+        //     alert('폰번호를 입력해주세요');
+        //     refs.phoneRef.current.focus();
+        //     return false;
+        // }else if(refs.emailRef.current.value === ''){
+        //     alert('이메일을 입력해주세요');
+        //     refs.emailRef.current.focus();
+        //     return false;
+        // }else if(refs.addressRef.current.value === ''){
+        //     alert('주소를 입력해주세요');
+        //     refs.addressRef.current.focus();
+        //     return false;
+        // }
+    }   
+
     
-    const handleUpdateInfo = (e) => {
-        e.preventDefault();
+
+
+
+
+
+    const handleUpdateInfo = (colName,value) => {
+        console.log('colName',colName);
+        console.log('value',value);
+        
+        // e.preventDefault();
         // 유효성검사
-        if(!updateValidate) {
-            alert('빈값있으면 안댐 !')
-            return false;
-        }else if(isChecked2 === false){
-            alert('정보수집 이용동의를 진행해주세요');            
-        }
-        else if(isChecked1 === true){
-            // 해당 주소를 기본 배송지에 저장해야함
-            alert('기본배송지로 저장되었습니다');
-        }else if(updateValidate) {
-            // 서버로 바뀐 내용 전달 updateData  axios.update 일꺼임
-            axios.put('http://localhost:9000/mypage/updateInfo',{"addressValue":addressValue,"updateData":updateData})
+        // if(!updateValidate()) {
+        //     alert('빈값있으면 안댐 !')
+        //     return false;
+        // }else 
+        // if(isChecked2 === false){
+        //     alert('정보수집 이용동의를 진행해주세요');            
+        // }        
+        // else if(isChecked1 === true){
+        //     // 해당 주소를 기본 배송지에 저장해야함
+        //     alert('기본배송지로 저장되었습니다');
+        // }
+        // else 
+        // if(updateValidate())
+            // {             
+            // 서버로 바뀐 내용 전달
+            axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"value":value})
                 .then(res => console.log(res.data)
                 )
                 .catch(error => console.log(error)
                 );
             alert('회원정보 수정이 완료되었습니다');
-            navigate('/person');
-        }
+            // navigate('/person');
+        // }
         // console.log(updateData);
-        
     }    
 
 
-
-
-
     return (
-        <form onSubmit={handleUpdateInfo}>
+        <form >
             <div className="mypage-box">
                 <div className="mypage-top-menu">
                     <span>Home</span>
@@ -207,9 +215,14 @@ export default function UpdateInfo() {
                                             updateData.pwd === undefined ? customer.password : updateData.pwd
                                             )}
                                             />   
-                                    <button type='button'  onClick={()=>{handle('pwd')}}>
-                                        {btnChangeClick.pwd ? '변경 완료' : '변경'}
-                                    </button>
+                                    
+                                        {btnChangeClick.pwd ? 
+                                        <button type='button'  onClick={()=>{handleUpdateInfo( "password",refs.pwRef.current.value)}}>
+                                        변경완료
+                                        </button> 
+                                    :  <button type='button'  onClick={()=>{handle('pwd')}}> 변경</button> }
+                                    
+                                    
                                 </li>
                                 <li>
                                     <label htmlFor="">이름</label>
@@ -222,9 +235,11 @@ export default function UpdateInfo() {
                                             updateData.name === undefined ? customer.name : updateData.name
                                             )}
                                             />   
-                                    <button type='button'  onClick={()=>{handle('name')}}>
-                                        {btnChangeClick.name ? '변경 완료' : '변경'}
-                                    </button>
+                                      {btnChangeClick.name ? 
+                                        <button type='button'  onClick={()=>{handleUpdateInfo( "name",refs.nameRef.current.value)}}>
+                                        변경완료
+                                        </button> 
+                                    :  <button type='button'  onClick={()=>{handle('name')}}> 변경</button> }
                                 </li>
                                 <li>
                                     <label htmlFor="">휴대폰번호</label>
@@ -241,7 +256,7 @@ export default function UpdateInfo() {
                                         {btnChangeClick.phone ? '변경 완료' : '변경'}
                                     </button>
                                 </li>
-                                <li>
+                                <li className='mypage-myinfo-update-emailbox'>
                                     <label htmlFor="">이메일</label>
                                     <input type={btnChangeClick.email ? 'text' : 'readonly'}
                                         ref={refs.emailRef}
@@ -249,9 +264,24 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.email === true ? handleChangeInputData : null}
                                         className={btnChangeClick.email ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.email ? null : (
-                                            updateData.email === undefined ? customer.email : updateData.email
+                                            updateData.email === undefined ? email : updateData.email
                                             )}
-                                            />   
+                                            /> 
+                                    <select name="emailDomain" 
+                                        onChange={btnChangeClick.email === true ? handleChangeInputData : null}
+                                        ref={refs.emailDomainRef} 
+                                        className={btnChangeClick.email ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}>
+                                        <option value={emailDomain}>{emailDomain}</option>
+                                        <option value={btnChangeClick.email ? null : (
+                                            updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
+                                            )}>naver.com</option>
+                                        <option value={btnChangeClick.email ? null : (
+                                            updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
+                                            )}>gmail.com</option>
+                                        <option value={btnChangeClick.email ? null : (
+                                            updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
+                                            )}>daum.net</option>
+                                    </select>  
                                     <button type='button'  onClick={()=>{handle('email')}}>
                                         {btnChangeClick.email ? '변경 완료' : '변경'}
                                     </button>
@@ -261,11 +291,12 @@ export default function UpdateInfo() {
                                     <input type={btnChangeClick.address ? 'readonly' : 'readonly'}
                                         ref={refs.addressRef}
                                         name='address'
-                                        onChange={btnChangeClick.email === true ? handleChangeInputAddressData : null}
+                                        // onChange={btnChangeClick.address ? handleChangeInputAddressData : null}
+                                        onChange={btnChangeClick.address ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
-                                        value={btnChangeClick.address ? null : (
+                                        value={
                                             addressValue === '' ? customer.address : adata.fullAddress
-                                            )}/>                                               
+                                            }/>                                               
                                     <button type='button'  onClick={()=>{
                                             handle('address');
                                             handleToggle();
@@ -341,9 +372,9 @@ export default function UpdateInfo() {
                                 </ul>
                             </div>                        
                         }
-                            <div className='mypage-myinfo-update-btn'>
+                            {/* <div className='mypage-myinfo-update-btn'>
                                 <button type='submit'>저장</button>
-                            </div>
+                            </div> */}
                         </div>
                     </article>
                 </div>
@@ -351,4 +382,3 @@ export default function UpdateInfo() {
         </form>
     );
 }
-
