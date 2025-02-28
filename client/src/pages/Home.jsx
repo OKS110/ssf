@@ -11,148 +11,157 @@ import PopUp from '../components/mainContents/PopUp.jsx';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
+import Test from "../components/mainContents/MainSlide/Test.jsx";
 
-export default function Home(){
+export default function Home() {
+  const sectionList = [
+    {
+      id: "event",
+      title: "이벤트",
+    },
+    {
+      id: "outer",
+      title: "아우터로 더하는 한 겹의 포근함",
+    },
+    {
+      id: "rank",
+      title: "랭킹",
+    },
+    {
+      id: "brands",
+      title: "주목할 브랜드",
+    },
+    {
+      id: "issue",
+      title: "이 주의 브랜드 이슈",
+    },
+  ];
 
-    const sectionList = [
-        {
-          id: "event",
-          title: "이벤트",
-        },
-        {
-          id: "outer",
-          title: "아우터로 더하는 한 겹의 포근함",
-        },
-        {
-          id: "rank",
-          title: "랭킹",
-        },
-        {
-          id: "brands",
-          title: "주목할 브랜드",
-        },
-        {
-          id: "issue",
-          title: "이 주의 브랜드 이슈",
-        },
-      ];
-      
-      const componentMap = { //컴포넌트 자동 생성
-        event: Events,
-        outer: Outer,
-        rank: Rank,
-        brands: Brand,
-        issue: Issue,
-      };
-      
-      const renderComponent = (childObj) => {
-        const Component = componentMap[childObj.id];
-        if (!Component) return null;
-      
-        return (
-          <Component
-            key={childObj.id}
-            {...(childObj.props || {})} // Spread `props` if they exist
-          >
-            {/* Children rendering can be omitted since children key is unused */}
-          </Component>
-        );
-      };
+  const componentMap = { //컴포넌트 자동 생성
+    event: Events,
+    outer: Outer,
+    rank: Rank,
+    brands: Brand,
+    issue: Issue,
+  };
 
-      // 이미지 슬라이드 버튼 관련
-      const [ curSlide, setCurSlide ] = useState(0); // 이미지 인덱스 번호
-      const [ interval, setInteval ] = useState(null);
+  const renderComponent = (childObj) => {
+    const Component = componentMap[childObj.id];
+    if (!Component) return null;
 
-      const FIRST_SLIDE_INDEX = 0;
-      const LAST_SLIDE_INDEX = 9; // 이미지 슬라이드 끝 번호
-      const MOVE_SLIDE_INDEX = 1; // 이미지 슬라이드 이동값
-  
-      const moveToSlide = (value) => {
-          if (value === 'next') {
-              // 슬라이드 마지막에 도달했을 때 curSlide의 값을 바꿔 처음으로 돌아가게 함
-              setCurSlide((prevState) => 
-                  prevState < LAST_SLIDE_INDEX
-                  ? prevState + MOVE_SLIDE_INDEX
-                  : FIRST_SLIDE_INDEX
-              );
-          }
-          if (value === 'prev') {
-              // 슬라이드 시작점에 도달했을 때 curSlide의 값을 바꿔 마지막으로 돌아가게 함
-              setCurSlide((prevState) => 
-                  prevState > FIRST_SLIDE_INDEX
-                  ? prevState - MOVE_SLIDE_INDEX
-                  : LAST_SLIDE_INDEX
-              );
-          }
-      }
-      
     return (
-<main id='content'>
-    {/* 슬라이드 시작 */}
-  <div className="key-visual">
-    <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-watch-progress" data-component="[object Object]">
-        <div className="swiper-btn-container">
-          <button onClick={() => moveToSlide('prev')}><IoIosArrowBack /></button>
-          <button onClick={() => moveToSlide('next')}><IoIosArrowForward /></button>
-        </div>
-        <div className="swiper-wrapper" id="swiper-wrapper-816f92e3f693e1c3" aria-live="off"
-                  style={{
-                    transform: `translateX(${-100 * curSlide}%)`,
-                    // transform: `translateX(${-1686 * curSlide}px)`,
-                    transition: 'all 0.4s ease-in-out'
-                }}
-                  >
-            {/* <SlideWrap/> */}
-            <SlideWrap />
-        </div>
-                
-        {/* <div className="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-816f92e3f693e1c3"></div>
-        <div className="swiper-button-control">
-            <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-816f92e3f693e1c3"></div>
-            <div className="swiper-button-pause" role="button" aria-label="pause"></div>
-        </div>  */}
-        {/* <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span> */}
-        {/* 슬라이드 관련한 버튼인데 쓸모 없어서 주석처리 했습니다. */}
-    </div>
-  </div>{/* slide 끝 */}
+      <Component
+        key={childObj.id}
+        {...(childObj.props || {})} // Spread `props` if they exist
+      >
+        {/* Children rendering can be omitted since children key is unused */}
+      </Component>
+    );
+  };
 
-  {/* 컨텐츠 시작 */}
-  <div className='contents content-wrap'>
-  <div className="corner-section">
-    <section className="our-picks-gods" cnr="23360" id="ourPickOURPICK_AType23360" utag="utag=ref_tpl:111942$ref_cnr:23360">
-      <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-              <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite">
-                  <SubSlideWrap></SubSlideWrap>            
+  // 메인 슬라이드 버튼 이벤트
+  const [curSlide, setCurSlide] = useState(0); // 이미지 인덱스 번호
+
+  const FIRST_SLIDE_INDEX = 0;
+  const LAST_SLIDE_INDEX = 9; // 이미지 슬라이드 끝 번호
+  const MOVE_SLIDE_INDEX = 1; // 이미지 슬라이드 이동값
+
+  const moveToSlide = (value) => {
+    if (value === 'next') {
+      // 슬라이드 마지막에 도달했을 때 curSlide의 값을 바꿔 처음으로 돌아가게 함
+      setCurSlide((prevState) =>
+        prevState < LAST_SLIDE_INDEX
+          ? prevState + MOVE_SLIDE_INDEX
+          : FIRST_SLIDE_INDEX
+      );
+    }
+    if (value === 'prev') {
+      // 슬라이드 시작점에 도달했을 때 curSlide의 값을 바꿔 마지막으로 돌아가게 함
+      setCurSlide((prevState) =>
+        prevState > FIRST_SLIDE_INDEX
+          ? prevState - MOVE_SLIDE_INDEX
+          : LAST_SLIDE_INDEX
+      );
+    }
+  }
+
+  // 서브 슬라이드 버튼 이벤트
+  const [curSlide2, setCurSlide2] = useState(0); // 이미지 인덱스 번호
+
+  const moveToSubSlide = (value) => {
+    if (value === 'next' && curSlide2 < 3) {
+      setCurSlide2(curSlide2 + 1);
+    }
+    if (value === 'prev' && curSlide2 > 0) {
+      setCurSlide2(curSlide2 - 1);
+    }
+  }
+
+  return (
+    <main id='content'>
+      {/* 슬라이드 시작 */}
+      <div className="key-visual">
+        {/* <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-watch-progress" data-component="[object Object]">
+          <div className="swiper-btn-container">
+            <button onClick={() => moveToSlide('prev')}><IoIosArrowBack /></button>
+            <button onClick={() => moveToSlide('next')}><IoIosArrowForward /></button>
+          </div>
+          <div className="swiper-wrapper" id="swiper-wrapper-816f92e3f693e1c3" aria-live="off"
+            style={{
+              transform: `translateX(${-100 * curSlide}%)`,
+              // transform: `translateX(${-1686 * curSlide}px)`,
+              transition: 'all 0.4s ease-in-out'
+            }}
+          >
+            <SlideWrap />
+          </div>
+        </div> */}
+      <Test />
+      </div>
+
+      {/* 컨텐츠 시작 */}
+      <div className='contents content-wrap'>
+        <div className="corner-section">
+          <section className="our-picks-gods" cnr="23360" id="ourPickOURPICK_AType23360" utag="utag=ref_tpl:111942$ref_cnr:23360">
+            <div className="subSlide-container swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+              <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite"
+                style={{
+                  transform: `translateX(${-1415 * curSlide2}px)`,
+                  transition: 'all 0.4s ease-in-out'
+                }}
+              >
+                {/* <SubSlideWrap></SubSlideWrap> */}
+                <SubSlideWrap />
               </div>
               {/* 슬라이드 버튼 - 컴포넌트로 생각 중 미정*/}
               <div className="swiper-button-control">
-                  <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
-                  <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">1</span> / <span className="swiper-pagination-total">4</span></div>
-                  <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="false"></div>
+                <div onClick={() => moveToSubSlide("prev")} className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
+                <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">{curSlide2 + 1}</span> / <span className="swiper-pagination-total">4</span></div>
+                <div onClick={() => moveToSubSlide("next")} className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="false"></div>
               </div>
-          <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+              <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+          </section>
+
+
+          <HotBrand></HotBrand>
+
+          {/* 이벤트부터 컴포넌트 자동으로 만들어가기 스타트 */}
+          {sectionList && sectionList.map((section) => (
+            <SectionWrap
+              key={section.id}
+              id={section.id}
+              title={section.title}
+            >
+              {/* Render children if they exist */}
+              {Array.isArray(section.children) &&
+                section.children.map((child) => renderComponent(child))}
+            </SectionWrap>
+          ))}
+          {/* 컨텐츠 끝   */}
+          <PopUp />
         </div>
-      </section>
-
-
-        <HotBrand></HotBrand>
-
-        {/* 이벤트부터 컴포넌트 자동으로 만들어가기 스타트 */}
-    {sectionList && sectionList.map((section) => (
-          <SectionWrap
-            key={section.id}
-            id={section.id}
-            title={section.title}
-          >
-            {/* Render children if they exist */}
-          {Array.isArray(section.children) &&
-            section.children.map((child) => renderComponent(child))}
-          </SectionWrap>
-      ))}    
-{/* 컨텐츠 끝   */}
-      <PopUp />
-    </div>
-  </div>
-</main>
-    );
+      </div>
+    </main>
+  );
 }
