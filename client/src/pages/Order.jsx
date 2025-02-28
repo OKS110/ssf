@@ -15,11 +15,15 @@ import { useGuests } from "../hooks/useGuest.js";
 import { GuestContext } from "../context/GuestContext.js";
 import { OrderContext } from "../context/OrderContext.js";
 import { useOrder } from "../hooks/useOrder.js";
+
+import { DetailProductContext } from "../context/DetailProductContext.js";
 export default function Order() {
     const navigate = useNavigate();
     const { pid } = useParams();
     const { pidItem } = useContext(ProductContext); // ✅ 개별 상품 데이터
     const { getPidItem } = useProduct();
+
+    const {count, selectColor, selectedSize} = useContext(DetailProductContext); // ✅ 상세페이지에서 체크한 상품 수량
 
     const { customer } = useContext(CustomersContext); // ✅ 고객 정보(회원)
     const { getCustomer } = useCustomers();
@@ -118,22 +122,6 @@ export default function Order() {
         }
     }, [customer]);
 
-    // // ✅ 비회원 정보가 로드되면 `formData` 자동 업데이트
-    // useEffect(() => {
-    //     if (token?.startsWith("guest_token_") && guestList.length > 0) {
-    //         const latestGuest = guestList[guestList.length - 1]; // 마지막 비회원 데이터
-    //         setFormData((prevFormData) => ({
-    //             ...prevFormData,
-    //             name: latestGuest.name || "",
-    //             phone: latestGuest.phone || "",
-    //             email: latestGuest.email || "",
-    //             address: latestGuest.address || "",
-    //             zipcode: latestGuest.zipcode || "",
-    //             detail_address: latestGuest.detail_address || "",
-    //         }));
-    //     }
-    // }, [guestList, token]);
-
     // ✅ 토큰 여부 설정
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
@@ -187,7 +175,12 @@ export default function Order() {
 
         // ✅ 주문 데이터 객체 생성
         const orderData = {
+            brand: pidItem?.brand || "브랜드 정보 없음",
+            title: pidItem?.title || "상품명 없음",
             total_price: Number(pidItem?.saleprice.replace(/,/g, "")) || 0, // ✅ 쉼표 제거 후 숫자로 변환
+            size: Array.isArray(pidItem?.size) && selectedSize !== null ? pidItem.size[selectedSize] : "사이즈 미선택",
+            color: Array.isArray(pidItem?.color) && selectColor !== null ? pidItem.color[selectColor] : "색상 미선택",
+            quantity: count || 1,
             zipcode: formData.zipcode || null, // undefined이면 null
             shipping_address: formData.address || null,
             delivery_message: formData.message || null,
@@ -230,10 +223,8 @@ export default function Order() {
         }catch(error){
             console.error("❌ 주문 처리 중 오류 발생:", error);
         }
-
-
-        
     };
+    
 
 
     return (
@@ -257,7 +248,15 @@ export default function Order() {
                                     <td>
                                         <img src={pidItem.image?.[0]} alt={pidItem.title || "상품 이미지"} style={{ width: "100px" }} />
                                     </td>
-                                    <td>{pidItem.title}</td>
+                                    <td>
+                                        <p>브랜드 : {pidItem.brand}</p>
+                                        <p>상품명 : {pidItem.title}</p>
+                                        {/* 배열 체크 후 접근 */}
+                                        <p>사이즈 : {Array.isArray(pidItem.size) && selectedSize !== null ? pidItem.size[selectedSize] : "사이즈 미선택"}</p>
+                                        <p>색상 : {Array.isArray(pidItem.color) && selectColor !== null ? pidItem.color[selectColor] : "색상 미선택"}</p>
+                                        <p>수량 : {count}</p>
+
+                                    </td>
                                     <td>{pidItem.discount}%</td>
                                     <td>{pidItem.deliveryFee}</td>
                                     <td>{pidItem.saleprice}</td>
