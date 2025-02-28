@@ -25,6 +25,7 @@ import { CustomersProvider } from './context/CustomersContext.js';
 import { GuestProvider } from './context/GuestContext.js';
 import { OrderProvider } from './context/OrderContext.js';
 import { DetailProductProvider } from './context/DetailProductContext.js';
+import DeliveryMyinfo from './components/person/MyInfo/DeliveryMyinfo.jsx';
 function App() {
   return (
     <>
@@ -50,6 +51,7 @@ function App() {
                     <Route path='/person/productReview' element={<ProductReview/>}></Route>
                     <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
                     <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
+                    <Route path='/person/editMemberInfo/delivery' element={<DeliveryMyinfo/>}></Route>
                     <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order/:pid' element={<Order/>}></Route>
             </Route>

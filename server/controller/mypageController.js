@@ -9,9 +9,14 @@ export const getMyinfo = async (req, res) => {
 }
 
 export const updateMyinfo = async (req, res) => {
-    console.log(req.body);                      
+    console.log(req.body);    
+    if(req.body.value2) {
+        const result = await repository.updateMyinfo2(req.body);
+        res.json(result);
+        res.end();           
+    }  else {
         const result = await repository.updateMyinfo(req.body);
         res.json(result);
-        res.end();
-   
+        res.end();   
+    }              
 }

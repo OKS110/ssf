@@ -21,7 +21,7 @@ export default function MypageOrder() {
                                 <th>최대 적립 포인트</th>
                                 <th>주문진행 상태</th>
                             </tr>
-                            <tr className='mypage-review-table-body'>
+                            <tr className='mypage-review-table-body mypage-ocrc-table-body'>
                                 <td>
                                     <img style={{width:'100px'}} src="https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/08/23/GR3A24082343434_0_THNAIL_ORGINL_20240823135206364.jpg" alt="" />
                                     <span>Adidas</span>
@@ -30,9 +30,13 @@ export default function MypageOrder() {
                                 <td>s102931240sdfsd0</td>
                                 <td>2020.01.01</td>
                                 <td>1,000C</td>
-                                <td>배송중</td>
+                                <td>배송완료</td>
                             </tr>
                     </table>
+                    <div>
+                        <button>교환</button>
+                        <button>반품</button>
+                    </div>
                 </div>
             </div>
                             <div className='order-list-bottom'>
