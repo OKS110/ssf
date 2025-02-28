@@ -10,7 +10,12 @@ export const addOrderItem = async (orderData) => {
         INSERT INTO orders (
             customer_id, 
             order_number, 
+            brand,
+            title, 
             total_price, 
+            size,
+            color,
+            quantity,
             zipcode,
             shipping_address, 
             delivery_message,
@@ -19,7 +24,7 @@ export const addOrderItem = async (orderData) => {
             refund_amount, 
             order_date,
             payment_method
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,  now(), ?);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?);
     `;
 
     try {
@@ -30,10 +35,15 @@ export const addOrderItem = async (orderData) => {
         const [result] = await db.execute(sql, [
             orderData.customer_id,  // 고객 ID
             orderNumber,            // 주문번호 (자동 생성)
+            orderData.brand,        // 브랜드
+            orderData.title,        // 상품명
             orderData.total_price,  // 주문 총 금액
+            orderData.size,         //사이즈
+            orderData.color,           //색상
+            orderData.quantity,           //수량
             orderData.zipcode,      // 우편번호
             orderData.shipping_address, // 배송지 주소
-            orderData.delivery_message,
+            orderData.delivery_message, //배송메시지
             orderData.detail_address, // 상세 주소
             orderData.status || "Pending",      // 주문 상태 기본값 Pending
             orderData.refund_amount ?? 0,       // 환불금액 상태 기본값 0

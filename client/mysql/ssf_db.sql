@@ -176,7 +176,9 @@ CREATE TABLE guest_orders ( -- 고객의 주문 정보를 저장하는 테이블
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 주문 날짜 및 시간 (자동 기록)
     FOREIGN KEY (guest_id) REFERENCES guests(gid) ON DELETE CASCADE -- 고객이 삭제되면 해당 고객의 주문도 삭제
 );
+select * from customers;
 select * from guest_orders;
+select * from orders;
 ALTER TABLE guest_orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수단
 ALTER TABLE guest_orders 
 ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
@@ -184,8 +186,26 @@ ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상�
 
 ALTER TABLE guest_orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
-
-
+ALTER TABLE guest_orders
+ADD COLUMN quantity INT NOT NULL AFTER total_price;
+ALTER TABLE orders
+ADD COLUMN quantity INT NOT NULL AFTER total_price;
+ALTER TABLE orders
+ADD COLUMN color varchar(50) NOT NULL AFTER total_price;
+ALTER TABLE guest_orders
+ADD COLUMN color varchar(50) NOT NULL AFTER total_price;
+ALTER TABLE orders
+ADD COLUMN size varchar(50) NOT NULL AFTER total_price;
+ALTER TABLE guest_orders
+ADD COLUMN size varchar(50) NOT NULL AFTER total_price;
+ALTER TABLE orders
+ADD COLUMN brand varchar(50) AFTER order_number;
+ALTER TABLE guest_orders
+ADD COLUMN brand varchar(50) AFTER order_number;
+ALTER TABLE orders
+ADD COLUMN title varchar(50) not null  AFTER brand;
+ALTER TABLE guest_orders
+ADD COLUMN title varchar(50) not null  AFTER brand;
 select customer_id, username
 email, phone, name, password, address, 
 additional_address, birth_date, status, gender, membership_level,
@@ -226,7 +246,7 @@ CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
     FOREIGN KEY (order_id) REFERENCES orders(oid) ON DELETE CASCADE -- 주문이 삭제되면 해당 리뷰도 삭제
 );
 
-
+select * from guest_orders;
 -- 관리자 승인 요청 테이블 (super_admin만 접근 가능)
 CREATE TABLE admin_approval ( -- 관리자가 승인해야 하는 요청 정보를 저장하는 테이블 생성
     id INT auto_increment PRIMARY KEY, -- 고유한 승인 요청 ID (기본 키, JSON에서 직접 부여)
@@ -253,8 +273,8 @@ CREATE TABLE guests ( -- 비회원(게스트) 정보를 저장하는 테이블 �
     address VARCHAR(255) DEFAULT NULL, -- 비회원 배송 주소 (선택 입력)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 비회원 정보 생성 시간 (자동 기록)
 );
-INSERT INTO guests (name, phone, order_number, email, address)
-VALUES ('홍길동', '01012345678', 'abc1234', 'honggildong@example.com', '서울 동작구 동작대로 3');
+INSERT INTO guests (name, phone, email, address)
+VALUES ('홍길동', '01012345678', 'honggildong@example.com', '서울 동작구 동작대로 3');
 ALTER TABLE guests
 ADD COLUMN zipcode VARCHAR(20) DEFAULT NULL AFTER address, -- ✅ 우편번호 추가
 ADD COLUMN detail_address VARCHAR(255) DEFAULT NULL AFTER zipcode; -- ✅ 상세 주소 추가
@@ -287,7 +307,7 @@ desc orders;
 select * from orders;
 select count(*) as result_rows
 from guests
-where name = '홍길동' and phone = '01012345678' and order_number = 'abc1234';
+where name = '홍길동' and phone = '01012345678';
 
 -- ALTER TABLE cart -- 장바구니 테이블에 비회원 장바구니 사용을 위한 컬럼 추가
 -- ADD COLUMN guest_id INT DEFAULT NULL, -- 비회원이 장바구니를 사용할 경우 guest_id 저장
