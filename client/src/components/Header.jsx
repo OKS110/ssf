@@ -6,8 +6,13 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import Modal from 'react-modal';
+import Search from "./Search/Search.jsx";
 
 export default function Header() {
+    // 검색 모달창 관리
+    const [isOpen, setIsOpen] = useState(false);
+
     // 헤더 메뉴 시작
     const categories = [
         { label: "여성", link: "#" },
@@ -85,7 +90,19 @@ export default function Header() {
 
                     <div className='icon-shop-wrap'>
                         <div className='icon-wrap'>
-                            <Link to='/detail'><button type='button'><CiSearch /></button></Link>
+                            {/* <Link to='/detail'> */}
+                                <button type='button' onClick={() => setIsOpen(true)}><CiSearch /></button>
+                                <Modal
+                                    isOpen={isOpen}
+                                    onRequestClose={() => setIsOpen(false)}
+                                    // style={customModalStyles}
+                                    ariaHideApp={false}
+                                    contentLabel="Pop up Message"
+                                    shouldCloseOnOverlayClick={false}
+                                >
+                                    <Search />
+                                </ Modal>
+                            {/* </Link> */}
                             <Link to='/carts'><button type='button'><CiHeart /></button></Link>
                             <Link to='/carts'><button type='button'><AiOutlineShopping /></button></Link>
                         </div>
