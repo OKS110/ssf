@@ -24,9 +24,11 @@ import { MypageProvider } from './context/MypageContext.js';
 import { CustomersProvider } from './context/CustomersContext.js';
 import { GuestProvider } from './context/GuestContext.js';
 import { OrderProvider } from './context/OrderContext.js';
+import { DetailProductProvider } from './context/DetailProductContext.js';
 function App() {
   return (
     <>
+    <DetailProductProvider>
     <OrderProvider>
     <CustomersProvider>
     <GuestProvider>
@@ -60,6 +62,7 @@ function App() {
      </GuestProvider>
      </CustomersProvider>
      </OrderProvider>
+     </DetailProductProvider>
     </>
   );
 }

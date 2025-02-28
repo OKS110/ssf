@@ -69,7 +69,12 @@ export const addGuestOrder = async (guestOrderData) => {
         INSERT INTO guest_orders (
             guest_id, 
             order_number, 
+            brand,
+            title, 
             total_price, 
+            size,
+            color,
+            quantity,
             zipcode,
             shipping_address, 
             delivery_message,
@@ -78,7 +83,7 @@ export const addGuestOrder = async (guestOrderData) => {
             refund_amount, 
             order_date,
             payment_method
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?);
     `;
 
     try {
@@ -87,7 +92,12 @@ export const addGuestOrder = async (guestOrderData) => {
         const [result] = await db.execute(sql, [
             guestOrderData.guest_id || null, // ✅ `guest_id`가 없으면 NULL 저장
             orderNumber,
+            guestOrderData.brand,        // 브랜드
+            guestOrderData.title,        // 상품명
             guestOrderData.total_price ?? 0,
+            guestOrderData.size,         //사이즈
+            guestOrderData.color,           //색상
+            guestOrderData.quantity,           //수량
             guestOrderData.zipcode || null,
             guestOrderData.shipping_address || null,
             guestOrderData.delivery_message || null,
