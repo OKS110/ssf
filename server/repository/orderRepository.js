@@ -13,11 +13,13 @@ export const addOrderItem = async (orderData) => {
             total_price, 
             zipcode,
             shipping_address, 
+            delivery_message,
             detail_address, 
             status, 
             refund_amount, 
+            order_date,
             payment_method
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,  now(), ?);
     `;
 
     try {
@@ -31,23 +33,39 @@ export const addOrderItem = async (orderData) => {
             orderData.total_price,  // 주문 총 금액
             orderData.zipcode,      // 우편번호
             orderData.shipping_address, // 배송지 주소
+            orderData.delivery_message,
             orderData.detail_address, // 상세 주소
-            'Pending',              // 주문 상태 (기본값)
-            0,                      // 환불 금액 (기본값)
-            orderData.guest_id,     //게스트 ID
+            orderData.status || "Pending",      // 주문 상태 기본값 Pending
+            orderData.refund_amount ?? 0,       // 환불금액 상태 기본값 0
             orderData.payment_method // 결제 방법
         ]);
 
         console.log("✅ 주문이 성공적으로 저장되었습니다.", result);
 
         // ✅ 삽입된 주문 정보 반환
-        return {
-            order_id: result.insertId, // 자동 생성된 주문 ID
-            order_number: orderNumber
-        };
+        return result[0];
 
     } catch (error) {
         console.error("❌ 주문 생성 오류:", error);
+        throw error;
+    }
+};
+
+
+export const pullOrderList = async (id) => {
+    const sql = `
+        select * from orders where customer_id = ?;
+    `;
+
+    try {
+
+        const [result] = await db.execute(sql, [id]);
+        console.log(result);
+        
+        return result[0];
+
+    } catch (error) {
+        console.error("❌ 주문정보 가져오기 오류:", error);
         throw error;
     }
 };
