@@ -47,12 +47,40 @@ export const getMyinfo = async({id}) => {
 }
 // =======================================================
 
-export const updateMyinfo = async({id,colName,value}) => {
-    const sql1 =`update customers set ${colName} = ? where username = ? `;                    
-    // const values1 = updateData;
-    console.log(sql1);  
-    const [result] = await db.execute(sql1,[value,id]);
-    return {'result':result.affectedRows};
+export const updateMyinfo = async({id,colName,value}) => {   
+    
+    if(colName === 'phone'){
+        const ph = value.substring(0,3)
+                    .concat('-',value.substring(3,7),'-',value.substring(7,11));
+        const sql = `update customers set ${colName} = ? where username = ? `; 
+        console.log(sql);  
+        const [result] = await db.execute(sql,[ph,id]);
+        return {'result':result.affectedRows};}
+    else {
+        const sql =`update customers set ${colName} = ? where username = ? `;                    
+        // const values1 = updateData;
+        console.log(sql);  
+        const [result] = await db.execute(sql,[value,id]);
+        return {'result':result.affectedRows};
+
+    }
+}
+export const updateMyinfo2 = async({id,colName,value,colName2,value2}) => {   
+     if(colName2 === 'emailDomain'){
+        const em =  value.concat('@',value2) ;
+        const sql = `update customers set ${colName} = ? where username = ? `; 
+        console.log(sql);  
+        const [result] = await db.execute(sql,[em,id]);
+        return {'result':result.affectedRows};
+    }   
+    else if(colName2 === 'extra'){
+        const zipcode = value.substring(0,5);
+        const address = value.replace(zipcode, '');  
+        const sql =`update customers set zipcode = ?, address = ?, additional_address = ? where username = ? `
+        console.log(sql);  
+        const [result] = await db.execute(sql,[zipcode,address,value2,id]);
+        return {'result':result.affectedRows};
+    }
 }
 
 
