@@ -448,3 +448,40 @@
     height: 70px;
     line-height: 35px;
 }
+
+/**************************
+ * 인덱스 상단 - 이미지 서브슬라이더
+ * YuNa
+**************************/
+.subSlide-container {
+    overflow: hidden;
+}
+.subSlide-subimage {
+    width: 220px;
+}
+.subSlide-subimage > img {
+    height: 100%;
+}
+
+/**************************
+ * 메인 슬라이더 테스트
+ * YuNa
+**************************/
+.test-list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.test-list > li {
+    position: relative;
+    z-index: 0;
+
+}
+.test-slide-img {
+    border: 1px solid red;
+}
+.test-slide-info {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid blue;
+}
