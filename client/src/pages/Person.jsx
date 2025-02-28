@@ -28,28 +28,6 @@ export default function Person(){
           fetchCustoerList();
       }, [])
 
-    // const {customersList} = useContext(CustomersContext);
-    // const { getCustomersList } = useCustomers();
-    // useEffect( async () => {
-    //     await getCustomersList();
-    // }, [])
-    
-    // console.log('customersLisㅇㅇㅇㅇt',customersList); // 음..
-    
-
-    // const [data, setData ] = useState([]);  그냥 이렇게만 하면 아주 잘 데이터 가져옴
-    // useEffect(()=>{
-    //     const id = localStorage.getItem('user_id');
-    //     axios.post('http://localhost:9000/mypage/myinfo',{'id':id})
-    //         .then(res => 
-    //         setData(res.data)
-    //         )
-    //         .catch(error => console.log(error)
-    //         );
-    // },[]);
-    // console.log(data); 
-    
-
 
     const tabsData = [
         { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content:<WishListProduct/> },

@@ -1,24 +1,27 @@
 /****************************************  */
 /* ************마이페이지 주문교환반품취소       */
 /*****************************************  */
-.order-list-ordertab{
+.order-list-ordertab {
     /* background-color: rgb(218, 218, 218); */
     margin: 0;
 }
 
-.order-list-bottom{
+.order-list-bottom {
     display: flex;
     justify-content: space-between;
     /* background-color: red; */
     padding: 15px 0;
 }
-.order-list-bottom>span{
+
+.order-list-bottom>span {
     margin: 0;
 }
-.order-list-bottom>span:last-child{
+
+.order-list-bottom>span:last-child {
     padding-right: 20px;
 }
-.order-list-deliverymap{
+
+.order-list-deliverymap {
     /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
@@ -27,7 +30,8 @@
     padding-top: 40px;
     z-index: 10;
 }
-.order-list-deliverymap>div>p:first-child{
+
+.order-list-deliverymap>div>p:first-child {
     background-color: black;
     color: white;
     border-radius: 100%;
@@ -35,51 +39,61 @@
     width: 20px;
     font-size: 17px;
 }
-.order-list-deliverymap>div>p{
+
+.order-list-deliverymap>div>p {
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 5px;
 }
-.order-list-deliverymap>div>ul{
+
+.order-list-deliverymap>div>ul {
     background-color: rgb(231, 231, 231);
     padding: 10px;
     font-size: 14px;
     text-align: left;
-    border-radius: 5px ;
+    border-radius: 5px;
     width: 100px;
 }
-.order-list-deliverymap>div>ul>li{
+
+.order-list-deliverymap>div>ul>li {
     list-style-type: circle;
 
 }
-.order-list-deliverymap>div>ul>li:not(:last-child){
+
+.order-list-deliverymap>div>ul>li:not(:last-child) {
     padding-bottom: 5px;
 }
-.order-list-deliverylist{
+
+.order-list-deliverylist {
     border-bottom: 1px solid gray;
     /* background-color: red; */
 }
-.order-list-deliverylist>ul>li{
+
+.order-list-deliverylist>ul>li {
     padding: 15px;
     border-top: 1px solid gray;
     font-size: 14px;
     text-align: left;
 }
-.order-list-deliverylist>ul>li>span:first-child{
+
+.order-list-deliverylist>ul>li>span:first-child {
     font-weight: 600;
     padding-right: 10px;
 }
-.order-list-deliverylist>ul>li>span:nth-child(2){
+
+.order-list-deliverylist>ul>li>span:nth-child(2) {
     font-weight: 600;
     padding-right: 10px;
     width: 100px;
     display: inline-block;
 }
-.order-list-delivery{
+
+.order-list-delivery {
     position: relative;
     /* background-color: red; */
 }
-.order-list-deliverydots{
+
+.order-list-deliverydots {
     border-top: 1px dotted black;
     position: absolute;
     width: 960px;
@@ -93,33 +107,38 @@
 /****************************************  */
 /* ************마이페이지 상품리뷰       */
 /*****************************************  */
-.mypage-review-box{
+.mypage-review-box {
     border: 1px solid gray;
     display: flex;
     justify-content: space-between;
-    border-radius: 8px ;
+    border-radius: 8px;
     padding: 30px 20px;
     align-items: center;
 }
-.mypage-review-box>div{
+
+.mypage-review-box>div {
     margin: 0;
     padding: 0;
 }
-.mypage-review-box>div:last-child>ul{
+
+.mypage-review-box>div:last-child>ul {
     display: flex;
     /* gap: 30px; */
 }
-.mypage-review-box>div:first-child > h4{
+
+.mypage-review-box>div:first-child>h4 {
     font-size: 16px;
     font-weight: 500;
     padding-bottom: 8px;
 }
-.mypage-review-box>div:first-child >h5{
+
+.mypage-review-box>div:first-child>h5 {
     color: gray;
     font-weight: 400;
     font: 13px;
 }
-.mypage-review-box>div:last-child>ul>li:not(:last-child){
+
+.mypage-review-box>div:last-child>ul>li:not(:last-child) {
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -127,102 +146,147 @@
     border-right: 1px solid gray;
     padding: 0 20px;
 }
-.mypage-review-box>div:last-child>ul>li{
+
+.mypage-review-box>div:last-child>ul>li {
     display: flex;
     align-items: center;
     font-size: 16px;
     font-weight: 400;
     padding: 0 20px;
 }
-.mypage-review-box>div:last-child>ul>li>span{
+
+.mypage-review-box>div:last-child>ul>li>span {
     padding: 0 20px 0 0px;
     font-size: 28px;
     font-weight: 100;
 }
-.mypage-review-box>div:last-child>ul>li>div>h4{
+
+.mypage-review-box>div:last-child>ul>li>div>h4 {
     font-size: 14px;
     font-weight: 100;
 }
+
 .mypage-review-table {
     margin-top: 40px;
 }
-.mypage-review-table-notmargin{
+
+.mypage-review-table-notmargin {
     border-top: 1px solid gray;
     /* background-color: aqua; */
     /* margin-bottom: 50px; */
 
 }
-.mypage-review-table>table, .mypage-review-table-notmargin>table{
+
+.mypage-review-table>table,
+.mypage-review-table-notmargin>table {
     width: 100%;
 }
-.mypage-review-table-head{
+
+.mypage-review-table-head {
     background-color: gainsboro;
 }
-.mypage-review-table-head>th{
+
+.mypage-review-table-head>th {
     padding: 15px 0;
     font-size: 14px;
     font-weight: 400;
     color: black;
 
 }
-.mypage-review-table-head>th:first-child{
+
+.mypage-review-table-head>th:first-child {
     width: 600px;
 }
-.mypage-review-table-body{
+
+.mypage-review-table-body:not(.mypage-ocrc-table-body) {
     border-bottom: 1px solid gray;
 }
-.mypage-review-table-body>td{
+
+.mypage-review-table-notmargin>div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+.mypage-review-table-notmargin>div>button {
+    margin: 0;
+    /* border: 1px solid red; */
+    width: 100px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #7E00FF;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.mypage-review-table-body>td {
     text-align: center;
     padding: 15px 0;
     font-size: 14px;
     font-weight: 300;
 }
-.mypage-review-table-body>td:first-child{
+
+.mypage-review-table-body>td:first-child {
     text-align: left;
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
-.mypage-review-table-body>td:first-child>span{
+
+.mypage-review-table-body>td:first-child>span {
     margin: 0;
 }
-.mypage-review-table-body>td:first-child>img{
+
+.mypage-review-table-body>td:first-child>img {
     margin: 0;
     padding-right: 10px;
 }
-.mypage-review-table-body>td:first-child>span:last-child{
+
+.mypage-review-table-body>td:first-child>span:last-child {
     padding-left: 15px;
     /* background-color: red; */
 }
-.mypage-review-register{
+
+.mypage-review-register {
     background-color: rgb(232, 214, 255);
     font-weight: 500;
 }
-.mypage-review-register:hover{
+
+.mypage-review-register:hover {
     cursor: pointer;
 }
-.mypage-review-desc{
+
+.mypage-review-desc {
     border-top: 1px solid black;
     padding: 20px 0;
 }
-.mypage-review-desc-tab{
+
+.mypage-review-desc-tab {
     display: flex;
     justify-content: space-between;
 }
-.mypage-review-desc-tab>span{
+
+.mypage-review-desc-tab>span {
     margin: 0;
 }
-.mypage-review-desc-tab>span:last-child{
+
+.mypage-review-desc-tab>span:last-child {
     padding-right: 20px;
 }
-.mypage-review-table{
+
+.mypage-review-table {
     border: 1px solid gray;
     font-size: 14px;
 }
-.mypage-review-table>tr{
+
+.mypage-review-table>tr {
     border: 1px solid gray;
 }
-.mypage-review-table>tr>th{
+
+.mypage-review-table>tr>th {
     border: 1px solid gray;
     width: 200px;
     padding: 15px;
@@ -230,86 +294,106 @@
     font-weight: 300;
     background-color: gainsboro;
 }
-.mypage-review-table>tr>td{
+
+.mypage-review-table>tr>td {
     padding: 10px 40px;
 }
-.mypage-review-table>tr>td>li{
+
+.mypage-review-table>tr>td>li {
     list-style-type: circle;
     padding: 5px 0;
 }
-.mypage-review-table>tr>td>table{
+
+.mypage-review-table>tr>td>table {
     text-align: left;
     margin: 0;
 }
-.mypage-review-table>tr>td>table>tr{
+
+.mypage-review-table>tr>td>table>tr {
     border-top: 1px solid gray;
 }
-.mypage-review-table>tr>td>table>tr:last-child{
+
+.mypage-review-table>tr>td>table>tr:last-child {
     border-bottom: 1px solid gray;
 }
-.mypage-review-table>tr>td>table>tr>th,.mypage-review-table>tr>td>table>tr>td{
+
+.mypage-review-table>tr>td>table>tr>th,
+.mypage-review-table>tr>td>table>tr>td {
     padding: 15px;
     font-weight: 300;
 }
-.mypage-review-table>tr>td>table>tr>th:first-child{
+
+.mypage-review-table>tr>td>table>tr>th:first-child {
     width: 300px;
     background-color: gainsboro;
 }
-.mypage-review-table>tr>td>table>tr>th:last-child{
+
+.mypage-review-table>tr>td>table>tr>th:last-child {
     background-color: gainsboro;
     width: 130px;
 }
+
 .mypage-review-table>tr>td>table>tr>th:first-child,
-.mypage-review-table>tr>td>table>tr>td:first-child{
+.mypage-review-table>tr>td>table>tr>td:first-child {
     border-right: 1px solid gray;
 }
-.mypage-review-table>tr:nth-child(2)>td>li:first-child{
+
+.mypage-review-table>tr:nth-child(2)>td>li:first-child {
     padding-bottom: 10px;
     /* background-color: red; */
 }
-.mypage-review-table>tr:nth-child(2)>td>li:nth-child(3){
+
+.mypage-review-table>tr:nth-child(2)>td>li:nth-child(3) {
     padding-top: 10px;
     /* background-color: red; */
 }
-.mypage-review-table-box{
+
+.mypage-review-table-box {
     padding-bottom: 70px;
 }
-.mypage-review-check-box>div:last-child{
+
+.mypage-review-check-box>div:last-child {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     padding: 30px 0 100px;
     text-align: center;
 }
+
 /****************************************  */
 /* ************마이페이지 회원정보관리 비밀번호확인       */
 /*****************************************  */
-.mypage-myinfo-pwdCheck{
+.mypage-myinfo-pwdCheck {
     padding: 20px 0;
     font-weight: 400;
     font-size: 18px;
 }
-.mypage-myinfo-pwdCheck-box{
+
+.mypage-myinfo-pwdCheck-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* border: 1px solid gray; */
 }
-.mypage-myinfo-pwdCheck-box>label{
+
+.mypage-myinfo-pwdCheck-box>label {
     margin: 0;
     width: 300px;
 }
-.mypage-myinfo-pwdCheck-box>input{
+
+.mypage-myinfo-pwdCheck-box>input {
     margin: 0;
     width: 100%;
-    padding: 15px 10px ;
+    padding: 15px 10px;
     border-radius: 4px;
     border: 1px solid gray;
 }
-.mypage-myinfo-pwdCheckBtn{
+
+.mypage-myinfo-pwdCheckBtn {
     padding: 50px 0;
     text-align: center;
 }
-.mypage-myinfo-pwdCheckBtn button{
+
+.mypage-myinfo-pwdCheckBtn button {
     padding: 20px 5px;
     background-color: blueviolet;
     color: white;
@@ -317,92 +401,112 @@
     border-radius: 5px;
     font-size: 16px;
 }
-.mypage-myinfo-update-box{
+
+.mypage-myinfo-update-box {
     padding: 10px 0;
 }
-.mypage-myinfo-update-box >h5{
+
+.mypage-myinfo-update-box>h5 {
     font-size: 24px;
     padding: 20px 0;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-none-update-idbox, 
-    .mypage-myinfo-update-addressbox, .mypage-myinfo-update-emailbox){
+
+.mypage-myinfo-update-box>ul>li:not(.mypage-myinfo-none-update-idbox,
+    .mypage-myinfo-update-addressbox, .mypage-myinfo-update-emailbox) {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox,.mypage-myinfo-update-emailbox)>label{
+
+.mypage-myinfo-update-box>ul>li:not(.mypage-myinfo-update-addressbox, .mypage-myinfo-update-emailbox)>label {
     width: 250px;
     display: inline-block;
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox,.mypage-myinfo-update-emailbox)>input{
+
+.mypage-myinfo-update-box>ul>li:not(.mypage-myinfo-update-addressbox, .mypage-myinfo-update-emailbox)>input {
     padding: 15px;
     width: 710px;
     margin-right: 10px;
     border-radius: 5px;
     border: 1px solid gainsboro;
 }
-.mypage-myinfo-none-update-idbox{
+
+.mypage-myinfo-none-update-idbox {
     padding: 10px 0;
 }
-.mypage-myinfo-none-update-idbox>input{
+
+.mypage-myinfo-none-update-idbox>input {
     padding: 15px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid gainsboro;
     margin-left: 8px;
 }
-.mypage-myinfo-update-input{
+
+.mypage-myinfo-update-input {
     background-color: white;
 }
-.mypage-myinfo-none-update-input{
+
+.mypage-myinfo-none-update-input {
     background: gainsboro;
 
 }
-.mypage-myinfo-none-update-idbox>label{
+
+.mypage-myinfo-none-update-idbox>label {
     width: 250px;
     display: inline-block;
     text-align: left;
     margin: 0;
     /* border: 1px solid red; */
 }
-.mypage-myinfo-update-box >ul>li:not(.mypage-myinfo-update-addressbox)>button{
+
+.mypage-myinfo-update-box>ul>li:not(.mypage-myinfo-update-addressbox)>button {
     padding: 15px 10px;
     border-radius: 5px;
-    background-color: white;
+    background-color: #7E00FF;
+    color: white;
     width: 180px;
-    border: 1px solid black;
+    border: 1px solid white;
 }
-.mypage-myinfo-update-emailbox{
+
+.mypage-myinfo-update-emailbox {
     /* border: 1px solid red; */
     display: flex;
     align-items: center;
     padding: 10px 0;
     /* justify-content: space-between; */
 }
-.mypage-myinfo-update-emailbox > label, .mypage-myinfo-update-emailbox>input,
-.mypage-myinfo-update-emailbox>select, .mypage-myinfo-update-emailbox>button {
-    margin: 0;    
+
+.mypage-myinfo-update-emailbox>label,
+.mypage-myinfo-update-emailbox>input,
+.mypage-myinfo-update-emailbox>select,
+.mypage-myinfo-update-emailbox>button {
+    margin: 0;
 }
-.mypage-myinfo-update-emailbox > label {
+
+.mypage-myinfo-update-emailbox>label {
     /* background-color: aqua; */
     width: 260px;
 }
-.mypage-myinfo-update-emailbox > input{
+
+.mypage-myinfo-update-emailbox>input {
     padding: 15px;
     width: 400px;
     border-radius: 5px;
     border: 1px solid gainsboro;
     margin-right: 10px;
 }
-.mypage-myinfo-update-emailbox>select{
+
+.mypage-myinfo-update-emailbox>select {
     padding: 15px;
     width: 300px;
     border-radius: 5px;
     border: 1px solid gainsboro;
     margin-right: 13px;
 }
-.mypage-myinfo-update-check1{
+
+.mypage-myinfo-update-check1 {
     margin-left: 260px;
     display: flex;
     align-items: center;
@@ -412,12 +516,15 @@
     padding: 5px 0;
 }
 
-.mypage-myinfo-update-check1>span, .mypage-myinfo-update-check2>div:first-child>span,
-.mypage-myinfo-update-check1>input,.mypage-myinfo-update-check2>div:first-child>input,
-.mypage-myinfo-update-check2>div{
+.mypage-myinfo-update-check1>span,
+.mypage-myinfo-update-check2>div:first-child>span,
+.mypage-myinfo-update-check1>input,
+.mypage-myinfo-update-check2>div:first-child>input,
+.mypage-myinfo-update-check2>div {
     margin: 0;
 }
-.mypage-myinfo-update-check2{
+
+.mypage-myinfo-update-check2 {
     justify-content: space-between;
     margin-left: 260px;
     display: flex;
@@ -426,40 +533,49 @@
     /* border: 1px solid blue; */
     padding-bottom: 20px;
 }
-.mypage-myinfo-update-check2>div:first-child{
+
+.mypage-myinfo-update-check2>div:first-child {
     display: flex;
     align-items: center;
 }
-.mypage-myinfo-update-check1>input,.mypage-myinfo-update-check2>div:first-child>input{
+
+.mypage-myinfo-update-check1>input,
+.mypage-myinfo-update-check2>div:first-child>input {
     width: 20px;
     height: 20px;
     margin-right: 5px;
 }
-.mypage-myinfo-update-btn{
+
+.mypage-myinfo-update-btn {
     text-align: center;
     padding: 40px 0;
 
 }
-.mypage-myinfo-update-btn>button{
+
+.mypage-myinfo-update-btn>button {
     padding: 15px 10px;
     border-radius: 5px;
-    background-color:blueviolet;
+    background-color: #7E00FF;
     color: white;
     width: 280px;
     font-size: 16px;
     /* border: 1px solid black; */
 }
-.mypage-myinfo-update-desc{
+
+.mypage-myinfo-update-desc {
     margin-left: 260px;
     background-color: gainsboro;
     padding: 20px 25px;
     font-size: 14px;
     color: gray;
 }
-.mypage-myinfo-update-desc>ul>li{
+
+.mypage-myinfo-update-desc>ul>li {
     padding: 5px 0;
 }
-.mypage-myinfo-update-desc>ul>li>h4,.mypage-myinfo-update-desc>ul>li>h5{
+
+.mypage-myinfo-update-desc>ul>li>h4,
+.mypage-myinfo-update-desc>ul>li>h5 {
     padding: 5px 0;
 }
 
@@ -469,7 +585,8 @@
     /* border: 1px solid green; */
     /* justify-content: space-between; */
 }
-.mypage-myinfo-update-addressbox > label{
+
+.mypage-myinfo-update-addressbox>label {
     /* border: 3px solid red; */
     margin: 0;
     /* margin-right: 5px; */
@@ -477,31 +594,219 @@
     width: 260px;
 }
 
-.mypage-myinfo-update-addressbox > input {
+.mypage-myinfo-update-addressbox>input {
     padding: 15px;
     border-radius: 5px;
     border: 1px solid gainsboro;
     margin: 0;
-    width: 710px;
+    width: 500px;
     /* display: inline-block; */
     /* margin-left: 8px; */
 }
 
-.mypage-myinfo-update-addressbox >button{
+.mypage-myinfo-update-addressbox>button {
     padding: 15px 10px;
     border-radius: 5px;
     background-color: white;
-    width: 178px;
+    width: 180px;
     border: 1px solid black;
-    margin-left: 15px;
+    margin-left: 18px;
 }
-.mypage-myinfo-update-addressbox2{
+
+.mypage-myinfo-update-addressbox>button:last-child {
+    padding: 15px 10px;
+    border-radius: 5px;
+    width: 180px;
+    background-color: #7E00FF;
+    color: white;
+    border: 1px solid white;
+    margin-left: 18px;
+}
+
+.mypage-myinfo-update-addressbox2 {
     padding: 10px 0;
 }
-.mypage-myinfo-update-addressbox2>input{
+
+.mypage-myinfo-update-addressbox2>input {
     padding: 15px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid gainsboro;
     margin-left: 258px;
+}
+
+/****************************************  */
+/* ************마이페이지 회원정보관리 배송지관리       */
+/*****************************************  */
+.mypage-myinfo-delivery {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.mypage-myinfo-delivery>h5 {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.mypage-myinfo-delivery>button {
+    margin-top: 20px;
+    border: 1px solid gray;
+    padding: 10px 40px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.mypage-myinfo-delivery-addbox {
+    border: 1px solid black;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+
+}
+
+.mypage-myinfo-delivery-addbox>ul>li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li>input {
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 0;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li>label {
+    width: 100px;
+    /* border: 1px solid red; */
+    margin: 0;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(1)>input,
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(2)>input {
+    width: 300px;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(3)>input {
+    margin: 0;
+    width: 190px;
+    margin-right: 10px;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(3)>button {
+    width: 100px;
+    margin: 0;
+    height: 45px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(4)>input,
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(5)>input {
+    width: 100%;
+}
+
+.mypage-myinfo-delivery-check {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+.mypage-myinfo-delivery-check>input{
+    margin: 0;
+    margin-right: 5px;
+    
+}
+.mypage-myinfo-delivery-check>span {
+    margin: 0;
+    font-size: 14px;
+}
+.mypage-myinfo-delivery-check2{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.mypage-myinfo-delivery-check2 >div{
+    margin: 0;
+    padding-top: 10px;
+}
+.mypage-myinfo-delivery-btn {
+    margin-top: 280px;
+    text-align: center;
+    
+}
+.mypage-myinfo-delivery-btn > button{
+    border: 1px solid black;
+    background-color: black;
+    width: 380px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: 16px;
+}
+.mypage-myinfo-delivery-successbox{
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px 40px;
+    align-items: center;
+}
+.mypage-myinfo-delivery-successbox>div{
+    margin: 0;
+    display: flex;
+}
+.mypage-myinfo-delivery-successbox>div:first-child > div{
+    font-size: 15px;
+    margin-left: 20px;
+}
+.mypage-myinfo-delivery-successbox>div:first-child > div > span:first-child{
+    font-size: 17px;
+    font-weight: 600;
+}
+.mypage-myinfo-delivery-successbox>div:first-child > div > span:nth-child(2){
+    border: 1px solid #7E00FF;
+    /* background-color: red; */
+    color: #7E00FF;
+    background-color: white;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 3px 5px;
+    font-weight: 600;
+}
+.mypage-myinfo-delivery-successbox>div:first-child > div> p{
+    margin-top: 5px;
+}
+.mypage-myinfo-delivery-successbox>div:last-child >button{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px 35px;
+    background-color: white;
+}
+.mypage-myinfo-delivery-successbox>div:last-child >button:first-child{
+    margin-right: 10px;
+}
+.mypage-myinfo-delivery-success-container>div:last-child{
+    text-align: center;
+    padding: 100px 0;
+}
+.mypage-myinfo-delivery-success-container>div:last-child > button{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 15px 110px;
+    font-size: 16px;    
+}
+.mypage-myinfo-delivery-success-container>div:last-child > button:first-child{
+    background-color: white;
+    margin-right: 10px;
+}
+.mypage-myinfo-delivery-success-container>div:last-child > button:last-child{
+    background-color: #7E00FF;
+    color: white;
 }
