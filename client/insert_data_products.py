@@ -426,8 +426,8 @@ json_data = """
         "color": [
             "IVORY",
             "Black",
-            "BLUE-GREEN",
-            "SNOW WHITE",
+            "skyBlue",
+            "purple",
             "BROWN"
         ],
         "size": [
@@ -609,7 +609,7 @@ json_data = """
         "sub_category": "블라우스",
         "name": "Metropolitan Sophisticated Silk Blouse",
         "color": [
-            "Light Pink",
+            "LightPink",
             "Ivory"
         ],
         "size": [

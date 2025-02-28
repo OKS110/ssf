@@ -1,8 +1,8 @@
 import { CiCircleQuestion } from "react-icons/ci";
 import { TfiArrowCircleDown } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { DetailProductContext } from "../../context/DetailProductContext";
 
 export default function DetailOrder({pidItem}){
     const sizePidItemList = pidItem.size; // 상품의 사이즈 []
@@ -10,7 +10,30 @@ export default function DetailOrder({pidItem}){
     console.log("size", sizePidItemList);
     console.log("color", colorPidItemList);
     
-    
+    const {count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize} = useContext(DetailProductContext);
+
+    // 수량
+    const handleCount = (e, type) => {
+        e.preventDefault();
+        
+        if(type === "decrease" && count > 1){
+            setCount(count - 1);
+        }else if(type === "increase"){
+            setCount(count + 1);
+        }
+        
+    }
+
+    // 색상 선택 핸들러
+    const handleColorSelect = (index) => {
+        setSelectColor(index); // 전역 상태 업데이트
+    };
+
+    // 사이즈 선택 핸들러
+    const handleSizeSelect = (index) => {
+        setSelectedSize(index);
+    };
+
 
     return (
         <div className="godsInfo-area">
@@ -78,14 +101,27 @@ export default function DetailOrder({pidItem}){
                                 <span>색상</span>
                                 <ul>
                                     {/* 색상은 json에 잇는 색상 가져와서 보여주기 나중에 수정 */}
-                                    {colorPidItemList && colorPidItemList.map((item, index) => <li key = {index} style={{'backgroundColor':`${item}`}}></li>)}
+                                    {colorPidItemList && colorPidItemList.map((item, index) =>
+                                     <li key={index}
+                                            style={{
+                                                backgroundColor: item,
+                                                border: selectColor === index ? "2px solid black" : "none",
+                                            }}
+                                            onClick={() => handleColorSelect(index)}>
+                                                
+                                            </li>)}
                                 </ul>
                             </div>
                             <div className="goods-info-bottom-size">
                                 <span>사이즈</span>
                                 <ul>
                                     {sizePidItemList && sizePidItemList.map((item, index) => 
-                                        <li htmlFor="" key={index}>
+                                        <li key={index}
+                                            style={{
+                                                border: selectedSize === index ? "2px solid black" : "none",
+                                                cursor: "pointer",
+                                            }}
+                                            onClick={() => handleSizeSelect(index)}>
                                             {item}
                                         </li>
                                     )}
@@ -102,12 +138,12 @@ export default function DetailOrder({pidItem}){
                         </div>
                         <div className="goods-info-count-price">
                             <div className="goods-info-count">
-                                <button>-</button>
-                                <button>1</button>
-                                <button>+</button>
+                                <button onClick={(e) => handleCount(e, "decrease")}>-</button>
+                                <button>{count}</button>
+                                <button onClick={(e) => handleCount(e, "increase")}>+</button>
                             </div>
                             <div className="goods-info-price">
-                                <span>479,000</span>
+                                <span>{pidItem.saleprice}</span>
                                 <span>원</span>
                             </div>
                         </div>

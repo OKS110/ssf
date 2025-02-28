@@ -12,11 +12,20 @@ import GoodsDetail from "../components/DetailProducts/tabsData/GoodsDetail";
 import Recommend from "../components/DetailProducts/tabsData/Recommend";
 import Review from "../components/DetailProducts/tabsData/Review";
 import Size from "../components/DetailProducts/tabsData/Size";
+import { DetailProductContext } from '../context/DetailProductContext.js';
 
 export default function DetailProducts() {
     const { pidItem } = useContext(ProductContext);
     const { pid } = useParams();
     const { getPidItem } = useProduct();
+    const { setCount, setSelectColor, setSelectedSize } = useContext(DetailProductContext);
+
+    // 상품 상세페이지 진입 시 전역 변수(사이즈, 색상, 수량) 초기화
+    useEffect(() => {
+        setCount(1);  // 수량 초기화
+        setSelectColor(0);  // 색상 초기화
+        setSelectedSize(0);  // 사이즈 초기화
+    }, [pidItem]); // 새로운 상품이 로드될 때 초기화
 
     useEffect(() => {
         getPidItem(pid);
@@ -75,7 +84,7 @@ export default function DetailProducts() {
                     tabs={tabsData}
                     activeTab={activeTab}
                     setActiveTab={handleTabClick} // 클릭 시 스크롤 이동 추가
-                />
+                /> 
             </div>
             {/* 기존 컨텐츠 영역 활용 & 스크롤 이동 */}
             <div ref={contentRef} style={{ border: "1px solid red" }}>
