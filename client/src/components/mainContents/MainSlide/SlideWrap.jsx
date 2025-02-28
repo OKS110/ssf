@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
-export default function SlideWrapTest(){
+export default function SlideWrap(){
     const [ testList, setTestList ] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/test.json")
+        axios.get("/data/main.json")
             .then(res => setTestList(res.data.mainTopSlide))
             .catch(error => console.log(error));
     }, []);

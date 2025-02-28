@@ -52,6 +52,7 @@ export default function Header() {
             if (select) {
                 localStorage.removeItem("token");
                 localStorage.removeItem('user_id'); 
+                localStorage.removeItem('guest_id'); 
                 setIsLoggedIn(false);
                 setIsGuest(false); // 비회원 여부 초기화
                 localStorage.removeItem("user_id");

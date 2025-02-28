@@ -92,8 +92,8 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
 
                             <input id="address" name="address" type="text" style={{display:"block", margin:"0"}}
                                 value={formData.address} ref={refs.addressRef} onChange={handleChange} placeholder="배송 주소 입력" className="reset" readOnly />
-                            <input id="detailAddress" name="detailAddress" type="text" style={{display:"block", margin:"0"}}
-                                value={formData.detailAddress} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
+                            <input id="detail_address" name="detail_address" type="text" style={{display:"block", margin:"0"}}
+                                value={formData.detail_address} ref={refs.detail_addressRef} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
                         </span>
                     
                 </div>

@@ -368,140 +368,188 @@
     ],
     "subSlide" : [
         {
-            "mainImage" : "/image/silde 1-1.webp",
-            "subImage1" : "/image/silde 1-2.webp",
-            "subImage2" : "/image/silde 1-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide1_1.webp",
+            "tit": "프리미엄 바디워시 & 로션 \n8천원 최저가 핫딜 + 핸드크림 증정",
+            "desc": "MONTHDAYS",
+            "items" : [
+                {
+                    "subImage" : "/image/slide1_2.webp",
+                    "brand": "month&days",
+                    "name": "🔥한개당 8천원 최저가 \n🔥[1+1] 먼스앤데이즈 퍼",
+                    "oprice": "36,000",
+                    "drate": "56",
+                    "dprice": "16,000"
+                },
+                {
+                    "subImage" : "/image/slide1_3.webp",
+                    "brand": "month&days",
+                    "name": "🔥한개당 8천원 최저가 \n🔥[1+1] 먼스앤데이즈 퍼",
+                    "oprice": "36,000",
+                    "drate": "56",
+                    "dprice": "16,000"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 2-1.webp",
-            "subImage1" : "/image/silde 2-2.webp",
-            "subImage2" : "/image/silde 2-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide2_1.webp",
+            "tit": "기다리던 봄과 함께 찾아온 \n신규 브랜드 론칭 & 단독 특가",
+            "desc": "SHESMISS & LIST 외",
+            "items" : [
+                {
+                    "subImage" : "/image/slide2_2.webp",
+                    "brand": "SHESMISS",
+                    "name": "싱글 투버튼 샛업 자켓_SWSJKO31020",
+                    "oprice": "278,000",
+                    "drate": "65",
+                    "dprice": "97,930"
+                },
+                {
+                    "subImage" : "/image/slide2_3.webp",
+                    "brand": "SISTINA",
+                    "name": "레더 밴딩 집업 점퍼_AWWJPP11030",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "168,000"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 3-1.webp",
-            "subImage1" : "/image/silde 3-2.jpg",
-            "subImage2" : "/image/silde 3-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide3_1.webp",
+            "tit": "새봄 담아온 자크뮈스 팔레트 \n25 S/S New Arrivals",
+            "desc": "JACQUEMUS",
+            "items" : [
+                {
+                    "subImage" : "/image/slide3_2.jpg",
+                    "brand": "JACQUEMUS",
+                    "name": "(Women) Le Cardigan Jacquemus - Light",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "1,180,000"
+                },
+                {
+                    "subImage" : "/image/slide3_3.webp",
+                    "brand": "JACQUEMUS",
+                    "name": "(Women) Le Grand Bisou Perls - Black",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "1,580,000"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 4-1.jpg",
-            "subImage1" : "/image/silde 4-2.webp",
-            "subImage2" : "/image/silde 4-3.jpg",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide4_1.jpg",
+            "tit": "이달의 예보, 스타일 캐스터 \n뉴 스타일 트리플 할인 + 페이백",
+            "desc": "THE APERTURE & SAND SOUND 외",
+            "items" : [
+                {
+                    "subImage" : "/image/slide4_2.webp",
+                    "brand": "SAND SOUND",
+                    "name": "Striped Long-Sleeved Shirt - Sky Blue",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "127,000"
+                },
+                {
+                    "subImage" : "/image/slide4_3.jpg",
+                    "brand": "The Aperture",
+                    "name": "70s Vintage Long Jacket - Brown",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "298,000"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 5-1.webp",
-            "subImage1" : "/image/silde 5-2.webp",
-            "subImage2" : "/image/silde 5-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide5_1.webp",
+            "tit": "가장 편안하게 준비하는 봄 \n단독 상품 발매 ~87%",
+            "desc": "JEEP",
+            "items" : [
+                {
+                    "subImage" : "/image/slide5_2.webp",
+                    "brand": "JEEP",
+                    "name": "[SSF단독]에센셜 스몰로고 하프집업 크롭 맨투맨",
+                    "oprice": "85,000",
+                    "drate": "38",
+                    "dprice": "53,100"
+                },
+                {
+                    "subImage" : "/image/slide5_3.webp",
+                    "brand": "JEEP",
+                    "name": "[SSF단독]에센셜 스몰로고 하프집업 플리스",
+                    "oprice": "70,000",
+                    "drate": "37",
+                    "dprice": "49,500"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 6-1.webp",
-            "subImage1" : "/image/silde 6-2.webp",
-            "subImage2" : "/image/silde 6-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide6_1.webp",
+            "tit": "일상이 더 편해지는 주방용품 \n바겐슈타이거 ~73% + 페이백",
+            "desc": "WAGENSCHTEIGER",
+            "items" : [
+                {
+                    "subImage" : "/image/slide6_2.webp",
+                    "brand": "WAGENSCHTEIGER",
+                    "name": "스텐 사각트레이 3종세트 No.6",
+                    "oprice": "24,000",
+                    "drate": "60",
+                    "dprice": "10,000"
+                },
+                {
+                    "subImage" : "/image/slide6_3.webp",
+                    "brand": "WAGENSCHTEIGER",
+                    "name": "플래티넘 실리콘 지퍼백 3종 세트 그린",
+                    "oprice": "40,000",
+                    "drate": "58",
+                    "dprice": "16,960"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 7-1.webp",
-            "subImage1" : "/image/silde 7-2.webp",
-            "subImage2" : "/image/silde 7-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide7_1.webp",
+            "tit": "파리지앵의 간결함 \n신상품 7% 쿠폰 + 무료 교환/반품",
+            "desc": "AMI",
+            "items" : [
+                {
+                    "subImage" : "/image/slide7_2.webp",
+                    "brand": "ami",
+                    "name": "(Unisex) Adc Poplin Boxy Fit Shirt - White",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "575,000"
+                },
+                {
+                    "subImage" : "/image/slide7_3.webp",
+                    "brand": "ami",
+                    "name": "Women Satin Long Sleeve Shirt - Wool",
+                    "oprice": "",
+                    "drate": "",
+                    "dprice": "845,000"
+                }
+            ]
         },
         {
-            "mainImage" : "/image/silde 8-1.webp",
-            "subImage1" : "/image/silde 8-2.webp",
-            "subImage2" : "/image/silde 8-3.webp",
-            "tit": "",
-            "desc": "",
-            "brand1": "",
-            "name1": "",
-            "oprice1": "",
-            "drate1": "",
-            "dprice1": "",
-            "brand2": "",
-            "name2": "",
-            "oprice2": "",
-            "drate2": "",
-            "dprice2": ""
+            "mainImage" : "/image/slide8_1.webp",
+            "tit": "매일 입기 좋은 마뗑킴 \n언제 어디서나 멋스럽게 ~40%",
+            "desc": "MATIN KIM",
+            "items" : [
+                {
+                    "subImage" : "/image/slide8_2.webp",
+                    "brand": "Matin Kim",
+                    "name": "MATIN HERITAGE CROP TOP IN BLACK",
+                    "oprice": "48,000",
+                    "drate": "20",
+                    "dprice": "38,400"
+                },
+                {
+                    "subImage" : "/image/slide8_3.webp",
+                    "brand": "Matin Kim",
+                    "name": "MATIN LOGO ECOBAG IN BLACK",
+                    "oprice": "43,000",
+                    "drate": "10",
+                    "dprice": "38,700"
+                }
+            ]
         }
     ]
 }

@@ -5,7 +5,7 @@ export default function Brands2(){
     const [ brandList, setBrandList ] = useState([]);
 
     useEffect(() => {
-        axios.get("/data/test.json")
+        axios.get("/data/main.json")
             .then(res => setBrandList(res.data.mainHotBrand))
             .catch(err => console.log(err));
     }, []);
