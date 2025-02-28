@@ -8,6 +8,7 @@ import DaumPostcode from "react-daum-postcode";
 import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import axios from 'axios';
+import DeliveryMyinfo from './DeliveryMyinfo.jsx';
 
 export default function UpdateInfo() {
     const [addressValue, setAddressValue] = useState('');
@@ -114,71 +115,63 @@ export default function UpdateInfo() {
         'addressRef':useRef(null),
         'extraAddressRef':useRef(null)
     }
-
-    const updateValidate = () => {
-        console.log('d');
-        
-        //  if(refs.pwRef.current.value === undefined){
-        //     alert('비밀번호를 입력해주세요');
-        //     refs.pwRef.current.focus();
-        //     return false;
-        // }
-        // else if(refs.nameRef.current.value === ''){
-        //     alert('이름을 입력해주세요');
-        //     refs.nameRef.current.focus();
-        //     return false;
-        // }else if(refs.phoneRef.current.value === ''){
-        //     alert('폰번호를 입력해주세요');
-        //     refs.phoneRef.current.focus();
-        //     return false;
-        // }else if(refs.emailRef.current.value === ''){
-        //     alert('이메일을 입력해주세요');
-        //     refs.emailRef.current.focus();
-        //     return false;
-        // }else if(refs.addressRef.current.value === ''){
-        //     alert('주소를 입력해주세요');
-        //     refs.addressRef.current.focus();
-        //     return false;
-        // }
-    }   
-
-    
-
-
-
+    const [addressClick, setAddressClick] = useState(false);
 
 
     const handleUpdateInfo = (colName,value) => {
         console.log('colName',colName);
         console.log('value',value);
-        
-        // e.preventDefault();
-        // 유효성검사
-        // if(!updateValidate()) {
-        //     alert('빈값있으면 안댐 !')
-        //     return false;
-        // }else 
-        // if(isChecked2 === false){
-        //     alert('정보수집 이용동의를 진행해주세요');            
-        // }        
-        // else if(isChecked1 === true){
-        //     // 해당 주소를 기본 배송지에 저장해야함
-        //     alert('기본배송지로 저장되었습니다');
-        // }
-        // else 
-        // if(updateValidate())
-            // {             
-            // 서버로 바뀐 내용 전달
-            axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"value":value})
-                .then(res => console.log(res.data)
-                )
-                .catch(error => console.log(error)
-                );
-            alert('회원정보 수정이 완료되었습니다');
+        if(isChecked1 === true){
+            setAddressClick(true);
+        }
+         else if(isChecked2 === false){
+                alert('정보수집 이용동의를 진행해주세요');            
+            }        
+            else if(isChecked1 === true){
+                // 해당 주소를 기본 배송지에 저장해야함
+                alert('기본배송지로 저장되었습니다');
+            }
+            else{                              
+                // 서버로 바뀐 내용 전달
+                axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"value":value})
+                    .then(res => console.log(res.data)
+                    )
+                    .catch(error => console.log(error)
+                    );
+                alert('회원정보 수정이 완료되었습니다');
+                }
+                // navigate('/person');
+            }
+            // console.log(updateData);        
+       
+    const handleUpdateInfo2 = (colName,colName2,value,value2) => {
+        console.log('colName',colName);
+        console.log('value',value);
+            if(isChecked2 === false){
+                alert('정보수집 이용동의를 진행해주세요');            
+            }      
+            else{                              
+                // 서버로 바뀐 내용 전달
+                axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"colName2":colName2,
+                                        "value":value, "value2":value2})
+                    .then(res => console.log(res.data)
+                    )
+                    .catch(error => console.log(error)
+                    );
+                alert('회원정보 수정이 완료되었습니다');
+                navigate('/person');
+            }
+            // console.log(updateData);        
+    } 
+    const handleDeliveryAddress = () => {
+        if(isChecked1 === true){
+            // 해당 주소를 배송지관리 쪽으로 넘겨야한느데,,, 이거도 컨텍스트 커스텀훅에 만들어야될거같기도
+            setAddressClick(true);
+            alert('기본배송지로 저장되었습니다');
             // navigate('/person');
-        // }
-        // console.log(updateData);
-    }    
+            <DeliveryMyinfo addressClick={addressClick}/>
+        }
+    }
 
 
     return (
@@ -201,7 +194,7 @@ export default function UpdateInfo() {
                             <ul>
                                 <li className='mypage-myinfo-none-update-idbox'>
                                     <label htmlFor="">아이디</label>
-                                    <input type="text" className='mypage-myinfo-update-input'
+                                    <input type="text" className='mypage-myinfo-none-update-input'
                                         value={customer.username}/>
                                 </li>
                                 <li>
@@ -217,7 +210,10 @@ export default function UpdateInfo() {
                                             />   
                                     
                                         {btnChangeClick.pwd ? 
-                                        <button type='button'  onClick={()=>{handleUpdateInfo( "password",refs.pwRef.current.value)}}>
+                                        <button type='button'  onClick={()=>{
+                                            handleUpdateInfo( "password",refs.pwRef.current.value) 
+                                            handle('pwd')
+                                        }}>
                                         변경완료
                                         </button> 
                                     :  <button type='button'  onClick={()=>{handle('pwd')}}> 변경</button> }
@@ -236,7 +232,9 @@ export default function UpdateInfo() {
                                             )}
                                             />   
                                       {btnChangeClick.name ? 
-                                        <button type='button'  onClick={()=>{handleUpdateInfo( "name",refs.nameRef.current.value)}}>
+                                        <button type='button'  onClick={()=>{
+                                                handleUpdateInfo( "name",refs.nameRef.current.value)
+                                                handle('name')}}>
                                         변경완료
                                         </button> 
                                     :  <button type='button'  onClick={()=>{handle('name')}}> 변경</button> }
@@ -252,9 +250,13 @@ export default function UpdateInfo() {
                                             updateData.phone === undefined ? customer.phone : updateData.phone
                                             )}
                                             />   
-                                    <button type='button'  onClick={()=>{handle('phone')}}>
-                                        {btnChangeClick.phone ? '변경 완료' : '변경'}
-                                    </button>
+                                    {btnChangeClick.phone ? 
+                                        <button type='button'  onClick={()=>{
+                                            handleUpdateInfo( "phone",refs.phoneRef.current.value)
+                                            handle('phone')}}>
+                                        변경완료
+                                        </button> 
+                                    :  <button type='button'  onClick={()=>{handle('phone')}}> 변경</button> }
                                 </li>
                                 <li className='mypage-myinfo-update-emailbox'>
                                     <label htmlFor="">이메일</label>
@@ -282,27 +284,37 @@ export default function UpdateInfo() {
                                             updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
                                             )}>daum.net</option>
                                     </select>  
-                                    <button type='button'  onClick={()=>{handle('email')}}>
-                                        {btnChangeClick.email ? '변경 완료' : '변경'}
-                                    </button>
+                                    {btnChangeClick.email ? 
+                                        <button type='button'  onClick={()=>{
+                                            handleUpdateInfo2( "email","emailDomain", 
+                                             refs.emailRef.current.value, refs.emailDomainRef.current.value)
+                                             handle('email')}}>
+                                        변경완료
+                                        </button> 
+                                    :  <button type='button'  onClick={()=>{handle('email')}}> 변경</button> }
                                 </li>
                                 <li className='mypage-myinfo-update-addressbox'>
                                     <label htmlFor="">주소</label>
                                     <input type={btnChangeClick.address ? 'readonly' : 'readonly'}
                                         ref={refs.addressRef}
                                         name='address'
-                                        // onChange={btnChangeClick.address ? handleChangeInputAddressData : null}
                                         onChange={btnChangeClick.address ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={
                                             addressValue === '' ? customer.address : adata.fullAddress
                                             }/>                                               
-                                    <button type='button'  onClick={()=>{
-                                            handle('address');
-                                            handleToggle();
-                                        }}>
-                                        {btnChangeClick.address ? '변경 완료' : '주소 변경'}
+                                    <button type='button'  onClick={()=> handleToggle()}>                                       
+                                        주소 검색
                                     </button>
+                                    {btnChangeClick.address ? 
+                                        <button type='button'  onClick={()=>{
+                                            handleUpdateInfo2( "address","extra",
+                                                refs.addressRef.current.value,refs.extraAddressRef.current.value)
+                                                handle('address')
+                                                }}>
+                                        변경완료
+                                        </button> 
+                                    :  <button type='button'  onClick={()=>{handle('address')}}> 변경</button> }
                                 </li>
                                 <li className='mypage-myinfo-update-addressbox2'>
                                     <input type={btnChangeClick.address ? 'text' : 'readonly'}
@@ -372,9 +384,9 @@ export default function UpdateInfo() {
                                 </ul>
                             </div>                        
                         }
-                            {/* <div className='mypage-myinfo-update-btn'>
-                                <button type='submit'>저장</button>
-                            </div> */}
+                            <div className='mypage-myinfo-update-btn'>
+                                <button onClick ={handleDeliveryAddress} type='button'>저장</button>
+                            </div>
                         </div>
                     </article>
                 </div>
