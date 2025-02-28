@@ -16,7 +16,7 @@ export default function OrderContents({
 }) {
     // ✅ 입력 값 초기화 함수
     const resetForm = () => {
-        setFormData({ name: "", phone: "", email: "", zipcode: "", address: "", detailAddress: "", message: "" });
+        setFormData({ name: "", phone: "", email: "", zipcode: "", address: "", detail_address: "", message: "" });
         console.log("입력값 초기화 완료");
     };
 
