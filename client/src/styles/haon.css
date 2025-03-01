@@ -3,14 +3,30 @@
 /*****************************************  */
 .order-list-ordertab {
     /* background-color: rgb(218, 218, 218); */
-    margin: 0;
+    margin-top: 30px;
 }
+.order-date-active{
+    border: 3px solid black;
+    /* border-radius: 5px;
+    padding: 5px 10px; */
+    /* background-color: red; */
+    background-color: black;
+    color: white;
+}
+.order-date-none{
+    border: 1px solid black;
+    /* border-radius: 5px;
+    padding: 5px 10px; */
+}
+
+
 
 .order-list-bottom {
     display: flex;
     justify-content: space-between;
     /* background-color: red; */
     padding: 15px 0;
+    /* border-top: 1px solid gray; */
 }
 
 .order-list-bottom>span {
@@ -84,15 +100,36 @@
 .order-list-deliverylist>ul>li>span:nth-child(2) {
     font-weight: 600;
     padding-right: 10px;
-    width: 100px;
+    width: 120px;
     display: inline-block;
+    /* border: 1px solid red; */
 }
-
+.mypage-order-product-bottom-shop{
+    /* margin-bottom: 50px; */
+    color: black;
+}
 .order-list-delivery {
     position: relative;
     /* background-color: red; */
 }
-
+.order-list-changedots{
+    text-align: center;
+    border-top: 1px dotted black;
+    position: absolute;
+    width: 1030px;
+    margin-left: 90px;
+    top: 83px;
+    z-index: 1;
+}
+.order-list-returndots{
+    text-align: center;
+    border-top: 1px dotted black;
+    position: absolute;
+    width: 1030px;
+    margin-left: 95px;
+    top: 83px;
+    z-index: 1;
+}
 .order-list-deliverydots {
     border-top: 1px dotted black;
     position: absolute;
@@ -102,8 +139,23 @@
     text-align: center;
     z-index: 1;
 }
-
-
+.order-list-deliverymap-top{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.order-list-deliverymap-top>div{
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: gainsboro;
+}
+.order-list-deliverymap-top>div:nth-child(2){
+    width: 800px;
+}
+.order-list-deliverymap-top>div:first-child,.order-list-deliverymap-top>div:last-child{
+    width: 100px;
+}
 /****************************************  */
 /* ************마이페이지 상품리뷰       */
 /*****************************************  */
@@ -114,6 +166,7 @@
     border-radius: 8px;
     padding: 30px 20px;
     align-items: center;
+    margin-top: 30px;
 }
 
 .mypage-review-box>div {
@@ -168,10 +221,11 @@
 
 .mypage-review-table {
     margin-top: 40px;
+    border: 1px solid gray;
 }
 
 .mypage-review-table-notmargin {
-    border-top: 1px solid gray;
+    border: 1px solid gray;
     /* background-color: aqua; */
     /* margin-bottom: 50px; */
 
@@ -199,18 +253,18 @@
 }
 
 .mypage-review-table-body:not(.mypage-ocrc-table-body) {
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
 }
 
 .mypage-review-table-notmargin>div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
     padding-bottom: 10px;
 }
 
-.mypage-review-table-notmargin>div>button {
+.mypage-review-table-notmargin>div>button:not(:last-child) {
     margin: 0;
     /* border: 1px solid red; */
     width: 100px;
@@ -221,7 +275,17 @@
     border-radius: 5px;
     font-size: 15px;
 }
-
+.mypage-review-table-notmargin>div>button:last-child{
+    margin: 0;
+    /* border: 1px solid red; */
+    width: 100px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: rgb(217, 19, 19);
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
 .mypage-review-table-body>td {
     text-align: center;
     padding: 15px 0;
@@ -260,7 +324,7 @@
 }
 
 .mypage-review-desc {
-    border-top: 1px solid black;
+    /* border-top: 1px solid black; */
     padding: 20px 0;
 }
 
@@ -351,7 +415,9 @@
 .mypage-review-table-box {
     padding-bottom: 70px;
 }
-
+.mypage-review-check-box{
+    margin-top: 30px;
+}
 .mypage-review-check-box>div:last-child {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -809,4 +875,52 @@
 .mypage-myinfo-delivery-success-container>div:last-child > button:last-child{
     background-color: #7E00FF;
     color: white;
+}
+/****************************************  */
+/* ************마이페이지 위시리스트      */
+/*****************************************  */
+.mypage-wishList-products{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    padding-bottom: 100px;
+    /* padding-top: 50px; */
+    background-color: white;
+    margin-top: 30px;
+}
+.mypage-wishList-products>div{
+    margin: 0;
+    font-size: 13px;
+}
+.mypage-wishList-products>div>image{
+    width: 220px;
+}
+.mypage-wishList-products>div>h5{
+    padding: 10px 0 0;
+    font-weight: 700;
+    font-size: 13px;
+}
+.mypage-wishList-products>div>p{
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.mypage-wishList-products>div>h4 {
+    padding: 5px 0 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: gray;
+    text-decoration: line-through;
+}
+.mypage-wishList-products>div>span{
+    padding: 5px 0 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #7E00FF;
+}
+.mypage-wishList-products>div>span:last-child{
+    padding: 5px 0 0;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    color: black;
 }

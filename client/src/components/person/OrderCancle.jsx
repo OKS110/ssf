@@ -68,7 +68,7 @@ return (
                             activeTab={activeTab} 
                             setActiveTab={setActiveTab} 
                         />
-                        <div style={{ border: "1px solid red" }}>
+                        <div>
                             {renderContent()}
                         </div>                                           
 

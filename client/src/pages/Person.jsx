@@ -13,26 +13,26 @@ import WishListProduct from "../components/person/tabsData/WishListProduct.jsx";
 import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
 import { CustomersContext } from '../context/CustomersContext.js';
-import {useCustomers} from '../hooks/useCustomers.js';
+import { useCustomers } from '../hooks/useCustomers.js';
 
-export default function Person(){
+export default function Person() {
+    const [heart, setHeart] = useState(false);
+    const { customer } = useContext(CustomersContext);
+    const { getCustomer } = useCustomers();
 
-      const {customer} = useContext(CustomersContext);
-      const { getCustomer } = useCustomers();
-  
-      useEffect( () => {
-          const fetchCustoerList = async() => {
-              const id = localStorage.getItem('user_id');
-              await getCustomer(id);
-          }
-          fetchCustoerList();
-      }, [])
+    useEffect(() => {
+        const fetchCustoerList = async () => {
+            const id = localStorage.getItem('user_id');
+            await getCustomer(id);
+        }
+        fetchCustoerList();
+    }, [])
 
 
     const tabsData = [
-        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content:<WishListProduct/> },
-        { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content:<WishListBrand/>},
-        { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent" ,content:<WishListContent/>}
+        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content: <WishListProduct /> },
+        { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content: <WishListBrand /> },
+        { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent", content: <WishListContent /> }
     ];
 
     // 부모에서 활성화된 탭 상태를 관리
@@ -43,25 +43,25 @@ export default function Person(){
         const activeContent = tabsData.find(tab => tab.id === activeTab);
         return activeContent ? activeContent.content : null;
     };
- 
+
 
 
     return (
         <div className="mypage-box">
             <div className="mypage-top-menu">
                 <span>Home</span>
-                <SlArrowRight className="mypage-top-menu-icon"/>
-            <span ><Link to = '/person' className='mypage-link' >마이페이지</Link></span>
+                <SlArrowRight className="mypage-top-menu-icon" />
+                <span ><Link to='/person' className='mypage-link' >마이페이지</Link></span>
             </div>
             <div className="mypage-top-box-flex">
                 <div className="mypage-top-box-empty"></div>
-                <div  className="mypage-top-box">마이페이지</div>
+                <div className="mypage-top-box">마이페이지</div>
             </div>
             <div className="mypage-bottom-box">
-               <PersonUIform />
+                <PersonUIform />
                 <article className="mypage-bottom-right">
                     <div className="mypage-bottom-my">
-                        <div className="mypage-bottom-my-top">   
+                        <div className="mypage-bottom-my-top">
                             <div className="mypage-bottom-my-top-left">
                                 <span><MdOutlineCardMembership /></span>
                                 <span>{customer.name}님</span>
@@ -112,11 +112,11 @@ export default function Person(){
                         <div className="mypage-order-product-bottom">
                             <span>최근 주문 내역이 없습니다. 마음에드는 상품을 찾아보세요.</span>
                             <div>
-                                <Link to ='/'><span>쇼핑하기<MdKeyboardArrowRight /></span></Link>
+                                <Link className="mypage-order-product-bottom-shop" to='/'><span>쇼핑하기<MdKeyboardArrowRight /></span></Link>
                             </div>
                         </div>
                     </div>
-                    <div className="mypage-wishList" > {/* 위시리스트는 찜한게 있어야 나오게 해야한다  */}
+                    {heart && <div className="mypage-wishList" >
                         <div className="mypage-wishList-top" >
                             <h2>위시리스트</h2>
                             <div>
@@ -124,18 +124,15 @@ export default function Person(){
                                 <span><MdKeyboardArrowRight /></span>
                             </div>
                         </div>
-                        <ProductMypage 
-                            tabs={tabsData} 
-                            activeTab={activeTab} 
-                            setActiveTab={setActiveTab} 
+                        <ProductMypage
+                            tabs={tabsData}
+                            activeTab={activeTab}
+                            setActiveTab={setActiveTab}
                         />
-                        <div style={{ border: "1px solid red" }}>
+                        <div >
                             {renderContent()}
                         </div>
-                        <div className="mypage-wishList-items">
-                            위시리스트 있을때만 얘 칸 보이게 
-                        </div>
-                    </div>
+                    </div>}
                     <div className="mypage-active">
                         <h2>활동내역</h2>
                         <div className="mypage-active-box">
