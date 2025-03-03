@@ -49,7 +49,7 @@ export default function ReviewResite() {
         <table>
                 <tr className='mypage-review-table-head'>
                     <th>주문상품정보</th>
-                    <th>주문일</th>
+                    <th>주문번호</th>
                     <th>작성기한</th>
                     <th>최대 적립 포인트</th>
                     <th>리뷰 작성</th>
@@ -60,9 +60,9 @@ export default function ReviewResite() {
                         <span>Adidas</span>
                         <span>엄청 따뜻한 후드티</span>
                     </td>
-                    <td>2020.01.01</td>
-                    <td>배송완료 후 2주 이내</td>
-                    <td>1,000C</td>
+                    <td>8228aswef891efs</td>
+                    <td>수령완료 후 45일 이내</td>
+                    <td>3,000C</td>
                     <td className='mypage-review-register'>리뷰 작성하기</td>
                 </tr>
         </table>
