@@ -1,6 +1,21 @@
 import Button from "../../commons/Button";
+import { useEffect } from "react";
+import { AuthContext } from "../../auth/AuthContext.js";
+import { DetailProductContext } from "../../context/DetailProductContext";
+import { useCart } from "../../hooks/useCart.js";
 
 export default function CartOrderMain(){
+    // const { isLoggedIn } = useContext(AuthContext);
+    // const { cartList, userId } = useContext(DetailProductContext);
+    // const { getCustomerId } = useCart();
+    // const id = localStorage.getItem("user_id");
+
+    // useEffect(() => {
+    //     if (isLoggedIn) {
+    //         getCustomerId(id);
+    //     }
+    // }, []);
+
     return (
             <table>
                 {/* <caption>장바구니 일반배송</caption> */}

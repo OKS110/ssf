@@ -20,3 +20,12 @@ export const updateMyinfo = async (req, res) => {
         res.end();   
     }              
 }
+
+
+export const updateDelivery = async(req,res) =>{
+        // console.log('yeeye',req.body);
+    const result = await repository.updateDelivery(req.body);
+    res.json(result);
+    res.end();
+
+}
