@@ -36,7 +36,7 @@ export default function GoodsDetail() {
                 <div style={{ width: "50%", position: "sticky", top: "0", alignSelf: "flex-start", padding: "100px" }}>
                     <h2 style={{padding:"20px"}}>상품번호 : {pidItem?.pid}</h2>
                     <p style={{padding:"20px", fontSize:"1.3rem", lineHeight:"40px"}}>
-                        {pidItem?.description}
+                        {pidItem.description}
                     </p>
                 </div>
             </div>
