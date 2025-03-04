@@ -8,6 +8,7 @@ import mypageRouter from './router/mypageRouter.js';
 import orderRouter from './router/orderRouter.js';
 import customerRouter from './router/customerRouter.js'
 import guestRouter from './router/guestRouter.js';
+import cartRouter from './router/cartRouter.js';
 
 // 서버 생성 및 포트 지정
 const server = express();
@@ -29,6 +30,9 @@ server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
 // server.use('/admin', adminRouter);
 server.use('/order', orderRouter);
+
+// 카트
+server.use('/cart', cartRouter);
 
 
 // 여기는 테스트
