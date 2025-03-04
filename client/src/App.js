@@ -1,7 +1,7 @@
 import './styles/style.css';
 import './styles/haon.css';
 import './styles/yuna.css';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-dom에서 제공하는 컴포넌트
 import Layout from './pages/Layout.jsx';
 import Home from './pages/Home.jsx';
@@ -26,6 +26,8 @@ import { GuestProvider } from './context/GuestContext.js';
 import { OrderProvider } from './context/OrderContext.js';
 import { DetailProductProvider } from './context/DetailProductContext.js';
 import DeliveryMyinfo from './components/person/MyInfo/DeliveryMyinfo.jsx';
+import SearchPage from './components/Search/SearchPage.jsx'
+
 function App() {
   return (
     <>
@@ -54,6 +56,7 @@ function App() {
                     <Route path='/person/editMemberInfo/delivery' element={<DeliveryMyinfo/>}></Route>
                     <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order/:pid' element={<Order/>}></Route>
+                    <Route path='/searchPage' element={<SearchPage />}></Route>
             </Route>
           </Routes>
           {/* </ScrollToTop>  ScrollTop */} 
