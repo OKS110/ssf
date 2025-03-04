@@ -7,7 +7,7 @@ import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Modal from 'react-modal';
-import Search from "./Search/Search.jsx";
+import SearchModal from "./Search/SearchModal.jsx";
 
 export default function Header() {
     // 검색 모달창 관리
@@ -72,6 +72,28 @@ export default function Header() {
         }
     };
 
+    // 모달창 스타일 설청
+    const customModalStyles = {
+        overlay: {
+            backGroundColor: "rgba(0, 0, 0, 0.5)",
+            width: "100%",
+            height: "700px",
+            zIndex: "20",
+            // position: "fixed",
+            top: "0",
+            left: "0"
+        },
+        content: {
+            width: "100%",
+            height: "580px",
+            zIndex: "21",
+            top: "0",
+            left: "0",
+            justifyContent: "center",
+        }
+    }
+    console.log("modal status --> ", isOpen);
+
     return (
         <header className='wrap-header'>
             <div className='header-top-wrap'>
@@ -95,12 +117,12 @@ export default function Header() {
                                 <Modal
                                     isOpen={isOpen}
                                     onRequestClose={() => setIsOpen(false)}
-                                    // style={customModalStyles}
                                     ariaHideApp={false}
                                     contentLabel="Pop up Message"
-                                    shouldCloseOnOverlayClick={false}
+                                    shouldCloseOnOverlayClick={true}
+                                    style={customModalStyles}
                                 >
-                                    <Search />
+                                    <SearchModal event={setIsOpen} />
                                 </ Modal>
                             {/* </Link> */}
                             <Link to='/carts'><button type='button'><CiHeart /></button></Link>
