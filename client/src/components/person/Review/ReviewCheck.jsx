@@ -6,6 +6,8 @@ export default function ReviewCheck() {
     const click = (name) => {
         setSelect(name);
     }
+    console.log(select);
+    
 
 
     return (
