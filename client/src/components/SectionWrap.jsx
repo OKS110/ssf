@@ -23,6 +23,16 @@ export default function SectionWrap({id, title, children}) {
         { tabName: "아우터" },
         { tabName: "신발" }
     ];
+    const tabList2 = [
+        { tabName: "코트" },
+        { tabName: "스웨터" },
+        { tabName: "티셔츠" },
+        { tabName: "블라우스" },
+        { tabName: "셔츠" },
+        { tabName: "니트" },
+        { tabName: "청바지" },
+        { tabName: "슬랙스" },
+    ];
 
     const brandList = [
         { brandName: "NIKE" },
@@ -108,7 +118,7 @@ export default function SectionWrap({id, title, children}) {
                 id === 'rank' &&
                 <div className='contents-box god-lists'>
                     <ul className='sub-category-select'>
-                        { tabList && tabList.map((list) => 
+                        { tabList2 && tabList2.map((list) => 
                             <li className={list.tabName === subCategory ? 'sub-category-select-click-tabMenu' : 'sub-category-select-tabMenu'}
                                 onClick={() => setSubCategory(list.tabName)}>
                             {list.tabName}

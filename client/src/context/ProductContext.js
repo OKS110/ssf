@@ -7,7 +7,7 @@ export const ProductProvider = ({children}) => {
     const [productList, setProductList] = useState([]); 
     const [pidItem, setPidItem] = useState([]);
     const [category, setCategory] = useState("상의"); // 아우터로~ 탭 메뉴 관리
-    const [subCategory, setSubCategory] = useState("하의"); // 랭킹 탭 메뉴 관리
+    const [subCategory, setSubCategory] = useState("코트"); // 랭킹 탭 메뉴 관리
     const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
     const [rankList, setRankList] = useState([]); // 필터링을 거친 상품 데이터(중분류용)
     const [search, setSearch] = useState(""); // 검색창 검색어 관리

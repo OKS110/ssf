@@ -1,40 +1,59 @@
 import { useState } from "react";
 import SizeChart from "./SizeChart";
+import SizeGuide from "./SizeGuide";
 
-export default function Size() {
+export default function Size({ pidItem }) {
     const [isSizeOpen, setIsSizeOpen] = useState(false);
+    const [sizeTab, setSizeTab] = useState(""); // 기본 선택 사이즈
+
+    const handleSizeTab = (type) => {
+        setSizeTab(type);
+    };
 
     return (
-        <div style={{ backgroundColor: "lightblue", height: "auto" }}>
-            사이즈 & 핏
-            <ul style={{ display: "flex", justifyContent: "center", gap: "30px" }}>
-                <li style={{ margin: "0" }}><h1>XS</h1></li>
-                <li style={{ margin: "0" }}><h1>S</h1></li>
-                <li style={{ margin: "0" }}><h1>L</h1></li>
-                <li style={{ margin: "0" }}><h1>XL</h1></li>
+        <div style={{ backgroundColor: "lightblue", height: "auto", padding: "20px" }}>
+            {/* 사이즈 선택 버튼 리스트 */}
+            <ul style={{ display: "flex", justifyContent: "center", gap: "30px", listStyle: "none", padding: "0" }}>
+                {pidItem && pidItem.size.map((item) => 
+                    <li key={item.name} style={{ margin: "0", borderBottom: sizeTab === item.name ? "3px solid #000" : "none" }}>
+                        <button 
+                            style={{ fontSize: "2rem", background: "none", border: "none", cursor: "pointer", padding: "5px 10px" }} 
+                            onClick={() => handleSizeTab(item.name)}
+                        >
+                            {item.name}
+                        </button>
+                    </li>
+                )}
             </ul>
-            <div className="chart-header">
+
+            <div className="chart-header" style={{ textAlign: "center", marginTop: "10px" }}>
                 <span className="chart-unit">(단위: cm)</span>
             </div>
+
             <div className="size-chart">
-                <SizeChart/>
+                <SizeChart pidItem={pidItem} sizeTab={sizeTab} />
             </div>
-            {/*  사이즈 토글  */}
+
+
+
+            {/* 사이즈 가이드 토글 */}
             <div style={{ marginTop: "10px", border: "1px solid gray", padding: "10px" }}>
-                <button onClick={(event) => {
-                        event.stopPropagation(); // 이벤트 버블링 방지
+                <button 
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setIsSizeOpen(!isSizeOpen);
                     }}
                     style={{
                         width: "100%", padding: "10px", fontSize: "16px", textAlign: "left",
                         display: "flex", justifyContent: "space-between"
-                    }}>
+                    }}
+                >
                     <p style={{ margin: 0 }}>사이즈 가이드</p>
                     <p style={{ margin: 0 }}>{isSizeOpen ? "▲" : "▼"}</p>
                 </button>
                 {isSizeOpen && (
                     <div style={{ marginTop: "10px", padding: "10px", backgroundColor: "#f8f8f8" }}>
-                        세탁 시 반드시 찬물로 손세탁하세요. 건조기 사용 시 제품 변형이 있을 수 있습니다.
+                        <SizeGuide/>
                     </div>
                 )}
             </div>

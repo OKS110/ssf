@@ -27,13 +27,14 @@ export default function DetailProducts() {
         setSelectedSize(0);  // 사이즈 초기화
     }, [pidItem]); // 새로운 상품이 로드될 때 초기화
 
+    
     useEffect(() => {
         getPidItem(pid);
     }, []);
 
     const tabsData = [
         { id: "goodsDetailTab", label: "상품정보", href: "#goodsDetailTabs", content: <GoodsDetail /> },
-        { id: "sizeTab", label: "사이즈&핏", href: "#goodsDetailTabs", content: <Size /> },
+        { id: "sizeTab", label: "사이즈&핏", href: "#goodsDetailTabs", content: <Size pidItem={pidItem} /> },
         { id: "reviewTab", label: "리뷰", href: "#goodsDetailTabs", content: <Review /> },
         { id: "recommendTab", label: "추천", href: "#goodsDetailTabs", content: <Recommend /> }
     ];
