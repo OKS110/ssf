@@ -169,8 +169,7 @@ export default function UpdateInfo() {
             // 해당 주소를 배송지관리 쪽으로 넘겨야한느데,,, 이거도 컨텍스트 커스텀훅에 만들어야될거같기도
             setAddressClick(true);
             alert('기본배송지로 저장되었습니다');
-            // navigate('/person');
-            <DeliveryMyinfo addressClick={addressClick}/>
+            navigate('/person');
         }
     }
 

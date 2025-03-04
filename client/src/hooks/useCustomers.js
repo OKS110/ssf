@@ -4,8 +4,8 @@ import { CustomersContext } from "../context/CustomersContext.js"
 
 export function useCustomers() {
     const { customersList, setCustomersList, customer, setCustomer,
-        emailDomain, setEmailDomain, email,setEmail
-     } = useContext(CustomersContext);
+        emailDomain, setEmailDomain, email, setEmail
+    } = useContext(CustomersContext);
 
     /** 고객 데이터 전체 호출 **/
     const getCustomersList = async () => {
@@ -17,10 +17,9 @@ export function useCustomers() {
 
     /** 고객 별 데이터 호출 **/
     const getCustomer = async (username) => {
-        const result = await axios.post("http://localhost:9000/customers/member", { username });
-        
-        console.log(result.data.email);     
-        setCustomer(result.data);
+        try {
+            const result = await axios.post("http://localhost:9000/customers/member", { username });
+            setCustomer(result.data);
             const e1 = result.data.email.replace('@naver.com', '');
             const e2 = e1.replace('@gmail.com', '');
             const emailName = e2.replace('@daum.net', '');
@@ -29,6 +28,11 @@ export function useCustomers() {
             setEmailDomain(emailDomain);
             setEmail(emailName);
 
+        } catch (error) {
+            // alert('비회원은 상품주문 후에 마이페이지 이용이 가능합니다.')
+        }
+
+        // console.log(result.data.email);   
     }
 
 
