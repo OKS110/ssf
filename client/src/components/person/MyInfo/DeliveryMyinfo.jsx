@@ -79,21 +79,16 @@ export default function DeliveryMyinfo() {
                         localStorage.setItem('addSuccess', true);
                     }
                 })
-                .catch(err => console.log(err));                
+                .catch(err => console.log(err)
+                );
 
         } else if (validate() && isChecked1 === false) {
-            // ****** 얘 주소 만들기 
-            axios.post('http://localhost:9000/mypage/updateDeliveryAdditional', { deliForm, 'id': id })
-                .then(res => {
-                    if(res.data.result === 1){
+            // 걍 로컬에만 저장되고 화면에 뿌리기
+            localStorage.setItem('addSuccess', true);
+             test = JSON.parse(localStorage.getItem("addDelivery")) || [];
+                        test.push(deliForm); // 새로운 데이터 추가
+                        localStorage.setItem('addDelivery', JSON.stringify(test));
                         localStorage.setItem('addSuccess', true);
-                         test = JSON.parse(localStorage.getItem("addDelivery")) || [];
-                            test.push(deliForm); // 새로운 데이터 추가
-                            localStorage.setItem('addDelivery', JSON.stringify(test));
-                            localStorage.setItem('addSuccess', true);
-                    }
-                })
-                .catch(err => console.log(err));
         }
         else {
             alert('빈값 x');
@@ -136,10 +131,20 @@ export default function DeliveryMyinfo() {
     //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
 
 
-// ***********************************************************************************
-const deliveryDelete = () => {
+/// 잠만   로컬스토리지 값을 걍 바로바로 받아와도 되나? 비동기 아닌가 ?.. => 이거 isLoggedIN 이거랑 비슷할거각ㅌ은데
+    // 0.addDelivery 값이 바뀔떄마다 이 값을 관리하는애가 잇어야함 
 
-    };   
+const deliveryDelete = () => {
+    setTimeout(() => {
+    
+    }, 0);
+    let test2 = JSON.parse(localStorage.getItem("addDelivery")) || [];        
+   // 1.삭제할 데이터도 내가 클릭했을때 딱딱 받아와서 자동으로 입력이 되야하는뎁... 
+    const filteredUsers = test2.filter(user => user.zoneCode !== '51619');
+   localStorage.setItem('addDelivery',JSON.stringify(filteredUsers));
+   // console.log('dddd',filteredUsers);
+   // 2. 삭제는 되는데 새로고침을 눌러야만 내용 바뀜. 바로바로 바뀌게 해
+   
 }
 
 
