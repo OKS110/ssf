@@ -122,7 +122,7 @@ export default function DetailOrder({pidItem}){
                                                 cursor: "pointer",
                                             }}
                                             onClick={() => handleSizeSelect(index)}>
-                                            {item}
+                                            {item.name}
                                         </li>
                                     )}
                                 </ul>

@@ -9,9 +9,10 @@ export function useProduct() {
 
     /** 상품 데이터 전체 호출 **/
     const getProductList = async() => {
-        const result = await axios.post("http://localhost:9000/product/all");
+        const result = await axios.post("http://localhost:9000/product/all"); // 별점 순으로 order by 사용해서 출력
         setProductList(result.data);
-
+        console.log("상품 데이터 전체 호출 : ", result.data);
+        
         return result.data;
     }
 
@@ -29,8 +30,8 @@ export function useProduct() {
             categoryList = filterCategory.filter((item, i) => i < 6 && item);
             setDetailList(categoryList);
             
-            // 랭킹 카테고리 데이터
-            const filterSubCategory = list.filter(list => list.category === subCategory);
+            // 서브 카테고리 데이터
+            const filterSubCategory = list.filter(list => list.sub_category === subCategory);
             subCategoryList = filterSubCategory.filter((item, i) => i < 8 && item);
             setRankList(subCategoryList);
         }

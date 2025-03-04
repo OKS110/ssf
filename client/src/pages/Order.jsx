@@ -178,7 +178,7 @@ export default function Order() {
             brand: pidItem?.brand || "브랜드 정보 없음",
             title: pidItem?.title || "상품명 없음",
             total_price: Number(pidItem?.saleprice.replace(/,/g, "")) || 0, // ✅ 쉼표 제거 후 숫자로 변환
-            size: Array.isArray(pidItem?.size) && selectedSize !== null ? pidItem.size[selectedSize] : "사이즈 미선택",
+            size: Array.isArray(pidItem?.size) && selectedSize !== null ?pidItem.size[selectedSize].name  : "사이즈 미선택",
             color: Array.isArray(pidItem?.color) && selectColor !== null ? pidItem.color[selectColor] : "색상 미선택",
             quantity: count || 1,
             zipcode: formData.zipcode || null, // undefined이면 null
@@ -190,6 +190,7 @@ export default function Order() {
             payment_method: selectedPayMethod || null,
         };
         console.log("📌 최종 주문 데이터:", orderData);
+        // console.log("📌 사이즈 데이터:", pidItem.size[selectedSize].name );
 
         try{
             if(isAuthorized){ // 회원일 때 회원 주문 저장
@@ -251,12 +252,21 @@ export default function Order() {
                                     <td>
                                         <p>브랜드 : {pidItem.brand}</p>
                                         <p>상품명 : {pidItem.title}</p>
-                                        {/* 배열 체크 후 접근 */}
-                                        <p>사이즈 : {Array.isArray(pidItem.size) && selectedSize !== null ? pidItem.size[selectedSize] : "사이즈 미선택"}</p>
-                                        <p>색상 : {Array.isArray(pidItem.color) && selectColor !== null ? pidItem.color[selectColor] : "색상 미선택"}</p>
+                                        <p>
+                                            사이즈: 
+                                            {Array.isArray(pidItem.size) && selectedSize !== null && selectedSize < pidItem.size.length
+                                                ? pidItem.size[selectedSize].name 
+                                                : "사이즈 미선택"}
+                                        </p>
+                                        <p>
+                                            색상: 
+                                            {Array.isArray(pidItem.color) && selectColor !== null && selectColor < pidItem.color.length
+                                                ? pidItem.color[selectColor] 
+                                                : "색상 미선택"}
+                                        </p>
                                         <p>수량 : {count}</p>
-
                                     </td>
+
                                     <td>{pidItem.discount}%</td>
                                     <td>{pidItem.deliveryFee}</td>
                                     <td>{pidItem.saleprice}</td>
