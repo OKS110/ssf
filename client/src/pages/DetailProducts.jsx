@@ -65,7 +65,7 @@ export default function DetailProducts() {
             <DetailTop pidItem={pidItem}/>
             <div className="gods-summary" view-section="summary">
                 <DetailImage pidItem={pidItem}/>
-                <DetailOrder pidItem={pidItem}/>
+                <DetailOrder pid={pid} pidItem={pidItem}/>
             </div>
 
             {/* 탭 고정 */}

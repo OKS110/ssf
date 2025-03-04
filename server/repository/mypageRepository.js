@@ -1,6 +1,6 @@
 import { db } from "./db.js";
 
-export const getMyinfo = async({id}) => {
+export const getMyinfo = async({id}) => { // 이거 안씀 겟 커스터머 사용중임
     // const sql =`  이게 원래 코드인데 지금은 주문 들어간게 없어서 임시로 sql1 만든거임 나중에 바꿔
     //     select c.customer_id, 
     //             c.username, 
@@ -84,3 +84,13 @@ export const updateMyinfo2 = async({id,colName,value,colName2,value2}) => {
 }
 
 
+export const updateDelivery = async({deliForm,id}) => {
+    const sql1=`
+               update customers set zipcode = ?, address = ?, additional_address = ? where username = ?
+                `;
+
+    const [result] = await db.execute(sql1,[deliForm.zoneCode, deliForm.address,deliForm.extraAddress, id]);
+    console.log(['lolololol',result]);
+    
+    return {'result':result.affectedRows};
+}

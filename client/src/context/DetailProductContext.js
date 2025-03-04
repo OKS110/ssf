@@ -15,6 +15,9 @@ export const DetailProductProvider = ({ children }) => {
         return Number(sessionStorage.getItem("selectedSize")) || 0; // sessionStorage에서 불러오기
     });
 
+    const [cartList, setCartList] = useState([]); // 카트에 담긴 상품 리스트 배열
+    const [userId, setUserId] = useState("");
+
     // 값이 변경될 때 sessionStorage에 저장
     useEffect(() => {
         sessionStorage.setItem("selectedCount", count);
@@ -29,7 +32,7 @@ export const DetailProductProvider = ({ children }) => {
     }, [selectedSize]);
 
     return (
-        <DetailProductContext.Provider value={{ count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize }}>
+        <DetailProductContext.Provider value={{ count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize, cartList, setCartList, userId, setUserId }}>
             {children}
         </DetailProductContext.Provider>
     );

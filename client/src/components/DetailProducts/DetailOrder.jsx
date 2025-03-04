@@ -3,14 +3,34 @@ import { TfiArrowCircleDown } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { DetailProductContext } from "../../context/DetailProductContext";
+import { AuthContext } from "../../auth/AuthContext.js";
+import { useCart } from "../../hooks/useCart.js";
 
-export default function DetailOrder({pidItem}){
+export default function DetailOrder({pid, pidItem}){
+    const { isLoggedIn } = useContext(AuthContext);
+
     const sizePidItemList = pidItem.size; // 상품의 사이즈 []
     const colorPidItemList = pidItem.color; // 상품의 색 []
-    console.log("size", sizePidItemList);
-    console.log("color", colorPidItemList);
+    // console.log("size", sizePidItemList);
+    // console.log("color", colorPidItemList);
     
-    const {count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize} = useContext(DetailProductContext);
+    const {count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize, cartList, userId} = useContext(DetailProductContext);
+    const { getCustomerId, saveToCart } = useCart();
+
+    const id = localStorage.getItem("user_id");
+
+    // const {customer_id} = userId; 
+    // console.log("customer_id --> ", customer_id);
+
+    // 아이디 번호 호출
+    useEffect(() => {
+        if (isLoggedIn) {
+            console.log("useEffect :: 로그인 상태 --> ", isLoggedIn);
+            // 로그인 된 아이디 번호 호출
+            getCustomerId(id);
+            // getCartItems(userId);
+        }
+    }, []);
 
     // 수량
     const handleCount = (e, type) => {
@@ -34,6 +54,27 @@ export default function DetailOrder({pidItem}){
         setSelectedSize(index);
     };
 
+    // 수량 : 숫자, 색상&사이즈 : 배열 번지수로 체킹
+    console.log("로그인 상태 --> ", isLoggedIn);
+
+    // 장바구니 버튼 이벤트
+    const addCart = () => {
+        if (!isLoggedIn) { // 비회원 상태
+            alert("비회원");
+        } else { // 로그인 상태일 때 카드에 상품 담기(아이디 --> 로컬스토리지에 user_id로 저장되어있음)
+            // alert("로그인 상태");
+            const formData = {
+                id: userId.customer_id,
+                pid: pid,
+                count: count,
+                color: selectColor,
+                size: selectedSize
+            }; // db에 들어갈 상품 데이터
+            console.log("formData --> ", formData);
+            saveToCart(formData);
+        }
+    }
+    // console.log("cartList --> ", cartList);
 
     return (
         <div className="godsInfo-area">
@@ -148,7 +189,7 @@ export default function DetailOrder({pidItem}){
                             </div>
                         </div>
                         <div className="goods-info-btns">
-                            <button>
+                            <button onClick={addCart}>
                                 <a href="#">장바구니</a>
                             </button>
                             
