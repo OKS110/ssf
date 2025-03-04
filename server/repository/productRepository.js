@@ -61,6 +61,7 @@ import { db } from './db.js';
 export const getProductAll = async() => {
     const sql = `select pid,
                         category,
+                        sub_category,
                         name as title,
                         image,
                         image->>'$[0]' as img,
@@ -71,7 +72,8 @@ export const getProductAll = async() => {
                         discount_rate as discount,
                         format(discounted_price, 0) as saleprice,
                         brand
-                from products`;
+                from products
+                ORDER BY star DESC`;;
 
     const [result] = await db.execute(sql);
 
@@ -96,7 +98,8 @@ export const getItem = async({pid}) => {
                 brand,
                 size,
                 color,
-                delivery_fee as deliveryFee
+                delivery_fee as deliveryFee,
+                description
         from products
         where pid = ?
     `;
