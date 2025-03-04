@@ -16,7 +16,8 @@ export default function GoodsDetail() {
     useEffect(() => {
         getPidItem(pid);
     }, []);
-
+    console.log(pidItem);
+    
     return (
         <>
             <div style={{ backgroundColor: "lightblue", height: "auto", display: "flex" }}>
@@ -33,22 +34,10 @@ export default function GoodsDetail() {
 
                 {/* 상품 설명 */}
                 <div style={{ width: "50%", position: "sticky", top: "0", alignSelf: "flex-start", padding: "100px" }}>
-                    <p>상품번호 : {pidItem?.pid}</p>
-                    <p>
-                        종아리까지 떨어지는 미디 기장의 데님 스커트입니다. 자연스럽게 퍼지는 플리츠 디자인으로 편안한 착용감을 선사합니다.
-                        워싱이 없는 깔끔한 생지 데님으로 어디에나 코디하기 좋은 아이템입니다.
+                    <h2 style={{padding:"20px"}}>상품번호 : {pidItem?.pid}</h2>
+                    <p style={{padding:"20px", fontSize:"1.3rem", lineHeight:"40px"}}>
+                        {pidItem?.description}
                     </p>
-
-                    <p>핏정보</p>
-
-                    <ul>
-                        <li>A-LINE</li>
-                        <li>모델사이즈: 171cm, 45kg, 23인치</li>
-                        <li>상의S / 하의S</li>
-                        <li>겉감 : 면 100%</li>
-                        <li>소재정보 자세히보기</li>
-                        <li>모델 착용 이미지보다 제품컷 이미지의 컬러가 정확합니다.</li>
-                    </ul>
                 </div>
             </div>
 
