@@ -67,7 +67,7 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
 );
 ALTER TABLE customers 
 ADD COLUMN zipcode VARCHAR(20) AFTER password; -- 우편번호 (필수 입력)
-
+select * from guest_orders;
 select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
     pid INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
@@ -93,9 +93,10 @@ ADD COLUMN brand VARCHAR(100);
 ALTER TABLE products 
 ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
+select * from customers;
+select * from orders;
 select * from products;
 DELETE FROM products WHERE pid BETWEEN 1001 AND 1050;
-
 
 -- 관리자별 상품 접근 권한 테이블
 CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 수 있도록 설정하는 테이블 생성
@@ -301,10 +302,11 @@ select * from guests;
 SELECT * FROM guest_orders ORDER BY order_date DESC LIMIT 5;
 -- ALTER TABLE guests DROP COLUMN order_number;
 
+select * from customers;
 desc guest_orders;
 desc guests;
 desc orders;
-select * from orders;
+select * from guest_orders;
 select count(*) as result_rows
 from guests
 where name = '홍길동' and phone = '01012345678';
