@@ -4,7 +4,7 @@ import { ProductContext } from "../context/ProductContext.js"
 
 export function useProduct() {
     const { 
-        productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList 
+        productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList, setSearchList
     } = useContext(ProductContext);
 
     /** 상품 데이터 전체 호출 **/
@@ -44,5 +44,21 @@ export function useProduct() {
         setPidItem(result.data);
     }
 
-    return { getProductList, getPidItem, getFilterProducts };
+    /** 모달창 상품 검색 필터링 **/
+    const getSearchList = async(search) => {
+        const list = await getProductList();
+
+        const filterData = list.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
+        const filterData2 = list.filter((item) => item.category.toLowerCase().includes(search.toLowerCase()));
+
+        if (filterData.length !== 0) {
+            setSearchList(filterData);
+        } else {
+            setSearchList(filterData2);
+        }
+
+        return { "filterData": filterData };
+    }
+
+    return { getProductList, getPidItem, getFilterProducts, getSearchList };
 }

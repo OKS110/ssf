@@ -10,6 +10,8 @@ export const ProductProvider = ({children}) => {
     const [subCategory, setSubCategory] = useState("하의"); // 랭킹 탭 메뉴 관리
     const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
     const [rankList, setRankList] = useState([]); // 필터링을 거친 상품 데이터(중분류용)
+    const [search, setSearch] = useState(""); // 검색창 검색어 관리
+    const [searchList, setSearchList] = useState([]); // 검색 필터링 아이템
 
     return (
         <ProductContext.Provider value={{ productList, setProductList, 
@@ -17,7 +19,9 @@ export const ProductProvider = ({children}) => {
                                             category, setCategory,
                                             subCategory, setSubCategory,
                                             detailList, setDetailList,
-                                            rankList, setRankList
+                                            rankList, setRankList,
+                                            searchList, setSearchList,
+                                            search, setSearch
                                             }}>
             {children}
         </ProductContext.Provider>
