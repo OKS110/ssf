@@ -464,7 +464,7 @@
 }
 
 /**************************
- * 메인 슬라이더 테스트
+ * 메인 슬라이더
  * YuNa
 **************************/
 .mainSlider-container {
@@ -545,4 +545,163 @@
 .mainSlider-info-brand-name {
     font-size: 2rem;
     margin: 10px 0;
+}
+/**************************
+ * 검색 모달창
+ * YuNa
+**************************/
+.header-search-modal-wrap {
+    /* border: 1px solid red; */
+    width: 1400px;
+    margin: 0 auto;
+    z-index: 10;
+}
+.search-modal-off {
+    text-align: right;
+    font-size: 45px;
+    color: silver;
+}
+.search-modal-off > span {
+    cursor: pointer;
+}
+.search-modal-main {
+    width: 900px;
+}
+.search-modal-main-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+}
+.search-modal-main-header > input,
+.search-modal-main-header > span {
+    margin: 0;
+}
+.search-modal-main-header > input {
+    width: 850px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+}
+.search-modal-main-header > span {
+    width: 50px;
+    font-size: 35px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.search-modal-box {
+    /* border: 1px solid red; */
+    width: 900px;
+    height: 300px;
+}
+.search-modal-box > p {
+    line-height: 50px;
+    color: gray;
+}
+.search-modal-box > p:first-child {
+    margin-top: 15px;
+}
+.search-modal-main-contents {
+    border: 1px solid green;
+    margin-top: 20px;
+}
+.search-modal-main-contents > div {
+    display: flex;
+}
+.search-modal-main-contents > div:first-child > span {
+    display: inline-block;
+    margin: 0;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+.search-modal-main-contents > div:first-child > span:first-child {
+    width: 800px;
+    font-weight: bold;
+}
+.search-modal-main-contents > div:first-child > span:last-child {
+    width: 100px;
+    color: silver;
+    font-size: 13px;
+    text-decoration: underline;
+}
+.search-modal-main-contents > div:last-child > span:last-child {
+    color: silver;
+}
+
+
+/**************************
+ * 검색 페이지
+ * YuNa
+**************************/
+.searchPage-header {
+    border: 1px solid #000;
+    margin: 30px auto;
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+.searchPage-header > input {
+    width: 650px;
+    margin: 0;
+    font-size: 35px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+}
+.searchPage-header > span {
+    display: inline-block;
+    width: 50px;
+    margin: 0;
+    font-size: 40px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+.searchPage-contents {
+    width: 1440px;
+}
+.searchPage-result {
+    margin: 20px 0;
+    font-size: 25px;
+}
+.search-page-products {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.search-item-info {
+    color: #000;
+}
+.search-item-brand {
+    font-weight: bold;
+}
+.search-item-costprice {
+    font-size: 14px;
+    color: gray;
+    text-decoration: line-through;
+}
+.search-item-price-container {
+    font-weight: bold;
+}
+.search-item-price-container > span:first-child {
+    color: var(--purple500);
+    padding-right: 5px;
+}
+.search-item-price-container > span:last-child {
+    color: #000;
+}
+.search-item-star-likes-container {
+    margin-top: 7px;
+}
+.search-item-star-likes-container span {
+    color: silver;
+}
+.searchPage-result-non {
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgb(227, 227, 227);
 }
