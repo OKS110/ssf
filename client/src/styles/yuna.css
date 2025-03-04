@@ -6,7 +6,7 @@
 .category-select {
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 500px;
 }
 .category-select-click-tabMenu {
@@ -31,6 +31,11 @@
 .category-tab {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
+}
+.category-tab-recommend {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);;
     margin-top: 20px;
 }
 .category-tab-list {
@@ -98,9 +103,10 @@
 **************************/
 .sub-category-select {
     display: flex;
-    justify-content: space-between;
-    width: 270px;
-    margin: 0 auto;
+    justify-content: center;
+    gap: 30px;
+    width: auto;
+    /* margin: 0 auto; */
 }
 .sub-category-tab {
     display: grid;

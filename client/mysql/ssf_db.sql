@@ -95,9 +95,10 @@ ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
 select * from customers;
 select * from orders;
+select * from guests;
 select * from products;
 DELETE FROM products WHERE pid BETWEEN 1001 AND 1050;
-
+select * from cart;
 -- 관리자별 상품 접근 권한 테이블
 CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 수 있도록 설정하는 테이블 생성
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 접근 ID (자동 증가, 기본 키)
@@ -117,8 +118,9 @@ CREATE TABLE cart ( -- 고객의 장바구니 정보를 저장하는 테이블 �
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 장바구니 항목도 삭제
     FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE -- 상품이 삭제되면 장바구니에서 해당 상품도 삭제
 );
-
-
+alter table cart add column size varchar(10) not null; -- 사이즈
+alter table cart add column color varchar(20) not null; -- 색상
+select * from cart;
 -- 좋아요 테이블
 CREATE TABLE favorites ( -- 고객이 좋아요(찜)한 상품 정보를 저장하는 테이블 생성
     fid INT auto_increment PRIMARY KEY, -- 고유한 좋아요 ID (기본 키, JSON에서 직접 부여)
@@ -162,6 +164,8 @@ select * from guest_orders;
 select * from guests;
 select * from customers;
 select * from products;
+ALTER TABLE products
+ADD COLUMN description VARCHAR(255) NULL AFTER delivery_fee;
 -- DELETE FROM orders WHERE id IN (2001, 2002, 2003);
 
 
