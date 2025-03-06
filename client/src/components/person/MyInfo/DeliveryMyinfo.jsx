@@ -8,7 +8,7 @@ import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import DaumPostcode from "react-daum-postcode";
 import axios from 'axios';
-import DeliveryUpload from '../DeliveryUpload.jsx';
+// import DeliveryUpload from '../DeliveryUpload.jsx';
 import Form from 'react-bootstrap/Form';
 
 

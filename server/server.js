@@ -9,7 +9,7 @@ import orderRouter from './router/orderRouter.js';
 import customerRouter from './router/customerRouter.js'
 import guestRouter from './router/guestRouter.js';
 import cartRouter from './router/cartRouter.js';
-// import deliUploadRouter from './router/deliUploadRouter.js';
+import deliUploadRouter from './router/deliUploadRouter.js';
 import path from 'path'; 
 
 // 서버 생성 및 포트 지정
@@ -30,7 +30,7 @@ server.use('/member', SignupRouter);
 server.use('/mypage',mypageRouter);
 //  업로드 주소 호출 경로 추가
 // server.use('/deliveryUpload',express.static(path.join('deliveryUpload')));   
-// server.use('/deliveryUploads',deliUploadRouter); 
+server.use('/deliveryUploads',deliUploadRouter); 
 server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
 server.use('/order', orderRouter);
