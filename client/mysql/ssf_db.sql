@@ -470,3 +470,7 @@ select pid,
                 discount_rate,
                 discounted_price
         from products;
+        
+
+
+alter table  customers add column detail_address varchar(250) ;

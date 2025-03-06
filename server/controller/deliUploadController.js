@@ -7,6 +7,10 @@ export const uploadData = (req, res) => {
     console.log("클라이언트에서 받은 데이터:", req.body);
 
     const newData = req.body.data;
+    const test = JSON.stringify(req.body.data);
+    // const test2 = JSON.parse(req.body.data);
+    // console.log('test==============',test2);
+    
     
     if (!newData) {
         return res.status(400).json({ message: "데이터가 없습니다." });
