@@ -30,7 +30,7 @@ export default function PersonUIform() {
                     <ul>
                         <li><Link to='/person/editMemberInfo'style={{color:'red'}}>회원정보 관리</Link></li>
                         <li><a href="">마케팅정보 수신 동의</a></li>
-                        <li><a href="">배송지 관리</a></li>
+                        <li><Link to='/person/editMemberInfo/delivery' >배송지 관리</Link></li>
                     </ul>
                     <h3>고객센터</h3>
                     <ul>
@@ -41,4 +41,3 @@ export default function PersonUIform() {
                 </nav>
     );
 }
-

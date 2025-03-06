@@ -783,7 +783,7 @@
     align-items: center;
 }
 
-.mypage-myinfo-delivery-addbox>ul>li>input {
+.mypage-myinfo-delivery-addbox>ul>li>input, .addDeli {
     height: 45px;
     border-radius: 5px;
     border: 1px solid gray;
@@ -796,12 +796,12 @@
     margin: 0;
 }
 
-.mypage-myinfo-delivery-addbox>ul>li:nth-child(1)>input,
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(1)>input, .addDeli,
 .mypage-myinfo-delivery-addbox>ul>li:nth-child(2)>input {
     width: 300px;
 }
 
-.mypage-myinfo-delivery-addbox>ul>li:nth-child(3)>input {
+.mypage-myinfo-delivery-addbox>ul>li:nth-child(3)>input, .addDeli3 {
     margin: 0;
     width: 190px;
     margin-right: 10px;
@@ -916,7 +916,9 @@
     padding: 3px 5px;
     font-weight: 600;
 }
-
+.mypage-myinfo-delivery-successbox>div:first-child>div>p:last-child>span{
+    padding: 0 10px 0 0;
+}
 .mypage-myinfo-delivery-successbox>div:first-child>div>p {
     margin-top: 5px;
 }
@@ -946,14 +948,20 @@
 
 .mypage-myinfo-delivery-success-container>div:last-child>button:first-child {
     background-color: white;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 .mypage-myinfo-delivery-success-container>div:last-child>button:last-child {
     background-color: #7E00FF;
     color: white;
+    margin-left: 10px;
 }
-
+.mypage-myinfo-delivery-msg{
+    text-align: right;
+    padding: 10px 0 0 ;
+    font-weight: 400;
+    color: red;
+}
 /****************************************  */
 /* ************마이페이지 위시리스트      */
 /*****************************************  */

@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useRef, useContext} from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { SlArrowRight } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import PersonUIform from '../PersonUIform.jsx';
@@ -13,50 +13,47 @@ import DeliveryMyinfo from './DeliveryMyinfo.jsx';
 
 export default function UpdateInfo() {
     const [addressValue, setAddressValue] = useState('');
-
     const handleChangeInputAddressData = (e) => {
         setAddressValue(e.target.value);
     };
     // console.log('addressValue',addressValue);
 
     const [adata, setAdata] = useState({});
-    
     /** 주소검색 버튼Toggle */
     const [isOpen, setIsOpen] = useState(false);
     /** 주소 검색 버튼 */
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
-
     const id = localStorage.getItem('user_id');
-    const {customer, emailDomain,  email} = useContext(CustomersContext);
+    const { customer, emailDomain, email } = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
 
-    useEffect( () => {
-        const fetchCustoerList = async() => {
+    useEffect(() => {
+        const fetchCustoerList = async () => {
             await getCustomer(id);
         }
         fetchCustoerList();
-    }, [])    
+    }, [])
 
     const navigate = useNavigate();
     const [updateData, setUpdateData] = useState({});   // 회원정보 변경 되면 여기 저장됨
-    const [open,setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     // 변경을 누르면 true 가 되고 변경완료를 누르면 false 가 된다
     const [btnChangeClick, setBtnChangeClick] = useState({
-        'id':false,
-        'pwd':false,
-        'name':false,
-        'phone':false,
-        'email':false,
-        'address':false,
-        'extra':false,
-        'zoneCode':false
+        'id': false,
+        'pwd': false,
+        'name': false,
+        'phone': false,
+        'email': false,
+        'address': false,
+        'extra': false,
+        'zoneCode': false
     });
     const [isChecked1, setIsChecked1] = useState(false); //체크박스 상태 관리
     const [isChecked2, setIsChecked2] = useState(false); //체크박스 상태 관리
-    const handleChecked1 = (e) => {setIsChecked1(e.target.checked);}
-    const handleChecked2 = (e) => {setIsChecked2(e.target.checked);}    
+    const handleChecked1 = (e) => { setIsChecked1(e.target.checked); }
+    const handleChecked2 = (e) => { setIsChecked2(e.target.checked); }
 
     const handleDesc = (name) => {
         setOpen(name);
@@ -67,7 +64,7 @@ export default function UpdateInfo() {
             ...prev,
             [type]: !prev[type]  // 클릭한 타입만 토글
         }));
-       
+
     };
     //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
     const themeObj = {
@@ -84,92 +81,100 @@ export default function UpdateInfo() {
     const completeHandler = (data) => {
         // console.log(data.zonecode);
         // console.log('주소',data.address);     
-        setAdata({...adata, zoneCode: data.zonecode, address: data.address , fullAddress:data.zonecode.concat(data.address)});
+        setAdata({ ...adata, zoneCode: data.zonecode, address: data.address, fullAddress: data.zonecode.concat(data.address) });
         setAddressValue(data.zonecode.concat(data.address));
-        setUpdateData({...updateData, zoneCode: data.zonecode, address: data.address})
+        setUpdateData({ ...updateData, zoneCode: data.zonecode, address: data.address })
     };
     // console.log('주소',adata);
 
     const closeHandler = (state) => {
         if (state === "FORCE_CLOSE") {
-        setIsOpen(false);
+            setIsOpen(false);
         } else if (state === "COMPLETE_CLOSE") {
-        setIsOpen(false);
+            setIsOpen(false);
         }
     };
     //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
 
-    const handleChangeInputData = (e) =>  {
-        const { name , value} = e.target;
-        setUpdateData({...updateData, [name]:value});                          
+    const handleChangeInputData = (e) => {
+        const { name, value } = e.target;
+        setUpdateData({ ...updateData, [name]: value });
     }
     // console.log('upda',updateData);
-    
-
     const refs = {
-        'idRef':useRef(null),
-        'pwRef':useRef(null),
-        'nameRef':useRef(null),
-        'phoneRef':useRef(null),
-        'emailRef':useRef(null),
-        'emailDomainRef':useRef(null),
-        'addressRef':useRef(null),
-        'extraAddressRef':useRef(null)
+        'idRef': useRef(null),
+        'pwRef': useRef(null),
+        'nameRef': useRef(null),
+        'phoneRef': useRef(null),
+        'emailRef': useRef(null),
+        'emailDomainRef': useRef(null),
+        'addressRef': useRef(null),
+        'extraAddressRef': useRef(null)
     }
-    const [addressClick, setAddressClick] = useState(false);
 
-
-    const handleUpdateInfo = (colName,value) => {
-        console.log('colName',colName);
-        console.log('value',value);
-        if(isChecked1 === true){
-            setAddressClick(true);
+    const handleUpdateInfo = (colName, value) => {
+        console.log('colName', colName);
+        console.log('value', value);
+        if (isChecked2 === false) {
+            alert('정보수집 이용동의를 진행해주세요');
         }
-         else if(isChecked2 === false){
-                alert('정보수집 이용동의를 진행해주세요');            
-            }        
-            else if(isChecked1 === true){
-                // 해당 주소를 기본 배송지에 저장해야함
-                alert('기본배송지로 저장되었습니다');
-            }
-            else{                              
-                // 서버로 바뀐 내용 전달
-                axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"value":value})
-                    .then(res => console.log(res.data)
-                    )
-                    .catch(error => console.log(error)
-                    );
-                alert('회원정보 수정이 완료되었습니다');
-                }
-                // navigate('/person');
-            }
-            // console.log(updateData);        
-       
-    const handleUpdateInfo2 = (colName,colName2,value,value2) => {
-        console.log('colName',colName);
-        console.log('value',value);
-            if(isChecked2 === false){
-                alert('정보수집 이용동의를 진행해주세요');            
-            }      
-            else{                              
-                // 서버로 바뀐 내용 전달
-                axios.post('http://localhost:9000/mypage/updateInfo',{"id":id,  "colName":colName,"colName2":colName2,
-                                        "value":value, "value2":value2})
-                    .then(res => console.log(res.data)
-                    )
-                    .catch(error => console.log(error)
-                    );
-                alert('회원정보 수정이 완료되었습니다');
-                navigate('/person');
-            }
-            // console.log(updateData);        
-    } 
-    const handleDeliveryAddress = () => {
-        if(isChecked1 === true){
-            // 해당 주소를 배송지관리 쪽으로 넘겨야한느데,,, 이거도 컨텍스트 커스텀훅에 만들어야될거같기도
-            setAddressClick(true);
+        else if (isChecked1 === true) {
+            // 해당 주소를 기본 배송지에 저장해야함
             alert('기본배송지로 저장되었습니다');
+        }
+        else {
+            // 서버로 바뀐 내용 전달
+            axios.post('http://localhost:9000/mypage/updateInfo', { "id": id, "colName": colName, "value": value })
+                .then(res => console.log(res.data)
+                )
+                .catch(error => console.log(error)
+                );
+            alert('회원정보 수정이 완료되었습니다');
+        }
+        // navigate('/person');
+    }
+    // console.log(updateData);        
+
+    const handleUpdateInfo2 = (colName, colName2, value, value2) => {
+        console.log('colName', colName);
+        console.log('value', value);
+        if (isChecked2 === false) {
+            alert('정보수집 이용동의를 진행해주세요');
+        }
+        else if (isChecked1 === true) {
+            // 해당 주소를 기본 배송지에 저장해야함
+            alert('기본배송지로 저장되었습니다');
+        }
+        else {
+            // 서버로 바뀐 내용 전달
+            axios.post('http://localhost:9000/mypage/updateInfo', {
+                "id": id, "colName": colName, "colName2": colName2,
+                "value": value, "value2": value2
+            })
+                .then(res => console.log(res.data)
+                )
+                .catch(error => console.log(error)
+                );
+            alert('회원정보 수정이 완료되었습니다');
             navigate('/person');
+        }
+        // console.log(updateData);        
+    }
+    const originDeli = async() => {
+        if (isChecked1) {
+            alert('기본배송지 지정이 완료되었습니다');
+            const deliForm = {
+                'zoneCode':adata.zoneCode,
+                'address':adata.address,
+                'extraAddress':updateData.extra
+            };
+            await axios.post('http://localhost:9000/mypage/updateDelivery', { deliForm, 'id': id })
+            .then(res => {
+                if (res.data.result === 1) {
+                        localStorage.setItem('delisave', true);
+                    }
+                })
+                .catch(err => console.log(err));    
         }
     }
 
@@ -179,23 +184,23 @@ export default function UpdateInfo() {
             <div className="mypage-box">
                 <div className="mypage-top-menu">
                     <span>Home</span>
-                    <SlArrowRight className="mypage-top-menu-icon"/>
-                    <span ><Link to = '/person'className='mypage-link' >마이페이지</Link></span>
+                    <SlArrowRight className="mypage-top-menu-icon" />
+                    <span ><Link to='/person' className='mypage-link' >마이페이지</Link></span>
                 </div>
                 <div className="mypage-top-box-flex">
                     <div className="mypage-top-box-empty"></div>
-                    <div  className="mypage-top-box  mypage-Title">회원정보 수정</div>
+                    <div className="mypage-top-box  mypage-Title">회원정보 수정</div>
                 </div>
                 <div className="mypage-bottom-box">
                     <PersonUIform />
-                    <article className="mypage-bottom-right">                      
+                    <article className="mypage-bottom-right">
                         <div className='mypage-myinfo-update-box'>
                             <h5>기본정보</h5>
                             <ul>
                                 <li className='mypage-myinfo-none-update-idbox'>
                                     <label htmlFor="">아이디</label>
                                     <input type="text" className='mypage-myinfo-none-update-input'
-                                        value={customer.username}/>
+                                        value={customer.username} />
                                 </li>
                                 <li>
                                     <label htmlFor="">비밀번호</label>
@@ -206,19 +211,19 @@ export default function UpdateInfo() {
                                         className={btnChangeClick.pwd ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.pwd ? null : (
                                             updateData.pwd === undefined ? customer.password : updateData.pwd
-                                            )}
-                                            />   
-                                    
-                                        {btnChangeClick.pwd ? 
-                                        <button type='button'  onClick={()=>{
-                                            handleUpdateInfo( "password",refs.pwRef.current.value) 
+                                        )}
+                                    />
+
+                                    {btnChangeClick.pwd ?
+                                        <button type='button' onClick={() => {
+                                            handleUpdateInfo("password", refs.pwRef.current.value)
                                             handle('pwd')
                                         }}>
-                                        변경완료
-                                        </button> 
-                                    :  <button type='button'  onClick={()=>{handle('pwd')}}> 변경</button> }
-                                    
-                                    
+                                            변경완료
+                                        </button>
+                                        : <button type='button' onClick={() => { handle('pwd') }}> 변경</button>}
+
+
                                 </li>
                                 <li>
                                     <label htmlFor="">이름</label>
@@ -229,34 +234,36 @@ export default function UpdateInfo() {
                                         className={btnChangeClick.name ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.name ? null : (
                                             updateData.name === undefined ? customer.name : updateData.name
-                                            )}
-                                            />   
-                                      {btnChangeClick.name ? 
-                                        <button type='button'  onClick={()=>{
-                                                handleUpdateInfo( "name",refs.nameRef.current.value)
-                                                handle('name')}}>
-                                        변경완료
-                                        </button> 
-                                    :  <button type='button'  onClick={()=>{handle('name')}}> 변경</button> }
+                                        )}
+                                    />
+                                    {btnChangeClick.name ?
+                                        <button type='button' onClick={() => {
+                                            handleUpdateInfo("name", refs.nameRef.current.value)
+                                            handle('name')
+                                        }}>
+                                            변경완료
+                                        </button>
+                                        : <button type='button' onClick={() => { handle('name') }}> 변경</button>}
                                 </li>
                                 <li>
                                     <label htmlFor="">휴대폰번호</label>
-                                    <input type={btnChangeClick.phone ? 'tel' : 'readonly'} 
+                                    <input type={btnChangeClick.phone ? 'tel' : 'readonly'}
                                         ref={refs.phoneRef}
                                         name='phone'
                                         onChange={btnChangeClick.phone === true ? handleChangeInputData : null}
                                         className={btnChangeClick.phone ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.phone ? null : (
                                             updateData.phone === undefined ? customer.phone : updateData.phone
-                                            )}
-                                            />   
-                                    {btnChangeClick.phone ? 
-                                        <button type='button'  onClick={()=>{
-                                            handleUpdateInfo( "phone",refs.phoneRef.current.value)
-                                            handle('phone')}}>
-                                        변경완료
-                                        </button> 
-                                    :  <button type='button'  onClick={()=>{handle('phone')}}> 변경</button> }
+                                        )}
+                                    />
+                                    {btnChangeClick.phone ?
+                                        <button type='button' onClick={() => {
+                                            handleUpdateInfo("phone", refs.phoneRef.current.value)
+                                            handle('phone')
+                                        }}>
+                                            변경완료
+                                        </button>
+                                        : <button type='button' onClick={() => { handle('phone') }}> 변경</button>}
                                 </li>
                                 <li className='mypage-myinfo-update-emailbox'>
                                     <label htmlFor="">이메일</label>
@@ -267,31 +274,32 @@ export default function UpdateInfo() {
                                         className={btnChangeClick.email ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.email ? null : (
                                             updateData.email === undefined ? email : updateData.email
-                                            )}
-                                            /> 
-                                    <select name="emailDomain" 
+                                        )}
+                                    />
+                                    <select name="emailDomain"
                                         onChange={btnChangeClick.email === true ? handleChangeInputData : null}
-                                        ref={refs.emailDomainRef} 
+                                        ref={refs.emailDomainRef}
                                         className={btnChangeClick.email ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}>
                                         <option value={emailDomain}>{emailDomain}</option>
                                         <option value={btnChangeClick.email ? null : (
                                             updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
-                                            )}>naver.com</option>
+                                        )}>naver.com</option>
                                         <option value={btnChangeClick.email ? null : (
                                             updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
-                                            )}>gmail.com</option>
+                                        )}>gmail.com</option>
                                         <option value={btnChangeClick.email ? null : (
                                             updateData.emailDomain === undefined ? emailDomain : updateData.emailDomain
-                                            )}>daum.net</option>
-                                    </select>  
-                                    {btnChangeClick.email ? 
-                                        <button type='button'  onClick={()=>{
-                                            handleUpdateInfo2( "email","emailDomain", 
-                                             refs.emailRef.current.value, refs.emailDomainRef.current.value)
-                                             handle('email')}}>
-                                        변경완료
-                                        </button> 
-                                    :  <button type='button'  onClick={()=>{handle('email')}}> 변경</button> }
+                                        )}>daum.net</option>
+                                    </select>
+                                    {btnChangeClick.email ?
+                                        <button type='button' onClick={() => {
+                                            handleUpdateInfo2("email", "emailDomain",
+                                                refs.emailRef.current.value, refs.emailDomainRef.current.value)
+                                            handle('email')
+                                        }}>
+                                            변경완료
+                                        </button>
+                                        : <button type='button' onClick={() => { handle('email') }}> 변경</button>}
                                 </li>
                                 <li className='mypage-myinfo-update-addressbox'>
                                     <label htmlFor="">주소</label>
@@ -302,19 +310,20 @@ export default function UpdateInfo() {
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={
                                             addressValue === '' ? customer.address : adata.fullAddress
-                                            }/>                                               
-                                    <button type='button'  onClick={()=> handleToggle()}>                                       
+                                        } />
+                                    <button type='button' onClick={() => handleToggle()}>
                                         주소 검색
                                     </button>
-                                    {btnChangeClick.address ? 
-                                        <button type='button'  onClick={()=>{
-                                            handleUpdateInfo2( "address","extra",
-                                                refs.addressRef.current.value,refs.extraAddressRef.current.value)
-                                                handle('address')
-                                                }}>
-                                        변경완료
-                                        </button> 
-                                    :  <button type='button'  onClick={()=>{handle('address')}}> 변경</button> }
+                                    {btnChangeClick.address ?
+                                        <button type='button' onClick={() => {
+                                            handleUpdateInfo2("address", "extra",
+                                                refs.addressRef.current.value, refs.extraAddressRef.current.value)
+                                            handle('address')
+                                            originDeli()
+                                        }}>
+                                            변경완료
+                                        </button>
+                                        : <button type='button' onClick={() => { handle('address') }}> 변경</button>}
                                 </li>
                                 <li className='mypage-myinfo-update-addressbox2'>
                                     <input type={btnChangeClick.address ? 'text' : 'readonly'}
@@ -323,70 +332,67 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.address === true ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.extra ? null : (
-                                            updateData.extra === undefined ? customer.additional_address : updateData.extra
-                                            )}
-                                            />
+                                            updateData.extra === undefined ? customer.extra_address : updateData.extra
+                                        )}
+                                    />
                                 </li>
-                                    {isOpen &&
-                                        <div>
-                                            <DaumPostcode
-                                                className="postmodal"
-                                                theme={themeObj}
-                                                style={postCodeStyle}
-                                                onComplete={completeHandler} 
-                                                onClose={closeHandler}
-                                            />
-                                        </div>
-                                        }
+                                {isOpen &&
+                                    <div>
+                                        <DaumPostcode
+                                            className="postmodal"
+                                            theme={themeObj}
+                                            style={postCodeStyle}
+                                            onComplete={completeHandler}
+                                            onClose={closeHandler}
+                                        />
+                                    </div>
+                                }
                             </ul>
                             <div className='mypage-myinfo-update-check1'>
                                 <input type="checkbox" checked={isChecked1} onChange={handleChecked1} /><span>기본배송지 지정</span>
                             </div>
                             <div className='mypage-myinfo-update-check2'>
                                 <div>
-                                    <input type="checkbox"  checked={isChecked2} onChange={handleChecked2}/>
+                                    <input type="checkbox" checked={isChecked2} onChange={handleChecked2} />
                                     <span>주소정보 수집 및 이용 동의</span>
                                 </div>
                                 <div>
                                     <span>약관보기</span>
-                                    {open !== true ? <span onClick={()=>{handleDesc(true)}}> <SlArrowDown /> </span> :
-                                         <span onClick={()=>{handleDesc(false)}}> <SlArrowUp /></span>}  
+                                    {open !== true ? <span onClick={() => { handleDesc(true) }}> <SlArrowDown /> </span> :
+                                        <span onClick={() => { handleDesc(false) }}> <SlArrowUp /></span>}
                                 </div>
                             </div>
-                        {open &&
-                            <div className='mypage-myinfo-update-desc'>
-                                <ul>
-                                    <li>
-                                        <h4>1. 회원 주문시 개인정보 수집 및 이용</h4>
-                                        <h5>회사는 주문 및 배송서비스의 제공을 위해 아래와 같은 개인정보를 수집하고 있습니다.</h5>
-                                    </li>
-                                    <li>
-                                        <h4>2. 회원 고객 개인정보 수집 항목</h4>
-                                        <h5>(1) 고객 주문정보(온라인전용 회원일 경우만)</h5>
-                                        <h5>- 필수사항: 본인확인기관에서 제공하는 본인인증결과값(CI/DI)</h5>
-                                        <h5>(2) 수취인 및 배송지 정보</h5>
-                                        <h5>- 필수사항 : 수취인 성명, 휴대폰번호, 배송지 주소</h5>
-                                        <h5>※ 대금결제시 수집하는 개인정보는 결제대행업체(PG사)에서 수집 및 저장하고 있으며, 회사는 결제대행업체에서 제공하는 거래내역만을 제공받고 있습니다.</h5>
-                                        <h5>(3) 서비스 이용 또는 업무처리과정에서 자동으로 생성되어 수집되는 정보</h5>
-                                        <h5>- 필수사항 : 접속 IP 정보, 쿠키, 서비스 이용 기록, 접속 로그</h5>
-                                    </li>
-                                    <li>
-                                        <h4>3. 개인정보 보유 및 이용기간</h4>
-                                        <h5>회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기하는 것을 원칙으로 합니다. 단, 「전자상거래 등에서의 소비자 보호에 관한 법률」 등 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 관계 법령에서 정한 일정기간 동안 고객정보를 보관합니다. 해당 정보는 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.</h5>
-                                        <h3>(1) 재화 또는 서비스의 제공: 재화 또는 서비스의 공급완료 및 요금결제 정산 완료 시까지. 다만, 제품교환 및 환불요구 등 고객응대를 위해 배송완료 후 24개월 까지 보관 후 파기</h3>
-                                        <h3>(2) 계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래 등에서의 소비자 보호에 관한 법률)</h3>
-                                        <h3>(3) 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래 등에서의 소비자 보호에 관한 법률)</h3>
-                                        <h3>(4) 로그기록 : 3개월 (통신비밀보호법)</h3>
-                                    </li>
-                                    <li>
-                                        <h5>개인정보 수집 및 이용안내에 관한 사항에 대해 동의를 거부할 수 있습니다. 다만, 동의를 거부할 경우 주문 및 배송서비스 이용이 불가함을 알려드립니다.</h5>
-                                    </li>
-                                </ul>
-                            </div>                        
-                        }
-                            <div className='mypage-myinfo-update-btn'>
-                                <button onClick ={handleDeliveryAddress} type='button'>저장</button>
-                            </div>
+                            {open &&
+                                <div className='mypage-myinfo-update-desc'>
+                                    <ul>
+                                        <li>
+                                            <h4>1. 회원 주문시 개인정보 수집 및 이용</h4>
+                                            <h5>회사는 주문 및 배송서비스의 제공을 위해 아래와 같은 개인정보를 수집하고 있습니다.</h5>
+                                        </li>
+                                        <li>
+                                            <h4>2. 회원 고객 개인정보 수집 항목</h4>
+                                            <h5>(1) 고객 주문정보(온라인전용 회원일 경우만)</h5>
+                                            <h5>- 필수사항: 본인확인기관에서 제공하는 본인인증결과값(CI/DI)</h5>
+                                            <h5>(2) 수취인 및 배송지 정보</h5>
+                                            <h5>- 필수사항 : 수취인 성명, 휴대폰번호, 배송지 주소</h5>
+                                            <h5>※ 대금결제시 수집하는 개인정보는 결제대행업체(PG사)에서 수집 및 저장하고 있으며, 회사는 결제대행업체에서 제공하는 거래내역만을 제공받고 있습니다.</h5>
+                                            <h5>(3) 서비스 이용 또는 업무처리과정에서 자동으로 생성되어 수집되는 정보</h5>
+                                            <h5>- 필수사항 : 접속 IP 정보, 쿠키, 서비스 이용 기록, 접속 로그</h5>
+                                        </li>
+                                        <li>
+                                            <h4>3. 개인정보 보유 및 이용기간</h4>
+                                            <h5>회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기하는 것을 원칙으로 합니다. 단, 「전자상거래 등에서의 소비자 보호에 관한 법률」 등 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 관계 법령에서 정한 일정기간 동안 고객정보를 보관합니다. 해당 정보는 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.</h5>
+                                            <h3>(1) 재화 또는 서비스의 제공: 재화 또는 서비스의 공급완료 및 요금결제 정산 완료 시까지. 다만, 제품교환 및 환불요구 등 고객응대를 위해 배송완료 후 24개월 까지 보관 후 파기</h3>
+                                            <h3>(2) 계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래 등에서의 소비자 보호에 관한 법률)</h3>
+                                            <h3>(3) 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래 등에서의 소비자 보호에 관한 법률)</h3>
+                                            <h3>(4) 로그기록 : 3개월 (통신비밀보호법)</h3>
+                                        </li>
+                                        <li>
+                                            <h5>개인정보 수집 및 이용안내에 관한 사항에 대해 동의를 거부할 수 있습니다. 다만, 동의를 거부할 경우 주문 및 배송서비스 이용이 불가함을 알려드립니다.</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </article>
                 </div>

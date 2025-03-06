@@ -9,6 +9,8 @@ import orderRouter from './router/orderRouter.js';
 import customerRouter from './router/customerRouter.js'
 import guestRouter from './router/guestRouter.js';
 import cartRouter from './router/cartRouter.js';
+// import deliUploadRouter from './router/deliUploadRouter.js';
+import path from 'path'; 
 
 // 서버 생성 및 포트 지정
 const server = express();
@@ -16,8 +18,8 @@ const port = 9000;
 
 server.use(cors()); // CORS 설정
 server.use(express.json()); // JSON 요청 처리
-server.use(express.urlencoded()); //form데이터를 express 서버로 전송할 때
-
+// server.use(express.urlencoded()); //form데이터를 express 서버로 전송할 때
+server.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파싱
 
 //로그인 폼(유저, 게스트) 
 server.use('/user', loginRouter);
@@ -26,6 +28,9 @@ server.use('/member', SignupRouter);
 
 
 server.use('/mypage',mypageRouter);
+//  업로드 주소 호출 경로 추가
+// server.use('/deliveryUpload',express.static(path.join('deliveryUpload')));   
+// server.use('/deliveryUploads',deliUploadRouter); 
 server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
 server.use('/order', orderRouter);
