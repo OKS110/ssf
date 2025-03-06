@@ -1854,13 +1854,15 @@ json_data = """
 """
 
 # JSON 데이터 변환
-customers = json.loads(json_data)
+products = json.loads(json_data)
 
 # 고객 데이터 삽입
-for customer in customers:
+for product in products:
     # ISO 8601 형식의 날짜를 MySQL DATETIME 형식으로 변환
-    created_at = datetime.strptime(customer["created_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
-    updated_at = datetime.strptime(customer["updated_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
+    # created_at = datetime.strptime(product["created_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
+    # updated_at = datetime.strptime(product["updated_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
+    created_at = datetime.strptime(product["created_at"], "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %H:%M:%S")
+    updated_at = datetime.strptime(product["updated_at"], "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %H:%M:%S")
 
     cursor.execute("""
         INSERT INTO products (
@@ -1869,7 +1871,7 @@ for customer in customers:
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
-        product_id, 
+        product["id"], 
         product["category"], 
         product["sub_category"], 
         product["name"], 
@@ -1896,4 +1898,4 @@ db.commit()
 cursor.close()
 db.close()
 
-print("✅ 고객 데이터 삽입 완료!")
+print("✅ 상품 데이터 삽입 완료!")
