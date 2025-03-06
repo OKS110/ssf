@@ -59,7 +59,15 @@ export default function LoginTab2({ isActive }) {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("guest_id", res.data.guest_id);
                 setIsLoggedIn(true);
-                navigate('/');
+
+                // 이전에 보고있던 상품 데이터 주문 정보들을 가져와서 주문 페이지로 이동
+                const orderPid = sessionStorage.getItem('pid');
+                if (orderPid) {
+                    navigate(`/order/${orderPid}`); // 주문 페이지로 이동
+                    
+                } else {
+                    navigate('/'); // 주문 정보가 없으면 메인으로 이동
+                }
             } else {
                 alert("일치하는 주문조회가 없습니다. 다시 입력해주세요.");
             }

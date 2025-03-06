@@ -42,9 +42,11 @@ export default function OrderCertify({ setIsAgreed }) {
                 비회원 구매 시 개인정보 보호를 위한 이용자 동의사항에 동의 후 본인인증이 필요합니다.
             </p>
             <div className="certify">
+
                 <a href="#" id="authMobile" className="mobile hp" onClick={handleGuestAuth}>
                     <span>휴대폰 인증</span>
                 </a>
+
             </div>
         </div>
     );
