@@ -59,7 +59,17 @@ export default function LoginTab1({ isActive }) {
                         localStorage.setItem('user_id',formData.id);                        
 
                         setIsLoggedIn(true);
-                        navigate('/');
+
+
+                    // 로그인 시 이전에 상품 상세 페이지에서 바로구매 버튼을 눌렀을 경우
+                    // 세션 스토리지에서 주문 상품 ID 가져오기
+                    const orderPid = sessionStorage.getItem('pid');
+                    if (orderPid) {
+                        navigate(`/order/${orderPid}`); // 주문 페이지로 이동
+                        
+                    } else {
+                        navigate('/'); // 주문 정보가 없으면 메인으로 이동
+                    }
 
                         // "아이디 저장"이 체크된 경우, localStorage에 저장
                         if (isSaveIdChecked) {
@@ -148,7 +158,6 @@ export default function LoginTab1({ isActive }) {
                     <a href="#" className="naver box" title="새창열림">네이버 로그인</a>
                 </dd>
             </dl>
-            <Link to='/order'><Button title="비회원 주문" width="100%"></Button></Link>
         </div>
     );
 }

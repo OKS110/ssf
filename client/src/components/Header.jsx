@@ -54,7 +54,7 @@ export default function Header() {
     const handleLoginToggle = () => {
         if (isLoggedIn) { // Logout 버튼 클릭!!
             const select = window.confirm("정말로 로그아웃 하시겠습니까?");
-            if (select) {
+            if (select === true) {
                 localStorage.removeItem("token");
                 localStorage.removeItem('user_id'); 
                 localStorage.removeItem('guest_id'); 
@@ -66,6 +66,11 @@ export default function Header() {
                 setTimeout(() => {
                     navigate('/');
                 }, 0);
+            }else if(select === false){
+                console.log('로그아웃 취소');
+                console.log(select);
+                
+                return; // 현재 상태 유지
             }
         } else { // 로그인 버튼 클릭
             navigate('/login');
@@ -100,9 +105,10 @@ export default function Header() {
                 <ul className='header-top content-wrap'>
                     <Link to='/person' className="person">마이페이지</Link>
                     {/* 비회원 여부에 따라 로그인 버튼 텍스트 변경 */}
-                    <Link to='/login' className="login" onClick={handleLoginToggle}>
+                    <button  className="login" onClick={handleLoginToggle}>
                         {isLoggedIn ? (isGuest ? "(비회원) 로그아웃" : "로그아웃") : "로그인"}
-                    </Link>
+                    </button>
+                    {/* Link 태그에서 button으로 변경 -> window.confirm 취소 시 Link 의 주소 참조로 인한 오류 발생 */}
                 </ul>
             </div>
 
