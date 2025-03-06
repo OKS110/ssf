@@ -17,12 +17,19 @@ export default function DetailOrder({pid, pidItem}){
     const {count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize, cartList, userId} = useContext(DetailProductContext);
     const { saveToCart, getCartItems, updateDetailQty } = useCart();
 
-    // 아이디 번호 호출
+    const [ loginAuth, setLoginAuth ] = useState(false);
+
+    // 로그인 여부 확인 후 아이디 별 카트 리스트 전체 호출
     useEffect(() => {
-        if (isLoggedIn) {
-            // 카트 리스트 전체 호출
+        const token = localStorage.getItem("token");
+        if (token && !(token.startsWith("guest_token_"))) {
+            setLoginAuth(true);
             getCartItems();
         }
+        // if (isLoggedIn) {
+        //     // 카트 리스트 전체 호출
+        //     getCartItems();
+        // }
 
         
     }, []);
@@ -54,27 +61,34 @@ export default function DetailOrder({pid, pidItem}){
 
     // 장바구니 버튼 이벤트
     const addCart = () => {
-        if (!isLoggedIn) { // 비회원 상태
+        if (!loginAuth) { // 비회원 상태
             alert("비회원");
         } else { // 로그인 상태
             const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid); // 조건 수정 필요
-            // console.log("findItem ==> ", findItem);
+            if (findItem) {
+                const color = sessionStorage.getItem("selectedColor");
+                const size = sessionStorage.getItem("selectedSize");
+                
+                const findColor = cartList.find((item) => item.color === color);
 
-            if (findItem !== undefined) {
-                console.log("장바구니에 동일 상품 존재");
-                updateDetailQty(findItem.cid, "increase", count);
-            } else {
-                console.log("장바구니에 동일 상품 없음");
-                const formData = {
-                    id: userId,
-                    pid: pid,
-                    count: count,
-                    color: selectColor,
-                    size: selectedSize
-                }; // db에 들어갈 상품 데이터
-                console.log("formData --> ", formData);
-                saveToCart(formData);
+                // const findoption = cartList. find((item) => item.color === color && item.size === size);
             }
+
+            // if (findItem !== undefined) {
+            //     console.log("장바구니에 동일 상품 존재");
+            //     updateDetailQty(findItem.cid, "increase", count);
+            // } else {
+            //     console.log("장바구니에 동일 상품 없음");
+            //     const formData = {
+            //         id: userId,
+            //         pid: pid,
+            //         count: count,
+            //         color: selectColor,
+            //         size: selectedSize
+            //     }; // db에 들어갈 상품 데이터
+            //     console.log("formData --> ", formData);
+            //     saveToCart(formData);
+            // }
         }
     }
 
