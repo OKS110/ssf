@@ -1,19 +1,24 @@
 import { db } from "./db.js";
 
 // 아이디 번호 호출
-export const getCustomerId = async({id}) => {
+export const getCustomerId = async ({ id }) => {
     const sql = `
-        select customer_id
-        from customers
-        where username = ?
+        SELECT customer_id
+        FROM customers
+        WHERE username = ?
     `;
 
     const [result] = await db.execute(sql, [id]);
 
-    console.log("respository :: result --> ", result[0].customer_id);
+    // result가 없거나 배열이 비어있으면 함수 종료
+    if (!result || result.length === 0) {
+        console.log("respository :: No customer found.");
+        return; // 아무 값도 반환하지 않고 종료
+    }
 
+    console.log("respository :: result --> ", result[0].customer_id);
     return result[0].customer_id;
-}
+};
 
 // 카트 상품 추가
 export const saveToCart = async(formData) => {

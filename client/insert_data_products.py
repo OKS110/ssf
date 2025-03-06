@@ -69,7 +69,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Trendy Long Wool Coat은(는) 스타일과 편안함을 동시에 잡은 코트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Navy, White, Red, Brown, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1002,
@@ -82,10 +83,30 @@ json_data = """
             "White"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/11/13/GP2N24111326328_0_THNAIL_ORGINL_20241113185234182.jpg",
@@ -104,7 +125,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Prestige Long Wool Coat은(는) 스타일과 편안함을 동시에 잡은 코트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Navy, Black, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1003,
@@ -118,10 +140,30 @@ json_data = """
             "Brown"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/12/GM0024081257729_0_THNAIL_ORGINL_20240828124633842.jpg",
@@ -140,7 +182,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Sophisticated Sleek Office Blazer은(는) 스타일과 편안함을 동시에 잡은 블레이저입니다. 다양한 사이즈(S, M, L, XL)와 색상(Red, White, LightGray, Brown)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1004,
@@ -153,10 +196,30 @@ json_data = """
             "Red"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122630607_0_THNAIL_ORGINL_20250102185057142.jpg",
@@ -175,7 +238,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Chic Urban Blazer은(는) 스타일과 편안함을 동시에 잡은 재킷입니다. 다양한 사이즈(S, M, L, XL)와 색상(Yellow, Brown, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1005,
@@ -190,10 +254,30 @@ json_data = """
             "LightGray"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/08/19/GM0024081975025_0_THNAIL_ORGINL_20241010182917297.jpg",
@@ -212,7 +296,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Urban Luxury Biker Jacket은(는) 스타일과 편안함을 동시에 잡은 재킷입니다. 다양한 사이즈(S, M, L, XL)와 색상(Red, White, Brown, Yellow, LightGray)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1006,
@@ -227,10 +312,30 @@ json_data = """
             "Red"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/28/GM0024112853528_0_THNAIL_ORGINL_20250122133413435.jpg",
@@ -249,7 +354,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Chic Cashmere Wool Coat은(는) 스타일과 편안함을 동시에 잡은 코트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Brown, Navy, Black, LightGray, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1007,
@@ -264,10 +370,30 @@ json_data = """
             "Red"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/HMBR/24/08/22/GM0024082224484_5_THNAIL_ORGINL_20241024151700162.jpg",
@@ -286,7 +412,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Modern Cashmere Wool Coat은(는) 스타일과 편안함을 동시에 잡은 코트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Black, Navy, White, Brown, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1008,
@@ -301,10 +428,30 @@ json_data = """
             "White"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/09/30/GM0024093017052_0_THNAIL_ORGINL_20241004181233832.jpg",
@@ -323,7 +470,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Premium Winter Quilted Jacket은(는) 스타일과 편안함을 동시에 잡은 패딩입니다. 다양한 사이즈(S, M, L, XL)와 색상(LightGray, Yellow, Brown, Black, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1009,
@@ -338,10 +486,30 @@ json_data = """
             "White"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/10/10/GM0024101037311_0_THNAIL_ORGINL_20241111191635088.jpg",
@@ -360,7 +528,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Metropolitan Classic Overcoat은(는) 스타일과 편안함을 동시에 잡은 코트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Red, Brown, Yellow, LightGray, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1010,
@@ -374,10 +543,30 @@ json_data = """
             "Navy"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 78
+            },
+            {
+                "name": "M",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 80
+            },
+            {
+                "name": "L",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 82
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 50,
+                "sleeve_length": 68,
+                "total_length": 84
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/22/GM0025012245930_0_THNAIL_ORGINL_20250131200032156.jpg",
@@ -396,7 +585,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Sleek Tailored Blazer Jacket은(는) 스타일과 편안함을 동시에 잡은 재킷입니다. 다양한 사이즈(S, M, L, XL)와 색상(Red, LightGray, Brown, Navy)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1011,
@@ -410,10 +600,30 @@ json_data = """
             "LightBeige"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/images/upload/board/304027593/2023111313505975.jpg",
@@ -437,7 +647,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Elegant Chic Soft Sweater은(는) 스타일과 편안함을 동시에 잡은 스웨터입니다. 다양한 사이즈(S, M, L, XL)와 색상(gray, Navy, Red, LightBeige)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1012,
@@ -452,10 +663,30 @@ json_data = """
             "BROWN"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/85/306161185_GL17731.jpg",
@@ -479,7 +710,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Timeless Sophisticated Mock Neck Knit은(는) 스타일과 편안함을 동시에 잡은 니트입니다. 다양한 사이즈(S, M, L, XL)와 색상(IVORY, Black, skyBlue, purple, BROWN)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1013,
@@ -493,10 +725,30 @@ json_data = """
             "Black"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/53/306240453_add2_WF16919.jpg",
@@ -520,7 +772,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "charged"
+        "delivery_fee": "charged",
+        "description": "Avant-Garde Chic Soft Sweater은(는) 스타일과 편안함을 동시에 잡은 스웨터입니다. 다양한 사이즈(S, M, L, XL)와 색상(Blue, Brown, Charcoal, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1014,
@@ -532,10 +785,30 @@ json_data = """
             "SkyBlue"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/76/305841276_FS15844.jpg",
@@ -559,7 +832,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Luxury Refined Urban Tee은(는) 스타일과 편안함을 동시에 잡은 티셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(White, SkyBlue)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1015,
@@ -570,10 +844,30 @@ json_data = """
             "White"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/54/305777754_GL11677.jpg",
@@ -590,7 +884,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sophisticated Premium Graphic Tee은(는) 스타일과 편안함을 동시에 잡은 티셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1016,
@@ -601,10 +896,30 @@ json_data = """
             "IVORY"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/21/303701921_LO68944.jpg",
@@ -622,7 +937,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Prestige Minimalist Satin Blouse은(는) 스타일과 편안함을 동시에 잡은 블라우스입니다. 다양한 사이즈(S, M, L, XL)와 색상(IVORY)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1017,
@@ -634,10 +950,30 @@ json_data = """
             "Ivory"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/14/301827414_SX96035.jpg",
@@ -657,7 +993,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Metropolitan Sophisticated Silk Blouse은(는) 스타일과 편안함을 동시에 잡은 블라우스입니다. 다양한 사이즈(S, M, L, XL)와 색상(LightPink, Ivory)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1018,
@@ -668,10 +1005,30 @@ json_data = """
             "Blue"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/70/305725370_GN50238.jpg",
@@ -688,7 +1045,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Chic Classic Dress Shirt은(는) 스타일과 편안함을 동시에 잡은 셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(Blue)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1019,
@@ -699,10 +1057,30 @@ json_data = """
             "Pink"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/03/306219803_LN11515.jpg",
@@ -719,7 +1097,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Trendy Modern Flared Blouse은(는) 스타일과 편안함을 동시에 잡은 블라우스입니다. 다양한 사이즈(S, M, L, XL)와 색상(Pink)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1020,
@@ -730,10 +1109,30 @@ json_data = """
             "IVORY"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://product-image.wconcept.co.kr/productimg/image/img0/29/306155529_NP73863.jpg",
@@ -752,7 +1151,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sleek Luxury Wool Knit Sweater은(는) 스타일과 편안함을 동시에 잡은 니트입니다. 다양한 사이즈(S, M, L, XL)와 색상(IVORY)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1021,
@@ -766,10 +1166,30 @@ json_data = """
             "Black"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/CGCG/25/01/16/GM0025011602857_0_THNAIL_ORGINL_20250120143623169.jpg",
@@ -787,7 +1207,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Elite Luxury Wool Knit Sweater은(는) 스타일과 편안함을 동시에 잡은 니트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Brown, Navy, LightGray, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1022,
@@ -800,10 +1221,30 @@ json_data = """
             "Brown"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/14/GM0025011482635_0_THNAIL_ORGINL_20250116143629530.jpg",
@@ -822,7 +1263,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Avant-Garde Elegant Silk Shirt은(는) 스타일과 편안함을 동시에 잡은 셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(Red, Black, Brown)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1023,
@@ -837,10 +1279,30 @@ json_data = """
             "White"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/10/28/GM0024102881872_0_THNAIL_ORGINL_20241118165113022.jpg",
@@ -859,7 +1321,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Prestige Slim-Fit Trendy Tee은(는) 스타일과 편안함을 동시에 잡은 티셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(Brown, Black, Navy, Yellow, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1024,
@@ -874,10 +1337,30 @@ json_data = """
             "LightGray"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/12/23/GM0024122398658_0_THNAIL_ORGINL_20250110144017063.jpg",
@@ -896,7 +1379,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Luxury Luxury Cotton Basic Tee은(는) 스타일과 편안함을 동시에 잡은 티셔츠입니다. 다양한 사이즈(S, M, L, XL)와 색상(Navy, Black, Red, Brown, LightGray)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1025,
@@ -909,10 +1393,30 @@ json_data = """
             "Red"
         ],
         "size": [
-            "S",
-            "M",
-            "L",
-            "XL"
+            {
+                "name": "S",
+                "shoulder_width": 42,
+                "sleeve_length": 60,
+                "total_length": 70
+            },
+            {
+                "name": "M",
+                "shoulder_width": 44,
+                "sleeve_length": 62,
+                "total_length": 72
+            },
+            {
+                "name": "L",
+                "shoulder_width": 46,
+                "sleeve_length": 64,
+                "total_length": 74
+            },
+            {
+                "name": "XL",
+                "shoulder_width": 48,
+                "sleeve_length": 66,
+                "total_length": 76
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/25/01/02/GP2N25010294589_0_THNAIL_ORGINL_20250116101553550.jpg",
@@ -931,7 +1435,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Metropolitan Luxury Wool Knit Sweater은(는) 스타일과 편안함을 동시에 잡은 니트입니다. 다양한 사이즈(S, M, L, XL)와 색상(Black, Yellow, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1026,
@@ -944,16 +1449,31 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/25/02/03/GRK025020308847_0_ORGINL_20250203113958825.jpg",
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/25/02/03/GRK025020308847_1_ORGINL_20250203113958825.jpg",
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/25/02/03/GRK025020308847_2_ORGINL_20250203113958825.jpg"
-
         ],
         "likes": 0,
         "cart_count": 0,
@@ -965,7 +1485,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Fashionable Urban Relaxed Joggers은(는) 스타일과 편안함을 동시에 잡은 조거팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(LightGray, White, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1027,
@@ -980,10 +1501,26 @@ json_data = """
             "LightGray"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/8SBR/24/12/11/GM0024121142036_0_THNAIL_ORGINL_20241231105416614.jpg",
@@ -1002,7 +1539,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Avant-Garde Minimalist Chic Skirt은(는) 스타일과 편안함을 동시에 잡은 스커트입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(White, Brown, Black, Yellow, LightGray)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1028,
@@ -1015,10 +1553,26 @@ json_data = """
             "Black"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/8SBR/24/08/19/GM0024081968891_0_THNAIL_ORGINL_20240912182649129.jpg",
@@ -1037,7 +1591,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Luxury Timeless Skinny Denim Jeans은(는) 스타일과 편안함을 동시에 잡은 청바지입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, Brown, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1029,
@@ -1051,10 +1606,26 @@ json_data = """
             "Red"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/09/GRCV24090907706_0_ORGINL_20240909143837074.jpg",
@@ -1072,7 +1643,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sophisticated Tailored Slim-Fit Trousers은(는) 스타일과 편안함을 동시에 잡은 슬랙스입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Yellow, Black, LightGray, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1030,
@@ -1085,10 +1657,26 @@ json_data = """
             "Black"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/12/24/GQZR24122412102_0_ORGINL_20241224125431693.jpg",
@@ -1107,7 +1695,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sleek Modern Relaxed Wide Pants은(는) 스타일과 편안함을 동시에 잡은 와이드팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(White, LightGray, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1031,
@@ -1121,10 +1710,26 @@ json_data = """
             "White"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/B2/41/21/GQC9B24121856298_0_ORGINL_20241218230704735.jpg",
@@ -1142,7 +1747,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Modern High-Waist Flowy Pants은(는) 스타일과 편안함을 동시에 잡은 와이드팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, Black, LightGray, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1032,
@@ -1156,10 +1762,26 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/25/01/02/GQ6425010291806_0_ORGINL_20250102131703733.jpg",
@@ -1176,7 +1798,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Refined Casual Athletic Joggers은(는) 스타일과 편안함을 동시에 잡은 조거팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, Navy, LightGray, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1033,
@@ -1191,10 +1814,26 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/BPBR/24/12/27/GM0024122749754_0_THNAIL_ORGINL_20241231121143304.jpg",
@@ -1213,7 +1852,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Contemporary Premium Wide-Leg Jeans은(는) 스타일과 편안함을 동시에 잡은 청바지입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Navy, White, Brown, Red, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1034,
@@ -1228,10 +1868,26 @@ json_data = """
             "Navy"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/24/12/23/GM0024122398665_0_THNAIL_ORGINL_20250206184228379.jpg",
@@ -1250,7 +1906,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sleek Luxury High-Waist Trousers은(는) 스타일과 편안함을 동시에 잡은 슬랙스입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Yellow, LightGray, Brown, Black, Navy)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1035,
@@ -1264,10 +1921,26 @@ json_data = """
             "LightGray"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/D2/50/12/GPFVD25012033915_0_ORGINL_20250120151338078.jpg",
@@ -1286,7 +1959,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Minimal Luxury Palazzo Trousers은(는) 스타일과 편안함을 동시에 잡은 와이드팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Yellow, Navy, White, LightGray)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1036,
@@ -1299,10 +1973,26 @@ json_data = """
             "White"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/11/GM0024071185525_0_THNAIL_ORGINL_20240913141318649.jpg",
@@ -1321,7 +2011,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "PRADA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Avant-Garde Timeless Skinny Denim Jeans은(는) 스타일과 편안함을 동시에 잡은 청바지입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, Navy, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1037,
@@ -1334,10 +2025,26 @@ json_data = """
             "Navy"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/12/19/GRHV24121975966_0_THNAIL_ORGINL_20241219120057119.jpg",
@@ -1356,7 +2063,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Refined Urban Relaxed Joggers은(는) 스타일과 편안함을 동시에 잡은 조거팬츠입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, LightGray, Navy)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1038,
@@ -1371,10 +2079,26 @@ json_data = """
             "Black"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/MCBR/25/01/16/GM0025011602258_0_THNAIL_ORGINL_20250122182416884.jpg",
@@ -1393,7 +2117,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sophisticated Refined Timeless Skirt은(는) 스타일과 편안함을 동시에 잡은 스커트입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Navy, Brown, Yellow, Red, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1039,
@@ -1407,10 +2132,26 @@ json_data = """
             "Navy"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/25/01/13/GM0025011375658_0_THNAIL_ORGINL_20250115180340574.jpg",
@@ -1429,7 +2170,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sleek Premium Wide-Leg Jeans은(는) 스타일과 편안함을 동시에 잡은 청바지입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Brown, White, LightGray, Navy)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1040,
@@ -1442,10 +2184,26 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "28",
-            "30",
-            "32",
-            "34"
+            {
+                "name": "28",
+                "waist": 72,
+                "total_length": 98
+            },
+            {
+                "name": "30",
+                "waist": 76,
+                "total_length": 100
+            },
+            {
+                "name": "32",
+                "waist": 80,
+                "total_length": 102
+            },
+            {
+                "name": "34",
+                "waist": 84,
+                "total_length": 104
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/29/GM0024112972322_0_THNAIL_ORGINL_20250206184727215.jpg",
@@ -1464,7 +2222,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Modern Luxury High-Waist Trousers은(는) 스타일과 편안함을 동시에 잡은 슬랙스입니다. 다양한 사이즈(28, 30, 32, 34)와 색상(Red, Navy, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1041,
@@ -1478,13 +2237,34 @@ json_data = """
             "White"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/WMBR/24/12/26/GM0024122631283_0_THNAIL_ORGINL_20241227151458781.jpg",
@@ -1503,7 +2283,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Avant-Garde Timeless Penny Loafers은(는) 스타일과 편안함을 동시에 잡은 로퍼입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Yellow, Brown, Black, White)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1042,
@@ -1517,13 +2298,34 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/11/GM0024111182655_0_THNAIL_ORGINL_20241112165122435.jpg",
@@ -1542,7 +2344,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Contemporary Modern Heeled Boots은(는) 스타일과 편안함을 동시에 잡은 부츠입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Black, White, LightGray, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1043,
@@ -1556,13 +2359,34 @@ json_data = """
             "Red"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/26/GM0024122631279_0_THNAIL_ORGINL_20241226143757897.jpg",
@@ -1581,7 +2405,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Fashionable Elegant Classic Leather Loafers은(는) 스타일과 편안함을 동시에 잡은 로퍼입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Black, LightGray, White, Red)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1044,
@@ -1594,13 +2419,34 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/B2/41/21/GQC9B24121856946_0_ORGINL_20241218231359932.jpg",
@@ -1617,7 +2463,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Elegant Luxury Low-Top Sneakers은(는) 스타일과 편안함을 동시에 잡은 스니커즈입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Red, Brown, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1045,
@@ -1630,13 +2477,34 @@ json_data = """
             "Brown"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/12/13/GM0024121385187_0_THNAIL_ORGINL_20250107183327317.jpg",
@@ -1655,7 +2523,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "MUSINSA",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Sleek Elegant Classic Leather Loafers은(는) 스타일과 편안함을 동시에 잡은 로퍼입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(LightGray, Black, Brown)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1046,
@@ -1670,13 +2539,34 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/11/21/GM0024112102978_0_ORGINL_TB_20241121113923032.jpg",
@@ -1694,7 +2584,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "NIKE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Premium Minimalist Pointed Heels은(는) 스타일과 편안함을 동시에 잡은 힐입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Brown, White, Navy, LightGray, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1047,
@@ -1707,13 +2598,34 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ECBR/24/07/19/GM0024071970326_0_THNAIL_ORGINL_20240723164400153.jpg",
@@ -1732,7 +2644,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "GUCCI",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Chic Timeless Elegant Kitten Heels은(는) 스타일과 편안함을 동시에 잡은 힐입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(White, LightGray, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1048,
@@ -1746,13 +2659,34 @@ json_data = """
             "Brown"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LUXR/25/01/23/GPD125012352716_0_ORGINL_20250123093851385.jpg",
@@ -1770,7 +2704,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Elegant Timeless Luxury Sandals은(는) 스타일과 편안함을 동시에 잡은 샌들입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Black, White, Red, Brown)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1049,
@@ -1785,13 +2720,34 @@ json_data = """
             "Black"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/10/GQK224091078481_0_ORGINL_20240910184243861.jpg",
@@ -1810,7 +2766,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Minimal Timeless Penny Loafers은(는) 스타일과 편안함을 동시에 잡은 로퍼입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(Navy, Yellow, Red, White, Black)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     },
     {
         "id": 1050,
@@ -1823,13 +2780,34 @@ json_data = """
             "Yellow"
         ],
         "size": [
-            "230",
-            "235",
-            "240",
-            "245",
-            "250",
-            "255",
-            "260"
+            {
+                "name": "230",
+                "foot_length": 230
+            },
+            {
+                "name": "235",
+                "foot_length": 235
+            },
+            {
+                "name": "240",
+                "foot_length": 240
+            },
+            {
+                "name": "245",
+                "foot_length": 245
+            },
+            {
+                "name": "250",
+                "foot_length": 250
+            },
+            {
+                "name": "255",
+                "foot_length": 255
+            },
+            {
+                "name": "260",
+                "foot_length": 260
+            }
         ],
         "image": [
             "https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/ORBR/24/09/03/GPW924090379037_0_THNAIL_ORGINL_20240903132710361.jpg",
@@ -1848,7 +2826,8 @@ json_data = """
         "created_at": "2025-02-07 03:12:30",
         "updated_at": "2025-02-07 03:12:30",
         "brand": "BEANPOLE",
-        "delivery_fee": "free"
+        "delivery_fee": "free",
+        "description": "Urban Timeless Penny Loafers은(는) 스타일과 편안함을 동시에 잡은 로퍼입니다. 다양한 사이즈(230, 235, 240, 245, 250, 255, 260)와 색상(White, Black, Yellow)로 제공되어 고객님의 취향에 맞게 선택할 수 있습니다. 어떤 순간에도 어울리는 디자인과 실용성을 갖춘 최고의 제품을 경험해 보세요!"
     }
 ]
 """
@@ -1867,9 +2846,9 @@ for product in products:
     cursor.execute("""
         INSERT INTO products (
             pid, category, sub_category, name, color, size, image, likes, cart_count, star, 
-            stock, original_price, discount_rate, discounted_price, created_at, updated_at, brand, delivery_fee
+            stock, original_price, discount_rate, discounted_price, created_at, updated_at, brand, delivery_fee, description
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
         product["id"], 
         product["category"], 
@@ -1888,7 +2867,9 @@ for product in products:
         product["created_at"], 
         product["updated_at"],
         product["brand"],
-        product["delivery_fee"]
+        product["delivery_fee"],
+        product["description"]
+
     ))
 
 # 변경사항 저장
