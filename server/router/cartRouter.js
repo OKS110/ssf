@@ -5,7 +5,9 @@ const router = express.Router();
 
 router
     .post('/add', controller.saveToCart)
-    .post('/getId', controller.getCustomerId);
-// router.post('/items', controller.getCartItems);
+    .post('/getId', controller.getCustomerId)
+    .post('/items', controller.getCartItems)
+    .post('/updateQty', controller.updateDetailQty)
+    .post('/changeQty', controller.changeQty);
 
 export default router;

@@ -711,3 +711,83 @@
     padding: 20px 0;
     background-color: rgb(227, 227, 227);
 }
+
+/**********************************
+ * 장바구니 개별 옵션/수량 변경 모달
+ * YuNa
+***********************************/
+.cartModal-change-wrap {
+    padding: 10px;
+}
+.cartModal-change-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cartModal-change-header > span {
+    display: inline-block;
+    margin: 0;
+    font-size: 20px;
+}
+.cartModal-change-header > span:first-child {
+    font-weight: bold;
+}
+.cartModal-change-header > span:last-child {
+    font-size: 35px;
+}
+.cartModal-change-info {
+    line-height: 35px;
+    margin: 20px 0;
+}
+.cartModal-change-info > p:last-child {
+    color: gray;
+    font-size: 15px;
+}
+.cartModal-change-options {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+.cartModal-change-options > li {
+    border-bottom: 1px solid silver;
+    padding: 10px 0;
+}
+.cartModal-change-qty {
+    display: flex;
+    justify-content: left;
+}
+.cartModal-change-qty > label,
+.cartModal-change-qty > div {
+    margin: 0;
+}
+.cartModal-change-size > label,
+.cartModal-change-qty > label {
+    display: inline-block;
+    width: 100px;
+}
+.cartModal-change-size > select {
+    border: 1px solid silver;
+    width: 250px;
+    height: 30px;
+    outline: none;
+}
+.cartModal-change-qty > div {
+    border: 1px solid silver;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.cartModal-change-qty > div > button {
+    width: 35px;
+    margin: 0;
+    background-color: #fff;
+}
+.cartModal-change-btn {
+    /* border: 1px solid red; */
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    font-size: 16px;
+    padding: 15px;
+    margin-top: 10px;
+}

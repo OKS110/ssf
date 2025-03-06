@@ -28,7 +28,6 @@ server.use('/member', SignupRouter);
 server.use('/mypage',mypageRouter);
 server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
-// server.use('/admin', adminRouter);
 server.use('/order', orderRouter);
 
 // 카트
