@@ -57,8 +57,16 @@ export default function DetailOrder({pid, pidItem}){
         if (!isLoggedIn) { // 비회원 상태
             alert("비회원");
         } else { // 로그인 상태
-            const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid); // 조건 수정 필요
+            const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid && item.color === selectColor); // 조건 수정 필요
             // console.log("findItem ==> ", findItem);
+            if(findItem){
+                sessionStorage.getItem('selectColor') === cartList.color ? console.log("장바구니 들어감"): console.log('cart Error');
+                
+                
+            }else{
+                console.log("장바구니 에러");
+                
+            }
 
             if (findItem !== undefined) {
                 console.log("장바구니에 동일 상품 존재");
@@ -80,18 +88,20 @@ export default function DetailOrder({pid, pidItem}){
 
 
 
-    const handleDirectPurchase = () => {
+    const handleDirectPurchase = () => { //바로구매 버튼 클릭 시
         if (!isLoggedIn) {
             const confirmLogin = window.confirm("로그인 하시겠습니까? (취소 시 비회원 구매 페이지로 이동)");
             if (confirmLogin) {
+                sessionStorage.setItem('DirectOrder', true); // 바로 true 값을 저장(바로 구매 버튼을 눌렀으므로 로그인 후 구매 페이지로 이동하기 위한 장치)
                 navigate('/login'); // 로그인 페이지로 이동
             } else {
                 navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
             }
         } else {
-            navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
+            navigate(`/order/${pidItem.pid}`); // 회원 주문 페이지로 이동
         }
     };
+    
     
     return (
         <div className="godsInfo-area">

@@ -64,11 +64,13 @@ export default function LoginTab1({ isActive }) {
                     // 로그인 시 이전에 상품 상세 페이지에서 바로구매 버튼을 눌렀을 경우
                     // 세션 스토리지에서 주문 상품 ID 가져오기
                     const orderPid = sessionStorage.getItem('pid');
-                    if (orderPid) {
+                    const directOrder = sessionStorage.getItem('DirectOrder'); //바로구매 버튼 여부
+                    if (directOrder && orderPid) {
                         navigate(`/order/${orderPid}`); // 주문 페이지로 이동
+                        sessionStorage.removeItem('DirectOrder');
                         
                     } else {
-                        navigate('/'); // 주문 정보가 없으면 메인으로 이동
+                        navigate('/'); // 바로구매 버튼 X, 주문 정보가 없으면 메인으로 이동
                     }
 
                         // "아이디 저장"이 체크된 경우, localStorage에 저장
