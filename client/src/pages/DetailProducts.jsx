@@ -63,7 +63,7 @@ export default function DetailProducts() {
 
     return (
         <div className="detail-wrap content-wrap" style={{ position: "relative" }}>
-            <DetailTop pidItem={pidItem}/>
+            <DetailTop pidItem={pidItem} pid={pid}/>
             <div className="gods-summary" view-section="summary">
                 <DetailImage pidItem={pidItem}/>
                 <DetailOrder pid={pid} pidItem={pidItem}/>
