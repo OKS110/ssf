@@ -16,7 +16,7 @@ export default function GoodsDetail() {
     useEffect(() => {
         getPidItem(pid);
     }, []);
-    console.log(pidItem);
+    // console.log(pidItem);
     
     return (
         <>
