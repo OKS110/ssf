@@ -1,7 +1,7 @@
 show databases;
 create database shopping_mall;
 USE shopping_mall; 
-drop database shopping_mall;
+-- drop database shopping_mall;
 show tables;
 
 -- 관리자 테이블
@@ -411,4 +411,60 @@ LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아�
  desc products;
  select * from orders; -- oid, customer_id, order_number, total_price, zipcode, shipping_address, delivery_message, detail_address, status
 						-- refund_amount, order_date, payment_method
- 
+
+show tables;
+select * from products;
+select * from cart;
+desc cart;
+select * from customers;
+desc customers;
+
+truncate cart;
+select 
+	customer_id,
+    product_id,
+	quantity,
+    size,
+    color
+from cart
+where customer_id = '1';
+
+select *
+from products
+where pid = 1001;
+
+select image ->> '$[0]' from products where pid = '1001';
+
+select c.customer_id,
+		c.product_id,
+        c.quantity,
+        c.size,
+        c.color,
+        p.brand,
+        p.name,
+        format(p.original_price, 0) as original_price,
+        p.discount_rate,
+        format(p.discounted_price, 0) as discounted_price,
+		p.image ->> '$[0]' as image
+from cart c, products p
+where c.product_id = p.pid
+	and c.customer_id = 1;
+    
+show tables;
+select * from admins;
+select * from products;
+
+select pid,
+                category,
+                sub_category,
+                name,
+                brand,
+                color,
+                size,
+                likes,
+                star,
+                stock,
+                original_price,
+                discount_rate,
+                discounted_price
+        from products;
