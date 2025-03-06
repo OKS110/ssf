@@ -8,13 +8,29 @@ import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import DaumPostcode from "react-daum-postcode";
 import axios from 'axios';
+import DeliveryUpload from '../DeliveryUpload.jsx';
+import Form from 'react-bootstrap/Form';
+
 
 export default function DeliveryMyinfo() {
+  const [add1, setAdd1] = useState();
+    const [add2, setAdd2] = useState();
+    const [none, setNone] = useState(() => {
+        if (add1) {
+            setNone(false)
+        } else if (add2) {
+            setNone(false)
+        } else if (add2 === false) {
+            setNone(true)
+        }
+    });
     const [open, setOpen] = useState(false);
-    const [isChecked1, setIsChecked1] = useState(false); //체크박스 상태 관리
-    const [isChecked2, setIsChecked2] = useState(false); //체크박스 상태 관리
+    const [isChecked1, setIsChecked1] = useState(false);
+    const [isChecked2, setIsChecked2] = useState(false);
+    const [notOrigin, setNotOrigin] = useState(false);
     const handleChecked1 = (e) => { setIsChecked1(e.target.checked); }
     const handleChecked2 = (e) => { setIsChecked2(e.target.checked); }
+    const ChangeOrigin = (e) => { setNotOrigin(e.target.checked); }
     const [modalOpen, setModalOpen] = useState(false);
     const [adata, setAdata] = useState({});
     const modalBackground = useRef();
@@ -23,6 +39,15 @@ export default function DeliveryMyinfo() {
     const handleDesc = (name) => {
         setOpen(name);
     }
+    const { customer } = useContext(CustomersContext);
+    const { getCustomer } = useCustomers();
+    useEffect(() => {
+        const fetchCustoerList = async () => {
+            await getCustomer(id);
+        }
+        fetchCustoerList();
+    }, [add1, add2])
+
 
 
     const refs = {
@@ -35,6 +60,7 @@ export default function DeliveryMyinfo() {
     const completeHandler = (data) => {
         setAdata({ ...adata, zoneCode: data.zonecode, address: data.address });
         setDeliForm({ ...deliForm, zoneCode: data.zonecode, address: data.address });
+        setInputValue({ ...deliForm, zoneCode: data.zonecode, address: data.address });
     };
 
     const handleDelivery = (e) => {
@@ -48,6 +74,9 @@ export default function DeliveryMyinfo() {
             refs.nameRef.current.focus();
             return false;
         } else if (refs.phoneRef.current.value === '') {
+            refs.phoneRef.current.focus();
+            return false;
+        } else if (refs.phoneRef.current.value.length < 11) {
             refs.phoneRef.current.focus();
             return false;
         } else if (refs.extraAddressRef.current.value === '') {
@@ -66,39 +95,50 @@ export default function DeliveryMyinfo() {
             return true;
         }
     }
-
-    let test = '';
-    const deliverySave = () => {
+    const deliverySave = async () => {
         if (validate() && isChecked1 === true) {
-            axios.post('http://localhost:9000/mypage/updateDelivery', { deliForm, 'id': id })
+            await axios.post('http://localhost:9000/mypage/updateDelivery', { deliForm, 'id': id })
                 .then(res => {
                     if (res.data.result === 1) {
-                         test = JSON.parse(localStorage.getItem("addDelivery")) || [];
-                        test.push(deliForm); // 새로운 데이터 추가
-                        localStorage.setItem('addDelivery', JSON.stringify(test));
-                        localStorage.setItem('addSuccess', true);
+                        localStorage.setItem('delisave', true);
+                        setAdd1(true);
+                        getCustomer(id);
+                        setNone(false);
                     }
                 })
                 .catch(err => console.log(err)
                 );
 
-        } else if (validate() && isChecked1 === false) {
-            // 걍 로컬에만 저장되고 화면에 뿌리기
-            localStorage.setItem('addSuccess', true);
-             test = JSON.parse(localStorage.getItem("addDelivery")) || [];
-                        test.push(deliForm); // 새로운 데이터 추가
-                        localStorage.setItem('addDelivery', JSON.stringify(test));
-                        localStorage.setItem('addSuccess', true);
-        }
+        } 
+        // else if (validate() && isChecked1 === false) {
+        //     await axios.post('http://localhost:9000/mypage/updateDeliveryExtra', { deliForm, 'id': id })
+        //         .then(res => {
+        //             if (res.data.result === 1) {
+        //                 // console.log(res.data);
+        //                 setAdd2(true);
+        //                 getCustomer(id);
+        //                 setNone(false);
+        //             }
+        //         })
+        //         .catch(err => console.log(err));
+        // }
         else {
-            alert('빈값 x');
+            // alert('빈값 x');
         }
     }
-
-    const storageData = JSON.parse(localStorage.getItem('addDelivery')) || [];
-    // console.log('storageData', storageData);
+    // console.log('storageData', add1);
 
 
+
+    const deliveryDelete = () => {
+        axios.post('http://localhost:9000/mypage/deleteDelivery', { 'id': id })
+            .then(res => {
+                console.log(res.data);
+                setAdd2(false);
+                getCustomer(id);
+            })
+            .catch(err => console.log(err));
+    }
 
 
     /** 주소검색 버튼Toggle */
@@ -130,26 +170,78 @@ export default function DeliveryMyinfo() {
     };
     //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
 
+    // 기본배송지 지정 함수
+    const ChangeOriginDelivery = async () => {
+        if (notOrigin) {
+            alert('기본배송지가 변경되었습니다.');
+            setNotOrigin(false);
+            const deliForm = {
+                'zoneCode': customer.additional_address.slice(0, 5),
+                'address': customer.additional_address.slice(5, customer.additional_address.indexOf('@')),
+                'extraAddress': customer.additional_address.slice(customer.additional_address.indexOf('@') + 1, customer.additional_address.indexOf('/'))
+            };
+            await axios.post('http://localhost:9000/mypage/updateDelivery', { deliForm, 'id': id })
+                .then(res => {
+                    if (res.data.result === 1) {
+                        localStorage.setItem('delisave', true);
+                        setAdd1(true);
+                        getCustomer(id);
+                        setNone(false);
+                        deliveryDelete();
+                    }
+                })
+                .catch(err => console.log(err));
+        }
+    }
 
-/// 잠만   로컬스토리지 값을 걍 바로바로 받아와도 되나? 비동기 아닌가 ?.. => 이거 isLoggedIN 이거랑 비슷할거각ㅌ은데
-    // 0.addDelivery 값이 바뀔떄마다 이 값을 관리하는애가 잇어야함 
 
-const deliveryDelete = () => {
-    setTimeout(() => {
-    
-    }, 0);
-    let test2 = JSON.parse(localStorage.getItem("addDelivery")) || [];        
-   // 1.삭제할 데이터도 내가 클릭했을때 딱딱 받아와서 자동으로 입력이 되야하는뎁... 
-    const filteredUsers = test2.filter(user => user.zoneCode !== '51619');
-   localStorage.setItem('addDelivery',JSON.stringify(filteredUsers));
-   // console.log('dddd',filteredUsers);
-   // 2. 삭제는 되는데 새로고침을 눌러야만 내용 바뀜. 바로바로 바뀌게 해
-   
-}
+
+
+    const [dataList, setDataList] = useState([]);
+    const [inputValue, setInputValue] = useState({ 'name': '', 'phone': '', 'zipcode': '' });
+
+    const handleFileUpload = (e) => {
+        setInputValue(e.target.value);
+    }
+    const handleBlur = () => {
+        const formData = new FormData();
+        formData.append('data', inputValue);
+        axios.post('http://localhost:9000/deliveryUploads', formData)
+            .then(res => console.log('서버에서가져옴', res.data))
+            .catch(error => console.log(error));
+    }
+
+// 서버에서 status200 에러나는데 
+    useEffect(() => {
+        axios.get('http://localhost:9000/deliveryUploads') // 서버에서 데이터 가져오기
+            .then(res => {
+                console.log("🚀 서버 응답:", JSON.stringify(res.data.data, null, "\t"));
+                setDataList(res.data.data); // 상태 업데이트
+                // setDataList(JSON.stringify(res.data.data)); // 상태 업데이트
+            })
+            .catch(error => console.log(error));
+    }, []); 
+
+    // console.log('dataList', dataList);
+    console.dir(dataList[0]);
+
+  
 
 
     return (
         <div className="mypage-box">
+{                    dataList.map((item)=>                            
+                                <h5>{item}</h5>
+                            
+                        )}
+            {/* {dataList.length > 0 ? (
+                    dataList.map((item, index) => (
+                        <li key={index}>{JSON.stringify(item)}</li> // 개별 데이터 출력
+                    ))
+                ) : (
+                    <p>저장된 데이터가 없습니다.</p>
+                )} */}
+
             <div className="mypage-top-menu">
                 <span>Home</span>
                 <SlArrowRight className="mypage-top-menu-icon" />
@@ -162,7 +254,7 @@ const deliveryDelete = () => {
             <div className="mypage-bottom-box">
                 <PersonUIform />
                 <article className="mypage-bottom-right">
-                    {!(localStorage.getItem('addSuccess')) &&
+                    {none &&
                         <div className='mypage-myinfo-delivery'>
                             <h5>등록된 배송지가 없습니다.</h5>
                             <h5>'배송지 추가' 하고 더 편리한 쇼핑을 즐겨보세요.</h5>
@@ -184,25 +276,61 @@ const deliveryDelete = () => {
                                 <ul>
                                     <li>
                                         <label htmlFor="">이름</label>
-                                        <input type="text"
-                                            name="name"
+                                        <Form.Control
+                                        name='name'
+                                            type='text'
+                                            onChange={(e) => {
+                                                handleFileUpload(e)
+                                                handleDelivery(e)
+                                            }}
+                                            // onBlur={handleBlur} 
+                                            className='addDeli'
                                             ref={refs.nameRef}
+                                        >
+                                        </Form.Control>
+                                        {/* <input 
+                                            type="text" name='name'
                                             onChange={handleDelivery}
-                                        />
+                                            ref={refs.nameRef}
+                                        /> */}
                                     </li>
                                     <li>
                                         <label htmlFor="">휴대폰번호</label>
-                                        <input type="number" name='phone'
+                                        {/* <input type="number" name='phone'
                                             onChange={handleDelivery}
                                             ref={refs.phoneRef}
-                                        />
+                                        /> */}
+                                        <Form.Control
+                                            type='number'
+                                            onChange={(e) => {
+                                                handleFileUpload(e)
+                                                handleDelivery(e)
+                                            }}
+                                            // onBlur={handleBlur} 
+                                            className='addDeli'
+                                            ref={refs.phoneRef}
+                                            name='phone'
+                                        >
+                                        </Form.Control>
                                     </li>
                                     <li>
                                         <label htmlFor="">주소</label>
-                                        <input type="text" name='zipcode' placeholder='우편번호'
-
+                                        {/* <input type="text" name='zipcode' placeholder='우편번호'
                                             ref={refs.zipcodeRef}
-                                            value={adata.zoneCode} />
+                                            value={adata.zoneCode} /> */}
+                                        <Form.Control
+                                            type='text'
+                                            onChange={(e) => {
+                                                handleFileUpload(e)
+                                                handleDelivery(e)
+                                            }}
+                                            // onBlur={handleBlur} 
+                                            className='addDeli'
+                                            value={adata.zoneCode}
+                                            ref={refs.zipcodeRef}
+                                            name='zipcode'
+                                        >
+                                        </Form.Control>
                                         <button onClick={handleToggle}>주소찾기</button>
                                     </li>
                                     {isOpen &&
@@ -262,6 +390,7 @@ const deliveryDelete = () => {
                                         onClick={() => {
                                             setModalOpen(false)
                                             deliverySave()
+                                            handleBlur()
                                         }
                                         }>
                                         저장
@@ -270,37 +399,54 @@ const deliveryDelete = () => {
                             </div>
                         </div>
                     }
-                    {
-                        (localStorage.getItem('addSuccess')) &&
+                    {!none && <>
+                        <h5 className='mypage-myinfo-delivery-msg'>기본배송지는 삭제가 불가능합니다.</h5>
                         <div className='mypage-myinfo-delivery-success-container'>
                             {
-                                storageData.map((item) =>
-                                    <div className='mypage-myinfo-delivery-successbox'>
+                                (localStorage.getItem('delisave'))
+                                &&
+                                <div className='mypage-myinfo-delivery-successbox'>
+                                    <div>
+                                        <input type="checkbox" onClick="return false;" />
                                         <div>
-                                            <input type="checkbox" />
-                                            <div>
-                                                <span>{item.name}</span>
-                                                {isChecked1 && <span>기본배송지</span>}
-                                                <p>{item.phone}</p>
-                                                <p>
-                                                    <span>{item.zoneCode} </span>
-                                                    <span>{item.address} </span>
-                                                    <span>{item.extraAddress}</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button>수정</button>
-                                            <button onClick={deliveryDelete}>삭제</button>
+                                            <span>{customer.name}</span>
+                                            {localStorage.getItem('delisave') && <span>기본배송지</span>}
+                                            <p>{customer.phone}</p>
+                                            <p>
+                                                <span>{customer.zipcode}</span>
+                                                <span>{customer.address}</span>
+                                                <span>{customer.extra_address}</span>
+                                            </p>
                                         </div>
                                     </div>
-                                )
+                                </div>
+                            }
+                            {customer.additional_address &&
+                                <div className='mypage-myinfo-delivery-successbox'>
+                                    <div>
+                                        <input type="checkbox" checked={notOrigin} onChange={ChangeOrigin} />
+                                        <div>
+                                            <span>{customer.additional_address.slice(customer.additional_address.indexOf('/') + 1, customer.additional_address.indexOf('#'))}</span>
+                                            <p>{customer.additional_address.slice(customer.additional_address.indexOf('#') + 1, customer.additional_address.length)}</p>
+                                            <p>
+                                                <span>{customer.additional_address.slice(0, 5)}</span>
+                                                <span>{customer.additional_address.slice(5, customer.additional_address.indexOf('@'))}</span>
+                                                <span>{customer.additional_address.slice(customer.additional_address.indexOf('@') + 1, customer.additional_address.indexOf('/'))}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => setModalOpen(true)}>수정</button>
+                                        <button onClick={deliveryDelete}>삭제</button>
+                                    </div>
+                                </div>
                             }
                             <div>
                                 <button onClick={() => setModalOpen(true)}>배송지 추가</button>
-                                <button>기본배송지 지정</button>
+                                <button onClick={ChangeOriginDelivery}>기본배송지 지정</button>
                             </div>
                         </div>
+                    </>
                     }
                 </article>
             </div>
@@ -308,3 +454,4 @@ const deliveryDelete = () => {
     );
 }
 
+// 배송지에 이름 전번 까지 나오게 행 그럼 이름 전번도 additonal 에 넣어서 가져오ㅑ애할듯 주소 맨뒤에 넣어라...
