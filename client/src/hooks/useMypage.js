@@ -1,19 +1,17 @@
 import { useContext } from 'react'; 
-import { MypageContext } from '../context/MypageContext.js';
 import axios from 'axios';
+import { MypageContext } from '../context/MypageContext';
+
 
 export function useMypage(){   
-    const {setCustomerInfo} = useContext(MypageContext); 
+  const {allLike, setAllLike} = useContext(MypageContext);
 
-    /* 마이페이지 필요한 전체정보 가져오는 함수 */
-    const getMypageInfo = async () => {
-        const id = localStorage.getItem("user_id");
-        // console.log("plzplz", id); // 값이 제대로 나오는지 확인
-        const result = await axios.post("http://localhost:9000/mypage/myinfo", { 'id':id});
-        setCustomerInfo(result.data);
+  // favorites 테이블 전체 데이터 가져오기
+  const favoriteAllData = async() => {
+    const result = await axios.post('http://localhost:9000/mypage/getAllLike');
+    setAllLike(result.data);
+  }
 
     
-    return {getMypageInfo};     
-}
-
+    return {favoriteAllData};     
 }
