@@ -899,13 +899,16 @@
     font-size: 15px;
     margin-left: 20px;
 }
-
-.mypage-myinfo-delivery-successbox>div:first-child>div>span:first-child {
+.mypage-myinfo-delivery-successbox>div:first-child>div>span:first-child{
+    font-size: 15px;
+    padding-right: 10px;
+}
+.mypage-myinfo-delivery-successbox>div:first-child>div>span:nth-child(2) {
     font-size: 17px;
     font-weight: 600;
 }
 
-.mypage-myinfo-delivery-successbox>div:first-child>div>span:nth-child(2) {
+.mypage-myinfo-delivery-successbox>div:first-child>div>span:nth-child(3) {
     border: 1px solid #7E00FF;
     /* background-color: red; */
     color: #7E00FF;
