@@ -29,7 +29,7 @@ export const registCustomer = async(data) => {
                         password, 
                         zipcode,
                         address,
-                        extra_address
+                        detail_address
                         )
                     values(
                     ?,?,?,?,?,?,?,?
