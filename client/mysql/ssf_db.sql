@@ -68,6 +68,8 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
 ALTER TABLE customers 
 ADD COLUMN zipcode VARCHAR(20) AFTER password; -- 우편번호 (필수 입력)
 select * from guest_orders;
+select * from guests;
+select * from orders;
 select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
     pid INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)

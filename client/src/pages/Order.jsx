@@ -39,6 +39,8 @@ export default function Order() {
         member, setMember } = useContext(OrderContext);
     const { saveToOrder, getOrderList, saveGuestOrder } = useOrder();  // ✅ 주문 데이터(테이블 insert)
 
+    const [localToken, setLocalToken] = useState(localStorage.getItem('token')); // 로컬 토큰 확인
+
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -109,24 +111,23 @@ export default function Order() {
 
     // ✅ 회원 정보가 로드되면 `formData`를 자동 업데이트
     useEffect(() => {
-        if (customer) {
+        const storedToken = localStorage.getItem("token");
+        setLocalToken(storedToken); // 토큰 상태 업데이트
+        setToken(storedToken); // 회원/비회원 구분용 토큰 상태 업데이트
+    
+        if (storedToken && customer && Object.keys(customer).length > 0) { // 고객 정보를 가져와서 폼 업데이트를 하는데 바로 이전에 로그아웃을 했는데도 비회원일 때 바로 이전 회원 정보가 form에 저장됨.
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                name: customer.name || "",
-                phone: customer.phone || "",
-                email: customer.email || "",
-                address: customer.address || "",
-                zipcode: customer.zipcode || "",
-                detail_address: customer.additional_address || "",
+                name: customer?.name || "",
+                phone: customer?.phone || "",
+                email: customer?.email || "",
+                address: customer?.address || "",
+                zipcode: customer?.zipcode || "",
+                detail_address: customer?.additional_address || "",
             }));
         }
-    }, [customer]);
-
-    // ✅ 토큰 여부 설정
-    useEffect(() => {
-        const storedToken = localStorage.getItem("token");
-        setToken(storedToken);
-    }, []);
+    }, [customer]); // customer가 변경될 때만 실행
+    
 
     const isAuthorized = token && !token.startsWith("guest_token_"); // 회원 비회원 여부 확인
 
