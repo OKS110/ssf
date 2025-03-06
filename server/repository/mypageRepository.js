@@ -58,7 +58,7 @@ export const updateDelivery = async ({ deliForm, id }) => {
     // console.log('de',deliForm, 'id',id );
 
     const sql1 = `
-               update customers set zipcode = ?, address = ?, extra_address = ? where username = ?
+               update customers set zipcode = ?, address = ?, detail_address = ? where username = ?
                 `;
 
     const [result] = await db.execute(sql1, [deliForm.zoneCode, deliForm.address, deliForm.extraAddress, id]);
