@@ -5,9 +5,11 @@ import { useState, useEffect, useContext } from "react";
 import { DetailProductContext } from "../../context/DetailProductContext";
 import { AuthContext } from "../../auth/AuthContext.js";
 import { useCart } from "../../hooks/useCart.js";
+import { useNavigate } from "react-router-dom";
 
 export default function DetailOrder({pid, pidItem}){
     const { isLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const sizePidItemList = pidItem.size; // 상품의 사이즈 []
     const colorPidItemList = pidItem.color; // 상품의 색 []
@@ -30,6 +32,8 @@ export default function DetailOrder({pid, pidItem}){
             getCustomerId(id);
             // getCartItems(userId);
         }
+
+        
     }, []);
 
     // 수량
@@ -76,6 +80,21 @@ export default function DetailOrder({pid, pidItem}){
     }
     // console.log("cartList --> ", cartList);
 
+
+
+    const handleDirectPurchase = () => {
+        if (!isLoggedIn) {
+            const confirmLogin = window.confirm("로그인 하시겠습니까? (취소 시 비회원 구매 페이지로 이동)");
+            if (confirmLogin) {
+                navigate('/login'); // 로그인 페이지로 이동
+            } else {
+                navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
+            }
+        } else {
+            navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
+        }
+    };
+    
     return (
         <div className="godsInfo-area">
                         <div class="tags">
@@ -198,7 +217,7 @@ export default function DetailOrder({pid, pidItem}){
                                 {/* React does not recognize the pidItem prop on a DOM element.
                                     → pidItem을 Link 태그에 직접 전달하려고 해서 발생한 오류입니다.
                                     Link 컴포넌트는 react-router-dom에서 제공하는 라우팅 컴포넌트이며, DOM 요소가 아니기 때문에 props를 직접 전달할 수 없습니다. */}
-                                <Link to={`/order/${pidItem.pid}`} >바로구매</Link>
+                                <a to="#" onClick={handleDirectPurchase}>바로구매</a>
                             </button>
                         </div>
                     </div>

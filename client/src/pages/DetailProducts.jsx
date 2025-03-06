@@ -30,6 +30,7 @@ export default function DetailProducts() {
     
     useEffect(() => {
         getPidItem(pid);
+        sessionStorage.setItem("pid", pid);
     }, []);
 
     const tabsData = [
