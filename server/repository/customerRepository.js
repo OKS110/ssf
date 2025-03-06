@@ -5,7 +5,7 @@ export const getCustomers = async() => {
     const sql = `
         select 
             customer_id, username,
-            email, phone, name, password, address, 
+            email, phone, name, password, address,
             additional_address, birth_date, status, gender, membership_level,
             loyalty_points, last_login, created_at, updated_at 
         from customers;
@@ -20,7 +20,7 @@ export const getCustomer = async(username) => {
     const sql = `
         select 
             customer_id, username,
-            email, phone, name, password, zipcode, address, 
+            email, phone, name, password, zipcode, address,
             additional_address, birth_date, status, gender, membership_level,
             loyalty_points, last_login, created_at, updated_at 
         from customers
