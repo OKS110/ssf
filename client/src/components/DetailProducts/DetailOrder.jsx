@@ -18,21 +18,20 @@ export default function DetailOrder({pid, pidItem}){
     const { saveToCart, getCartItems, updateDetailQty } = useCart();
 
     const [ loginAuth, setLoginAuth ] = useState(false);
+    const [ guestCart, setGuestCart ] = useState([]); // 비회원일 때 장바구니 상태 관리
 
     // 로그인 여부 확인 후 아이디 별 카트 리스트 전체 호출
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (token && !(token.startsWith("guest_token_"))) {
+        if (token && !(token.startsWith("guest_token_"))) { // 로그인 상태
             setLoginAuth(true);
             getCartItems();
+        } else { // 비로그인 상태
+            const guestCartList = JSON.parse(localStorage.getItem("guest_cart")) || [];
+            setGuestCart(guestCartList);
         }
-        // if (isLoggedIn) {
-        //     // 카트 리스트 전체 호출
-        //     getCartItems();
-        // }
-
-        
     }, []);
+    // console.log("로그인 인증 확인 --> ", loginAuth);
 
     // 수량
     const handleCount = (e, type) => {
@@ -61,51 +60,92 @@ export default function DetailOrder({pid, pidItem}){
 
     // 장바구니 버튼 이벤트
     const addCart = () => {
+        const sessionColor = sessionStorage.getItem("selectedColor");
+        const sessionSize = sessionStorage.getItem("selectedSize");
+
+        
         if (!loginAuth) { // 비회원 상태
-            alert("비회원");
-        } else { // 로그인 상태
-            const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid); // 조건 수정 필요
-            if (findItem) {
-                const color = sessionStorage.getItem("selectedColor");
-                const size = sessionStorage.getItem("selectedSize");
-                
-                const findColor = cartList.find((item) => item.color === color);
+            const formData = {
+                pid: pid,
+                count: count,
+                color: selectColor,
+                size: selectedSize
+            };
+            
+            const currentCart = JSON.parse(localStorage.getItem("guest_cart")) || [];
+            // 동일 상품 여부 확인
+            const color = Number(sessionColor);
+            const size = Number(sessionSize);
+            const checkItem = currentCart.find((item) => item.pid === pid && item.color === color && item.size === size);
 
-                // const findoption = cartList. find((item) => item.color === color && item.size === size);
+            if (checkItem) {
+                console.log("동일 상품 존재 - 수량 업데이트");
+                checkItem.count += count;
+            } else {
+                currentCart.push(formData);
             }
+            localStorage.setItem("guest_cart", JSON.stringify(currentCart));
+            setGuestCart(currentCart);
 
-            // if (findItem !== undefined) {
-            //     console.log("장바구니에 동일 상품 존재");
-            //     updateDetailQty(findItem.cid, "increase", count);
-            // } else {
-            //     console.log("장바구니에 동일 상품 없음");
-            //     const formData = {
-            //         id: userId,
-            //         pid: pid,
-            //         count: count,
-            //         color: selectColor,
-            //         size: selectedSize
-            //     }; // db에 들어갈 상품 데이터
-            //     console.log("formData --> ", formData);
-            //     saveToCart(formData);
-            // }
+            const select = window.confirm("장바구니에 상품이 담겼습니다.\n장바구니로 이동하시겠습니까?");
+            select && navigate("/carts");
+        } else { // 로그인 상태
+            const formData = {
+                id: userId,
+                pid: pid,
+                count: count,
+                color: selectColor,
+                size: selectedSize
+            };
+
+            const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid); // 기준점
+            // const findItem = cartList && cartList.find((item) => item.product_id === pidItem.pid && item.color === sessionColor && item.size === sessionSize); // 기준점
+
+            // 추후 최적화 필요
+            if (findItem) {
+                // console.log("장바구니에 동일 상품 존재 - 수량 업데이트 필요");
+                updateDetailQty(findItem.cid, "increase", count);
+
+                const color = sessionStorage.getItem("selectedColor");
+                const findColor = cartList.find((item) => item.color === color);
+                if (findColor) {
+                    const size = sessionStorage.getItem("selectedSize");
+                    const findSize = cartList.find((item) => item.size === size);
+                    if (findSize) {
+                        console.log("장바구니에 동일 상품 존재!! - 수량 업데이트 요구");
+                        updateDetailQty(findItem.cid, "increase", count);
+                    } else {
+                        console.log("장바구니에 사이즈 동일 상품 없음 - 새 상품 추가");
+                        saveToCart(formData);
+                    }
+                } else {
+                    console.log("장바구니에 색상 동일 상품 없음 - 새 상품 추가");
+                    saveToCart(formData);
+                }
+            } else {
+                console.log("장바구니에 동일 상품 없음 - 새 상품 추가");
+                saveToCart(formData);
+            }
         }
     }
 
+    console.log("guestCart --> ", guestCart);
 
 
-    const handleDirectPurchase = () => {
+    const handleDirectPurchase = () => { //바로구매 버튼 클릭 시
         if (!isLoggedIn) {
             const confirmLogin = window.confirm("로그인 하시겠습니까? (취소 시 비회원 구매 페이지로 이동)");
             if (confirmLogin) {
+                sessionStorage.setItem('DirectOrder', true); // 바로 true 값을 저장(바로 구매 버튼을 눌렀으므로 로그인 후 구매 페이지로 이동하기 위한 장치)
                 navigate('/login'); // 로그인 페이지로 이동
             } else {
                 navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
             }
         } else {
-            navigate(`/order/${pidItem.pid}`); // 비회원 주문 페이지로 이동
+            navigate(`/order/${pidItem.pid}`); // 회원 주문 페이지로 이동
         }
     };
+    
     
     return (
         <div className="godsInfo-area">

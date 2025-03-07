@@ -332,7 +332,7 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.address === true ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.extra ? null : (
-                                            updateData.extra === undefined ? customer.extra_address : updateData.extra
+                                            updateData.extra === undefined ? customer.detail_address : updateData.extra
                                         )}
                                     />
                                 </li>

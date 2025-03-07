@@ -1034,14 +1034,18 @@ footer .etc .etc-right{
 }
 
 .order_wrap tbody tr td .delete {
-    display: block;
+    /* border: 1px solid red; */
     position: absolute;
     top: 19px;
     right: 0;
+    cursor: pointer;
+    color: var(--gray500);
+    font-size: 35px;
+    /* display: block;
     width: 16px;
     height: 16px;
     font-size: 0;
-    background: url(https://www.ssfshop.com/v3/images/ui/btn_x_gray.svg) no-repeat center center / 14px auto;
+    background: url(https://www.ssfshop.com/v3/images/ui/btn_x_gray.svg) no-repeat center center / 14px auto; */
 }
 .order_wrap tbody tr td .price {
     margin: 0 20px;

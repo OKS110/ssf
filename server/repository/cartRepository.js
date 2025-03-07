@@ -1,19 +1,24 @@
 import { db } from "./db.js";
 
 // 아이디 번호 호출
-export const getCustomerId = async({id}) => {
+export const getCustomerId = async ({ id }) => {
     const sql = `
-        select customer_id
-        from customers
-        where username = ?
+        SELECT customer_id
+        FROM customers
+        WHERE username = ?
     `;
 
     const [result] = await db.execute(sql, [id]);
 
-    console.log("respository :: result --> ", result[0].customer_id);
+    // result가 없거나 배열이 비어있으면 함수 종료
+    if (!result || result.length === 0) {
+        console.log("respository :: No customer found.");
+        return; // 아무 값도 반환하지 않고 종료
+    }
 
+    console.log("respository :: result --> ", result[0].customer_id);
     return result[0].customer_id;
-}
+};
 
 // 카트 상품 추가
 export const saveToCart = async(formData) => {
@@ -90,4 +95,43 @@ export const changeQty = async({cid, count}) => {
     const [result] = await db.execute(sql, [cid]);
 
     console.log("repository :: qty result -->", result.affectedRows);
+}
+
+// 장바구니 페이지 - 아이템 개별 삭제
+export const cartDeleteItem = async({cid}) => {
+    const sql = `
+        delete from cart where cid = ?
+    `;
+
+    // console.log("respository :: cartDeleteItem cid --> ", cid);
+    const [result] = await db.execute(sql, [cid]);
+
+    // console.log("respository :: cartDeleteItem result --> ", result);
+    return {"result_row": result.affectedRows}
+}
+
+// 비회원일 때 장바구니 상품 데이터 호출
+export const getGuestCartItems = async({pid}) => {
+    const pids = pid.join(",")
+
+    const sql = `
+        select 
+            pid,
+            name,
+            brand,
+            color,
+            size,
+            image ->> '$[0]' as image,
+            original_price,
+            discount_rate,
+            discounted_price
+        from products
+        where pid in (${pids})
+    `;
+
+    // console.log("pids --> ", pid.join(","));
+    const [result] = await db.execute(sql);
+    // console.log("repository :: getGuestCartItems result --> ", result);
+
+    return result;
 }
