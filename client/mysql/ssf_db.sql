@@ -1,7 +1,7 @@
 show databases;
 create database shopping_mall;
 USE shopping_mall; 
--- drop database shopping_mall;
+drop database shopping_mall;
 show tables;
 
 -- 관리자 테이블
@@ -22,11 +22,17 @@ INSERT INTO admins (username, email, password, role, is_active) VALUES
 ('manager1', 'manager1@naver.com', 'manager1123', 'product_manager', TRUE),
 ('manager2', 'manager2@daum.com', 'manager2123', 'product_manager', TRUE);
 select * from products;
+ALTER TABLE products MODIFY COLUMN pid INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE products MODIFY COLUMN delivery_fee VARCHAR(50) NOT NULL DEFAULT 'free';
+
+ALTER TABLE products MODIFY COLUMN discounted_price DECIMAL(10,2) NOT NULL DEFAULT 0;
+
+desc products;
 select count(*) as result_rows
         from admins
         where username = 'superadmin' and password = 'superadmin123';
 -- DELETE FROM admins WHERE username IN ('superadmin', 'manager1', 'manager2');
-
+select * from admins;
 -- 관리자 권한 테이블
 CREATE TABLE admin_permissions ( -- 관리자별 권한을 저장하는 테이블 생성
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 권한 ID (자동 증가, 기본 키)
@@ -67,12 +73,11 @@ CREATE TABLE customers ( -- 회원(고객) 정보를 저장하는 테이블 생�
 );
 ALTER TABLE customers 
 ADD COLUMN zipcode VARCHAR(20) AFTER password; -- 우편번호 (필수 입력)
-select * from guest_orders;
 select * from guests;
 select * from orders;
 select * from customers;-- 상품 테이블 (모든 관리자 접근 가능)
 CREATE TABLE products ( -- 상품 정보를 저장하는 테이블 생성
-    pid INT PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
+    pid INT auto_increment PRIMARY KEY, -- 고유한 상품 ID (기본 키, JSON에서 직접 부여)
     category VARCHAR(50), -- 상품의 주요 카테고리 (예: 아우터, 상의, 하의, 신발 등)
     sub_category VARCHAR(50), -- 상품의 하위 카테고리 (예: 코트, 블라우스, 슬랙스, 샌들 등)
     name VARCHAR(255), -- 상품 이름 (최대 255자)
@@ -95,11 +100,13 @@ ADD COLUMN brand VARCHAR(100);
 ALTER TABLE products 
 ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
+select * from admins;
 select * from customers;
 select * from orders;
+select * from guest_orders;
 select * from guests;
 select * from products;
-DELETE FROM products WHERE pid BETWEEN 1001 AND 1050;
+DELETE FROM products WHERE pid BETWEEN 1051 AND 1055;
 select * from cart;
 -- 관리자별 상품 접근 권한 테이블
 CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 수 있도록 설정하는 테이블 생성
@@ -413,64 +420,4 @@ LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아�
  desc products;
  select * from orders; -- oid, customer_id, order_number, total_price, zipcode, shipping_address, delivery_message, detail_address, status
 						-- refund_amount, order_date, payment_method
-
-show tables;
-select * from products;
-select * from cart;
-desc cart;
-select * from customers;
-desc customers;
-
-truncate cart;
-select 
-	customer_id,
-    product_id,
-	quantity,
-    size,
-    color
-from cart
-where customer_id = '1';
-
-select *
-from products
-where pid = 1001;
-
-select image ->> '$[0]' from products where pid = '1001';
-
-select c.customer_id,
-		c.product_id,
-        c.quantity,
-        c.size,
-        c.color,
-        p.brand,
-        p.name,
-        format(p.original_price, 0) as original_price,
-        p.discount_rate,
-        format(p.discounted_price, 0) as discounted_price,
-		p.image ->> '$[0]' as image
-from cart c, products p
-where c.product_id = p.pid
-	and c.customer_id = 1;
-    
-show tables;
-select * from admins;
-select * from products;
-
-select pid,
-                category,
-                sub_category,
-                name,
-                brand,
-                color,
-                size,
-                likes,
-                star,
-                stock,
-                original_price,
-                discount_rate,
-                discounted_price
-        from products;
-        
-
-
-alter table  customers add column detail_address varchar(250) ;
+ alter table  customers add column detail_address varchar(250) after address;
