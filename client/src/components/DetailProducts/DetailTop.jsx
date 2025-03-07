@@ -8,59 +8,59 @@ import { useEffect, useState } from "react";
 import { SiGitconnected } from "react-icons/si";
 import { AuthContext } from "../../auth/AuthContext";
 import { useContext } from "react";
-import { MypageContext } from '../../context/MypageContext';
 import axios from 'axios';
 import { useMypage } from "../../hooks/useMypage.js";
+import { MypageContext } from "../../context/MypageContext.js";
+import WishListProduct from "../person/tabsData/WishListProduct.jsx";
 
 export default function DetailTop({ pidItem, pid }) {
     const { isLoggedIn } = useContext(AuthContext);
-    // const { allLike, setAllLike } = useContext(MypageContext);
-    // const { favoriteAllData } = useMypage();
+    const { getCid, favoriteAllData } = useMypage();
+    const { cid, allLike } = useContext(MypageContext);
     const [isHover, setIsHover] = useState(true);
     const [heactClick, setHeartClick] = useState(false);
-
-    const handleEnter = () => {
-        setIsHover(false);
-    }
-    const handleLeave = () => {
-        setIsHover(true);
-    }
-
-    // console.log('allLike', allLike);
-
-    const id = localStorage.getItem('user_id');
-    const handleLike = async () => {
-        await axios.post('http://localhost:9000/mypage/getId', { id })
-            .then(res => {
-                const cid = res.data;
-                axios.post('http://localhost:9000/mypage/addLike', { cid, pid })
-                    .then(setHeartClick(true))
-                    .catch(err => console.log(err));
-            })
+    const handleEnter = () => {setIsHover(false)}       
+    const handleLeave = () => {setIsHover(true)}  
+    
+    useEffect(() => {
+        const fetchCustoerList = async () => {
+            await getCid();
+        }
+        fetchCustoerList();
+    }, [])
+    // console.log('cid=================',cid);  
+    useEffect(() => {
+        const fetchCustoerList = async () => {
+            await favoriteAllData();
+        }
+        fetchCustoerList();
+    }, [cid])
+    // console.log('==================',allLike);
+    
+    useEffect(()=>{
+        const pLists = allLike.map((item)=>item.product_id);  
+        // console.log('==================',pLists);
+        // console.log('================== pid:', pid, '타입:', typeof pid);
+        const ok = pLists.includes(Number(pid))
+        if(ok === true){
+            setHeartClick(true);
+            localStorage.setItem('heart',JSON.stringify(pLists));
+        }else {
+            setHeartClick(false);
+        }
+        // console.log('=======ddd===========',ok);
+    },[allLike]) ;
+    
+    const handleAddLike =  () => {
+         axios.post('http://localhost:9000/mypage/addLike', { cid, pid })
+            .then(setHeartClick(true))                    
             .catch(err => console.log(err));
     }
-
     const handleDeleteLike = () => {
-        axios.post('http://localhost:9000/mypage/getId', { id })
-            .then(res => {
-                const cid = res.data;
-                axios.post('http://localhost:9000/mypage/deleteLike', { cid, pid })
-                    .then(setHeartClick(false))
-                    .catch(err => console.log(err));
-            })
+        axios.post('http://localhost:9000/mypage/deleteLike', { cid, pid })
+            .then(setHeartClick(false))
             .catch(err => console.log(err));
     }
-
-    // 하트누르고 새로고침하면 하트 사라짐 계속 유지되게 해야함
-    // useEffect(() => {
-    //     // favoriteAllData();
-    // }, []);
-
-    // useEffect(() => {
-    //     if (allLike && Array.isArray(allLike)) {
-    //         setHeartClick(allLike.some(item => item.product_id === pid));
-    //     }
-    // }, [allLike, pid]);
 
     return (
         <section className="detail-top-wrap">
@@ -75,19 +75,19 @@ export default function DetailTop({ pidItem, pid }) {
                     </li>
                 </ol>
             </div>
-
             <div class="detail-top-right">
                 {isHover ?
                     (
                         <div className="notover">
-                            {!heactClick ? (
-                                <span onClick={isLoggedIn ? () => { handleLike() } : null}>
+                            {!heactClick && isLoggedIn &&
+                                <span onClick={() => { handleAddLike() }}>
                                     <IoMdHeartEmpty />
                                 </span>
-                            ) : (<span onClick={() => { handleDeleteLike() }}>
-                                <IoMdHeart style={{ color: '#7E00FF' }} />
-                            </span>)
                             }
+                            {heactClick && isLoggedIn &&
+                                <span onClick={() => { handleDeleteLike() }}>
+                                    <IoMdHeart style={{ color: '#7E00FF' }} />
+                                </span>}
                             <span onMouseEnter={handleEnter}><CiShare2 /></span>
                         </div>
                     ) :

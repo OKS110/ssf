@@ -14,11 +14,15 @@ import WishListBrand from "../components/person/tabsData/WishListBrand.jsx";
 import WishListContent from "../components/person/tabsData/WishListContent.jsx";
 import { CustomersContext } from '../context/CustomersContext.js';
 import { useCustomers } from '../hooks/useCustomers.js';
+import { useMypage } from "../hooks/useMypage.js";
+import { MypageContext } from "../context/MypageContext.js";
 
 export default function Person() {
     const [heart, setHeart] = useState(false);
     const { customer } = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
+    const {setNotMypage} = useContext(MypageContext);
+
 
     useEffect(() => {
         const fetchCustoerList = async () => {
@@ -28,16 +32,25 @@ export default function Person() {
         fetchCustoerList();
     }, [])
 
+    useEffect(()=>{
+        localStorage.getItem('heart') && setHeart(true)            
+        // const aa = localStorage.getItem('heart')    ;
+    //    console.log(aa);       
+})
+
+    useEffect(()=>{
+            setNotMypage(false);
+    })
+
+
 
     const tabsData = [
-        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content: <WishListProduct /> },
+        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content: <WishListProduct/> },
         { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content: <WishListBrand /> },
         { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent", content: <WishListContent /> }
     ];
-
     // 부모에서 활성화된 탭 상태를 관리
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
-
     // 현재 활성화된 탭의 콘텐츠 찾기
     const renderContent = () => {
         const activeContent = tabsData.find(tab => tab.id === activeTab);
@@ -51,7 +64,7 @@ export default function Person() {
             <div className="mypage-top-menu">
                 <span>Home</span>
                 <SlArrowRight className="mypage-top-menu-icon" />
-                <span ><Link to='/person' className='mypage-link' >마이페이지</Link></span>
+                <span><Link to='/person' className='mypage-link' >마이페이지</Link></span>
             </div>
             <div className="mypage-top-box-flex">
                 <div className="mypage-top-box-empty"></div>
@@ -116,7 +129,8 @@ export default function Person() {
                             </div>
                         </div>
                     </div>
-                    {heart && <div className="mypage-wishList" >
+                    {heart &&
+                    <div className="mypage-wishList" >
                         <div className="mypage-wishList-top" >
                             <h2>위시리스트</h2>
                             <div>

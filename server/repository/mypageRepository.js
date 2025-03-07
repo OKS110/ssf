@@ -58,10 +58,10 @@ export const updateDelivery = async ({ deliForm, id }) => {
     // console.log('de',deliForm, 'id',id );
 
     const sql1 = `
-               update customers set zipcode = ?, address = ?, detail_address = ? where username = ?
+               update customers set name = ? , phone = ?, zipcode = ?, address = ?, detail_address = ? where username = ?
                 `;
 
-    const [result] = await db.execute(sql1, [deliForm.zoneCode, deliForm.address, deliForm.extraAddress, id]);
+    const [result] = await db.execute(sql1, [deliForm.name, deliForm.phone, deliForm.zoneCode, deliForm.address, deliForm.extraAddress, id]);
     // console.log(result.affectedRows );
 
     return { 'result': result.affectedRows };
@@ -124,20 +124,21 @@ export const deleteLike = async (cid,pid) => {
                     `;
 
     const [result] = await db.execute(sql, [cid,pid]);
-    console.log('ddddd', result.affectedRows );
+    // console.log('ddddd', result.affectedRows );
     
     return { 'result': result.affectedRows };
 }
 
-export const getAllLike = async () => {
-    // console.log(cid,pid);
+export const getAllLike = async (cid) => {
+    // console.log('=============',cid);
     const sql = `
-               select fid,customer_id, product_id
-                from favorites ;
+               select fid, customer_id, product_id
+                from favorites 
+                where customer_id = ?
+               
                     `;
-
-    const [result] = await db.execute(sql);
-    console.log('ddddd', result[0]);
+    const [result] = await db.execute(sql,[cid]);
+    // console.log('ddddd', result);
     
-    return result[0];
+    return result;
 }
