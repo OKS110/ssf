@@ -112,7 +112,7 @@ export const cartDeleteItem = async({cid}) => {
 
 // 비회원일 때 장바구니 상품 데이터 호출
 export const getGuestCartItems = async({pid}) => {
-    const pids = pid.join(",")
+    const pids = pid.join(",");
 
     const sql = `
         select 

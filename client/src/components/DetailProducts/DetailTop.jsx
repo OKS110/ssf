@@ -22,45 +22,45 @@ export default function DetailTop({ pidItem, pid }) {
     const handleEnter = () => {setIsHover(false)}       
     const handleLeave = () => {setIsHover(true)}  
     
-    useEffect(() => {
-        const fetchCustoerList = async () => {
-            await getCid();
-        }
-        fetchCustoerList();
-    }, [])
-    // console.log('cid=================',cid);  
-    useEffect(() => {
-        const fetchCustoerList = async () => {
-            await favoriteAllData();
-        }
-        fetchCustoerList();
-    }, [cid])
-    // console.log('==================',allLike);
+    // useEffect(() => {
+    //     const fetchCustoerList = async () => {
+    //         await getCid();
+    //     }
+    //     fetchCustoerList();
+    // }, [])
+    // // console.log('cid=================',cid);  
+    // useEffect(() => {
+    //     const fetchCustoerList = async () => {
+    //         await favoriteAllData();
+    //     }
+    //     fetchCustoerList();
+    // }, [cid])
+    // // console.log('==================',allLike);
     
-    useEffect(()=>{
-        const pLists = allLike.map((item)=>item.product_id);  
-        // console.log('==================',pLists);
-        // console.log('================== pid:', pid, '타입:', typeof pid);
-        const ok = pLists.includes(Number(pid))
-        if(ok === true){
-            setHeartClick(true);
-            localStorage.setItem('heart',JSON.stringify(pLists));
-        }else {
-            setHeartClick(false);
-        }
-        // console.log('=======ddd===========',ok);
-    },[allLike]) ;
+    // useEffect(()=>{
+    //     const pLists = allLike.map((item)=>item.product_id);  
+    //     // console.log('==================',pLists);
+    //     // console.log('================== pid:', pid, '타입:', typeof pid);
+    //     const ok = pLists.includes(Number(pid))
+    //     if(ok === true){
+    //         setHeartClick(true);
+    //         localStorage.setItem('heart',JSON.stringify(pLists));
+    //     }else {
+    //         setHeartClick(false);
+    //     }
+    //     // console.log('=======ddd===========',ok);
+    // },[allLike]) ;
     
-    const handleAddLike =  () => {
-         axios.post('http://localhost:9000/mypage/addLike', { cid, pid })
-            .then(setHeartClick(true))                    
-            .catch(err => console.log(err));
-    }
-    const handleDeleteLike = () => {
-        axios.post('http://localhost:9000/mypage/deleteLike', { cid, pid })
-            .then(setHeartClick(false))
-            .catch(err => console.log(err));
-    }
+    // const handleAddLike =  () => {
+    //      axios.post('http://localhost:9000/mypage/addLike', { cid, pid })
+    //         .then(setHeartClick(true))                    
+    //         .catch(err => console.log(err));
+    // }
+    // const handleDeleteLike = () => {
+    //     axios.post('http://localhost:9000/mypage/deleteLike', { cid, pid })
+    //         .then(setHeartClick(false))
+    //         .catch(err => console.log(err));
+    // }
 
     return (
         <section className="detail-top-wrap">
@@ -79,7 +79,7 @@ export default function DetailTop({ pidItem, pid }) {
                 {isHover ?
                     (
                         <div className="notover">
-                            {!heactClick && isLoggedIn &&
+                            {/* {!heactClick && isLoggedIn &&
                                 <span onClick={() => { handleAddLike() }}>
                                     <IoMdHeartEmpty />
                                 </span>
@@ -87,7 +87,7 @@ export default function DetailTop({ pidItem, pid }) {
                             {heactClick && isLoggedIn &&
                                 <span onClick={() => { handleDeleteLike() }}>
                                     <IoMdHeart style={{ color: '#7E00FF' }} />
-                                </span>}
+                                </span>} */}
                             <span onMouseEnter={handleEnter}><CiShare2 /></span>
                         </div>
                     ) :

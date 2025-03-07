@@ -10,7 +10,7 @@ router
     .post('/updateDeliveryExtra', controller.updateDeliveryExtra)
     .post('/updateDeliveryExtra2', controller.updateDeliveryExtra2)
     .post('/deleteDelivery', controller.deleteDelivery)
-    .post('/getId', controller.getId)
+    // .post('/getId', controller.getId)
     .post('/addLike', controller.addLike)
     .post('/deleteLike', controller.deleteLike)
     .post('/getAllLike', controller.getAllLike);

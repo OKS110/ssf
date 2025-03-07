@@ -94,15 +94,15 @@ export const deleteDelivery = async ({ id }) => {
 }
 
 // customer_id 가져오기
-export const getId = async ({id}) => {
-    const sql = `
-                select customer_id from customers where username = ?
-                    `;
+// export const getId = async ({id}) => {
+//     const sql = `
+//                 select customer_id from customers where username = ?
+//                     `;
 
-    const [result] = await db.execute(sql, [id]);
-    // console.log('ddddd',result[0].customer_id);
-    return result[0];
-}
+//     const [result] = await db.execute(sql, [id]);
+//     // console.log('ddddd',result[0].customer_id);
+//     return result[0];
+// }
 
 export const addLike = async (cid,pid) => {
     // console.log(cid,pid);
@@ -138,7 +138,7 @@ export const getAllLike = async (cid) => {
                
                     `;
     const [result] = await db.execute(sql,[cid]);
-    // console.log('ddddd', result);
+    console.log('ddddd', result);
     
     return result;
 }
