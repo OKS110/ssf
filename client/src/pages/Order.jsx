@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import OrderContents from '../components/Order/OrderContents.jsx';
 import OrderCertify from "../components/Order/OrderCertify.jsx";
 import OrderModal from "../components/Order/OrderModal.jsx";
-import axios from "axios";
-import ReactModal from "react-modal";
 import { useProduct } from "../hooks/useProduct.js";
 import { ProductContext } from '../context/ProductContext.js';
 import { useCustomers } from "../hooks/useCustomers.js"; 

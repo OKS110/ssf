@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ProductContext } from "../context/ProductContext.js"
 
@@ -6,6 +6,7 @@ export function useProduct() {
     const { 
         productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList, setSearchList
     } = useContext(ProductContext);
+    const [socket, setSocket] = useState(null); // ✅ WebSocket 상태 관리
 
     /** 상품 데이터 전체 호출 **/
     const getProductList = async() => {
@@ -15,7 +16,27 @@ export function useProduct() {
         
         return result.data;
     }
+    /** WebSocket을 이용해 상품 업데이트 감지 **/
+    useEffect(() => {
+        const newSocket = new WebSocket("ws://localhost:9002"); // ✅ WebSocket 연결
+        setSocket(newSocket);
 
+        newSocket.onopen = () => {
+            console.log("📡 WebSocket 연결됨 (고객 → 관리자)");
+        };
+
+        newSocket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.type === "update_products") {
+                console.log("🔄 상품 데이터 변경 감지! 목록 업데이트 중...");
+                getProductList(); // ✅ WebSocket 메시지를 수신하면 즉시 최신 데이터 반영
+            }
+        };
+
+        return () => {
+            newSocket.close();
+        }; // ✅ 언마운트 시 WebSocket 종료
+    }, []);
     /** 메인 - 아우터로~, 랭킹 리스트 필터링 */
     // 상품 데이터 필터링 등 작업이 필요할 때는 최대한 상품 전체 데이터를 호출하는 커스텀 훅에서 작업을 마친 후 반환해주는 것이 효율적
     const getFilterProducts = async(category, subCategory) => {
