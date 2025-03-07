@@ -96,3 +96,42 @@ export const changeQty = async({cid, count}) => {
 
     console.log("repository :: qty result -->", result.affectedRows);
 }
+
+// 장바구니 페이지 - 아이템 개별 삭제
+export const cartDeleteItem = async({cid}) => {
+    const sql = `
+        delete from cart where cid = ?
+    `;
+
+    // console.log("respository :: cartDeleteItem cid --> ", cid);
+    const [result] = await db.execute(sql, [cid]);
+
+    // console.log("respository :: cartDeleteItem result --> ", result);
+    return {"result_row": result.affectedRows}
+}
+
+// 비회원일 때 장바구니 상품 데이터 호출
+export const getGuestCartItems = async({pid}) => {
+    const pids = pid.join(",")
+
+    const sql = `
+        select 
+            pid,
+            name,
+            brand,
+            color,
+            size,
+            image ->> '$[0]' as image,
+            original_price,
+            discount_rate,
+            discounted_price
+        from products
+        where pid in (${pids})
+    `;
+
+    // console.log("pids --> ", pid.join(","));
+    const [result] = await db.execute(sql);
+    // console.log("repository :: getGuestCartItems result --> ", result);
+
+    return result;
+}

@@ -43,5 +43,17 @@ export function useCart() {
         const result = await axios.post("http://localhost:9000/cart/changeQty", {"cid": cid, "count": count});
     }
 
-    return { saveToCart, getCustomerId, getCartItems, updateDetailQty, changeQty };
+    // 장바구니 페이지 - 아이템 개별 삭제
+    const cartDeleteItem = async(cid) => {
+        const result = await axios.post("http://localhost:9000/cart/deleteItem", {"cid": cid});
+    }
+
+    // 비회원일 때 장바구니 상품 데이터 호출
+    const getGuestCartItems = async(pid) => {
+        const result = await axios.post("http://localhost:9000/cart/guestItems", {"pid" : pid});
+
+        return result;
+    }
+
+    return { saveToCart, getCustomerId, getCartItems, updateDetailQty, changeQty, cartDeleteItem, getGuestCartItems };
 }

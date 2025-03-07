@@ -16,11 +16,11 @@ export default function CartOptionModal({item, event}) {
     // 수량변경 버튼 이벤트
     const handleQty = (type) => {
         type === "increase"
-        ? setCount(item.quantity + 1)
-        : setCount(item.quantity - 1);
+        ? setCount(count + 1)
+        : setCount(count - 1);
     }
 
-    // 변경하기 버튼 이벤트
+    // 변경하기 버튼 이벤트 : 색상, 사이즈 변경 로직 필요(해당하는 상품 정보 호출이 필요함)
     const onChange = () => {
         count > 0 && changeQty(item.cid, count);
         event(false);
@@ -45,11 +45,18 @@ export default function CartOptionModal({item, event}) {
                         <option value="large">L</option>
                     </select>
                 </li>
+                <li className='cartModal-change-size'>
+                    <label>색상</label>
+                    <select>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                    </select>
+                </li>
                 <li className='cartModal-change-qty'>
                     <label>수량</label>
                     <div>
                         <button onClick={() => handleQty("decrease")}><FaMinus /></button>
-                        <span>{item.quantity}</span>
+                        <span>{count}</span>
                         <button onClick={() => handleQty("increase")}><FaPlus /></button>
                     </div>
                 </li>
