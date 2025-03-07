@@ -22,6 +22,7 @@ INSERT INTO admins (username, email, password, role, is_active) VALUES
 ('manager1', 'manager1@naver.com', 'manager1123', 'product_manager', TRUE),
 ('manager2', 'manager2@daum.com', 'manager2123', 'product_manager', TRUE);
 select * from products;
+select * from customers;
 ALTER TABLE products MODIFY COLUMN pid INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE products MODIFY COLUMN delivery_fee VARCHAR(50) NOT NULL DEFAULT 'free';
 
@@ -108,6 +109,7 @@ select * from guests;
 select * from products;
 DELETE FROM products WHERE pid BETWEEN 1051 AND 1055;
 select * from cart;
+select * from favorites;
 -- 관리자별 상품 접근 권한 테이블
 CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 수 있도록 설정하는 테이블 생성
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 접근 ID (자동 증가, 기본 키)

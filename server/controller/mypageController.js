@@ -60,12 +60,12 @@ export const deleteDelivery = async(req, res) => {
 }
 
 // customer_id 가져오기
-export const getId = async(req,res) => {
-    // console.log('yeeye',req.body);
-    const result = await repository.getId(req.body);
-    res.json(result);
-    res.end();
-}
+// export const getId = async(req,res) => {
+//     // console.log('yeeye',req.body);
+//     const result = await repository.getId(req.body);
+//     res.json(result);
+//     res.end();
+// }
 
 export const addLike = async(req,res) => {
     // console.log('yeeye',req.body);
