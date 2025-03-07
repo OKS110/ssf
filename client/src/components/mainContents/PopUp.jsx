@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 export default function PopUp() {
     const [isOpened, setIsOpened] = useState(true); // 팝업창 관리
-    console.log("isOpened -->", isOpened);
-
-    /** 날짜 **/
-    const date = new Date();
-    // 오늘 하루 그만 보기 클릭한 날짜 + 1 (만료일)
-    const VISITED_DATE = localStorage.getItem("POP_UP_CHECK");
-    // 현재 날짜
-    const NOW_DATE = new Date().getDate();
-    console.log('VISITED_DATE --> ', VISITED_DATE);
-    console.log('NOW_DATE --> ', NOW_DATE);
-
+    
     useEffect(() => {
+        // 오늘 하루 그만 보기 클릭한 날짜 + 1 (만료일)
+        const VISITED_DATE = localStorage.getItem("POP_UP_CHECK");
+        // 현재 날짜
+        const NOW_DATE = new Date().getDate();
+
         if (VISITED_DATE) {
             if (VISITED_DATE === NOW_DATE) { // 클릭한 날짜와 방문 날짜가 같으면 팝업 노출
                 setIsOpened(true);
@@ -21,10 +16,14 @@ export default function PopUp() {
             } else { // 클릭한 날짜와 방문 날짜가 다르면 팝업 비노출
                 setIsOpened(false);
             }
+        } else {
+            setIsOpened(true);
         }
     }, []);
 
     const handleDayClosed = () => {
+        /** 날짜 **/
+        const date = new Date();
         const expireDate = date.getDate()+1;
         localStorage.setItem("POP_UP_CHECK", expireDate);
         setIsOpened(false);
