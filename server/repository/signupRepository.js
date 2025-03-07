@@ -45,10 +45,14 @@ export const registCustomer = async(data) => {
         data.address,
         data.addressDetail
     ]
-    
-    const [result] = await db.execute(sql,values);
-    // console.log('데이터회원가입',result.affectedRows);
-    
+    try {
+        const [result] = await db.execute(sql, values);
+        console.log("✅ DB Insert 결과:", result);
+            return {'result' : result.affectedRows};
 
-    return {'result' : result.affectedRows};
+    } catch (error) {
+        console.error("❌ DB Insert 오류:", error);
+        return null;
+    }
+
 }
