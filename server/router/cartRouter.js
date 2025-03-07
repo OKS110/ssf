@@ -8,6 +8,8 @@ router
     .post('/getId', controller.getCustomerId)
     .post('/items', controller.getCartItems)
     .post('/updateQty', controller.updateDetailQty)
-    .post('/changeQty', controller.changeQty);
+    .post('/changeQty', controller.changeQty)
+    .post('/deleteItem', controller.cartDeleteItem)
+    .post('/guestItems', controller.getGuestCartItems);
 
 export default router;

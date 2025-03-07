@@ -8,7 +8,7 @@ import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import DaumPostcode from "react-daum-postcode";
 import axios from 'axios';
-// import DeliveryUpload from '../DeliveryUpload.jsx';
+import DeliveryUpload from '../DeliveryUpload.jsx';
 import Form from 'react-bootstrap/Form';
 
 
@@ -60,7 +60,7 @@ export default function DeliveryMyinfo() {
     const completeHandler = (data) => {
         setAdata({ ...adata, zoneCode: data.zonecode, address: data.address });
         setDeliForm({ ...deliForm, zoneCode: data.zonecode, address: data.address });
-        setInputValue({ ...deliForm, zoneCode: data.zonecode, address: data.address });
+        // setInputValue({ ...deliForm, zoneCode: data.zonecode, address: data.address });
     };
 
     const handleDelivery = (e) => {
@@ -110,18 +110,18 @@ export default function DeliveryMyinfo() {
                 );
 
         } 
-        // else if (validate() && isChecked1 === false) {
-        //     await axios.post('http://localhost:9000/mypage/updateDeliveryExtra', { deliForm, 'id': id })
-        //         .then(res => {
-        //             if (res.data.result === 1) {
-        //                 // console.log(res.data);
-        //                 setAdd2(true);
-        //                 getCustomer(id);
-        //                 setNone(false);
-        //             }
-        //         })
-        //         .catch(err => console.log(err));
-        // }
+        else if (validate() && isChecked1 === false) {
+            await axios.post('http://localhost:9000/mypage/updateDeliveryExtra', { deliForm, 'id': id })
+                .then(res => {
+                    if (res.data.result === 1) {
+                        // console.log(res.data);
+                        setAdd2(true);
+                        getCustomer(id);
+                        setNone(false);
+                    }
+                })
+                .catch(err => console.log(err));
+        }
         else {
             // alert('빈값 x');
         }
@@ -195,53 +195,8 @@ export default function DeliveryMyinfo() {
     }
 
 
-
-
-    const [dataList, setDataList] = useState([]);
-    const [inputValue, setInputValue] = useState({ 'name': '', 'phone': '', 'zipcode': '' });
-
-    const handleFileUpload = (e) => {
-        setInputValue(e.target.value);
-    }
-    const handleBlur = () => {
-        const formData = new FormData();
-        formData.append('data', inputValue);
-        axios.post('http://localhost:9000/deliveryUploads', formData)
-            .then(res => console.log('서버에서가져옴', res.data))
-            .catch(error => console.log(error));
-    }
-
-// 서버에서 status200 에러나는데 
-    useEffect(() => {
-        axios.get('http://localhost:9000/deliveryUploads') // 서버에서 데이터 가져오기
-            .then(res => {
-                console.log("🚀 서버 응답:", JSON.stringify(res.data.data, null, "\t"));
-                setDataList(res.data.data); // 상태 업데이트
-                // setDataList(JSON.stringify(res.data.data)); // 상태 업데이트
-            })
-            .catch(error => console.log(error));
-    }, []); 
-
-    // console.log('dataList', dataList);
-    console.dir(dataList[0]);
-
-  
-
-
     return (
         <div className="mypage-box">
-{                    dataList.map((item)=>                            
-                                <h5>{item}</h5>
-                            
-                        )}
-            {/* {dataList.length > 0 ? (
-                    dataList.map((item, index) => (
-                        <li key={index}>{JSON.stringify(item)}</li> // 개별 데이터 출력
-                    ))
-                ) : (
-                    <p>저장된 데이터가 없습니다.</p>
-                )} */}
-
             <div className="mypage-top-menu">
                 <span>Home</span>
                 <SlArrowRight className="mypage-top-menu-icon" />
@@ -275,62 +230,25 @@ export default function DeliveryMyinfo() {
                                 <h3>배송지 추가</h3>
                                 <ul>
                                     <li>
-                                        <label htmlFor="">이름</label>
-                                        <Form.Control
-                                        name='name'
-                                            type='text'
-                                            onChange={(e) => {
-                                                handleFileUpload(e)
-                                                handleDelivery(e)
-                                            }}
-                                            // onBlur={handleBlur} 
-                                            className='addDeli'
-                                            ref={refs.nameRef}
-                                        >
-                                        </Form.Control>
-                                        {/* <input 
+                                        <label htmlFor="">받는 사람</label>
+                                        <input 
                                             type="text" name='name'
                                             onChange={handleDelivery}
                                             ref={refs.nameRef}
-                                        /> */}
+                                        />
                                     </li>
                                     <li>
                                         <label htmlFor="">휴대폰번호</label>
-                                        {/* <input type="number" name='phone'
+                                        <input type="number" name='phone'
                                             onChange={handleDelivery}
                                             ref={refs.phoneRef}
-                                        /> */}
-                                        <Form.Control
-                                            type='number'
-                                            onChange={(e) => {
-                                                handleFileUpload(e)
-                                                handleDelivery(e)
-                                            }}
-                                            // onBlur={handleBlur} 
-                                            className='addDeli'
-                                            ref={refs.phoneRef}
-                                            name='phone'
-                                        >
-                                        </Form.Control>
+                                        />
                                     </li>
                                     <li>
                                         <label htmlFor="">주소</label>
-                                        {/* <input type="text" name='zipcode' placeholder='우편번호'
+                                        <input type="text" name='zipcode' placeholder='우편번호'
                                             ref={refs.zipcodeRef}
-                                            value={adata.zoneCode} /> */}
-                                        <Form.Control
-                                            type='text'
-                                            onChange={(e) => {
-                                                handleFileUpload(e)
-                                                handleDelivery(e)
-                                            }}
-                                            // onBlur={handleBlur} 
-                                            className='addDeli'
-                                            value={adata.zoneCode}
-                                            ref={refs.zipcodeRef}
-                                            name='zipcode'
-                                        >
-                                        </Form.Control>
+                                            value={adata.zoneCode} />
                                         <button onClick={handleToggle}>주소찾기</button>
                                     </li>
                                     {isOpen &&
@@ -390,7 +308,7 @@ export default function DeliveryMyinfo() {
                                         onClick={() => {
                                             setModalOpen(false)
                                             deliverySave()
-                                            handleBlur()
+                                            // handleBlur()
                                         }
                                         }>
                                         저장
@@ -409,13 +327,14 @@ export default function DeliveryMyinfo() {
                                     <div>
                                         <input type="checkbox" onClick="return false;" />
                                         <div>
+                                            <span>받는사람</span>
                                             <span>{customer.name}</span>
                                             {localStorage.getItem('delisave') && <span>기본배송지</span>}
                                             <p>{customer.phone}</p>
                                             <p>
                                                 <span>{customer.zipcode}</span>
                                                 <span>{customer.address}</span>
-                                                <span>{customer.extra_address}</span>
+                                                <span>{customer.detail_address}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -429,6 +348,7 @@ export default function DeliveryMyinfo() {
                                             <span>{customer.additional_address.slice(customer.additional_address.indexOf('/') + 1, customer.additional_address.indexOf('#'))}</span>
                                             <p>{customer.additional_address.slice(customer.additional_address.indexOf('#') + 1, customer.additional_address.length)}</p>
                                             <p>
+                                                <span>받는사람</span>
                                                 <span>{customer.additional_address.slice(0, 5)}</span>
                                                 <span>{customer.additional_address.slice(5, customer.additional_address.indexOf('@'))}</span>
                                                 <span>{customer.additional_address.slice(customer.additional_address.indexOf('@') + 1, customer.additional_address.indexOf('/'))}</span>

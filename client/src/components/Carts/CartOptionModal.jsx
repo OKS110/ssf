@@ -20,7 +20,7 @@ export default function CartOptionModal({item, event}) {
         : setCount(count - 1);
     }
 
-    // 변경하기 버튼 이벤트
+    // 변경하기 버튼 이벤트 : 색상, 사이즈 변경 로직 필요(해당하는 상품 정보 호출이 필요함)
     const onChange = () => {
         count > 0 && changeQty(item.cid, count);
         event(false);

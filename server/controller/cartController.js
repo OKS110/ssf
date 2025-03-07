@@ -34,3 +34,18 @@ export const changeQty = async(req, res) => {
     res.json(result);
     res.end();
 }
+
+// 장바구니 페이지 - 아이템 개별 삭제
+export const cartDeleteItem = async(req, res) => {
+    const result = await repository.cartDeleteItem(req.body);
+    res.json(result);
+    res.end();
+}
+
+// 비회원일 때 장바구니 상품 데이터 호출
+export const getGuestCartItems = async(req, res) => {
+    const result = await repository.getGuestCartItems(req.body);
+    // console.log("controlloer :: getGuestCartItems result --> ", result);
+    res.json(result);
+    res.end();
+}
