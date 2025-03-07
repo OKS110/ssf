@@ -968,37 +968,46 @@
 /****************************************  */
 /* ************마이페이지 위시리스트      */
 /*****************************************  */
-.mypage-wishList-products {
+.mypage-wishList-products:not(.mypage-wishList-products-category) {
     display: flex;
-    justify-content: space-between;
-    border: 1px solid red;
+    justify-content: flex-start;
+    /* border: 1px solid red; */
     padding-bottom: 100px;
     /* padding-top: 50px; */
     background-color: white;
     margin-top: 30px;
+
 }
 
-.mypage-wishList-products>div {
+.mypage-wishList-products-box {
     margin: 0;
     font-size: 13px;
+    padding: 0 10px;
+    width: 228px;
+    /* border: 1px solid red; */
+    position: relative;
 }
 
-.mypage-wishList-products>div>image {
-    width: 220px;
-}
+.mypage-wishList-products-heart{
+    position: absolute;
+    bottom: 90px;
+    right: 17px;
+    font-size: 40px;
+    color: #7E00FF;
 
-.mypage-wishList-products>div>h5 {
+}
+.mypage-wishList-products-box>h5 {
     padding: 10px 0 0;
     font-weight: 700;
     font-size: 13px;
 }
 
-.mypage-wishList-products>div>p {
+.mypage-wishList-products-box>p {
     width: 100%;
     /* border: 1px solid red; */
 }
 
-.mypage-wishList-products>div>h4 {
+.mypage-wishList-products-box>h4 {
     padding: 5px 0 0;
     font-size: 14px;
     font-weight: 700;
@@ -1006,17 +1015,41 @@
     text-decoration: line-through;
 }
 
-.mypage-wishList-products>div>span {
+.mypage-wishList-products-box>span:not(.mypage-wishList-products-heart) {
     padding: 5px 0 0;
     font-size: 15px;
     font-weight: 700;
     color: #7E00FF;
 }
 
-.mypage-wishList-products>div>span:last-child {
+.mypage-wishList-products-box>span:last-child {
     padding: 5px 0 0;
     font-size: 15px;
     font-weight: 700;
     margin-left: 5px;
     color: black;
+}
+.mypage-wishList-brandContent-box{
+    border: 1px solid red;
+    /* height: 100px; */
+    text-align: center;
+    padding: 100px 0;
+}
+.mypage-wishList-brandContent-box>div{
+    padding-bottom: 30px;
+}
+
+.mypage-wishList-brandContent-box>button{
+    padding: 6px 0;
+        border: 1px solid rgb(173, 173, 173);
+        border-radius: 4px;
+        width: 200px;
+        margin-top: 20px;
+        font-size: 14px;
+        text-align: center;
+        background-color: white;
+}
+.mypage-wishList-products-category{
+    padding: 30px 0 50px;
+    font-weight: 700;
 }

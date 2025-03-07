@@ -6,6 +6,7 @@ export const ProductProvider = ({children}) => {
     // 전역 공간에서 자동 업데이트 되도록 관리
     const [productList, setProductList] = useState([]); 
     const [pidItem, setPidItem] = useState([]);
+    const [pidItem2, setPidItem2] = useState([]);
     const [category, setCategory] = useState("상의"); // 아우터로~ 탭 메뉴 관리
     const [subCategory, setSubCategory] = useState("코트"); // 랭킹 탭 메뉴 관리
     const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
@@ -21,7 +22,8 @@ export const ProductProvider = ({children}) => {
                                             detailList, setDetailList,
                                             rankList, setRankList,
                                             searchList, setSearchList,
-                                            search, setSearch
+                                            search, setSearch,
+                                            pidItem2, setPidItem2
                                             }}>
             {children}
         </ProductContext.Provider>
