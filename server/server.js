@@ -1,6 +1,7 @@
 import express from 'express';
 import mysql from 'mysql2/promise'; // MySQL 연동을 위한 패키지
 import cors from 'cors';
+import { WebSocketServer } from 'ws';
 import loginRouter from './router/loginRouter.js'
 import productRouter from './router/productRouter.js';
 import SignupRouter from './router/signupRouter.js';
@@ -16,7 +17,12 @@ import path from 'path';
 const server = express();
 const port = 9000;
 
-server.use(cors()); // CORS 설정
+// ✅ CORS 설정 추가 (9001번 포트에서 요청 가능하도록 설정)
+server.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:3001'], // 관리자 페이지에서 요청 가능하도록 허용
+    credentials: true
+}));
+
 server.use(express.json()); // JSON 요청 처리
 // server.use(express.urlencoded()); //form데이터를 express 서버로 전송할 때
 server.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파싱
@@ -24,8 +30,44 @@ server.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파
 //로그인 폼(유저, 게스트) 
 server.use('/user', loginRouter);
 server.use('/product', productRouter);
-server.use('/member', SignupRouter);
 
+// ✅ 상품 업데이트 요청을 받을 API 추가 (GET, POST 둘 다 처리 가능하게 변경)
+server.get('/product/update', (req, res) => {
+    console.log("✅ 상품 데이터 업데이트 요청 수신 (GET)");
+    res.json({ message: "상품 데이터 업데이트 요청 수신 (GET)" });
+
+
+});
+
+server.post('/product/update', (req, res) => {
+    console.log("✅ 상품 데이터 업데이트 요청 수신 (POST)");
+    res.json({ message: "상품 데이터 업데이트 요청 수신 (POST)" });
+
+    
+});
+
+
+server.use('/member', SignupRouter);
+// ✅ 고객 서버에서 관리자 서버로 WebSocket 연결
+const wsAdmin = new WebSocket('ws://localhost:9002');
+
+wsAdmin.onopen = () => {
+    console.log('📡 고객 서버 → 관리자 서버 WebSocket 연결됨');
+};
+
+wsAdmin.onerror = (error) => {
+    console.error('❌ WebSocket 오류:', error);
+};
+
+// ✅ 회원가입 후 관리자에게 실시간 알림 전송
+export const notifyAdminNewCustomer = () => {
+    if (wsAdmin.readyState === WebSocket.OPEN) {
+        console.log("📡 고객 페이지 → 관리자 페이지 WebSocket 메시지 전송 중...");
+        wsAdmin.send(JSON.stringify({ type: "new_customer" }));
+    } else {
+        console.log("❌ WebSocket이 아직 연결되지 않음 (고객 페이지)");
+    }
+};
 
 server.use('/mypage',mypageRouter);
 //  업로드 주소 호출 경로 추가
@@ -39,50 +81,11 @@ server.use('/order', orderRouter);
 server.use('/cart', cartRouter);
 
 
-// 여기는 테스트
-// 상품 데이터 가져오기 API
-// server.get('/products', async (req, res) => {
-//     try {
-//         const [rows] = await db.query("SELECT * FROM products"); // 상품 데이터 조회
-//         console.log("상품 데이터 조회 완료:", rows); // 터미널 로그 출력 - 첫 번째 상품의 2번지 색 출력 : Red
-//         res.json(rows); // JSON 응답으로 클라이언트에 데이터 전송
-//     } catch (error) {
-//         console.error("상품 데이터 조회 실패:", error); // 오류 로그 출력
-//         res.status(500).json({ error: "서버 오류" });
-//     }
-// });
-
-// // // 고객 데이터 가져오기 API
-// server.get('/customers', async (req, res) => {
-//     try {
-//         const [rows] = await db.query("SELECT * FROM customers"); // 고객 데이터 조회
-//         // console.log("고객 데이터 조회 완료:", rows); // 터미널 로그 출력
-//         console.log("고객 데이터 조회 완료:", rows[0]); // 터미널 로그 출력 (첫 번째 고객 데이터 확인)
-//         res.json(rows); // JSON 응답으로 클라이언트에 데이터 전송
-//     } catch (error) {
-//         console.error("고객 데이터 조회 실패:", error); // 오류 로그 출력
-//         res.status(500).json({ error: "서버 오류" });
-//     }
-// });
-
-// // // 관리자 데이터 가져오기 API
-// server.get('/admins', async (req, res) => {
-//     try {
-//         const [rows] = await db.query("SELECT * FROM admins"); // 관리자 데이터 조회
-//         console.log("관리자 데이터 조회 완료:", rows); // 터미널 로그 출력 
-//         res.json(rows); // JSON 응답으로 클라이언트에 데이터 전송
-//     } catch (error) {
-//         console.error("관리자 데이터 조회 실패:", error); // 오류 로그 출력
-//         res.status(500).json({ error: "서버 오류" });
-//     }
-// });
-
-
 
 
 // 서버 실행
 server.listen(port, () => {
-    console.log(`서버 실행 중: http://localhost:${port}`);
+    console.log(`고객 서버 실행 중: http://localhost:${port}`);
 });
 
 

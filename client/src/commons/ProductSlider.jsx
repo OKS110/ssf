@@ -7,7 +7,7 @@ import Image from './Image.jsx';
 
 export default function ProductSlider({slideArray, ulClassName, liClassName, className}) {
     const [ counter, setCounter ] = useState(0); // 인덱스
-    const maxCount = Math.floor(slideArray.length/3);
+    const maxCount = Math.ceil(slideArray.length / 3) - 1; // 최대 슬라이드 개수
     // console.log('maxCount --> ', maxCount);
 
     // 화살표 버튼 이벤트
@@ -18,10 +18,11 @@ export default function ProductSlider({slideArray, ulClassName, liClassName, cla
 
     // 
     let showLeftBtn = counter > 0;
-    let showRightBtn = counter !== slideArray.length - 3 && slideArray.length > 3;
+    const showRightBtn = counter < maxCount; // 마지막 슬라이드인지 체크
 
     return (
         <div className='productSlide-content-wrap'>
+            
                 <button className='productSlide-prev-button' onClick={() => handleSlideBtn('prev')}>
                     <IoIosArrowBack />
                 </button>
@@ -64,9 +65,10 @@ export default function ProductSlider({slideArray, ulClassName, liClassName, cla
                     ) }
                 </ul>
             </div>
-                <button className='productSlide-next-button' onClick={() => handleSlideBtn('next')}>
+            <button className='productSlide-next-button' onClick={() => handleSlideBtn('next')}>
                     <IoIosArrowForward />
-                </button>
+            </button>
+                
         </div>
     );
 }
