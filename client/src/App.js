@@ -26,7 +26,8 @@ import { GuestProvider } from './context/GuestContext.js';
 import { OrderProvider } from './context/OrderContext.js';
 import { DetailProductProvider } from './context/DetailProductContext.js';
 import DeliveryMyinfo from './components/person/MyInfo/DeliveryMyinfo.jsx';
-import SearchPage from './components/Search/SearchPage.jsx'
+import SearchPage from './components/Search/SearchPage.jsx';
+import WishList from './components/person/WishList.jsx';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
                     <Route path='/person/editMemberInfo/myinfo' element={<EditMyInfo/>}></Route>
                     <Route path='/person/editMemberInfo/updateInfo' element={<UpdateInfo/>}></Route>
                     <Route path='/person/editMemberInfo/delivery' element={<DeliveryMyinfo/>}></Route>
+                    <Route path='/person/wishList' element={<WishList/>}></Route>
                     <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order/:pid' element={<Order/>}></Route>
                     <Route path='/searchPage' element={<SearchPage />}></Route>

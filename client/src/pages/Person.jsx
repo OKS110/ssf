@@ -36,11 +36,11 @@ export default function Person() {
         localStorage.getItem('heart') && setHeart(true)            
         // const aa = localStorage.getItem('heart')    ;
     //    console.log(aa);       
-})
+    }, []);
 
     useEffect(()=>{
             setNotMypage(false);
-    })
+    }, []);
 
 
 
