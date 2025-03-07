@@ -68,7 +68,7 @@ export function useProduct() {
 
     
     const getPidItem2 = async(pid) => {
-        const result = await axios.post("http://localhost:9000/product/item", {"pid": pid});       
+        const result = await axios.post("http://localhost:9000/product/item2", {"pid": pid});       
         setPidItem2(prev => [...prev, result.data]); // ✅ 기존 배열에 추가하는 방식으로 설정 
     }
 
