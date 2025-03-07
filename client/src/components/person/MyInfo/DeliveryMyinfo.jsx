@@ -8,12 +8,9 @@ import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import DaumPostcode from "react-daum-postcode";
 import axios from 'axios';
-import DeliveryUpload from '../DeliveryUpload.jsx';
-import Form from 'react-bootstrap/Form';
-
 
 export default function DeliveryMyinfo() {
-  const [add1, setAdd1] = useState();
+    const [add1, setAdd1] = useState();
     const [add2, setAdd2] = useState();
     const [none, setNone] = useState(() => {
         if (add1) {
@@ -46,7 +43,7 @@ export default function DeliveryMyinfo() {
             await getCustomer(id);
         }
         fetchCustoerList();
-    }, [add1, add2])
+    }, [add1, add2,notOrigin])
 
 
 
@@ -109,7 +106,7 @@ export default function DeliveryMyinfo() {
                 .catch(err => console.log(err)
                 );
 
-        } 
+        }
         else if (validate() && isChecked1 === false) {
             await axios.post('http://localhost:9000/mypage/updateDeliveryExtra', { deliForm, 'id': id })
                 .then(res => {
@@ -123,7 +120,7 @@ export default function DeliveryMyinfo() {
                 .catch(err => console.log(err));
         }
         else {
-            // alert('빈값 x');
+            alert('배송지 정보를 전부 입력해주세요.');
         }
     }
     // console.log('storageData', add1);
@@ -174,12 +171,22 @@ export default function DeliveryMyinfo() {
     const ChangeOriginDelivery = async () => {
         if (notOrigin) {
             alert('기본배송지가 변경되었습니다.');
-            setNotOrigin(false);
+            setNotOrigin(false); //체크해제 일껄 
             const deliForm = {
+                'name':customer.additional_address.slice(customer.additional_address.indexOf('/') + 1, customer.additional_address.indexOf('#')),
+                'phone':customer.additional_address.slice(customer.additional_address.indexOf('#') + 1, customer.additional_address.length),
                 'zoneCode': customer.additional_address.slice(0, 5),
                 'address': customer.additional_address.slice(5, customer.additional_address.indexOf('@')),
                 'extraAddress': customer.additional_address.slice(customer.additional_address.indexOf('@') + 1, customer.additional_address.indexOf('/'))
             };
+            const deliForm2 = {
+                'name':customer.name,
+                'phone':customer.phone,
+                'zoneCode': customer.zipcode,
+                'address':customer.address ,
+                'extraAddress': customer.detail_address
+                };
+
             await axios.post('http://localhost:9000/mypage/updateDelivery', { deliForm, 'id': id })
                 .then(res => {
                     if (res.data.result === 1) {
@@ -187,11 +194,22 @@ export default function DeliveryMyinfo() {
                         setAdd1(true);
                         getCustomer(id);
                         setNone(false);
-                        deliveryDelete();
+                        // deliveryDelete();
                     }
                 })
                 .catch(err => console.log(err));
-        }
+               
+                await axios.post('http://localhost:9000/mypage/updateDeliveryExtra2', { deliForm2, 'id': id })
+                    .then(res => {
+                        if (res.data.result === 1) {
+                            // console.log(res.data);
+                            setAdd2(true);
+                            getCustomer(id);
+                            setNone(false);
+                        }
+                    })
+                    .catch(err => console.log(err));
+            }
     }
 
 
@@ -231,7 +249,7 @@ export default function DeliveryMyinfo() {
                                 <ul>
                                     <li>
                                         <label htmlFor="">받는 사람</label>
-                                        <input 
+                                        <input
                                             type="text" name='name'
                                             onChange={handleDelivery}
                                             ref={refs.nameRef}
@@ -308,7 +326,6 @@ export default function DeliveryMyinfo() {
                                         onClick={() => {
                                             setModalOpen(false)
                                             deliverySave()
-                                            // handleBlur()
                                         }
                                         }>
                                         저장
@@ -345,10 +362,10 @@ export default function DeliveryMyinfo() {
                                     <div>
                                         <input type="checkbox" checked={notOrigin} onChange={ChangeOrigin} />
                                         <div>
+                                            <span>받는사람</span>
                                             <span>{customer.additional_address.slice(customer.additional_address.indexOf('/') + 1, customer.additional_address.indexOf('#'))}</span>
                                             <p>{customer.additional_address.slice(customer.additional_address.indexOf('#') + 1, customer.additional_address.length)}</p>
                                             <p>
-                                                <span>받는사람</span>
                                                 <span>{customer.additional_address.slice(0, 5)}</span>
                                                 <span>{customer.additional_address.slice(5, customer.additional_address.indexOf('@'))}</span>
                                                 <span>{customer.additional_address.slice(customer.additional_address.indexOf('@') + 1, customer.additional_address.indexOf('/'))}</span>
@@ -362,7 +379,9 @@ export default function DeliveryMyinfo() {
                                 </div>
                             }
                             <div>
-                                <button onClick={() => setModalOpen(true)}>배송지 추가</button>
+                                <button onClick={() => {
+                                    setModalOpen(true) 
+                                    setNotOrigin(false)}}>배송지 추가</button>
                                 <button onClick={ChangeOriginDelivery}>기본배송지 지정</button>
                             </div>
                         </div>

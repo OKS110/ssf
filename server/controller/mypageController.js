@@ -42,7 +42,15 @@ export const updateDeliveryExtra = async (req, res) => {
     res.json(result);
     res.end();
 }
-
+export const updateDeliveryExtra2 = async (req, res) => {
+    let add = req.body.deliForm2.zoneCode.concat('',req.body.deliForm2.address).concat('@',req.body.deliForm2.extraAddress,'/');
+    let nameAndPhone = req.body.deliForm2.name.concat('#',req.body.deliForm2.phone);
+    const all = add.concat(nameAndPhone);
+    // console.log(add);
+    const result = await repository.updateDeliveryExtra(all,req.body.id);
+    res.json(result);
+    res.end();
+}
 
 export const deleteDelivery = async(req, res) => {
     // console.log('yeeye',req.body);
@@ -60,17 +68,16 @@ export const getId = async(req,res) => {
 }
 
 export const addLike = async(req,res) => {
-    // console.log('yeeye',req.body.cid.customer_id);
-    const cid = req.body.cid.customer_id;
-    const pid = req.body.pid;
-    
+    // console.log('yeeye',req.body);
+    const cid = req.body.cid;
+    const pid = req.body.pid;    
     const result = await repository.addLike(cid,pid);
     res.json(result);
     res.end();
 }
 export const deleteLike = async(req,res) => {
     // console.log('yeeye',req.body.cid.customer_id);
-    const cid = req.body.cid.customer_id;
+    const cid = req.body.cid;
     const pid = req.body.pid;
     
     const result = await repository.deleteLike(cid,pid);
@@ -80,7 +87,7 @@ export const deleteLike = async(req,res) => {
 
 export const getAllLike = async(req,res) => {
     
-    const result = await repository.getAllLike(req.body);
+    const result = await repository.getAllLike(req.body.cid);
     res.json(result);
     res.end();
 }

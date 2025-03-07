@@ -8,6 +8,7 @@ router
     .post('/updateInfo',controller.updateMyinfo)
     .post('/updateDelivery', controller.updateDelivery)
     .post('/updateDeliveryExtra', controller.updateDeliveryExtra)
+    .post('/updateDeliveryExtra2', controller.updateDeliveryExtra2)
     .post('/deleteDelivery', controller.deleteDelivery)
     .post('/getId', controller.getId)
     .post('/addLike', controller.addLike)
