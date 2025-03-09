@@ -1,10 +1,8 @@
 import React, {useState} from "react";
 import LoginCartsNav from "../commons/LoginCartsNav";
 
-import CartOrderBill from "../components/Carts/CartOrderBill";
 import CartOrderDesc from "../components/Carts/CartOrderDesc";
 import OrderGrayBox from "../components/Carts/OrderGrayBox";
-import CartOrderHead from "../components/Carts/CartOrderHead";
 import CartOrderMain from "../components/Carts/CartOrderMain";
 
 export default function Carts(){
@@ -25,14 +23,11 @@ export default function Carts(){
                                     menuListName={menuListName} />
                     
                     <div className="order_wrap on all-group">
-                        <CartOrderHead></CartOrderHead>
                         {/* 장바구니에 상품이 없는 경우 Head에서 관리*/}
                         <div className="order_set" id="cartSubGroup1">
                             <CartOrderMain></CartOrderMain>
                             {/* table을 컴포넌트로 */}
-                            <OrderGrayBox></OrderGrayBox>
                         </div>
-                        <CartOrderBill></CartOrderBill>
                         <CartOrderDesc></CartOrderDesc>
                         
                     </div>    

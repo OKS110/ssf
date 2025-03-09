@@ -60,12 +60,11 @@ export function useProduct() {
     }
 
     /** 상품 아이디 별 데이터 호출 **/
-    const getPidItem = async(pid) => {
-        const result = await axios.post("http://localhost:9000/product/item", {"pid": pid});
-        
+    const getPidItem = async (pid) => {
+        const result = await axios.post("http://localhost:9000/product/item", { pid });
         setPidItem(result.data);
-    }
-
+        return result.data;  // ✅ 상품 정보를 반환하도록 수정
+    };
     
     const getPidItem2 = async(pid) => {
         const result = await axios.post("http://localhost:9000/product/item2", {"pid": pid});       

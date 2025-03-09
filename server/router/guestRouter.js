@@ -1,13 +1,9 @@
 import express from 'express';
-import * as controller from '../controller/guestController.js';
+import * as guestController from '../controller/guestController.js'; // ✅ 여기서 문제가 발생할 수 있음
 
 const router = express.Router();
 
-router
-    .post('/all', controller.getGuestList)
-    .post('/member', controller.getGuest)
-    .post('/add', controller.addGuest) // 비회원 업데이트
-    .post('/addOrder', controller.addGuestOrder)    // 비회원 주문 테이블 업데이트
-
+router.post('/add', guestController.addGuest);  // 🚨 여기가 undefined일 가능성 있음
+router.post('/addOrder', guestController.addGuestOrder);
 
 export default router;
