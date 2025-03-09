@@ -54,7 +54,7 @@ export default function SectionWrap({id, title, children}) {
             .catch(error => console.log(error));
     }, []);
 
-    const brand1 = productList.filter((list) => list.brand === "1");
+    const brand1 = productList.filter((list) => list.brand === "NIKE");
     const brand2 = productList.filter((list) => list.brand === "GUCCI");
     const brand3 = productList.filter((list) => list.brand === "BEANPOLE");
 

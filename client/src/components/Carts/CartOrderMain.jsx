@@ -1,4 +1,3 @@
-import Button from "../../commons/Button";
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../auth/AuthContext.js";
 import { DetailProductContext } from "../../context/DetailProductContext";
@@ -6,82 +5,133 @@ import { useCart } from "../../hooks/useCart.js";
 import { useProduct } from "../../hooks/useProduct.js";
 import Modal from 'react-modal';
 import CartOptionModal from "./CartOptionModal.jsx";
-import { IoIosClose } from "react-icons/io";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import OrderGrayBox from "./OrderGrayBox.jsx";
+import CartOrderBill from './CartOrderBill.jsx';
 
 export default function CartOrderMain() {
     const { isLoggedIn } = useContext(AuthContext);
-    const { cartList, userId } = useContext(DetailProductContext);
-    const { getCartItems, cartDeleteItem, getGuestCartItems } = useCart();
+    const { cartList, setCartList } = useContext(DetailProductContext);
+    const { getCartItems, cartDeleteItem } = useCart();
     const { getPidItem } = useProduct();
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);  // 선택된 상품 저장용
-    const [guestCartList, setGuestCartList] = useState([]); // 비회원 장바구니 저장
-
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [isAllSelected, setIsAllSelected] = useState(false);
 
     useEffect(() => {
         if (isLoggedIn) {
             getCartItems();
-        } else {
-            const guestCart = JSON.parse(localStorage.getItem("guest_cart"));
-            console.log("guestCart --> ", guestCart);
-            // setGuestCartList(guestCart);
-
-            const productPids = guestCart && guestCart.map((product) => product.pid);
-
-            getProductData(productPids, guestCart);
-
         }
-    }, []);
-    
-    const getProductData = async(productPids, guestCart) => {
-        const productData = await getGuestCartItems(productPids);
-        console.log("productsData --> ", productData.data);
-        // const updateCartList = guestCart.map((item) => {});
-    }
+    }, [isLoggedIn]);
 
-    // 모달창 스타일 설청
-    const customModalStyles = {
-        overlay: {
-            backGroundColor: "rgba(0, 0, 0, 0.5)",
-            width: "100%",
-            height: "100%",
-            zIndex: "40",
-            // position: "fixed",
-            top: "0",
-            left: "0"
-        },
-        content: {
-            width: "400px",
-            height: "400px",
-            zIndex: "41",
-            top: "20%",
-            left: "0",
-            justifyContent: "center",
+    // ✅ 개별 상품 삭제
+    const deleteItem = async (cid) => {
+        if (!window.confirm("선택한 상품을 삭제하시겠습니까?")) return;
+        try {
+            const response = await cartDeleteItem(cid);
+            if (response?.result_row > 0) {
+                setCartList((prevList) => prevList.filter((item) => item.cid !== cid));
+                getCartItems();
+            }
+        } catch (error) {
+            console.error("❌ 삭제 중 오류 발생:", error);
         }
-    }
+    };
 
-    const openModal = (item) => {
-        setSelectedItem(item);
-        setIsOpen(true);
-    }
+    // ✅ 선택된 상품 삭제
+    const handleDeleteSelectedItems = async () => {
+        if (selectedItems.length === 0) {
+            alert("삭제할 상품을 선택해주세요.");
+            return;
+        }
 
-    // 삭제 버튼 이벤트
-    const deleteItem = (cid) => {
-        const select = window.confirm("선택한 상품을 삭제하시겠습니까?");
-        if (isLoggedIn) {
-            select && cartDeleteItem(cid);
+        if (!window.confirm("선택한 상품을 삭제하시겠습니까?")) return;
+
+        try {
+            for (const cid of selectedItems) {
+                await cartDeleteItem(cid);
+            }
+            setSelectedItems([]);
+            setIsAllSelected(false);
             getCartItems();
-        } else {
-
+        } catch (error) {
+            console.error("❌ 선택 삭제 중 오류 발생:", error);
         }
-    }
-    
+    };
+
+    // ✅ 개별 상품 선택 / 해제
+    const handleSelectItem = (cid) => {
+        setSelectedItems((prevSelected) =>
+            prevSelected.includes(cid)
+                ? prevSelected.filter((id) => id !== cid) // 이미 선택된 경우 제거
+                : [...prevSelected, cid] // 선택되지 않은 경우 추가
+        );
+    };
+
+    // ✅ 전체 선택 / 해제
+    const handleSelectAll = () => {
+        if (isAllSelected) {
+            setSelectedItems([]); // 전체 해제
+        } else {
+            setSelectedItems(cartList.map((item) => item.cid)); // 전체 선택
+        }
+        setIsAllSelected(!isAllSelected);
+    };
+
+    // ✅ 모달 오픈 시 해당 상품의 product_id를 이용해 상품 정보 불러오기
+    const openModal = async (item) => {
+        const productData = await getPidItem(item.product_id);
+        setSelectedItem({
+            ...item,
+            availableSizes: productData?.size || [],
+            availableColors: productData?.color || [],
+        });
+        setIsOpen(true);
+    };
+
+    // ✅ 가격 변환 함수 (NaN 방지)
+    const formatPrice = (price) => {
+        if (!price) return 0;
+        return parseFloat(price.toString().replace(/,/g, "")) || 0;
+    };
+
+    // ✅ 선택된 상품의 총 상품 금액 (정가 기준)
+    const selectedTotalPrice = cartList
+        .filter((item) => selectedItems.includes(item.cid))
+        .reduce((acc, item) => {
+            return acc + formatPrice(item.original_price) * (item.quantity ?? 1);
+        }, 0);
+
+    // ✅ 선택된 상품의 총 할인 금액
+    const selectedTotalDiscount = cartList
+        .filter((item) => selectedItems.includes(item.cid))
+        .reduce((acc, item) => {
+            const originalPrice = formatPrice(item.original_price);
+            const discountedPrice = formatPrice(item.discounted_price);
+            return acc + (originalPrice - discountedPrice) * (item.quantity ?? 1);
+        }, 0);
+
+    // ✅ 선택된 상품의 총 배송비
+    const selectedTotalDeliveryFee = cartList
+        .filter((item) => selectedItems.includes(item.cid))
+        .reduce((acc, item) => acc + (item.deliveryFee !== "free" ? 3000 : 0), 0);
+
     return (
         <>
-            {
-                isLoggedIn ? (
-                    cartList.length > 0 ? (
+            {isLoggedIn ? (
+                cartList.length > 0 ? (
+                    <>
+                        <div className="cart-actions">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    checked={isAllSelected}
+                                    onChange={handleSelectAll}
+                                /> 전체 선택
+                            </label>
+                            <button onClick={handleDeleteSelectedItems}>선택 삭제</button>
+                        </div>
+
                         <table>
                             <colgroup>
                                 <col width="40"></col>
@@ -92,42 +142,38 @@ export default function CartOrderMain() {
                             </colgroup>
                             <thead>
                                 <tr className="thead">
-                                    <th colspan="3" scope="col">상품·혜택 정보</th>
-                                    <th scope="col">배송정보</th>
-                                    <th scope="col">주문금액</th>
+                                    <th colSpan="3">상품·혜택 정보</th>
+                                    <th>배송정보</th>
+                                    <th>주문금액</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {cartList.map((item) =>
-                                    <tr>
+                                {cartList.map((item) => (
+                                    <tr key={item.cid}>
                                         <td>
-                                            <label title="[三無衣服] 스트레치 방한 슬랙스 - 네이비 선택">
-                                                <input type="checkbox" name="check" id="1" /><i></i>
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={selectedItems.includes(item.cid)}
+                                                    onChange={() => handleSelectItem(item.cid)}
+                                                />
                                             </label>
                                         </td>
 
                                         <td>
                                             <a className="list_goods" href="#">
-                                                <img src={item.image}
-                                                    onError={(e) => e.target.src = '/v3/images/common/noImg_60.gif'} alt="" />
-                                                <div className="keep">
-                                                    <span view-godno="GM0024090410257" view-godturn="1" className="heart on">
-                                                        <input type="radio" className="dummy on" title="찜하기" />
-                                                    </span>
-                                                </div>
+                                                <img
+                                                    src={item.image}
+                                                    onError={(e) => e.target.src = '/v3/images/common/noImg_60.gif'}
+                                                    alt=""
+                                                />
                                             </a>
                                         </td>
 
-                                        <td style={{ textAlign: "left" }}>
-                                            <div className="badge"></div>
-
+                                        <td>
                                             <div className="info">
                                                 <span className="brand">{item.brand}</span>
-
-                                                <span className="name">
-                                                    <a href="#">{item.name}</a>
-                                                </span>
-
+                                                <span className="name">{item.name}</span>
                                                 <div className="selected_options">
                                                     <ul>
                                                         <li>
@@ -135,7 +181,6 @@ export default function CartOrderMain() {
                                                         </li>
                                                     </ul>
                                                 </div>
-
                                                 <div className="alter">
                                                     <button onClick={() => openModal(item)}>옵션/수량변경</button>
                                                     <Modal
@@ -144,7 +189,6 @@ export default function CartOrderMain() {
                                                         ariaHideApp={false}
                                                         contentLabel="Pop up Message"
                                                         shouldCloseOnOverlayClick={true}
-                                                        style={customModalStyles}
                                                     >
                                                         <CartOptionModal item={selectedItem} event={setIsOpen} />
                                                     </Modal>
@@ -152,148 +196,33 @@ export default function CartOrderMain() {
                                             </div>
                                         </td>
 
-                                        <td>
-                                            <div className="shipping">
-                                                <span className="cost" id="dlvCostView1">무료배송</span>
-                                            </div>
+                                        <td className="shipping">
+                                            <span className="cost">
+                                                {item.deliveryFee === "free" ? "무료배송" : "유료배송 3000원"}
+                                            </span>
                                         </td>
 
-                                        <td>
-                                            <a className="delete" onClick={() => deleteItem(item.cid)}><IoIosClose /></a>
-                                            <div className="price">
-                                                <del>{item.original_price}원</del>
-                                                <span>
-                                                    {item.discounted_price}원
-                                                    <em>{item.discount_rate}%</em>
-                                                </span>
-                                            </div>
-                                            <div className="fulfill">
-                                                <Button className="bk" title="바로구매"></Button>
-                                            </div>
+                                        <td className="price">
+                                            <del className="original_price">{formatPrice(item.original_price).toLocaleString()}원</del>
+                                            <br />
+                                            <span className="discounted_price">
+                                                {(formatPrice(item.discounted_price) * item.quantity).toLocaleString()}원
+                                            </span>
+                                            <em className="discount_rate">{item.discount_rate ?? 0}% 할인</em>
                                         </td>
                                     </tr>
-                                )
-                                }
+                                ))}
                             </tbody>
                         </table>
-                    ) : (
-                        <div className="nothing-cart-item">
-                            {/* <img src="/image/shopping-bag.png" alt="" style={{width: "100px", color: "silver"}} /> */}
-                            <HiOutlineShoppingBag style={{fontSize: "130px", color: "silver"}} />
-                            <p>장바구니에 담긴 상품이 없습니다.</p>
-                        </div>
-                    )
-                ) : (
-                    guestCartList.length > 0 ? (
-                        <table>
-                            <colgroup>
-                                <col width="40"></col>
-                                <col width="124"></col>
-                                <col width="*"></col>
-                                <col width="180"></col>
-                                <col width="220"></col>
-                            </colgroup>
-                            <thead>
-                                <tr className="thead">
-                                    <th colspan="3" scope="col">상품·혜택 정보</th>
-                                    <th scope="col">배송정보</th>
-                                    <th scope="col">주문금액</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {guestCartList.map((item) =>
-                                    <tr>
-                                        <td>
-                                            <label title="[三無衣服] 스트레치 방한 슬랙스 - 네이비 선택">
-                                                <input type="checkbox" name="check" id="1" /><i></i>
-                                            </label>
-                                        </td>
 
-                                        <td>
-                                            <a className="list_goods" href="#">
-                                                <img src={item.image}
-                                                    onError={(e) => e.target.src = '/v3/images/common/noImg_60.gif'} alt="" />
-                                                <div className="keep">
-                                                    <span view-godno="GM0024090410257" view-godturn="1" className="heart on">
-                                                        <input type="radio" className="dummy on" title="찜하기" />
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </td>
-
-                                        <td style={{ textAlign: "left" }}>
-                                            <div className="badge"></div>
-
-                                            <div className="info">
-                                                <span className="brand">{item.brand}</span>
-
-                                                <span className="name">
-                                                    <a href="#">{item.name}</a>
-                                                </span>
-
-                                                <div className="selected_options">
-                                                    <ul>
-                                                        <li>
-                                                            색상: {item.color} / 사이즈: {item.size} / {item.quantity}개
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                                <div className="alter">
-                                                    <button onClick={() => openModal(item)}>옵션/수량변경</button>
-                                                    <Modal
-                                                        isOpen={isOpen}
-                                                        onRequestClose={() => setIsOpen(false)}
-                                                        ariaHideApp={false}
-                                                        contentLabel="Pop up Message"
-                                                        shouldCloseOnOverlayClick={true}
-                                                        style={customModalStyles}
-                                                    >
-                                                        <CartOptionModal item={selectedItem} event={setIsOpen} />
-                                                    </Modal>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div className="shipping">
-                                                <span className="cost" id="dlvCostView1">무료배송</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <a className="delete" onClick={() => deleteItem(item.cid)}><IoIosClose /></a>
-                                            <div className="price">
-                                                <del>{item.original_price}원</del>
-                                                <span>
-                                                    {item.discounted_price}원
-                                                    <em>{item.discount_rate}%</em>
-                                                </span>
-                                            </div>
-                                            <div className="fulfill">
-                                                <Button className="bk" title="바로구매"></Button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                )
-                                }
-                            </tbody>
-                        </table>
-                    ) : (
-                        <div className="nothing-cart-item">
-                            {/* <img src="/image/shopping-bag.png" alt="" style={{width: "100px", color: "silver"}} /> */}
-                            <HiOutlineShoppingBag style={{fontSize: "130px", color: "silver"}} />
-                            <p>장바구니에 담긴 상품이 없습니다.</p>
-                        </div>
-                    )
-                )
-            }
+                        <CartOrderBill 
+                        totalPrice={selectedTotalPrice} 
+                        totalDiscount={selectedTotalDiscount} 
+                        totalDeliveryFee={selectedTotalDeliveryFee}
+                        selectedItems={selectedItems} />
+                    </>
+                ) : <p>장바구니가 비어 있습니다.</p>
+            ) : <p>로그인이 필요합니다.</p>}
         </>
     );
 }
-
-/** 진행 상황
- * 비회원일 때 localStorage 사용해서 카트리스트 배열 만드는 건 완료
- * 조건 처리 수정 필요(토큰여부)
- * 비회원일 때 카트리스트 상품들의 정보(이미지, 상품명, 가격) 호출하기
- */ 
