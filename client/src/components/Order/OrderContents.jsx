@@ -12,7 +12,11 @@ export default function OrderContents({
     formData,
     setFormData,
     isAgreed, // ✅ 구매 동의 상태 추가
-    setIsAgreed // ✅ 부모에서 전달받아 업데이트
+    setIsAgreed, // ✅ 부모에서 전달받아 업데이트
+    totalPrice,
+    totalDiscount,
+    totalDeliveryFee,
+    orderItemsToContent
 }) {
     // ✅ 입력 값 초기화 함수
     const resetForm = () => {
@@ -35,7 +39,10 @@ export default function OrderContents({
 
             {/* 결제 수단 선택 */}
             <PayOption onPaymentMethodChange={setSelectedPayMethod} />
-            <OrderGrayBox />
+            <OrderGrayBox totalPrice={totalPrice} 
+                        totalDiscount={totalDiscount} 
+                        totalDeliveryFee={totalDeliveryFee} 
+                        orderItems={orderItemsToContent}/>
 
             {/* 구매 동의 체크박스 */}
             <span className="checkbox">

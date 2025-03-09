@@ -1,27 +1,55 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../commons/Button";
+import { useEffect } from "react";
 
-export default function CartOrderBill(){
+export default function CartOrderBill({ totalPrice, totalDiscount, totalDeliveryFee, selectedItems = [] }) {
+    const navigate = useNavigate();
+
+    // ✅ 선택한 상품 주문 페이지로 이동
+    const handleOrder = () => {
+        console.log("선택된 상품들:", selectedItems);
+
+        if (!selectedItems || selectedItems.length === 0) {
+
+            alert("주문할 상품을 선택해주세요.");
+            return;
+        }
+        // ✅ 선택한 상품들의 cid 리스트를 sessionStorage에 저장
+        sessionStorage.setItem("selectedCids", JSON.stringify(selectedItems));
+        // ✅ 선택한 상품들의 cid 리스트만 전달
+        navigate("/cart/order"); // 주문 페이지로 이동
+    };
+    // ✅ `selectedItems` 변경 사항을 추적하는 `useEffect`
+    useEffect(() => {
+        console.log("📌 선택된 상품 목록 변경:", selectedItems);
+    }, [selectedItems]);
+
+    const totalOrderAmount = totalPrice + totalDeliveryFee - totalDiscount;
+
     return (
         <div className="bill" id="cartGroupBill0">
-            <h4>결제 예정 금액 <small>총 <em class="cssf" id="orderCntTxt">1</em>건</small></h4>
+            <h4>
+                결제 예정 금액 <small>총 <em className="cssf" id="orderCntTxt">{selectedItems?.length ?? 0}</em>건</small>
+            </h4>
             <div className="calc">
-                <span className="retail"><em id="totalGodAmt">278,000</em>원<i>상품금액</i></span>
+                <span className="retail">
+                    <em id="totalGodAmt">{totalPrice.toLocaleString()}</em>원<i>상품금액</i>
+                </span>
                 <span className="plus">
-                    <em id="totalDlvAmt">0</em>원
-                    <i>배송비</i></span>
-                <span className="minus"><em id="totalDcAmt">111,200</em>원<i>할인금액</i></span>
-                <span className="total"><em id="totalOrdAmt">166,800</em>원<i>총 주문금액</i></span>
+                    <em id="totalDlvAmt">{totalDeliveryFee.toLocaleString()}</em>원<i>배송비</i>
+                </span>
+                <span className="minus">
+                    <em id="totalDcAmt">{totalDiscount.toLocaleString()}</em>원<i>할인금액</i>
+                </span>
+                <span className="total">
+                    <em id="totalOrdAmt">{totalOrderAmount.toLocaleString()}</em>원<i>총 주문금액</i>
+                </span>
             </div>
+            
+            {/* ✅ 주문하기 버튼 */}
             <div className="submit_order">
-                {/* <a className="btn bk" href="#" style={{backgroundColor:"yellowgreen"}}>주문하기</a> */}
-                <Button className="bk" title="주문하기"></Button>
+                <Button className="bk" title="주문하기" onClick={handleOrder} />
             </div>
-            <section id="memberloginLayer" class="layerNotice">
-                <h1 class="center">회원만 구매 가능한 상품입니다.<br></br>로그인 후 구매해주세요.</h1>
-                <div class="btns">
-                    <button class="btn bk" onclick="closeLayer('.layerNotice')">확인</button>
-                </div>
-            </section>
         </div>
     );
 }

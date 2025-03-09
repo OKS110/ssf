@@ -58,6 +58,7 @@ function App() {
                     <Route path='/person/wishList' element={<WishList/>}></Route>
                     <Route path={`/detail/:pid`} element={<DetailProducts/>}></Route>
                     <Route path='/order/:pid' element={<Order/>}></Route>
+                    <Route path='/cart/order' element={<Order />} /><Route/>
                     <Route path='/searchPage' element={<SearchPage />}></Route>
             </Route>
           </Routes>

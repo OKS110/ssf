@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosClose } from "react-icons/io";
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6";
-import { useCart } from "../../hooks/useCart"
-import Button from '../../commons/Button';
+import { FaMinus, FaPlus } from "react-icons/fa6";
+import { useCart } from "../../hooks/useCart";
 
-export default function CartOptionModal({item, event}) {
-    const { changeQty } = useCart();
+export default function CartOptionModal({ item, event }) {
+    const { updateCartItemOptions } = useCart();
+
+    // ✅ 선택된 옵션 상태 관리
     const [count, setCount] = useState(item.quantity);
+    const [selectedSize, setSelectedSize] = useState(item.size);
+    const [selectedColor, setSelectedColor] = useState(item.color);
 
-    // const data = item; 
-    console.log("item --> ", item);
-    // console.log("count --> ", count);
+    useEffect(() => {
+        setCount(item.quantity);
+        setSelectedSize(item.size);
+        setSelectedColor(item.color);
+    }, [item]);
 
-    // 수량변경 버튼 이벤트
+    // ✅ 수량 변경 핸들러
     const handleQty = (type) => {
-        type === "increase"
-        ? setCount(count + 1)
-        : setCount(count - 1);
-    }
+        setCount((prev) => (type === "increase" ? prev + 1 : Math.max(1, prev - 1)));
+    };
 
-    // 변경하기 버튼 이벤트 : 색상, 사이즈 변경 로직 필요(해당하는 상품 정보 호출이 필요함)
+    // ✅ 변경 버튼 클릭 시 서버 & UI 반영
     const onChange = () => {
-        count > 0 && changeQty(item.cid, count);
+        if (count <= 0) return;
+        updateCartItemOptions(item.cid, selectedSize, selectedColor, count);
         event(false);
-    }
+    };
 
     return (
         <div className='cartModal-change-wrap'>
@@ -32,26 +35,34 @@ export default function CartOptionModal({item, event}) {
                 <span>옵션/수량 변경</span>
                 <span onClick={() => event(false)}><IoIosClose /></span>
             </div>
-            <div className='cartModal-change-info'>
-                <p>{item.name}</p>
-                <p>FREE / {item.quantity}개</p>
-            </div>
             <ul className='cartModal-change-options'>
                 <li className='cartModal-change-size'>
                     <label>사이즈</label>
-                    <select>
-                        <option value="small">S</option>
-                        <option value="medium">M</option>
-                        <option value="large">L</option>
+                    <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
+                        {item.availableSizes.length > 0 ? (
+                            item.availableSizes.map((size, index) => (
+                                <option key={index} value={size.name}>{size.name}</option>  
+                                // {/* ✅ size 객체가 아니라 size.name 사용 */}
+                            ))
+                        ) : (
+                            <option>사이즈 없음</option>
+                        )}
                     </select>
                 </li>
+
                 <li className='cartModal-change-size'>
                     <label>색상</label>
-                    <select>
-                        <option value="black">black</option>
-                        <option value="white">white</option>
+                    <select value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
+                        {item.availableColors.length > 0 ? (
+                            item.availableColors.map((color, index) => (
+                                <option key={index} value={color}>{color}</option>
+                            ))
+                        ) : (
+                            <option>색상 없음</option>
+                        )}
                     </select>
                 </li>
+
                 <li className='cartModal-change-qty'>
                     <label>수량</label>
                     <div>
@@ -61,10 +72,8 @@ export default function CartOptionModal({item, event}) {
                     </div>
                 </li>
             </ul>
-            {/* <Button className="cartModal-change-btn" title="변경하기" /> */}
-            <button className="cartModal-change-btn"
-                    onClick={onChange}
-            >
+
+            <button className="cartModal-change-btn" onClick={onChange}>
                 변경하기
             </button>
         </div>

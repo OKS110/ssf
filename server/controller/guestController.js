@@ -1,43 +1,48 @@
 import * as repository from '../repository/guestRepository.js';
 
-export const getGuestList = async(req, res) => {
-    const result = await repository.getGuestList(req.body);
-    console.log("비회원 리스트", result);
-    
-    res.json(result);
-    res.end();
-}
-
-export const getGuest = async(req, res) => {
-    const result = await repository.getGuest(req.body);
-    res.json(result);
-    res.end();
-}
-
-export const addGuest = async (req, res) => { //비회원 테이블 업데이트(추가) 
+// ✅ 1️⃣ 비회원 정보 추가 (중복 검사 후 저장)
+export const addGuest = async (req, res) => {
     try {
         const guestData = req.body;
-        console.log("guestData", guestData);
-        
+        console.log("📌 [DEBUG] 비회원 데이터 요청:", guestData);
+
         const newGuest = await repository.addGuest(guestData);
-        console.log("newGuest", newGuest);
-        
-        res.json(newGuest);
+        console.log("✅ [DEBUG] 비회원 정보 저장 완료:", newGuest);
+
+        res.json(newGuest); // ✅ 비회원 ID 반환
     } catch (error) {
         console.error("❌ 비회원 추가 오류:", error);
         res.status(500).json({ error: "비회원 추가 실패" });
     }
 };
 
-export const addGuestOrder = async (req, res) => { // 비회원 주문 테이블 업데이트(추가)
+// ✅ 2️⃣ 비회원 주문 추가 (비회원 ID를 이용해 주문 저장)
+export const addGuestOrder = async (req, res) => {
     try {
-        console.log("📌 [DEBUG] guest_orders 요청 데이터:", req.body); // ✅ 디버깅 추가
+        console.log("📌 [DEBUG] guest_orders 요청 데이터:", req.body);
 
-        const guestOrderData = req.body;
-        const newGuestOrder = await repository.addGuestOrder(guestOrderData);
+        const guest_id = req.body.guest_id;
+        const orders = Object.values(req.body).filter(order => typeof order === 'object');  // ✅ 숫자 키 제거 후 배열 변환
 
-        console.log("✅ 비회원 주문 저장 완료:", newGuestOrder);
-        res.json(newGuestOrder);
+        if (!guest_id) {
+            throw new Error("⚠️ guest_id가 없습니다.");
+        }
+
+        if (!orders || orders.length === 0) {
+            throw new Error("⚠️ 주문 데이터가 없습니다.");
+        }
+
+        console.log("📌 [DEBUG] 변환된 주문 데이터:", orders);
+
+        let savedOrders = [];
+        for (const order of orders) {
+            const guestOrderData = { ...order, guest_id };
+            const newGuestOrder = await repository.addGuestOrder(guestOrderData);
+            savedOrders.push(newGuestOrder);
+        }
+
+        console.log("✅ 모든 주문 저장 완료:", savedOrders);
+        res.json({ success: true, orders: savedOrders });
     } catch (error) {
         console.error("❌ guest_orders 저장 오류:", error);
         res.status(500).json({ error: "guest_orders 저장 실패" });
