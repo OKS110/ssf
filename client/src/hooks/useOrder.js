@@ -58,6 +58,46 @@ export function useOrder() {
             throw error;
         }
     };
-    return { getOrderList, saveToOrder, saveGuestOrder };
+    // ✅ 장바구니에서 선택한 상품 가져오기
+// ✅ 장바구니에서 선택한 상품 가져오기
+    const getCartOrderItems = async (selectedCids) => {
+        try {
+            const response = await axios.post("http://localhost:9000/order/cartOrderItems", {
+                cids: selectedCids,
+            });
+            // ✅ 서버에서 가져온 데이터에 `deliveryFee` 추가
+            const updatedItems = response.data.map(item => ({
+                ...item,
+                deliveryFee: item.deliveryFee || "free" // ✅ 기본값 "free" 설정
+            }));
+            console.log(updatedItems);
+            return updatedItems;
+        } catch (error) {
+            console.error("❌ 장바구니 주문 상품 가져오기 실패:", error);
+            return [];
+        }
+    };
+    const saveCartOrders = async (orderDataList) => {
+        try {
+            await axios.post("http://localhost:9000/order/addCartOrders", { orders: orderDataList });
+        } catch (error) {
+            console.error("❌ 장바구니 주문 저장 중 오류 발생:", error);
+        }
+    };
+    const deleteOrderedCartItems = async (customerId, orderedItems) => {
+        try {
+            const response = await axios.post("http://localhost:9000/order/deleteOrderedItems", {
+                customer_id: customerId,
+                orderedItems: orderedItems, // 주문한 상품 리스트
+            });
+    
+            console.log("✅ 장바구니에서 주문된 상품 삭제 완료:", response.data);
+        } catch (error) {
+            console.error("❌ 장바구니에서 주문된 상품 삭제 중 오류 발생:", error);
+        }
+    };
+    return { getOrderList, saveToOrder, saveGuestOrder, saveCartOrders, getCartOrderItems,
+        deleteOrderedCartItems
+     };
 }
 

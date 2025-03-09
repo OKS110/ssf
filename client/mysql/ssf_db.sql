@@ -103,12 +103,24 @@ ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
 select * from admins;
 select * from customers;
+select * from cart;
 select * from orders;
 select * from guest_orders;
+select  * from orders where customer_id = 2;
+SELECT *
+FROM cart
+WHERE customer_id = 1
+ORDER BY added_at DESC;
+select * from guest_orders;
 select * from guests;
+ALTER TABLE guests DROP COLUMN order_number;
+
 select * from products;
-DELETE FROM products WHERE pid BETWEEN 1051 AND 1055;
+DELETE FROM products WHERE pid BETWEEN 1001 AND 1050;
+DELETE FROM cart WHERE customer_id between 1 AND 4;
 select * from cart;
+desc cart;
+ALTER TABLE cart ADD COLUMN total_price INT NOT NULL DEFAULT 0;
 select * from favorites;
 -- 관리자별 상품 접근 권한 테이블
 CREATE TABLE admin_product_access ( -- 관리자가 특정 상품을 관리할 수 있도록 설정하는 테이블 생성
@@ -143,7 +155,7 @@ CREATE TABLE favorites ( -- 고객이 좋아요(찜)한 상품 정보를 저장�
 );
 select * from favorites;
 
-
+select * from guest_orders;
 -- 주문 테이블 (super_admin만 접근 가능)
 CREATE TABLE orders ( -- 고객의 주문 정보를 저장하는 테이블 생성
     oid INT auto_increment PRIMARY KEY, -- 고유한 주문 ID (기본 키, JSON에서 직접 부여)
@@ -418,6 +430,7 @@ LEFT JOIN order_items ON products.pid = order_items.product_id -- 상품이 포�
 LEFT JOIN cart ON products.pid = cart.product_id -- 상품이 장바구니에 담긴 내역과 연결
 LEFT JOIN favorites ON products.pid = favorites.product_id; -- 상품이 좋아요된 내역과 연결
  
+ select * from products;
  select * from customers;
  desc products;
  select * from orders; -- oid, customer_id, order_number, total_price, zipcode, shipping_address, delivery_message, detail_address, status
