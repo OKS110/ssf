@@ -163,6 +163,32 @@ export default function Person() {
         }
     };
     
+    useEffect(() => {
+        // ✅ WebSocket 연결
+        const socket = new WebSocket("ws://localhost:9002");
+    
+        socket.onopen = () => {
+            console.log("📡 WebSocket 연결 성공! (고객 페이지)");
+        };
+    
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log("📩 WebSocket 메시지 수신 (고객 페이지):", data);
+    
+            if (data.type === "orderUpdate") {
+                console.log(`📦 주문 ${data.oid} 상태가 ${data.status}로 변경됨`);
+                setOrderList((prevOrders) =>
+                    prevOrders.map(order =>
+                        order.oid === data.oid ? { ...order, status: data.status } : order
+                    )
+                );
+            }
+        };
+    
+        return () => {
+            socket.close();
+        };
+    }, []);
     
 
     return (
