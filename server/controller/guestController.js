@@ -19,7 +19,7 @@ export const addGuest = async (req, res) => {
 // ✅ 2️⃣ 비회원 주문 추가 (비회원 ID를 이용해 주문 저장)
 export const addGuestOrder = async (req, res) => {
     try {
-        console.log("📌 [DEBUG] guest_orders 요청 데이터:", req.body);
+        // console.log("📌 [DEBUG] guest_orders 요청 데이터:", req.body);
 
         const guest_id = req.body.guest_id;
         const orders = Object.values(req.body).filter(order => typeof order === 'object');  // ✅ 숫자 키 제거 후 배열 변환
@@ -41,7 +41,7 @@ export const addGuestOrder = async (req, res) => {
             savedOrders.push(newGuestOrder);
         }
 
-        console.log("✅ 모든 주문 저장 완료:", savedOrders);
+        // console.log("✅ 모든 주문 저장 완료:", savedOrders);
         res.json({ success: true, orders: savedOrders });
     } catch (error) {
         console.error("❌ guest_orders 저장 오류:", error);
