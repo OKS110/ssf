@@ -42,21 +42,36 @@ export const addOrderItem = async (orderDataList) => {
 
 
 
-export const pullOrderList = async (id) => {
-    const sql = `
-        select * from orders where customer_id = ?;
-    `;
-
+export const pullOrderList = async (user_id) => {
     try {
+        // 1️⃣ customers 테이블에서 customer_id 가져오기
+        const customerSql = `SELECT customer_id FROM customers WHERE username = ?`;
+        const [customerResult] = await db.execute(customerSql, [user_id]);
 
-        const [result] = await db.execute(sql, [id]);
-        console.log(result);
-        
-        return result[0];
+        if (customerResult.length === 0) {
+            console.warn(`❌ user_id(${user_id})에 해당하는 customer_id가 없음.`);
+            return [];
+        }
+
+        const customer_id = customerResult[0].customer_id;
+        console.log(`🟢 user_id(${user_id}) → customer_id(${customer_id}) 매핑 완료`);
+
+        // 2️⃣ orders 테이블에서 customer_id로 주문 목록 조회 (products와 JOIN)
+        const orderSql = `
+            SELECT o.*, p.image, p.pid as product_id
+            FROM orders o
+            LEFT JOIN products p ON LOWER(TRIM(o.title)) = LOWER(TRIM(p.name))
+            WHERE o.customer_id = ?
+            ORDER BY o.order_date DESC;
+        `;
+
+        const [orders] = await db.execute(orderSql, [customer_id]);
+        console.log("🔵 회원 주문 조회 결과:", orders);
+        return orders;
 
     } catch (error) {
-        console.error("❌ 주문정보 가져오기 오류:", error);
-        throw error;
+        console.error("❌ 회원 주문 조회 오류:", error);
+        return [];
     }
 };
 
@@ -146,6 +161,19 @@ export const deleteOrderedCartItems = async (customer_id, orderedItems) => {
         return { message: "주문된 상품들이 장바구니에서 삭제되었습니다." };
     } catch (error) {
         console.error("❌ 장바구니에서 주문된 상품 삭제 실패:", error);
+        throw error;
+    }
+};
+
+export const deleteOrder = async (oid) => {
+    const sql = `DELETE FROM orders WHERE oid = ?`;
+
+    try {
+        const [result] = await db.execute(sql, [oid]);
+        console.log(`✅ 주문 취소 완료: oid=${oid}, 삭제된 행 수=${result.affectedRows}`);
+        return result;
+    } catch (error) {
+        console.error("❌ 주문 삭제 오류:", error);
         throw error;
     }
 };
