@@ -4,6 +4,7 @@ import * as guestController from '../controller/guestController.js'; // ✅ 여�
 const router = express.Router();
 
 router.post('/add', guestController.addGuest);  // 🚨 여기가 undefined일 가능성 있음
-router.post('/addOrder', guestController.addGuestOrder);
+router.post('/addOrder', guestController.addGuestOrder)
+    .post("/orders", guestController.getGuestOrders);
 
 export default router;

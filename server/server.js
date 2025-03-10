@@ -11,6 +11,7 @@ import customerRouter from './router/customerRouter.js'
 import guestRouter from './router/guestRouter.js';
 import cartRouter from './router/cartRouter.js';
 import deliUploadRouter from './router/deliUploadRouter.js';
+import reviewRouter from './router/reviewRouter.js';
 import path from 'path'; 
 
 // 서버 생성 및 포트 지정
@@ -79,6 +80,9 @@ server.use('/order', orderRouter);
 
 // 카트
 server.use('/cart', cartRouter);
+
+// 리뷰
+server.use('/review', reviewRouter);
 
 
 

@@ -214,6 +214,8 @@ export default function Order() {
         }
     }, []);
     console.log("cartOrderItems =====> ", cartOrderItems);
+
+    
     // ✅ 주문폼 제출 핸들러
     const handleOrderSubmit = async (e) => {
         e.preventDefault();
@@ -300,10 +302,11 @@ export default function Order() {
                 console.log("📌 [DEBUG] 비회원 정보:", guestData);
                 console.log("📌 [DEBUG] 비회원 주문 데이터:", orderDataList);
     
-                const response = await saveGuestOrder(guestData, orderDataList);
-                const guestId = response.guest_id;
-                localStorage.setItem("guest_id", guestId);
-                console.log("📌 guest_id가 localStorage에 저장됨:", guestId);
+                try {
+                    await saveGuestOrder(guestData, orderDataList);
+                } catch (error) {
+                    console.error("❌ 비회원 주문 처리 중 오류 발생:", error);
+                }
             }
     
             if (!isAgreed) {

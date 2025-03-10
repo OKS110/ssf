@@ -100,7 +100,8 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                 <div className="row">
                     <label htmlFor="message" className="required">배송 메시지</label>
                     <span className="input_box">
-                        <input id="message" name="message" type="text" ref={refs.messageRef} value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
+                        <input id="message" name="message" type="text" 
+                        ref={refs.messageRef} value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
                     </span>
                 </div>
             </div>

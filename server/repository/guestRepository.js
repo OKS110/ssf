@@ -66,3 +66,30 @@ export const addGuestOrder = async (guestOrderData) => {
         throw error;
     }
 };
+
+export const pullOrderList = async (user_id) => {
+    const sql = `
+        SELECT o.*, p.image 
+        FROM orders o
+        LEFT JOIN products p ON o.title = p.name
+        WHERE o.customer_id = ?
+        ORDER BY o.order_date DESC;
+    `;
+
+    const [orders] = await db.execute(sql, [user_id]);
+    return orders;
+};
+
+
+export const getGuestOrders = async (guest_id) => {
+    const sql = `
+        SELECT g.*, p.image 
+        FROM guest_orders g
+        LEFT JOIN products p ON g.title = p.name
+        WHERE g.guest_id = ?
+        ORDER BY g.order_date DESC;
+    `;
+
+    const [orders] = await db.execute(sql, [guest_id]);
+    return orders;
+};
