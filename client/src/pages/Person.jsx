@@ -176,12 +176,23 @@ export default function Person() {
             console.log("📩 WebSocket 메시지 수신 (고객 페이지):", data);
     
             if (data.type === "orderUpdate") {
-                console.log(`📦 주문 ${data.oid} 상태가 ${data.status}로 변경됨`);
-                setOrderList((prevOrders) =>
-                    prevOrders.map(order =>
-                        order.oid === data.oid ? { ...order, status: data.status } : order
-                    )
-                );
+                console.log(`📦 주문 ${data.oid} 상태가 ${data.status}로 변경됨 (isGuest: ${data.isGuest})`);
+    
+                if (data.isGuest) {
+                    // ✅ 비회원 주문 리스트 업데이트
+                    setOrderList((prevOrders) =>
+                        prevOrders.map(order =>
+                            order.g_oid === data.oid ? { ...order, status: data.status } : order
+                        )
+                    );
+                } else {
+                    // ✅ 회원 주문 리스트 업데이트
+                    setOrderList((prevOrders) =>
+                        prevOrders.map(order =>
+                            order.oid === data.oid ? { ...order, status: data.status } : order
+                        )
+                    );
+                }
             }
         };
     
@@ -189,7 +200,6 @@ export default function Person() {
             socket.close();
         };
     }, []);
-    
 
     return (
         <div className="mypage-box">
