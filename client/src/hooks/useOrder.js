@@ -39,26 +39,35 @@ export function useOrder() {
         try {
             // 1️⃣ guests 테이블에 비회원 정보 저장
             const guestResponse = await axios.post("http://localhost:9000/guest/add", guestData);
+            console.log("✅ [DEBUG] 비회원 추가 응답:", guestResponse.data);
+    
             const guestId = guestResponse.data.gid; // 자동 생성된 guest_id 가져오기
-            console.log("✅ 비회원 저장 완료, guest_id:", guestId);
-
+    
+            if (!guestId) {
+                console.error("❌ guest_id가 응답에서 없음");
+                return { error: "guest_id가 생성되지 않았습니다." };
+            }
+    
+            // ✅ guest_id를 localStorage에 저장
+            localStorage.setItem("guest_id", guestId);
+            console.log("📌 guest_id가 localStorage에 저장됨:", guestId);
+    
             // 2️⃣ guest_orders 테이블에 주문 데이터 저장
             const guestOrderData = {
-                guest_id: guestId,  // 가져온 guest_id 추가
-                ...orderData        // 주문 데이터 포함
+                guest_id: guestId,
+                ...orderData
             };
-            console.log("guestOrderData", guestOrderData);
-            
+    
             const orderResponse = await axios.post("http://localhost:9000/guest/addOrder", guestOrderData);
             console.log("✅ 비회원 주문 저장 완료:", orderResponse.data);
-
-            return orderResponse.data;
+    
+            return { guest_id: guestId, orders: orderResponse.data };
         } catch (error) {
             console.error("❌ 비회원 주문 처리 중 오류 발생:", error);
-            throw error;
+            return { error: error.message };
         }
     };
-    // ✅ 장바구니에서 선택한 상품 가져오기
+    
 // ✅ 장바구니에서 선택한 상품 가져오기
     const getCartOrderItems = async (selectedCids) => {
         try {

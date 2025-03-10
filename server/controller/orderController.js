@@ -54,3 +54,22 @@ export const deleteOrderedCartItems = async (req, res) => {
         res.status(500).json({ error: "장바구니에서 주문된 상품 삭제 실패" });
     }
 };
+
+export const cancelOrder = async (req, res) => {
+    const { oid } = req.params; // ✅ URL에서 `oid` 추출
+
+    try {
+        console.log(`🛑 주문 취소 요청: oid=${oid}`);
+        const result = await repository.deleteOrder(oid);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "해당 주문을 찾을 수 없습니다." });
+        }
+
+        res.json({ success: true, message: "주문이 취소되었습니다." });
+    } catch (error) {
+        console.error("❌ 주문 취소 오류:", error);
+        res.status(500).json({ error: "서버 오류로 인해 주문을 취소할 수 없습니다." });
+    }
+};
+

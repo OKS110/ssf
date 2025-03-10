@@ -48,3 +48,14 @@ export const addGuestOrder = async (req, res) => {
         res.status(500).json({ error: "guest_orders 저장 실패" });
     }
 };
+
+export const getGuestOrders = async (req, res) => {
+    try {
+        const { guest_id } = req.body;
+        const orders = await repository.getGuestOrders(guest_id);
+        res.json(orders);
+    } catch (error) {
+        console.error("❌ 비회원 주문 조회 오류:", error);
+        res.status(500).json({ error: "비회원 주문 조회 실패" });
+    }
+};
