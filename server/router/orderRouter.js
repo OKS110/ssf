@@ -9,6 +9,7 @@ router
     .post('/addCartOrders', controller.addCartOrders) // ✅ 장바구니에서 주문 저장
     .post('/cartOrderItems', controller.getCartOrderItems) // ✅ 선택한 장바구니 상품 가져오기
     .post("/deleteOrderedItems", controller.deleteOrderedCartItems)
-    .delete('/cancel/:oid', controller.cancelOrder); // 주문 취소 기능 추가;
+    .delete('/cancel/:oid', controller.cancelOrder) // 주문 취소 기능 추가;
+    .post("/updateOrderStatus", controller.updateOrderStatus);
     
 export default router;
