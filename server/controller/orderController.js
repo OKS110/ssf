@@ -73,3 +73,32 @@ export const cancelOrder = async (req, res) => {
     }
 };
 
+export const updateOrderStatus = async (req, res) => {
+    console.log("📌 [DEBUG] 고객 서버: 주문 상태 업데이트 요청 수신:", req.body);
+
+    const { oid, status, isGuest } = req.body;
+    if (!oid || !status) {
+        return res.status(400).json({ error: "주문 ID와 상태 값이 필요합니다." });
+    }
+
+    try {
+        let updated;
+        if (isGuest) {
+            updated = await repository.updateGuestOrderStatusDB(oid, status);
+        } else {
+            updated = await repository.updateOrderStatusDB(oid, status);
+        }
+
+        if (updated) {
+            // ✅ 주문 상태 변경 후 WebSocket 메시지 전송
+            notifyOrderUpdate(oid, status);
+
+            res.json({ success: true, message: "주문 상태가 업데이트되었습니다." });
+        } else {
+            res.status(404).json({ error: "주문을 찾을 수 없습니다." });
+        }
+    } catch (error) {
+        console.error("❌ 고객 서버 주문 상태 업데이트 오류:", error);
+        res.status(500).json({ error: "주문 상태 변경 실패" });
+    }
+};
