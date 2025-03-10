@@ -3,6 +3,7 @@ import Button from "../../commons/Button.jsx";
 import OrderGrayBox from "../Carts/OrderGrayBox.jsx";
 import PayOption from "../PayOption.jsx";
 import OrderForm from './OrderForm.jsx';
+import { useLocation } from "react-router-dom";
 
 export default function OrderContents({ 
     handleOrderSubmit, 
@@ -18,6 +19,10 @@ export default function OrderContents({
     totalDeliveryFee,
     orderItemsToContent
 }) {
+    const location = useLocation();
+    // ✅ 특정 경로에 따라 OrderGrayBox 숨기기
+    const shouldHideOrderGrayBox = location.pathname.startsWith("/order/");
+
     // ✅ 입력 값 초기화 함수
     const resetForm = () => {
         setFormData({ name: "", phone: "", email: "", zipcode: "", address: "", detail_address: "", message: "" });
@@ -39,11 +44,12 @@ export default function OrderContents({
 
             {/* 결제 수단 선택 */}
             <PayOption onPaymentMethodChange={setSelectedPayMethod} />
-            <OrderGrayBox totalPrice={totalPrice} 
+
+            {!shouldHideOrderGrayBox && <OrderGrayBox totalPrice={totalPrice} 
                         totalDiscount={totalDiscount} 
                         totalDeliveryFee={totalDeliveryFee} 
                         orderItems={orderItemsToContent}/>
-
+            }
             {/* 구매 동의 체크박스 */}
             <span className="checkbox">
                 <input 

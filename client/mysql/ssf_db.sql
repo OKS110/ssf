@@ -33,7 +33,12 @@ select count(*) as result_rows
         from admins
         where username = 'superadmin' and password = 'superadmin123';
 -- DELETE FROM admins WHERE username IN ('superadmin', 'manager1', 'manager2');
+select * from customers;
+select * from guest_orders;
 select * from admins;
+select count(*) as result_rows
+        from admins
+        where username = 'superadmin' and password = 'superadmin123';
 -- 관리자 권한 테이블
 CREATE TABLE admin_permissions ( -- 관리자별 권한을 저장하는 테이블 생성
     id INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 권한 ID (자동 증가, 기본 키)
@@ -103,6 +108,7 @@ ADD COLUMN delivery_fee VARCHAR(100) not null;
 select count(*), brand from products group by brand;
 select * from admins;
 select * from customers;
+select * from guests;
 select * from cart;
 select * from orders;
 select * from guest_orders;
@@ -112,6 +118,7 @@ FROM cart
 WHERE customer_id = 1
 ORDER BY added_at DESC;
 select * from guest_orders;
+select * from orders;
 select * from guests;
 ALTER TABLE guests DROP COLUMN order_number;
 
@@ -173,6 +180,9 @@ ALTER TABLE orders
 ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
 ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상세주소 (필수 입력)
 select * from orders;
+UPDATE orders 
+SET status = 'delivered' 
+WHERE customer_id = 1;
 ALTER TABLE orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 
@@ -191,7 +201,7 @@ ALTER TABLE products
 ADD COLUMN description VARCHAR(255) NULL AFTER delivery_fee;
 -- DELETE FROM orders WHERE id IN (2001, 2002, 2003);
 
-
+select * from reviews;
 -- 주문 테이블 (super_admin만 접근 가능)
 CREATE TABLE guest_orders ( -- 고객의 주문 정보를 저장하는 테이블 생성
     g_oid INT auto_increment PRIMARY KEY, -- 고유한 주문 ID (기본 키, JSON에서 직접 부여)
@@ -207,6 +217,7 @@ CREATE TABLE guest_orders ( -- 고객의 주문 정보를 저장하는 테이블
 select * from customers;
 select * from guest_orders;
 select * from orders;
+select * from reviews;
 ALTER TABLE guest_orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수단
 ALTER TABLE guest_orders 
 ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
@@ -259,6 +270,7 @@ CREATE TABLE order_items ( -- 주문에 포함된 개별 상품 정보를 저장
 );
 
 -- 리뷰 테이블
+select * from reviews;
 CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
     rid INT AUTO_INCREMENT PRIMARY KEY, -- 고유한 리뷰 ID (자동 증가)
     customer_id INT NOT NULL, -- 리뷰를 작성한 고객 ID (외래 키)
@@ -266,15 +278,25 @@ CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
     order_id INT NOT NULL, -- 리뷰가 속한 주문 ID (외래 키)
     rating DECIMAL(2,1) CHECK (rating >= 0 AND rating <= 5), -- 별점 (0~5점, 소수점 1자리)
     review_text TEXT DEFAULT NULL, -- 리뷰 내용 (선택 입력 가능)
-    status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending', -- 리뷰 상태 (기본값: 보류)
+    status ENUM('Pending', 'Delivered') DEFAULT 'Pending', -- 리뷰 상태 (기본값: 보류)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 리뷰 작성 시간 (자동 기록)
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 리뷰 수정 시간 (수정될 때마다 자동 갱신)
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE, -- 고객이 삭제되면 해당 고객의 리뷰도 삭제
     FOREIGN KEY (product_id) REFERENCES products(pid) ON DELETE CASCADE, -- 상품이 삭제되면 해당 상품의 리뷰도 삭제
     FOREIGN KEY (order_id) REFERENCES orders(oid) ON DELETE CASCADE -- 주문이 삭제되면 해당 리뷰도 삭제
 );
+ALTER TABLE reviews 
+MODIFY COLUMN status ENUM('Pending', 'Approved', 'Rejected', 'Shipped', 'Delivered', 'Reviewed') DEFAULT 'Pending';
+ALTER TABLE reviews 
+MODIFY COLUMN status ENUM('Pending', 'Approved', 'Rejected', 'Shipped', 'Delivered', 'Reviewed') DEFAULT 'Pending';
 
-select * from guest_orders;
+SELECT @@autocommit;
+
+desc reviews;
+select * from cart;
+select * from reviews;
+select * from orders;
+DELETE FROM orders WHERE oid = 6;
 -- 관리자 승인 요청 테이블 (super_admin만 접근 가능)
 CREATE TABLE admin_approval ( -- 관리자가 승인해야 하는 요청 정보를 저장하는 테이블 생성
     id INT auto_increment PRIMARY KEY, -- 고유한 승인 요청 ID (기본 키, JSON에서 직접 부여)
