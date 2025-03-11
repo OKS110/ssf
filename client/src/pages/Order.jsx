@@ -13,9 +13,11 @@ import { useGuests } from "../hooks/useGuest.js";
 import { GuestContext } from "../context/GuestContext.js";
 import { OrderContext } from "../context/OrderContext.js";
 import { useOrder } from "../hooks/useOrder.js";
+import { useKakaoPayment } from "../hooks/useKaKaoPayment.js";
 import { useLocation } from "react-router-dom";
 import { DetailProductContext } from "../context/DetailProductContext.js";
 import { useCart } from "../hooks/useCart.js";
+import axios from "axios";
 export default function Order() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -63,6 +65,7 @@ export default function Order() {
 
     const [token, setToken] = useState(null);
     const [selectedPayMethod, setSelectedPayMethod] = useState("CREDIT_CARD_PAY");
+    const { handleKakaoPayment, loading, error } = useKakaoPayment(); // ✅ 커스텀 훅 사용
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
@@ -281,16 +284,12 @@ export default function Order() {
             orderDataList = [...validCartOrders];
         }
     
-        console.log("📌 [DEBUG] 최종 주문 데이터 (중복 제거 후, 최신 데이터만 사용):", orderDataList);
-    
+        console.log("📌 [DEBUG] 최종 주문 데이터 (중복 제거 후, 최신 데이터만 사용):", orderDataList); // 배열
         try {
-            if (isAuthorized) { 
-                await saveToOrder(orderDataList.map(order => ({ ...order, customer_id: customer.customer_id })));
-
-                // ✅ 주문된 상품 장바구니에서 삭제 요청
-                await deleteOrderedCartItems(customer.customer_id, orderDataList);
-            } else { 
-                const guestData = { 
+            // ✅ 비회원 정보 정의 (필요한 경우)
+            let guestData = null;
+            if (!isAuthorized) {
+                guestData = {
                     name: formData.name,
                     phone: formData.phone,
                     email: formData.email,
@@ -298,26 +297,39 @@ export default function Order() {
                     zipcode: formData.zipcode,
                     detail_address: formData.detail_address
                 };
-    
                 console.log("📌 [DEBUG] 비회원 정보:", guestData);
-                console.log("📌 [DEBUG] 비회원 주문 데이터:", orderDataList);
-    
-                try {
-                    await saveGuestOrder(guestData, orderDataList);
-                } catch (error) {
-                    console.error("❌ 비회원 주문 처리 중 오류 발생:", error);
+            }
+        
+            // ✅ 카카오페이 결제 요청
+            if (orderDataList[0].payment_method === "kakao") {
+                
+                if (isAuthorized) {
+                    await handleKakaoPayment(orderDataList, customer);
+                } else {
+                    await handleKakaoPayment(orderDataList, guestData);
                 }
             }
-    
+        
+            // ✅ 주문 정보 저장 (회원/비회원 분기 처리)
+            if (isAuthorized) {
+                await saveToOrder(orderDataList.map(order => ({ ...order, customer_id: customer.customer_id })));
+                await deleteOrderedCartItems(customer.customer_id, orderDataList); // ✅ 주문된 상품 장바구니에서 삭제
+            } else {
+                console.log("📌 [DEBUG] 비회원 주문 데이터:", orderDataList);
+                await saveGuestOrder(guestData, orderDataList);
+            }
+        
+            // ✅ 구매 동의 확인 후 모달 열기
             if (!isAgreed) {
                 alert("구매 동의에 체크해주세요.");
                 return;
             }
-    
-            setIsModalOpen(true); 
+        
+            setIsModalOpen(true);
         } catch (error) {
             console.error("❌ 주문 처리 중 오류 발생:", error);
         }
+        
     };
     
 

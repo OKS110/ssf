@@ -5,7 +5,7 @@ import { AuthContext } from "../../auth/AuthContext.js";
 import { useCart } from "../../hooks/useCart.js";
 import { useNavigate } from "react-router-dom";
 
-export default function DetailOrder({ pid, pidItem }) {
+export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength }) {
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -127,10 +127,8 @@ export default function DetailOrder({ pid, pidItem }) {
             </div>
 
             <div className="review-info">
-                <span className="point"><i aria-label="rate"></i><span>{pidItem?.star}</span></span>
-                <a href="#">리뷰 <span>1</span>건</a>
-                <span>|</span>
-                <a href="#">스타일 <span>5</span>건</a>
+                <span className="point"><i aria-label="rate"></i><span>{averageRating}</span></span>
+                <a href="#">리뷰 <span>{reviewsLength}</span>건</a>
             </div>
 
             <div className="goods-info-middle">

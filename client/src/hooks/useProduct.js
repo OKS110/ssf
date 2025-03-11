@@ -12,7 +12,6 @@ export function useProduct() {
     const getProductList = async() => {
         const result = await axios.post("http://localhost:9000/product/all"); // 별점 순으로 order by 사용해서 출력
         setProductList(result.data);
-        console.log("상품 데이터 전체 호출 : ", result.data);
         
         return result.data;
     }

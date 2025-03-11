@@ -11,7 +11,7 @@ export default function Size({ pidItem }) {
     };
 
     return (
-        <div style={{ backgroundColor: "lightblue", height: "auto", padding: "20px" }}>
+        <div style={{ height: "auto", padding: "20px" }}>
             {/* 사이즈 선택 버튼 리스트 */}
             <ul style={{ display: "flex", justifyContent: "center", gap: "30px", listStyle: "none", padding: "0" }}>
                 {pidItem && pidItem.size.map((item) => 

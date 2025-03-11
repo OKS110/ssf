@@ -8,10 +8,10 @@ import CartOrderMain from "../components/Carts/CartOrderMain";
 export default function Carts(){
     const [activeTab, setActiveTab] = useState("tab1");
     const menuListName = [
-        { "tab": "tab1", "label": "일반배송(0)" },
-        { "tab": "tab2", "label": "빠른배송(0)" },
-        { "tab": "tab3", "label": "매장픽업(0)" },
-        { "tab": "tab4", "label": "예약주문(0)" },
+        { "tab": "tab1", "label": "일반배송" },
+        { "tab": "tab2", "label": "빠른배송" },
+        { "tab": "tab3", "label": "매장픽업" },
+        { "tab": "tab4", "label": "예약주문" },
     ];
     return (
         <section id="main" className="content-wrap content-wrap-padding">
