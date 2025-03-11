@@ -1,234 +1,142 @@
-export default function Review(){
+import { useState, useEffect } from "react";
+import ReviewSmallTab from "./ReveiwSmallTab.jsx";
+import ReviewBanner from "./ReviewBanner.jsx";
+import ReviewBigTab from "./ReviewBigTab.jsx";
+import ReviewFilterTab from "./ReviewFilterTab.jsx";
+
+export default function Review({reviews }) {
+    const [currentPage, setCurrentPage] = useState(1); // ⭐ 현재 페이지 상태
+	const [sortedReviews, setSortedReviews] = useState([...reviews]); // ⭐ 정렬된 리뷰 상태
+	const [selectedSort, setSelectedSort] = useState("lately"); // ⭐ 선택된 정렬 옵션 상태 추가
+
+    const reviewsPerPage = 5; // ⭐ 한 페이지당 5개의 리뷰
+    const pagesPerGroup = 5; // ⭐ 페이지네이션 그룹 (1~5, 6~10, ...)
+    const totalPages = Math.ceil(sortedReviews.length / reviewsPerPage); // ⭐ 총 페이지 개수
+
+    // ⭐ 현재 페이지 그룹 계산
+    const currentGroup = Math.ceil(currentPage / pagesPerGroup); // 현재 페이지가 속한 그룹
+    const startPage = (currentGroup - 1) * pagesPerGroup + 1; // 현재 그룹의 첫 번째 페이지
+    const endPage = Math.min(startPage + pagesPerGroup - 1, totalPages); // 현재 그룹의 마지막 페이지
+
+    // ⭐ 현재 페이지의 리뷰 목록을 가져오기
+   // ⭐ 현재 페이지의 리뷰 목록을 가져오기 (sortedReviews에서 slice)
+   	const indexOfLastReview = currentPage * reviewsPerPage;
+   	const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+   	const currentReviews = sortedReviews.slice(indexOfFirstReview, indexOfLastReview);
+
+	// ⭐ 정렬 함수
+    const handleSortChange = (sortType) => {
+        let sortedData = [...reviews]; // 원본 데이터 유지
+
+        if (sortType === "lately") {
+            sortedData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); // 최신순 정렬
+        } else if (sortType === "top") {
+            sortedData.sort((a, b) => b.rating - a.rating); // 높은 평점순 정렬
+        } else if (sortType === "low") {
+            sortedData.sort((a, b) => a.rating - b.rating); // 낮은 평점순 정렬
+        }
+		
+        setSortedReviews(sortedData);
+        setCurrentPage(1); // 정렬 변경 시 첫 페이지로 이동
+		setSelectedSort(sortType); // ⭐ 선택된 정렬 옵션 업데이트
+    };
+	// ⭐ reviews가 변경될 때마다 정렬 상태 업데이트
+    useEffect(() => {
+        setSortedReviews([...reviews]); // 원본 리뷰 리스트로 초기화
+    }, [reviews]);
+
+    // ⭐ 페이지 변경 핸들러
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    // ⭐ 가장 처음 페이지로 이동
+    const goToFirstPage = () => {
+        setCurrentPage(1);
+    };
+
+    // ⭐ 이전 페이지 그룹으로 이동
+    const goToPreviousGroup = () => {
+        setCurrentPage(Math.max(1, startPage - pagesPerGroup));
+    };
+
+    // ⭐ 다음 페이지 그룹으로 이동
+    const goToNextGroup = () => {
+        setCurrentPage(Math.min(totalPages, startPage + pagesPerGroup));
+    };
+
+    // ⭐ 가장 마지막 페이지로 이동
+    const goToLastPage = () => {
+        setCurrentPage(totalPages);
+    };
+
+	console.log("reviews", reviews);
+	
     return (
-        <div style={{backgroundColor:"lightblue" , height:"auto"}}>
-            <div class="review-benefit" id="reviewCnnr"><p class="tit" id="reviewCnnrTit">상품리뷰 작성하고 최대 4500C 받으세요!</p>
-				<span class="txt">할인 및 쿠폰 적용 후 결제금액 5,000원 이상인 상품리뷰에 한하여 지급</span>
-			</div>
-            
-            <div class="review-chart">
-				<div class="satisfaction">
-					<span class="rate point5">
-						<i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i>
-					</span>
+        <div style={{ height: "auto" }}>
+            <ReviewBanner />
 
-					<span class="score">
-						<em>
-						5.0</em>/5
-					</span>
-				</div>
-				<div class="review-stats">
-					<div class="stats-item">
-							<span class="tit">컬러</span>
-							<div class="lists">
-								<ul>
-									<li>
-										<span class="txt">어두워요</span>
-										<span class="bar"><span class="fill"
-                                         style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									<li>
-										<span class="txt">화면과 같아요</span>
-										<span class="bar"><span class="fill" style={{"width":"100%"}}></span></span>
-										<span class="percent"><em>100</em>%</span>
-									</li>
-									<li>
-										<span class="txt">밝아요</span>
-										<span class="bar"><span class="fill" style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									</ul>
-							</div>
-						</div>
-					<div class="stats-item">
-							<span class="tit">사이즈</span>
-							<div class="lists">
-								<ul>
-									<li>
-										<span class="txt">작아요</span>
-										<span class="bar"><span class="fill" style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									<li>
-										<span class="txt">잘 맞아요</span>
-										<span class="bar"><span class="fill" style={{"width":"100%"}}></span></span>
-										<span class="percent"><em>100</em>%</span>
-									</li>
-									<li>
-										<span class="txt">커요</span>
-										<span class="bar"><span class="fill" style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									</ul>
-							</div>
-						</div>
-					<div class="stats-item">
-							<span class="tit">핏</span>
-							<div class="lists">
-								<ul>
-									<li>
-										<span class="txt">슬림핏</span>
-										<span class="bar"><span class="fill" style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									<li>
-										<span class="txt">정사이즈</span>
-										<span class="bar"><span class="fill" style={{"width":"0%"}}></span></span>
-										<span class="percent"><em>0</em>%</span>
-									</li>
-									<li>
-										<span class="txt">오버핏</span>
-										<span class="bar"><span class="fill" style={{"width":"100%"}}></span></span>
-										<span class="percent"><em>100</em>%</span>
-									</li>
-									</ul>
-							</div>
-						</div>
-					</div>
-			</div>
+            <div className="gods-bx-wrap" id="searchGoodsReviewListCond">
+                <div className="bx-top">
+                    <h3>상품리뷰 <em>({reviews.length})</em></h3>
+                </div>
+                <div className="gods-review-area">
 
-            <div class="gods-bx-wrap" id="searchGoodsReviewListCond">
-				<div class="bx-top">
-					<h3>상품리뷰 <em>(1)</em></h3>
-				</div>
-				<div class="gods-review-area">
-					<div class="tab-navs" role="listbox">
-						<ul id="goodsReviewFilterTab">
-							<li aria-selected="true" data-filter-tab-flag=""><a href="javascript:void(0);" onclick="goodsReviewFilterTabAction(this);">전체</a></li>
-							<li aria-selected="false" data-filter-tab-flag="I"><a href="javascript:void(0);" onclick="goodsReviewFilterTabAction(this);">포토리뷰</a></li>
-							<li aria-selected="false" data-filter-tab-flag="A"><a href="javascript:void(0);" onclick="goodsReviewFilterTabAction(this);">도움리뷰</a></li>
-							<li aria-selected="false" data-filter-tab-flag="E"><a href="javascript:void(0);" onclick="goodsReviewFilterTabAction(this);">스태프 PICK</a></li>
-							<li aria-selected="false" data-filter-tab-flag="F"><a href="javascript:void(0);" onclick="goodsReviewFilterTabAction(this);">매장구매</a></li>
-						</ul>
-					</div>
-					<div class="list-leadin opt-check">
-						<ul class="lineUp" aria-label="리스트 정렬방식" id="goodsReviewSortTab">
-							<li class="selected"><label><input type="radio" onchange="getReviewListSort(this);" name="lineup" value="best" checked=""/>베스트순</label></li>
-							<li><label><input type="radio" onchange="getReviewListSort(this);" name="lineup" value="lately"/>최근 등록순</label></li>
-							<li><label><input type="radio" onchange="getReviewListSort(this);" name="lineup" value="top"/>평점 높은순</label></li>
-							<li><label><input type="radio" onchange="getReviewListSort(this);" name="lineup" value="low"/>평점 낮은순</label></li>
-						</ul>
+                    <div className="list-leadin opt-check">
+                        <ReviewSmallTab onSortChange={handleSortChange} selectedSort={selectedSort}/>
+                        <ReviewFilterTab />
+                    </div>
 
-						<div class="filtering" data-type="REVW_PANTS">
-							<ul role="tablist" class="tablist" aria-label="필터항목">
-								<li role="tab" aria-controls="filter-option" aria-selected="false"><span>상품옵션</span></li>
-								<li role="tab" aria-controls="filter-weight" aria-selected="false"><span>신체사이즈</span></li>
-								<li role="tab" aria-controls="filter-size" aria-selected="false"><span>평소사이즈</span></li>
-								</ul>
+                    {/* ✅ 리뷰 리스트 UI */}
+                    <div className="review-detail-lists" id="searchGoodsReviewList">
+                        <ul>
+                            {currentReviews.map((review) => (
+                                <li key={review.review_id}>
+                                    <div className="list-status">
+                                        <span className={`rate point${review.rating}`}>
+                                            {[...Array(Number(review.rating))].map((_, i) => (
+                                                <i key={i} aria-label="star"></i>
+                                            ))}
+                                        </span>
+                                    </div>
 
-							<div role="tabpanel" id="filter-option" aria-hidden="true">
-								<div class="inner">
-									<strong>색상</strong>
-									<ul class="color-list">
-										<li>
-													<span class="checkbox">
-														<input type="checkbox" name="reviewFilterColor" data-txt="남색" data-color="color28" id="color_0" value="R"/>
-														<label for="color_0" class="color28" aria-label="남색"></label>
-													</span>
-												</li>
-											</ul>
-								</div>
-								<div class="inner">
-									<strong>사이즈</strong>
-									<ul class="list">
-										<li><span class="checkbox">
-													<input type="checkbox" name="reviewFilterSize" data-txt="M" id="size_0" value="M"/>
-													<label for="size_0"><i></i>M</label></span>
-												</li>
-											</ul>
-								</div>
-								</div>
-							<div role="tabpanel" id="filter-weight" aria-hidden="true">
-								<div class="inner">
-										<strong>키</strong>
-										<ul class="list">
-											<li><span class="checkbox">
-													<input type="checkbox" data-txt="키 160~164cm" name="reviewFilterHeight" id="height_0" value="160~164"/>
-													<label for="height_0"><i></i>160~164cm</label></span>
-												</li>
-											</ul>
-									</div>
-								<div class="inner">
-										<strong>몸무게</strong>
-										<ul class="list">
-											<li><span class="checkbox">
-													<input type="checkbox" data-txt="몸무게 50~54kg" name="reviewFilterWeight" id="weight_0" value="50~54"/>
-													<label for="weight_0"><i></i>50~54kg</label></span>
-												</li>
-											</ul>
-									</div>
-								</div>
-							<div role="tabpanel" id="filter-size" aria-hidden="true">
-								<div class="inner" id="usldaySizeFilterDivPants">
-										<strong>평소사이즈</strong>
-										<ul class="list">
-											<li>
-													<span class="checkbox">
-														<input type="checkbox" name="reviewFilterPantsUsldaySize" data-txt="평소사이즈 26" id="usldayPantsSize_0" value="PANTS_26"/>
-														<label for="usldayPantsSize_0"><i></i>26</label>
-													</span>
-												</li>
-											</ul>
-									</div>
-								</div>
-							{/* <!--선택된 항목--> */}
-							<div class="selected" style={{"display": "none"}}>
-								<ul title="선택된 필터조건" id="reviewFilterChkList"></ul>
-								<button type="button" onclick="reviewFilterClear();" class="reset" aria-label="초기화"></button>
-							</div>
-							{/* <!--//선택된 항목--> */}
-						</div>
-					</div>
+                                    <div className="list-content">
+                                        <div className="review-contents single">
+                                            <p className="review-txts">{review.review_text}</p>
+                                        </div>
+                                    </div>
+                                    <span className="list-id">{review.email}</span>
+                                    <span className="list-date">{new Date(review.created_at).toLocaleDateString()}</span>
+                                </li>
+                            ))}
+                        </ul>
 
-					<div class="review-detail-lists" id="searchGoodsReviewList">
-						<ul>
-							<li id="reviewLi_GM0025011713430_1" data-godno="GM0025011713430" data-seq="1" data-inflow-ord-sect-cd="OFLNE_ORD">
-								<div class="list-status">
-									<span class="rate point5">
-									<i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i><i aria-label="star"></i>
-									</span>
+                        {/* ✅ 페이지네이션 UI (5개 이상일 때만 표시) */}
+                        {totalPages > 1 && (
+                            <div className="page">
+                                <button onClick={goToFirstPage} disabled={currentPage === 1}>{"<<"}</button>
+                                <button onClick={goToPreviousGroup} disabled={currentPage === 1}>{"<"}</button>
 
-								</div>
-								<div class="list-content">
-									<div class="badge"><span>매장구매</span></div>
-									<div class="pick-opts">
-										<span>
-													<em>색상:</em>&nbsp;<em>남색 (화면과 같아요)</em>
-												</span>
-											<span>
-													<em>사이즈:</em>&nbsp;<em>M (잘 맞아요,오버핏)</em>
-												</span>
-											<span>
-													<em>평소 사이즈:</em>&nbsp;<em>26 (160cm / 51kg)</em>
-												</span>
-											<span>
-													<em>길이:</em>&nbsp;<em>종아리</em>
-												</span>
-											</div>
+                                {[...Array(endPage - startPage + 1)].map((_, i) => {
+                                    const pageNumber = startPage + i;
+                                    return (
+                                        <button 
+                                            key={pageNumber}
+                                            className={currentPage === pageNumber ? "on" : ""}
+                                            onClick={() => handlePageChange(pageNumber)}
+                                        >
+                                            {pageNumber}
+                                        </button>
+                                    );
+                                })}
 
-									<div class="review-contents single">
-
-										<p class="review-block"><a href="javascript:void(0);" class="txt-view" onclick="reviewSttemntOpenLayer('1', 'GM0025011713430', 'MB202204184969391', 'false',''); return false;">신고/차단</a>
-											</p>
-										<p class="review-txts">
-											봄까지 너무 잘 입을 디자인이에요 심플한데 예뻐요</p>
-										</div>
-								</div>
-								<span class="list-id">
-									par*********@gmail.com</span>
-								<span class="list-date">2025.02.27</span>
-							</li>
-							</ul>
-
-						<div class="page">
-							<a class="on" href="#none">1</a>
-									</div>
-
-					</div>
-				</div>
-			</div>
-
-            
+                                <button onClick={goToNextGroup} disabled={currentPage === totalPages}>{">"}</button>
+                                <button onClick={goToLastPage} disabled={currentPage === totalPages}>{">>"}</button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

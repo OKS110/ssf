@@ -2,7 +2,7 @@ export default function ProductMypage({pidItem, tabs = [], activeTab, setActiveT
     return (
         <div className="gods-detail">
             <div className="tab-rects" role="tablist" 
-            style={{ width: "auto", transform: "translateY(0px)", backgroundColor: "green" }}>
+            style={{ width: "auto", transform: "translateY(0px)"}}>
                 <ul id="goodsDetailTabs">
                     {tabs.map((tab) => (
                         <li
