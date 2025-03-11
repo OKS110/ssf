@@ -61,7 +61,7 @@ export default function SectionWrap({id, title, children}) {
     // console.log('isOpened --> ', isOpened);
 
     return (
-        <section id={id} style={{backgroundColor:"green"}}>
+        <section id={id}>
             <h2>{title}</h2>
             {/* {id === 'skill' && <p class="description">Skills & Attributes</p>} */}
             {id === "event" && 

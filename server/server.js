@@ -7,7 +7,8 @@ import productRouter from './router/productRouter.js';
 import SignupRouter from './router/signupRouter.js';
 import mypageRouter from './router/mypageRouter.js';
 import orderRouter from './router/orderRouter.js';
-import customerRouter from './router/customerRouter.js'
+import paymentRouter from './router/paymentRouter.js';
+import customerRouter from './router/customerRouter.js';
 import guestRouter from './router/guestRouter.js';
 import cartRouter from './router/cartRouter.js';
 import deliUploadRouter from './router/deliUploadRouter.js';
@@ -77,7 +78,7 @@ server.use('/deliveryUploads',deliUploadRouter);
 server.use('/customers', customerRouter);
 server.use('/guest', guestRouter);
 server.use('/order', orderRouter);
-
+server.use('/payment', paymentRouter);
 // 카트
 server.use('/cart', cartRouter);
 
