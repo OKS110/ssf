@@ -6,19 +6,36 @@ import { db } from './db.js';
  * @returns {Object} 삽입된 주문 정보 반환
  */
 export const addOrderItem = async (orderDataList) => {
-    const sql = `
-        INSERT INTO orders (
-            customer_id, order_number, brand, title, total_price, size, color, quantity,
-            zipcode, shipping_address, delivery_message, detail_address,
-            status, refund_amount, order_date, payment_method
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?);
-    `;
-
     try {
         const orderResults = []; // ✅ 여러 개 주문 ID 저장
+        const orderNumber = `ORD-${Date.now()}-${orderDataList[0].customer_id}`; // ✅ 동일 주문 번호 적용
 
         for (const orderData of orderDataList) {
-            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`;
+            // ✅ 1️⃣ 중복 주문 확인 (customer_id + title + size + color)
+            const [existingOrders] = await db.execute(
+                `SELECT COUNT(*) as count 
+                 FROM orders 
+                 WHERE customer_id = ? 
+                   AND title = ? 
+                   AND size = ? 
+                   AND color = ? 
+                   AND status = 'Pending'`,
+                [orderData.customer_id, orderData.title, orderData.size, orderData.color]
+            );
+
+            if (existingOrders[0].count > 0) {
+                console.warn(`⚠️ 중복 주문 발견 (customer_id: ${orderData.customer_id}, title: ${orderData.title}, size: ${orderData.size}, color: ${orderData.color})`);
+                continue; // ✅ 중복된 주문이면 INSERT 실행 안 함
+            }
+
+            // ✅ 2️⃣ 중복이 없을 경우 주문 추가
+            const sql = `
+                INSERT INTO orders (
+                    customer_id, order_number, brand, title, total_price, size, color, quantity,
+                    zipcode, shipping_address, delivery_message, detail_address,
+                    status, refund_amount, order_date, payment_method
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?);
+            `;
 
             const [result] = await db.execute(sql, [
                 orderData.customer_id, orderNumber, orderData.brand, orderData.title,
@@ -32,13 +49,14 @@ export const addOrderItem = async (orderDataList) => {
         }
 
         console.log("✅ 모든 주문 성공적으로 저장됨:", orderResults);
-        return { success: true, orderIds: orderResults }; // ✅ 여러 개 주문 ID 반환
+        return { success: true, orderIds: orderResults };
 
     } catch (error) {
         console.error("❌ 주문 생성 오류:", error);
         return { success: false, error };
     }
 };
+
 
 
 
@@ -75,8 +93,8 @@ export const pullOrderList = async (user_id) => {
     }
 };
 
-
-export const addCartOrders = async (orders) => {
+// 장바구니에서 주문페이지로 넘어가고 주문할 때 중복처리 필요함
+export const addCartOrders = async (orders) => { 
     const sql = `
         INSERT INTO orders (
             customer_id, 

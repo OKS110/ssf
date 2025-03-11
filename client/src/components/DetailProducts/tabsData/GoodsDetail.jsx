@@ -20,7 +20,7 @@ export default function GoodsDetail() {
     
     return (
         <>
-            <div style={{ backgroundColor: "lightblue", height: "auto", display: "flex" }}>
+            <div style={{ height: "auto", display: "flex" }}>
                 {/* 상품 이미지 리스트 */}
                 <div style={{ width: "50%" }}>
                     {pidItem?.image?.length > 0 ? (

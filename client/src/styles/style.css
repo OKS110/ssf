@@ -78,6 +78,7 @@ ul, li{
 }
 a{
     text-decoration: none;
+    color : var(--gray800);
 }
 img{
     width: 100%;
@@ -134,7 +135,6 @@ thead {
 /* ============================================================================================= */
 /* ============================================================================================= */
 header{
-    background-color: skyblue;
     width: 100%;
 }
 .content-wrap{
@@ -204,7 +204,6 @@ header{
     display: flex;
     align-items: center;
     gap: 30px;
-    background-color: yellow;
 }
 .header-middle .icon-wrap{
     display: flex;
@@ -224,7 +223,6 @@ header{
     font-size: 1.5rem;
 
     border-left: 1px solid gray;
-    background-color: salmon;
     display: flex;
     gap: 30px;
 }
@@ -299,7 +297,6 @@ header{
 /* ============================================================================================= */
 main{
     width: 100%;
-    background-color: gold;
 }
 main>.key-visual {
     width: 100%;
@@ -424,7 +421,6 @@ main>.contents{
     max-width: 1440px;
     min-width: 1280px;
 
-    background-color: pink;
 }
 .corner-section {
     max-width: 1440px;
@@ -461,7 +457,6 @@ main>.contents{
     font-weight: 700;
     text-align: center;
     border: 1px solid red;
-    background-color: lightcyan;
 }
 
 .our-picks-gods {
@@ -674,7 +669,7 @@ main>.contents{
 /* ============================================================================================= */
 footer{
     width: 100%;
-    background-color: silver;
+    background-color: var(--gray150);
 
 }
 footer .company-area{
@@ -684,7 +679,6 @@ footer .company-area{
     margin: 0 auto;
     box-sizing: border-box;
     border: 1px solid red;
-    background-color: beige;
 }
 footer .company-area .company-title{
     margin: 0 0 10px;
@@ -780,7 +774,6 @@ footer .etc .etc-right{
     justify-content: space-between;
     gap: 8px;
     margin: 0;
-    background-color: yellow;
     width: 100%;
 }
 #tab1 .signIn-form>div>.input-box{
@@ -803,7 +796,6 @@ footer .etc .etc-right{
 .link{
     margin: 40px 0 0;
     padding: 20px 50px;
-    background-color: silver;
     display: flex;
     justify-content: space-around;
 }
@@ -812,7 +804,6 @@ footer .etc .etc-right{
 }
 
 .login_sns dt {
-    background-color: yellow;
     position: relative;
     text-align: center;
 }
@@ -865,7 +856,6 @@ footer .etc .etc-right{
     justify-content: space-between;
     gap: 8px;
     margin: 0;
-    background-color: yellow;
     width: 100%;
 }
 #tab2 .signIn-form>div>.input-box{
@@ -3393,6 +3383,7 @@ section#order .form_wrap .btns .btn.gray {
 .detail-view .gods-detail .review-tab-veiw .gods-review-area .opt-check .lineUp label {
     color: var(--gray450);
     font-weight: 700;
+
 }
 .detail-view .gods-detail .gods-bx-wrap .opt-check label {
     font-size: var(--F15);
@@ -3686,8 +3677,12 @@ section#order .form_wrap .btns .btn.gray {
 .page {
     display: flex;
     justify-content: center;
+    gap: 20px;
     align-items: center;
-    column-gap: 6px;
     margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
+}
+.page button {
+    margin: 0;
 }

@@ -179,10 +179,10 @@ ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50) NOT NULL; -- 결제 수
 ALTER TABLE orders 
 ADD COLUMN zipcode VARCHAR(20) NOT NULL AFTER total_price, -- 우편번호 (필수 입력)
 ADD COLUMN detail_address VARCHAR(255) NOT NULL AFTER shipping_address; -- 상세주소 (필수 입력)
-select * from orders;
-UPDATE orders 
+select * from guest_orders;
+UPDATE guest_orders 
 SET status = 'delivered' 
-WHERE customer_id = 1;
+WHERE guest_id = 7;
 ALTER TABLE orders
 ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 
@@ -191,8 +191,23 @@ ADD COLUMN delivery_message VARCHAR(255) NULL AFTER shipping_address;
 -- (2001, 3, 'ORD-20250122-2001', 296818, 'Seoul, Korea', 'Returned', 94617, '2025-01-22 12:18:10'),
 -- (2002, 5, 'ORD-20250130-2002', 174589, 'Busan, Korea', 'Shipped', 0, '2025-01-30 14:45:32'),
 -- (2003, 2, 'ORD-20250205-2003', 119320, 'Incheon, Korea', 'Pending', 0, '2025-02-05 09:10:23');
-select * from orders where customer_id = 2;
+select * from orders;
+            DELETE o1 FROM orders o1
+            INNER JOIN (
+                SELECT customer_id, title, size, color, MAX(oid) as keep_id
+                FROM orders
+                WHERE status = 'Pending'
+                GROUP BY customer_id, title, size, color
+                HAVING COUNT(*) > 1
+            ) o2 
+            ON o1.customer_id = o2.customer_id 
+            AND o1.title = o2.title 
+            AND o1.size = o2.size 
+            AND o1.color = o2.color
+            WHERE o1.oid != o2.keep_id;
+select * from cart;
 desc orders;
+select * from reviews;
 select * from guest_orders;
 select * from guests;
 select * from customers;
@@ -287,7 +302,7 @@ CREATE TABLE reviews ( -- 상품 리뷰를 저장하는 테이블 생성
 );
 ALTER TABLE reviews 
 MODIFY COLUMN status ENUM('Pending', 'Approved', 'Rejected', 'Shipped', 'Delivered', 'Reviewed') DEFAULT 'Pending';
-ALTER TABLE reviews 
+ALTER TABLE orders
 MODIFY COLUMN status ENUM('Pending', 'Approved', 'Rejected', 'Shipped', 'Delivered', 'Reviewed') DEFAULT 'Pending';
 
 SELECT @@autocommit;

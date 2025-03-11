@@ -21,3 +21,21 @@ export const addReview = async (req, res) => {
         res.status(500).json({ error: "리뷰 저장에 실패했습니다." });
     }
 };
+
+
+/** ✅ 특정 상품의 리뷰 가져오기 */
+export const getReviewsByProduct = async (req, res) => {
+    const { product_id } = req.body;
+
+    if (!product_id) {
+        return res.status(400).json({ error: "상품 ID가 필요합니다." });
+    }
+
+    try {
+        const reviews = await repository.getReviewsByProduct(product_id);
+        res.json({ success: true, reviews });
+    } catch (error) {
+        console.error("❌ 리뷰 조회 오류:", error);
+        res.status(500).json({ error: "리뷰 데이터를 불러오지 못했습니다." });
+    }
+};

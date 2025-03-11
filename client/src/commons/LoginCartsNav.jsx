@@ -1,6 +1,6 @@
 export default function LoginCartsNav({ activeTab, setActiveTab, menuListName = [] }) {
     return (
-        <ul className="tab" style={{ backgroundColor: "green" }}>
+        <ul className="tab">
             {menuListName.map((menu) => (
                 <li>
                     <a 

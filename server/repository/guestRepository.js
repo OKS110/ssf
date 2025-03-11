@@ -32,7 +32,7 @@ export const addGuest = async (guestData) => {
     }
 };
 
-// ✅ 비회원 주문 추가
+// ✅ 비회원 주문 추가 중복처리 필요
 export const addGuestOrder = async (guestOrderData) => {
     try {
         if (!guestOrderData.guest_id) {

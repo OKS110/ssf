@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav({ categories = [], subCategories = [], specialLinks = [] }) {
   return (
-      <nav className='header-bottom' style={{ backgroundColor: "green" }}>
+      <nav className='header-bottom'>
           <div className='nav-left'>
               <ul className='nav-main'>
                   {categories.map((category, index) => (

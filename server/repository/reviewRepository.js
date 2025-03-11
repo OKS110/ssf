@@ -35,3 +35,24 @@ export const addReview = async (customer_id, product_id, order_id, rating, revie
         throw error;
     }
 };
+
+
+/** ✅ 특정 product_id에 해당하는 리뷰 조회 */
+export const getReviewsByProduct = async (product_id) => {
+    try {
+        const sql = `
+            SELECT r.rid, r.product_id, r.customer_id, r.rating, r.review_text, r.created_at,
+                   c.name, c.email
+            FROM reviews r
+            JOIN customers c ON r.customer_id = c.customer_id
+            WHERE r.product_id = ?
+            ORDER BY r.created_at DESC
+        `;
+
+        const [reviews] = await db.execute(sql, [Number(product_id)]);
+        return reviews;
+    } catch (error) {
+        console.error("❌ 리뷰 데이터 조회 오류:", error);
+        throw error;
+    }
+};
