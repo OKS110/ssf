@@ -7,12 +7,14 @@ import Modal from 'react-modal';
 import CartOptionModal from "./CartOptionModal.jsx";
 import OrderGrayBox from "./OrderGrayBox.jsx";
 import CartOrderBill from './CartOrderBill.jsx';
+import { ProductContext } from "../../context/ProductContext.js";
 
 export default function CartOrderMain() {
     const { isLoggedIn } = useContext(AuthContext);
     const { cartList, setCartList } = useContext(DetailProductContext);
     const { getCartItems, cartDeleteItem } = useCart();
     const { getPidItem } = useProduct();
+    const {pid, pidList} = useContext(ProductContext);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedItems, setSelectedItems] = useState([]);
@@ -23,20 +25,6 @@ export default function CartOrderMain() {
             getCartItems();
         }
     }, [isLoggedIn]);
-
-    // ✅ 개별 상품 삭제
-    const deleteItem = async (cid) => {
-        if (!window.confirm("선택한 상품을 삭제하시겠습니까?")) return;
-        try {
-            const response = await cartDeleteItem(cid);
-            if (response?.result_row > 0) {
-                setCartList((prevList) => prevList.filter((item) => item.cid !== cid));
-                getCartItems();
-            }
-        } catch (error) {
-            console.error("❌ 삭제 중 오류 발생:", error);
-        }
-    };
 
     // ✅ 선택된 상품 삭제
     const handleDeleteSelectedItems = async () => {

@@ -87,7 +87,9 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                             <input id="zipcode" name="zipcode" type="text" style={{display:"inline-block", margin:"0", width:"25%"}}
                                 value={formData.zipcode} placeholder="우편번호" readOnly className="reset" />
                                 
-                            <button type="button" className="btn" onClick={handleToggle} style={{display:"inline-block", margin:"0 0 0 6px"}}
+                            <button type="button" className="btn" onClick={handleToggle} style={{display:"inline-block", margin:"0 10px", fontSize:"1rem", padding:"0 5px",
+                                border:"1px solid var(--gray200)"
+                            }}
                              >주소 찾기</button>
 
                             <input id="address" name="address" type="text" style={{display:"block", margin:"0"}}

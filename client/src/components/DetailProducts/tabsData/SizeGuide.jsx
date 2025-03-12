@@ -24,7 +24,7 @@ export default function SizeGuide() {
             {/* 사이즈 버튼 리스트 */}
             <ul style={{ display: "flex", justifyContent: "center", gap: "30px", listStyle: "none", padding: "0" }}>
                 {sizeGuideType.map((item) => (
-                    <li key={item.id} style={{ margin: "0", borderBottom: sizeType === item.label ? "3px solid red" : "none" }}>
+                    <li key={item.id} style={{ margin: "0", borderBottom: sizeType === item.label ? "3px solid blue" : "none" }}>
                         <button 
                             style={{
                                 fontSize: "1.6rem",

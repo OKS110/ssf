@@ -1,11 +1,9 @@
 import { useState, useRef } from "react";
 import axios from "axios";
-import { useOrder } from "../hooks/useOrder.js"; // ✅ 주문 관련 훅 가져오기
 
 export const useKakaoPayment = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { saveToOrder, deleteOrderedCartItems, saveGuestOrder } = useOrder(); // ✅ 주문 저장 및 삭제 훅 가져오기
     const isProcessing = useRef(false); // ✅ 중복 실행 방지
 
     const formatTitle = (title) => {
@@ -61,35 +59,7 @@ export const useKakaoPayment = () => {
         }
     };
 
-    const processOrderAfterPayment = async () => {
-        const tid = localStorage.getItem("tid");
-        const orderDataList = JSON.parse(localStorage.getItem("orderDataList"));
-        const userData = JSON.parse(localStorage.getItem("userData"));
 
-        if (!tid || !orderDataList || !userData) {
-            console.error("❌ 결제 성공 후 주문 데이터 없음");
-            return;
-        }
 
-        try {
-            if (userData.customer_id) {
-                await saveToOrder(orderDataList.map(order => ({ ...order, customer_id: userData.customer_id })));
-                await deleteOrderedCartItems(userData.customer_id, orderDataList);
-            } else {
-                await saveGuestOrder(userData, orderDataList);
-            }
-
-            console.log("✅ 주문 저장 및 장바구니 삭제 완료");
-
-            // ✅ 주문 완료 후 데이터 삭제
-            localStorage.removeItem("tid");
-            localStorage.removeItem("orderDataList");
-            localStorage.removeItem("userData");
-
-        } catch (error) {
-            console.error("❌ 주문 저장 및 장바구니 삭제 실패:", error);
-        }
-    };
-
-    return { handleKakaoPayment, processOrderAfterPayment, loading, error };
+    return { handleKakaoPayment, loading, error };
 };

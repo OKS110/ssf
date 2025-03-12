@@ -7,28 +7,10 @@ import { db } from './db.js';
  */
 export const addOrderItem = async (orderDataList) => {
     try {
-        const orderResults = []; // ✅ 여러 개 주문 ID 저장
-        const orderNumber = `ORD-${Date.now()}-${orderDataList[0].customer_id}`; // ✅ 동일 주문 번호 적용
 
         for (const orderData of orderDataList) {
-            // ✅ 1️⃣ 중복 주문 확인 (customer_id + title + size + color)
-            const [existingOrders] = await db.execute(
-                `SELECT COUNT(*) as count 
-                 FROM orders 
-                 WHERE customer_id = ? 
-                   AND title = ? 
-                   AND size = ? 
-                   AND color = ? 
-                   AND status = 'Pending'`,
-                [orderData.customer_id, orderData.title, orderData.size, orderData.color]
-            );
-
-            if (existingOrders[0].count > 0) {
-                console.warn(`⚠️ 중복 주문 발견 (customer_id: ${orderData.customer_id}, title: ${orderData.title}, size: ${orderData.size}, color: ${orderData.color})`);
-                continue; // ✅ 중복된 주문이면 INSERT 실행 안 함
-            }
-
-            // ✅ 2️⃣ 중복이 없을 경우 주문 추가
+            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`; // ✅ 동일 주문 번호 적용
+            
             const sql = `
                 INSERT INTO orders (
                     customer_id, order_number, brand, title, total_price, size, color, quantity,
@@ -44,12 +26,10 @@ export const addOrderItem = async (orderDataList) => {
                 orderData.detail_address, orderData.status || "Pending", orderData.refund_amount ?? 0,
                 orderData.payment_method
             ]);
-
-            orderResults.push(result.insertId); // ✅ 삽입된 주문 ID 저장
         }
 
         console.log("✅ 모든 주문 성공적으로 저장됨:", orderResults);
-        return { success: true, orderIds: orderResults };
+        return { success: true, error };
 
     } catch (error) {
         console.error("❌ 주문 생성 오류:", error);
@@ -93,57 +73,7 @@ export const pullOrderList = async (user_id) => {
     }
 };
 
-// 장바구니에서 주문페이지로 넘어가고 주문할 때 중복처리 필요함
-export const addCartOrders = async (orders) => { 
-    const sql = `
-        INSERT INTO orders (
-            customer_id, 
-            order_number, 
-            brand, 
-            title, 
-            total_price, 
-            size, 
-            color, 
-            quantity, 
-            zipcode, 
-            shipping_address, 
-            delivery_message, 
-            detail_address, 
-            status, 
-            refund_amount, 
-            order_date, 
-            payment_method
-        ) VALUES ?
-    `;
 
-    const values = orders.map(order => [
-        order.customer_id,  
-        `ORD-${Date.now()}-${order.customer_id}`,  
-        order.brand,  
-        order.title,  
-        order.total_price,  
-        order.size,  
-        order.color,  
-        order.quantity,  
-        order.zipcode,  
-        order.shipping_address,  
-        order.delivery_message,  
-        order.detail_address,  
-        order.status || "Pending",  
-        order.refund_amount || 0,  
-        new Date(),  
-        order.payment_method
-    ]);
-
-    try {
-        const [result] = await db.query(sql, [values]);
-        console.log(`✅ 장바구니 주문 저장 완료 (${result.affectedRows}개 주문)`);
-        return { success: true, affectedRows: result.affectedRows };
-    } catch (error) {
-        console.error("❌ 장바구니 주문 저장 오류:", error);
-        throw error;
-    }
-};
 
 export const getCartOrderItems = async (selectedCids) => {
     const placeholders = selectedCids.map(() => "?").join(",");

@@ -31,21 +31,21 @@ server.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파
 
 //로그인 폼(유저, 게스트) 
 server.use('/user', loginRouter);
+
+
+// 상품관련
 server.use('/product', productRouter);
+
+
 
 // ✅ 상품 업데이트 요청을 받을 API 추가 (GET, POST 둘 다 처리 가능하게 변경)
 server.get('/product/update', (req, res) => {
     console.log("✅ 상품 데이터 업데이트 요청 수신 (GET)");
     res.json({ message: "상품 데이터 업데이트 요청 수신 (GET)" });
-
-
 });
-
 server.post('/product/update', (req, res) => {
     console.log("✅ 상품 데이터 업데이트 요청 수신 (POST)");
     res.json({ message: "상품 데이터 업데이트 요청 수신 (POST)" });
-
-    
 });
 
 

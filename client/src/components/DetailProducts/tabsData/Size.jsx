@@ -37,7 +37,7 @@ export default function Size({ pidItem }) {
 
 
             {/* 사이즈 가이드 토글 */}
-            <div style={{ marginTop: "10px", border: "1px solid gray", padding: "10px" }}>
+            <div style={{ marginTop: "10px", padding: "10px" }}>
                 <button 
                     onClick={(event) => {
                         event.stopPropagation();

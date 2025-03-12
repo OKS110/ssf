@@ -67,9 +67,11 @@ export default function SectionWrap({id, title, children}) {
             {id === "event" && 
                 <ul class="ssf-events">
                 <li>
-                            <a href="/event/EV202411010144826/view?utag=ref_tpl:111942$ref_cnr:23369$set:2$dpos:1" onclick="cnrClickLoging('23369','2','1','/event/EV202411010144826/view');">
+                            <a href="" 
+                            >
                                 <div class="item-img">
-                                    <img src="https://img.ssfshop.com/display/category/THM/A30/A16/contents/23369_345896_34_KOR_20250131115729.png" alt="2월 웰컴딜" class="swiper-lazy swiper-lazy-loaded"/>
+                                    <img src="https://img.ssfshop.com/display/category/THM/A30/A16/contents/23369_345896_34_KOR_20250131115729.png"
+                                     alt="2월 웰컴딜" class="swiper-lazy swiper-lazy-loaded"/>
                                 </div>
                                 <div class="item-info">
                                     <p class="tit">아직 구매한 적 없으시다면</p>
@@ -78,7 +80,7 @@ export default function SectionWrap({id, title, children}) {
                             </a>
                         </li>
                     <li>
-                            <a href="/event/EV202501160146633/view?utag=ref_tpl:111942$ref_cnr:23369$set:2$dpos:2" onclick="cnrClickLoging('23369','2','2','/event/EV202501160146633/view');">
+                            <a href="" onclick="cnrClickLoging('23369','2','2','/event/EV202501160146633/view');">
                                 <div class="item-img">
                                     <img src="https://img.ssfshop.com/display/category/THM/A30/A16/contents/23369_345896_32_KOR_20241227160250.jpg" alt="친구초대" class="swiper-lazy swiper-lazy-loaded"/>
                                 </div>

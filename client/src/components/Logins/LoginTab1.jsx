@@ -108,7 +108,7 @@ export default function LoginTab1({ isActive }) {
     return (
         <div id="tab1" className={isActive ? "on" : ""}>
             <form onSubmit={handleLoginSubmit}>
-                <div className="signIn-form" style={{ backgroundColor: "yellowgreen" }}>
+                <div className="signIn-form" >
                     <div>
                         <div className="input-box">
                             <label htmlFor="userId" className="wa-hidden">아이디</label>

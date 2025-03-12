@@ -159,7 +159,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
                             <li key={index}
                                 style={{
                                     backgroundColor: color,
-                                    border: selectColor === color ? "2px solid black" : "none",
+                                    border: selectColor === color ? "2px solid var(--gray600)" : "2px solid var(--gray350)",
                                 }}
                                 onClick={() => handleColorSelect(color)}>
                             </li>
@@ -173,7 +173,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
                         {sizePidItemList.length > 0 ? sizePidItemList.map((size, index) => (
                             <li key={index}
                                 style={{
-                                    border: selectedSize === size.name ? "2px solid black" : "none",
+                                    border: selectedSize === size.name ? "2px solid var(--gray600)" : "2px solid var(--gray350)",
                                     cursor: "pointer",
                                 }}
                                 onClick={() => handleSizeSelect(size.name)}>  {/* ✅ 객체에서 name 값을 추출하여 저장 */}

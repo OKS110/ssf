@@ -14,21 +14,6 @@ export const pullOrderList = async(req, res) => {
     res.end();
 }
 
-export const addCartOrders = async (req, res) => {
-    try {
-        const { orders } = req.body; // 장바구니에서 주문할 상품들 (배열 형태)
-
-        if (!orders || orders.length === 0) {
-            return res.status(400).json({ error: "주문할 상품이 없습니다." });
-        }
-
-        const result = await repository.addCartOrders(orders);
-        res.json(result);
-    } catch (error) {
-        console.error("❌ 장바구니 주문 저장 실패:", error);
-        res.status(500).json({ error: "장바구니 주문 저장 실패" });
-    }
-};
 
 export const getCartOrderItems = async (req, res) => {
     const { cids } = req.body;

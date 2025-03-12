@@ -8,15 +8,11 @@ import axios from "axios";
 import { CustomersContext } from '../context/CustomersContext.js';
 import { useCustomers } from '../hooks/useCustomers.js';
 import { MypageContext } from "../context/MypageContext.js";
-import { useKakaoPayment } from "../hooks/useKaKaoPayment.js";
 
 export default function Person() {
-    const { processOrderAfterPayment } = useKakaoPayment();
-    processOrderAfterPayment();
     // ✅ LocalStorage에서 user_id 가져오기
     const userId = localStorage.getItem("user_id");
 
-    const [heart, setHeart] = useState(false);
     const { customer } = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
     const { setNotMypage } = useContext(MypageContext);

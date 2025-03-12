@@ -15,12 +15,6 @@ export const getItem = async(req, res) => {
     res.end();
 }
 
-export const getItem2 = async(req, res) => {
-    const result = await repository.getItem(req.body);
-    // console.log("controller :: result --> ", result);
-    res.json(result);
-    res.end();
-}
 
 // import * as repository from '../repository/productRepository.js';
 

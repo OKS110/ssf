@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import ReviewSmallTab from "./ReveiwSmallTab.jsx";
 import ReviewBanner from "./ReviewBanner.jsx";
-import ReviewBigTab from "./ReviewBigTab.jsx";
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa";
+import { FaAnglesRight } from "react-icons/fa6";
+import { FaAnglesLeft } from "react-icons/fa6";
 import ReviewFilterTab from "./ReviewFilterTab.jsx";
 
 export default function Review({reviews }) {
@@ -73,7 +76,7 @@ export default function Review({reviews }) {
 	console.log("reviews", reviews);
 	
     return (
-        <div style={{ height: "auto" }}>
+        <div style={{ height: "auto", marginBottom:"100px"}}>
             <ReviewBanner />
 
             <div className="gods-bx-wrap" id="searchGoodsReviewListCond">
@@ -114,8 +117,8 @@ export default function Review({reviews }) {
                         {/* ✅ 페이지네이션 UI (5개 이상일 때만 표시) */}
                         {totalPages > 1 && (
                             <div className="page">
-                                <button onClick={goToFirstPage} disabled={currentPage === 1}>{"<<"}</button>
-                                <button onClick={goToPreviousGroup} disabled={currentPage === 1}>{"<"}</button>
+                                <button onClick={goToFirstPage} disabled={currentPage === 1}><FaAnglesLeft /></button>
+                                <button onClick={goToPreviousGroup} disabled={currentPage === 1}><FaAngleLeft /></button>
 
                                 {[...Array(endPage - startPage + 1)].map((_, i) => {
                                     const pageNumber = startPage + i;
@@ -130,8 +133,8 @@ export default function Review({reviews }) {
                                     );
                                 })}
 
-                                <button onClick={goToNextGroup} disabled={currentPage === totalPages}>{">"}</button>
-                                <button onClick={goToLastPage} disabled={currentPage === totalPages}>{">>"}</button>
+                                <button onClick={goToNextGroup} disabled={currentPage === totalPages}><FaAngleRight /></button>
+                                <button onClick={goToLastPage} disabled={currentPage === totalPages}><FaAnglesRight /></button>
                             </div>
                         )}
                     </div>
