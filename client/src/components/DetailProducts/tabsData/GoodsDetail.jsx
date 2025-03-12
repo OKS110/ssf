@@ -20,7 +20,7 @@ export default function GoodsDetail() {
     
     return (
         <>
-            <div style={{ height: "auto", display: "flex" }}>
+            <div style={{ height: "auto", display: "flex"}}>
                 {/* 상품 이미지 리스트 */}
                 <div style={{ width: "50%" }}>
                     {pidItem?.image?.length > 0 ? (
@@ -42,7 +42,7 @@ export default function GoodsDetail() {
             </div>
 
             {/*  배송 토글  */}
-            <div style={{ marginTop: "20px", border: "1px solid gray", padding: "10px" }}>
+            <div style={{ marginTop: "20px",  padding: "10px"}}>
                 <button onClick={() => setIsDeliveryOpen(!isDeliveryOpen)} style={{ width: "100%", padding: "10px", fontSize: "16px", textAlign:"left", 
                     display:"flex", justifyContent:"space-between"}}>
                     <p style={{margin:0}}>배송</p> <p style={{margin:0}}>{isDeliveryOpen ? "▲" : "▼"}</p>
@@ -55,7 +55,7 @@ export default function GoodsDetail() {
             </div>
 
             {/*  기타 유의사항 토글  */}
-            <div style={{ marginTop: "10px", border: "1px solid gray", padding: "10px" }}>
+            <div style={{ marginTop: "10px", padding: "10px" }}>
                 <button onClick={() => setIsNoticeOpen(!isNoticeOpen)} style={{ width: "100%", padding: "10px", fontSize: "16px",  textAlign:"left",
                      display:"flex", justifyContent:"space-between" }}>
                     <p style={{margin:0}}>기타 유의사항</p> <p style={{margin:0}}>{isNoticeOpen ? "▲" : "▼"}</p>

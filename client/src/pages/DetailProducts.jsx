@@ -117,7 +117,7 @@ export default function DetailProducts() {
                 /> 
             </div>
             {/* 기존 컨텐츠 영역 활용 & 스크롤 이동 */}
-            <div ref={contentRef} style={{ border: "1px solid red" }}>
+            <div ref={contentRef}>
                 {renderContent()}
             </div>
         </div>

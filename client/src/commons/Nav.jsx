@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../auth/AuthContext";
+import { useContext } from "react";
 
 export default function Nav({ categories = [], subCategories = [], specialLinks = [] }) {
+    const { isLoggedIn } = useContext(AuthContext);
+
   return (
       <nav className='header-bottom'>
           <div className='nav-left'>

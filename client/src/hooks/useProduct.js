@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { ProductContext } from "../context/ProductContext.js"
+import { ProductContext } from "../context/ProductContext.js";
 
 export function useProduct() {
+    
     const { 
         productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList, setSearchList,setPidItem2
     } = useContext(ProductContext);
+    
     const [socket, setSocket] = useState(null); // ✅ WebSocket 상태 관리
 
     /** 상품 데이터 전체 호출 **/
@@ -64,12 +66,6 @@ export function useProduct() {
         setPidItem(result.data);
         return result.data;  // ✅ 상품 정보를 반환하도록 수정
     };
-    
-    const getPidItem2 = async(pid) => {
-        const result = await axios.post("http://localhost:9000/product/item2", {"pid": pid});       
-        setPidItem2(prev => [...prev, result.data]); // ✅ 기존 배열에 추가하는 방식으로 설정 
-    }
-
 
     /** 모달창 상품 검색 필터링 **/
     const getSearchList = async(search) => {
@@ -87,5 +83,5 @@ export function useProduct() {
         return { "filterData": filterData };
     }
 
-    return { getProductList, getPidItem, getFilterProducts, getSearchList ,getPidItem2};
+    return { getProductList, getPidItem, getFilterProducts, getSearchList};
 }

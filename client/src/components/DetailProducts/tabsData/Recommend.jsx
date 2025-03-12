@@ -47,7 +47,7 @@ export default function Recommend() {
     }, [pidItem, productList]);
 
     return (
-        <div style={{ height: "auto" }}>
+        <div style={{ height: "auto", marginBottom:"100px"}}>
             {filteredSubProducts.length > 1 ? <><div style={{padding:"20px 0"}}><h1>비슷한 상품</h1></div>
                         <ProductBlock 
                         detailList={filteredSubProducts} 

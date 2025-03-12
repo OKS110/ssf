@@ -57,7 +57,7 @@ export default function LoginTab2({ isActive }) {
             if (res.data.result_rows === 1) {
                 alert('비회원 로그인 성공!');
                 localStorage.setItem("token", res.data.token);
-                localStorage.setItem("guest_id", res.data.guest_id);
+                localStorage.setItem("user_id", `guest_${res.data.guest_id}`);
                 setIsLoggedIn(true);
 
                 // 이전에 보고있던 상품 데이터 주문 정보들을 가져와서 주문 페이지로 이동
@@ -84,7 +84,7 @@ export default function LoginTab2({ isActive }) {
     <div id="tab2" className={isActive ? "on" : ""}>
       <h3 className="wa-hidden">비회원(주문조회) 입력</h3>
       <form onSubmit={handleGuestLogin}>
-        <div className="signIn-form" style={{ backgroundColor: "yellowgreen" }}>
+        <div className="signIn-form">
           <div>
             <div className="input-box">
               <label htmlFor="guestNm" className="wa-hidden">이름</label>

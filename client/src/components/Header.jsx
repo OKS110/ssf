@@ -35,7 +35,6 @@ export default function Header() {
     ];
 
     const specialLinks = [
-        { label: "회원가입", link: "/signup" },
         { label: "삼성전자", link: "#" }
     ];
 
@@ -106,20 +105,24 @@ export default function Header() {
                     <Link to='/person' className="person">마이페이지</Link>
                     {/* 비회원 여부에 따라 로그인 버튼 텍스트 변경 */}
                     <button  className="login" onClick={handleLoginToggle}>
-                        {isLoggedIn ? (isGuest ? "(비회원) 로그아웃" : "로그아웃") : "로그인"}
+                        {isLoggedIn ? (isGuest ? "(비회원) 로그아웃" : "로그아웃") : "로그인" }
                     </button>
+                    {isLoggedIn ? "" : <Link to='/signup' className="person">회원가입</Link>}
+                    
+
                     {/* Link 태그에서 button으로 변경 -> window.confirm 취소 시 Link 의 주소 참조로 인한 오류 발생 */}
                 </ul>
             </div>
 
             <div className='header-middle-wrap'>
                 <div className='header-middle content-wrap'>
-                    <Link to='/' className='header-logo'><h1><span className="big-logo">SSF</span> <span className="small-logo">SHOP</span></h1></Link>
+                    <Link to='/' className='header-logo'><h1><span className="big-logo">SSF</span> <span> </span>
+                    <span className="small-logo" style={{fontWeight:"100"}}>SHOP</span></h1></Link>
 
                     <div className='icon-shop-wrap'>
                         <div className='icon-wrap'>
                             {/* <Link to='/detail'> */}
-                                <button type='button' onClick={() => setIsOpen(true)}><CiSearch /></button>
+                                <button type='button' onClick={() => setIsOpen(true)} style={{backgroundColor:"white"}}><CiSearch /></button>
                                 <Modal
                                     isOpen={isOpen}
                                     onRequestClose={() => setIsOpen(false)}
@@ -131,8 +134,8 @@ export default function Header() {
                                     <SearchModal event={setIsOpen} />
                                 </ Modal>
                             {/* </Link> */}
-                            <Link to='/carts'><button type='button'><CiHeart /></button></Link>
-                            <Link to='/carts'><button type='button'><AiOutlineShopping /></button></Link>
+                            <button type='button' style={{backgroundColor:"white"}}><CiHeart /></button>
+                            <button type='button' style={{backgroundColor:"white"}}><Link to='/carts'><AiOutlineShopping /></Link></button>
                         </div>
                         <span>|</span>
                         <div className='shop-wrap'>

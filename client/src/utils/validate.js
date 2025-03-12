@@ -37,17 +37,6 @@ export const signupValidate = (refs,error,setError,isChecked1,isChecked2) => {
         refs.phoneRef.current.focus();
         return false;
     }
-    // else if (refs.phoneRef.current.value.slice(3, 4) !== '-') {
-    //     alert('연락처를 양식에 맞춰 다시 작성해주세요');
-    //     refs.phoneRef.current.value = '';
-    //     refs.phoneRef.current.focus();
-    //     return false;
-    // }else if (refs.phoneRef.current.value.slice(8,9) !== '-') {
-    //     alert('연락처를 양식에 맞춰 다시 작성해주세요');
-    //     refs.phoneRef.current.value = '';
-    //     refs.phoneRef.current.focus();
-    //     return false;
-    // }
     else  if(refs.addressRef.current.value === ''){
         setError({...error, ['address']:'주소를 입력해주세요'});
         refs.addressRef.current.focus();
@@ -74,4 +63,24 @@ export const signupValidate = (refs,error,setError,isChecked1,isChecked2) => {
     }else {
         return true;
     }
+}
+
+// 주문 양식 폼 validate
+export const validateOrder = (formData, refs) => {
+    let missingFields = [];
+
+    if (!formData.name || !refs.nameRef?.current?.value) missingFields.push("이름");
+    if (!formData.phone || !refs.phoneRef?.current?.value) missingFields.push("휴대폰 번호");
+    if (!formData.email || !refs.emailRef?.current?.value) missingFields.push("이메일");
+    if (!formData.address || !refs.addressRef?.current?.value) missingFields.push("배송 주소");
+    if (!formData.detail_address || !refs.detail_addressRef?.current?.value) missingFields.push("배송 상세 주소");
+    if (!formData.message || !refs.messageRef?.current?.value) missingFields.push("배송 메시지");
+
+    if (missingFields.length > 0) {
+        console.log("입력되지 않은 필드:", missingFields.join(", "));
+        alert(`다음 항목을 입력해주세요: ${missingFields.join(", ")}`);
+        return false;
     }
+
+    return true;
+};

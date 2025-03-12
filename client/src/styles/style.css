@@ -1,4 +1,5 @@
 *{
+    box-sizing: border-box;
     margin: 0 auto;padding: 0;
 }
 :root {
@@ -96,7 +97,7 @@ a.btn, button.btn {
     font-size: 1.4rem;
     color: gray;
     text-align: center;
-    border: 1px solid gray;
+    border: 1px solid var(--gray350);
     background: #fff;
     white-space: nowrap;
 }
@@ -173,7 +174,8 @@ header{
  }
 .header-top>.login{
     display: block;
-    /* color: #fff; */
+    color: #fff;
+    background-color: #000;
     font-size: .9rem;
     padding: 10px;
     margin: 0;
@@ -196,7 +198,9 @@ header{
     margin: 0;
     padding: 15px 0;
     height: 100%;
+    color: var(--purple400);
 }
+
 
 .header-middle .icon-shop-wrap{
     margin: 0;
@@ -212,8 +216,6 @@ header{
 }
 .header-middle .icon-wrap>button{
     font-size: 1.5rem;
-
-    border: 1px solid red;
     display: inline-block;
     width: 24px;
     height: 24px;
@@ -221,8 +223,6 @@ header{
 }
 .header-middle .shop-wrap{
     font-size: 1.5rem;
-
-    border-left: 1px solid gray;
     display: flex;
     gap: 30px;
 }
@@ -241,7 +241,6 @@ header{
     height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    border: 1px solid red;
     display: flex;
     justify-content: space-between;
 }
@@ -318,7 +317,7 @@ main>.key-visual {
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
-    border: 1px solid blueviolet;
+    /* border: 1px solid blueviolet; */
 }
 .swiper-slide {
     flex-shrink: 0;
@@ -456,7 +455,7 @@ main>.contents{
     color: var(--gray900);
     font-weight: 700;
     text-align: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .our-picks-gods {
@@ -546,7 +545,7 @@ main>.contents{
 }
 .our-picks-gods .gods-list .gods-item {
     position: relative;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .our-picks-gods .gods-list .gods-item .gods-info {
     position: absolute;
@@ -569,7 +568,7 @@ main>.contents{
     justify-content: center;
     margin-top: 40px;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .swiper-button-next, .swiper-button-prev {
     margin: 0;
@@ -670,6 +669,7 @@ main>.contents{
 footer{
     width: 100%;
     background-color: var(--gray150);
+    padding: 20px
 
 }
 footer .company-area{
@@ -678,7 +678,7 @@ footer .company-area{
     height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 footer .company-area .company-title{
     margin: 0 0 10px;
@@ -688,8 +688,6 @@ footer .company-area>p{
 }
 footer .etc{
     margin: 60px 0 0;
-    display: flex;
-    justify-content: space-between;
 }
 footer .etc .etc-left{
     margin: 0;
@@ -718,7 +716,7 @@ footer .etc .etc-right{
 .login-wrap{
     width: 520px;
     margin: 0 auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .login-wrap>h1{
     margin: 0 0 40px;
@@ -874,7 +872,7 @@ footer .etc .etc-right{
     line-height: 38px;
     padding: 0 20px;
     box-sizing: border-box;
-    border: 1px solid gray;
+    border: 1px solid var(--gray250);
     margin: 0;
 }
 .input_box {
@@ -952,7 +950,7 @@ footer .etc .etc-right{
     height: 36px;
     font-size: 1.1rem;
     line-height: 34px;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     text-align: right;
 }
 .order_wrap thead tr.thead th {
@@ -1185,7 +1183,7 @@ footer .etc .etc-right{
 /* ============================================================================================= */
 /* ============================================================================================= */
 .detail-top-wrap{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
 }
@@ -1214,7 +1212,7 @@ footer .etc .etc-right{
     float: none;
     max-width: 1440px;
     box-sizing: border-box;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .set-right>span{
     margin: 0;
@@ -1232,7 +1230,7 @@ footer .etc .etc-right{
     width: 24px;
     height: 24px;
     background: url(https://www.ssfshop.com/v3/images/svgs/like-24-gray450.svg) left center / 24px auto no-repeat;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .share {
     display: inline-block;
@@ -1255,14 +1253,14 @@ footer .etc .etc-right{
     top: -3px;
     right: 0;
     vertical-align: middle;
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
 }
 .share .sns.on{
     /* display: flex; */ /*호버시에만 나오니까 우선 숨김*/
     display: none;
     /* width: 300px; */
     height: 100%;
-    background-color: yellow;
+    /* background-color: yellow; */
     align-items: center;
 }
 /* .share .sns .facebook {
@@ -1283,18 +1281,17 @@ footer .etc .etc-right{
     /* background-color: rgb(187, 187, 187); */
     display: flex;
     margin-bottom: 120px;
-    overflow: hidden;
 }
 .gods-summary .godsImg-area {
     position: relative;
     display: flex;
+    gap: 10px;
     justify-content: space-between;
     align-items: flex-start;
     /* width: calc(750* 100% / 1400); */
     width: 51%;
     min-width: 717px;
     box-sizing: border-box;
-    border: 1px solid yellow;
     margin: 0;
 
 }
@@ -1305,7 +1302,6 @@ footer .etc .etc-right{
     gap: 10px;
     min-width: 164px;
     max-width: 164px;
-    border: 1px solid red;
 }
 
 /* 3개 이상일 때 Grid 적용 */
@@ -1394,8 +1390,8 @@ footer .etc .etc-right{
 }
 
 .gods-summary .godsInfo-area {
-    /* width: calc(550* 100% / 1400); */
-    min-width: 483px;
+    width: auto;
+    height: 100%;
 }
 .gods-summary .godsInfo-area .tags {
     margin-bottom: 12px;
@@ -1689,12 +1685,13 @@ section#order .form_wrap form td {
 }
 section#order .form_wrap form>h4>.btns {
     position: absolute;
-    width: 540px;
+    width: 535px;
     text-align: right;
     margin-top: -34px;
 }
 section#order .form_wrap .btns .btn.gray {
     font-size: 1rem;
+    padding: 0 6px;
     line-height: 38px;
     color: var(--white);
     background: var(--gray800);
@@ -1703,7 +1700,6 @@ section#order .form_wrap .btns .btn.gray {
 
 
 .input_wrap{
-    background-color: yellow;
     margin-top: 20px;
 }
 .form_wrap .row {
@@ -1765,7 +1761,6 @@ section#order .form_wrap .btns .btn.gray {
 }
 .pay_with li {
     position: relative;
-    background-color: yellow;
 }
 .pay_with li label {
     position: relative;
@@ -1849,7 +1844,7 @@ section#order .form_wrap .btns .btn.gray {
     padding: 60px 50px;
     width: 838px;
     background-color: #fafafa;
-    border: 1px solid gray;
+    border: 1px solid var(--gray500);
 }
 .form_wrap .gray_box h5 {
     text-align: left;
@@ -2025,14 +2020,12 @@ section#order .form_wrap .btns .btn.gray {
     width: 50px; 
 }
 .goods-info-bottom-color>ul>li {
-    border: 1px solid rgb(176, 176, 176);
     border-radius: 3px;
-    padding: 5px 10px;
     text-align: center;
     width: 50px; 
+    height: 50px;
     margin: 0;
     border-radius: 7px;
-    height: 70px;
 }
 
 
@@ -2041,7 +2034,7 @@ section#order .form_wrap .btns .btn.gray {
 
 .goods-info-count-price{
     /* border: 1px solid red; */
-    padding: 35px 0;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2092,7 +2085,8 @@ section#order .form_wrap .btns .btn.gray {
     border-radius: 5px 0 0 5px;
 }
 .goods-info-btns>button:last-child{
-    background-color: #7E00FF;
+    background-color: var(--purple400);
+    color: #fff;
     border-radius: 0 5px 5px 0;
 }
 .goods-info-btns>button>a{
@@ -2149,7 +2143,6 @@ section#order .form_wrap .btns .btn.gray {
     }
 }
 .aa {
-    border: 1px solid red;
     z-index: 100;
 }
 
@@ -2157,14 +2150,12 @@ section#order .form_wrap .btns .btn.gray {
 + 이면 중간기준 오른쪽으로감 */
 
 .trans-1{
-    border: 1px solid red;
     width: 100px;
     transform: translateX(0);
 
 }
 
 .trans-2{
-    border: 1px solid blue;
     width: 100px;
     transform: translateX(100px);
 
@@ -2706,14 +2697,14 @@ section#order .form_wrap .btns .btn.gray {
     color: white;
 }
 .mypage-wishList-items{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: flex-start;
     gap: 20px;
     margin-bottom: 70px;
 }
 .mypage-wishList-items>div{
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 
@@ -2738,7 +2729,7 @@ section#order .form_wrap .btns .btn.gray {
     color: #fff;
 }
 .category-select-tabMenu {
-    border: 1px solid #000;
+    border: 1px solid var(--gray450);
     background-color: #fff;
     width: 100px;
     border-radius: 30px;
@@ -2858,8 +2849,7 @@ section#order .form_wrap .btns .btn.gray {
 .sub-category-select-click-tabMenu {
     color: #000;
     font-size: 1.3rem;
-    height: 30px;
-    border-bottom: 3px solid #000;
+    border-bottom: 1px solid #000;
 }
 
 .sub-category-select-tabMenu {
@@ -3088,9 +3078,11 @@ section#order .form_wrap .btns .btn.gray {
     color: #000000;
 }
 .tags > span{ /*하온추가*/
+    display: inline-block;
+    width: auto;
+    margin-top: 4px;
     border: 1px solid rgb(156, 153, 153);
     border-radius: 4px;
-    padding: 0 3px;
 }
 .price-info > .btn{ /*하온추가*/
     font-size: 14px;
@@ -3168,7 +3160,7 @@ section#order .form_wrap .btns .btn.gray {
     height: 100%;
 }
 .highlighted-row {
-    background-color: rgba(255, 0, 0, 0.2); /* 연한 빨간색 배경 */
+    background-color: var(--gray250) !important; /* 연한 파란색 배경 */
 }
 
 
@@ -3684,5 +3676,6 @@ section#order .form_wrap .btns .btn.gray {
     text-align: center;
 }
 .page button {
+    background-color: #fff;
     margin: 0;
 }
