@@ -52,8 +52,11 @@ export default function Person() {
                     } else {
                         console.warn("ERROR! user_id가 localStorage에 없습니다.");
                     }
-                } else {
-                    await fetchGuestOrders(localStorage.getItem("guest_id"));
+                } 
+                // guest_id가 있는지 확인하고, 즉시 비회원 주문 가져오기 실행
+                const guestId = localStorage.getItem("guest_id");
+                if (guestId) {
+                    await fetchGuestOrders(guestId);
                 }
             } catch (error) {
                 console.error("ERROR! 사용자 데이터 가져오기 실패:", error);

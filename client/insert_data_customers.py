@@ -22,7 +22,7 @@ json_data = """
         "name": "임영수",
         "password": "inrqeqs4",
         "address": "울산광역시 은평구 청담로 29길 32",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1979-07-23",
         "status": [
             "Active"
@@ -34,7 +34,9 @@ json_data = """
         "loyalty_points": 231,
         "last_login": "2025-11-22 13:19:20",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "163호",
+        "zipcode": "64546"
     },
     {
         "id": 2,
@@ -44,7 +46,7 @@ json_data = """
         "name": "강지호",
         "password": "qymovk4d",
         "address": "인천광역시 노원구 올림픽대로 5길 31",
-        "additional_address": null,
+        "additional_address": "경상북도 포항시 남구 해동로 127",
         "birth_date": "1998-08-22",
         "status": [
             "Active"
@@ -56,7 +58,9 @@ json_data = """
         "loyalty_points": 175,
         "last_login": "2025-06-25 02:59:01",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1463호",
+        "zipcode": "88057"
     },
     {
         "id": 3,
@@ -66,7 +70,7 @@ json_data = """
         "name": "윤민윤",
         "password": "qh53g3j7",
         "address": "대구광역시 노원구 올림픽대로 60길 40",
-        "additional_address": null,
+        "additional_address": "부산광역시 해운대구 센텀중앙로 90",
         "birth_date": "2000-12-27",
         "status": [
             "Active"
@@ -78,7 +82,9 @@ json_data = """
         "loyalty_points": 788,
         "last_login": "2025-02-19 03:13:01",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1177호",
+        "zipcode": "48963"
     },
     {
         "id": 4,
@@ -88,7 +94,7 @@ json_data = """
         "name": "장지혁",
         "password": "23n3wz7y",
         "address": "대구광역시 노원구 압구정로 79길 9",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "1983-06-20",
         "status": [
             "Active"
@@ -100,7 +106,9 @@ json_data = """
         "loyalty_points": 69,
         "last_login": "2025-09-09 10:30:13",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1427호",
+        "zipcode": "27567"
     },
     {
         "id": 5,
@@ -110,7 +118,7 @@ json_data = """
         "name": "장서진",
         "password": "c9bwyd8y",
         "address": "광주광역시 노원구 신촌로 46길 33",
-        "additional_address": null,
+        "additional_address": "울산광역시 남구 삼산중로 84",
         "birth_date": "1979-03-24",
         "status": [
             "Active"
@@ -122,7 +130,9 @@ json_data = """
         "loyalty_points": 889,
         "last_login": "2025-01-05 16:16:37",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1783호",
+        "zipcode": "79796"
     },
     {
         "id": 6,
@@ -132,7 +142,7 @@ json_data = """
         "name": "최지진",
         "password": "7ldq83nv",
         "address": "인천광역시 노원구 올림픽대로 13길 31",
-        "additional_address": null,
+        "additional_address": "인천광역시 연수구 컨벤시아대로 270",
         "birth_date": "1975-05-13",
         "status": [
             "Active"
@@ -144,7 +154,9 @@ json_data = """
         "loyalty_points": 534,
         "last_login": "2025-10-05 10:59:05",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "454호",
+        "zipcode": "77450"
     },
     {
         "id": 7,
@@ -154,7 +166,7 @@ json_data = """
         "name": "김석진",
         "password": "ur7s96kq",
         "address": "대구광역시 성북구 올림픽대로 53길 7",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1980-10-12",
         "status": [
             "Active"
@@ -166,7 +178,9 @@ json_data = """
         "loyalty_points": 762,
         "last_login": "2025-10-01 13:17:52",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1864호",
+        "zipcode": "61354"
     },
     {
         "id": 8,
@@ -176,7 +190,7 @@ json_data = """
         "name": "최경희",
         "password": "ksz6icl8",
         "address": "부산광역시 노원구 압구정로 100길 2",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "1991-09-06",
         "status": [
             "Active"
@@ -188,7 +202,9 @@ json_data = """
         "loyalty_points": 442,
         "last_login": "2025-11-14 07:44:36",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "475호",
+        "zipcode": "12919"
     },
     {
         "id": 9,
@@ -198,7 +214,7 @@ json_data = """
         "name": "정훈아",
         "password": "d95wn2jh",
         "address": "인천광역시 서초구 종로 39길 14",
-        "additional_address": null,
+        "additional_address": "충청남도 천안시 서북구 불당대로 203",
         "birth_date": "2000-02-07",
         "status": [
             "Active"
@@ -210,7 +226,9 @@ json_data = """
         "loyalty_points": 548,
         "last_login": "2025-11-05 10:08:57",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1576호",
+        "zipcode": "21728"
     },
     {
         "id": 10,
@@ -220,7 +238,7 @@ json_data = """
         "name": "조민호",
         "password": "jigopjyu",
         "address": "대전광역시 종로구 충무로 15길 32",
-        "additional_address": null,
+        "additional_address": "전라남도 여수시 여문로 120",
         "birth_date": "1979-03-22",
         "status": [
             "Active"
@@ -232,7 +250,9 @@ json_data = """
         "loyalty_points": 472,
         "last_login": "2025-02-12 01:39:34",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "779호",
+        "zipcode": "83945"
     },
     {
         "id": 11,
@@ -242,7 +262,7 @@ json_data = """
         "name": "윤현희",
         "password": "p6xe5nok",
         "address": "대구광역시 서초구 청담로 91길 34",
-        "additional_address": null,
+        "additional_address": "충청남도 천안시 서북구 불당대로 203",
         "birth_date": "1970-04-26",
         "status": [
             "Active"
@@ -254,7 +274,9 @@ json_data = """
         "loyalty_points": 362,
         "last_login": "2025-11-03 06:42:05",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "324호",
+        "zipcode": "45454"
     },
     {
         "id": 12,
@@ -264,7 +286,7 @@ json_data = """
         "name": "조훈윤",
         "password": "uuodjrfr",
         "address": "울산광역시 송파구 종로 51길 9",
-        "additional_address": null,
+        "additional_address": "제주특별자치도 제주시 연동 276-1",
         "birth_date": "1995-10-11",
         "status": [
             "Active"
@@ -276,7 +298,9 @@ json_data = """
         "loyalty_points": 813,
         "last_login": "2025-12-06 02:27:51",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1494호",
+        "zipcode": "70779"
     },
     {
         "id": 13,
@@ -286,7 +310,7 @@ json_data = """
         "name": "조석윤",
         "password": "3vxdz2bc",
         "address": "부산광역시 성북구 청담로 52길 23",
-        "additional_address": null,
+        "additional_address": "충청남도 천안시 서북구 불당대로 203",
         "birth_date": "1984-09-23",
         "status": [
             "Active"
@@ -298,7 +322,9 @@ json_data = """
         "loyalty_points": 611,
         "last_login": "2025-04-01 21:28:12",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "651호",
+        "zipcode": "22440"
     },
     {
         "id": 14,
@@ -308,7 +334,7 @@ json_data = """
         "name": "장서희",
         "password": "krxa9gt4",
         "address": "대전광역시 동작구 한강대로 77길 1",
-        "additional_address": null,
+        "additional_address": "경기도 수원시 영통구 삼성로 129",
         "birth_date": "1995-11-16",
         "status": [
             "Active"
@@ -320,7 +346,9 @@ json_data = """
         "loyalty_points": 379,
         "last_login": "2025-02-09 11:17:35",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1127호",
+        "zipcode": "35779"
     },
     {
         "id": 15,
@@ -330,7 +358,7 @@ json_data = """
         "name": "정서호",
         "password": "7xzutmyn",
         "address": "대전광역시 성북구 한강대로 74길 34",
-        "additional_address": null,
+        "additional_address": "충청남도 천안시 서북구 불당대로 203",
         "birth_date": "1971-06-24",
         "status": [
             "Active"
@@ -342,7 +370,9 @@ json_data = """
         "loyalty_points": 753,
         "last_login": "2025-10-17 10:44:15",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1216호",
+        "zipcode": "70567"
     },
     {
         "id": 16,
@@ -352,7 +382,7 @@ json_data = """
         "name": "임경희",
         "password": "gjhm3u2m",
         "address": "인천광역시 종로구 종로 61길 25",
-        "additional_address": null,
+        "additional_address": "광주광역시 서구 상무중앙로 7",
         "birth_date": "1989-10-21",
         "status": [
             "Active"
@@ -364,7 +394,9 @@ json_data = """
         "loyalty_points": 438,
         "last_login": "2025-12-16 23:53:01",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1284호",
+        "zipcode": "35357"
     },
     {
         "id": 17,
@@ -374,7 +406,7 @@ json_data = """
         "name": "조우윤",
         "password": "rv4wqhe5",
         "address": "인천광역시 송파구 신촌로 77길 42",
-        "additional_address": null,
+        "additional_address": "충청북도 청주시 상당구 상당로 45",
         "birth_date": "1999-10-24",
         "status": [
             "Active"
@@ -386,7 +418,9 @@ json_data = """
         "loyalty_points": 566,
         "last_login": "2025-05-16 05:07:37",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "931호",
+        "zipcode": "27871"
     },
     {
         "id": 18,
@@ -396,7 +430,7 @@ json_data = """
         "name": "최우희",
         "password": "wehyyc3n",
         "address": "울산광역시 강남구 한강대로 21길 20",
-        "additional_address": null,
+        "additional_address": "충청북도 청주시 상당구 상당로 45",
         "birth_date": "1997-04-18",
         "status": [
             "Active"
@@ -408,7 +442,9 @@ json_data = """
         "loyalty_points": 180,
         "last_login": "2025-08-12 19:46:40",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "923호",
+        "zipcode": "72460"
     },
     {
         "id": 19,
@@ -418,7 +454,7 @@ json_data = """
         "name": "박경빈",
         "password": "g0z08k22",
         "address": "인천광역시 송파구 테헤란로 45길 23",
-        "additional_address": null,
+        "additional_address": "경상북도 포항시 남구 해동로 127",
         "birth_date": "2004-02-25",
         "status": [
             "Active"
@@ -430,7 +466,9 @@ json_data = """
         "loyalty_points": 224,
         "last_login": "2025-09-14 22:01:35",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "946호",
+        "zipcode": "34364"
     },
     {
         "id": 20,
@@ -440,7 +478,7 @@ json_data = """
         "name": "강훈호",
         "password": "s6poisco",
         "address": "대구광역시 강남구 압구정로 61길 21",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1972-05-03",
         "status": [
             "Active"
@@ -452,7 +490,9 @@ json_data = """
         "loyalty_points": 779,
         "last_login": "2025-05-10 17:38:49",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1523호",
+        "zipcode": "83549"
     },
     {
         "id": 21,
@@ -462,7 +502,7 @@ json_data = """
         "name": "이서혁",
         "password": "5ogmofom",
         "address": "대전광역시 성북구 압구정로 22길 43",
-        "additional_address": null,
+        "additional_address": "대전광역시 유성구 엑스포로 123",
         "birth_date": "1973-07-27",
         "status": [
             "Active"
@@ -474,7 +514,9 @@ json_data = """
         "loyalty_points": 234,
         "last_login": "2025-05-09 06:23:36",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1219호",
+        "zipcode": "64235"
     },
     {
         "id": 22,
@@ -484,7 +526,7 @@ json_data = """
         "name": "임민수",
         "password": "r39nh9me",
         "address": "인천광역시 중구 홍대로 87길 27",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1979-09-19",
         "status": [
             "Active"
@@ -496,7 +538,9 @@ json_data = """
         "loyalty_points": 625,
         "last_login": "2025-03-07 16:16:15",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "154호",
+        "zipcode": "82314"
     },
     {
         "id": 23,
@@ -506,7 +550,7 @@ json_data = """
         "name": "임석희",
         "password": "dkwg7ahz",
         "address": "대전광역시 동작구 충무로 1길 49",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "1994-10-16",
         "status": [
             "Active"
@@ -518,7 +562,9 @@ json_data = """
         "loyalty_points": 429,
         "last_login": "2025-01-12 13:30:23",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "852호",
+        "zipcode": "47603"
     },
     {
         "id": 24,
@@ -528,7 +574,7 @@ json_data = """
         "name": "임훈준",
         "password": "i8nai077",
         "address": "서울특별시 강남구 충무로 34길 7",
-        "additional_address": null,
+        "additional_address": "서울특별시 강남구 삼성로 102",
         "birth_date": "1989-07-03",
         "status": [
             "Active"
@@ -540,7 +586,9 @@ json_data = """
         "loyalty_points": 354,
         "last_login": "2025-10-05 17:08:56",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "687호",
+        "zipcode": "20220"
     },
     {
         "id": 25,
@@ -550,7 +598,7 @@ json_data = """
         "name": "장영진",
         "password": "hjjl16su",
         "address": "부산광역시 성북구 충무로 51길 48",
-        "additional_address": null,
+        "additional_address": "충청북도 청주시 상당구 상당로 45",
         "birth_date": "1989-09-02",
         "status": [
             "Active"
@@ -562,7 +610,9 @@ json_data = """
         "loyalty_points": 766,
         "last_login": "2025-01-13 23:40:24",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1734호",
+        "zipcode": "84361"
     },
     {
         "id": 26,
@@ -572,7 +622,7 @@ json_data = """
         "name": "박현호",
         "password": "3p8ve5p2",
         "address": "대구광역시 노원구 종로 95길 37",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "1996-04-13",
         "status": [
             "Active"
@@ -584,7 +634,9 @@ json_data = """
         "loyalty_points": 776,
         "last_login": "2025-04-11 14:22:54",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "141호",
+        "zipcode": "34825"
     },
     {
         "id": 27,
@@ -594,7 +646,7 @@ json_data = """
         "name": "윤영희",
         "password": "0jjqxxju",
         "address": "광주광역시 송파구 종로 89길 25",
-        "additional_address": null,
+        "additional_address": "인천광역시 연수구 컨벤시아대로 270",
         "birth_date": "2002-11-13",
         "status": [
             "Active"
@@ -606,7 +658,9 @@ json_data = """
         "loyalty_points": 118,
         "last_login": "2025-05-11 16:17:47",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1131호",
+        "zipcode": "36954"
     },
     {
         "id": 28,
@@ -616,7 +670,7 @@ json_data = """
         "name": "박경진",
         "password": "71lfw943",
         "address": "부산광역시 중구 홍대로 57길 22",
-        "additional_address": null,
+        "additional_address": "서울특별시 강남구 삼성로 102",
         "birth_date": "1993-05-11",
         "status": [
             "Active"
@@ -628,7 +682,9 @@ json_data = """
         "loyalty_points": 538,
         "last_login": "2025-01-03 22:01:54",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "142호",
+        "zipcode": "21629"
     },
     {
         "id": 29,
@@ -638,7 +694,7 @@ json_data = """
         "name": "임영연",
         "password": "2p9znye2",
         "address": "대전광역시 마포구 올림픽대로 61길 41",
-        "additional_address": null,
+        "additional_address": "광주광역시 서구 상무중앙로 7",
         "birth_date": "1981-11-24",
         "status": [
             "Active"
@@ -650,7 +706,9 @@ json_data = """
         "loyalty_points": 524,
         "last_login": "2025-05-07 01:20:30",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "280호",
+        "zipcode": "63860"
     },
     {
         "id": 30,
@@ -660,7 +718,7 @@ json_data = """
         "name": "조민준",
         "password": "iruwwezw",
         "address": "광주광역시 강남구 올림픽대로 55길 12",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "2003-03-13",
         "status": [
             "Active"
@@ -672,7 +730,9 @@ json_data = """
         "loyalty_points": 915,
         "last_login": "2025-02-03 03:00:19",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "549호",
+        "zipcode": "66360"
     },
     {
         "id": 31,
@@ -682,7 +742,7 @@ json_data = """
         "name": "김지혁",
         "password": "xo3v115h",
         "address": "인천광역시 강남구 종로 33길 42",
-        "additional_address": null,
+        "additional_address": "서울특별시 강남구 삼성로 102",
         "birth_date": "2003-10-12",
         "status": [
             "Active"
@@ -694,7 +754,9 @@ json_data = """
         "loyalty_points": 995,
         "last_login": "2025-04-06 15:31:14",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "868호",
+        "zipcode": "20633"
     },
     {
         "id": 32,
@@ -704,7 +766,7 @@ json_data = """
         "name": "최훈아",
         "password": "yc7uygjq",
         "address": "대전광역시 종로구 강남대로 87길 46",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1989-01-08",
         "status": [
             "Active"
@@ -716,7 +778,9 @@ json_data = """
         "loyalty_points": 688,
         "last_login": "2025-04-08 14:49:52",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1063호",
+        "zipcode": "53130"
     },
     {
         "id": 33,
@@ -726,7 +790,7 @@ json_data = """
         "name": "조현호",
         "password": "0o3x1lzn",
         "address": "광주광역시 은평구 테헤란로 43길 11",
-        "additional_address": null,
+        "additional_address": "인천광역시 연수구 컨벤시아대로 270",
         "birth_date": "1976-10-01",
         "status": [
             "Active"
@@ -738,7 +802,9 @@ json_data = """
         "loyalty_points": 651,
         "last_login": "2025-12-14 15:44:54",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "36호",
+        "zipcode": "67382"
     },
     {
         "id": 34,
@@ -748,7 +814,7 @@ json_data = """
         "name": "김서희",
         "password": "jd9xgaaf",
         "address": "부산광역시 은평구 올림픽대로 49길 3",
-        "additional_address": null,
+        "additional_address": "충청남도 천안시 서북구 불당대로 203",
         "birth_date": "1992-10-01",
         "status": [
             "Active"
@@ -760,7 +826,9 @@ json_data = """
         "loyalty_points": 37,
         "last_login": "2025-11-01 05:52:04",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "35호",
+        "zipcode": "95602"
     },
     {
         "id": 35,
@@ -770,7 +838,7 @@ json_data = """
         "name": "윤민희",
         "password": "xxmknf7g",
         "address": "부산광역시 종로구 한강대로 65길 30",
-        "additional_address": null,
+        "additional_address": "경상북도 포항시 남구 해동로 127",
         "birth_date": "2003-10-13",
         "status": [
             "Active"
@@ -782,7 +850,9 @@ json_data = """
         "loyalty_points": 239,
         "last_login": "2025-12-20 21:29:25",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1191호",
+        "zipcode": "34797"
     },
     {
         "id": 36,
@@ -792,7 +862,7 @@ json_data = """
         "name": "김진희",
         "password": "b3e2zzb8",
         "address": "대구광역시 동작구 종로 53길 30",
-        "additional_address": null,
+        "additional_address": "경상남도 창원시 성산구 중앙대로 43",
         "birth_date": "2004-10-22",
         "status": [
             "Active"
@@ -804,7 +874,9 @@ json_data = """
         "loyalty_points": 71,
         "last_login": "2025-08-22 00:28:21",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1352호",
+        "zipcode": "75641"
     },
     {
         "id": 37,
@@ -814,7 +886,7 @@ json_data = """
         "name": "임진준",
         "password": "dv2hj35m",
         "address": "인천광역시 종로구 신촌로 27길 46",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "2002-04-24",
         "status": [
             "Active"
@@ -826,7 +898,9 @@ json_data = """
         "loyalty_points": 327,
         "last_login": "2025-05-23 21:48:29",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1676호",
+        "zipcode": "63805"
     },
     {
         "id": 38,
@@ -836,7 +910,7 @@ json_data = """
         "name": "정우윤",
         "password": "xfscogmx",
         "address": "대전광역시 종로구 종로 56길 25",
-        "additional_address": null,
+        "additional_address": "전라북도 전주시 완산구 효자동3가 813",
         "birth_date": "1974-10-03",
         "status": [
             "Active"
@@ -848,7 +922,9 @@ json_data = """
         "loyalty_points": 704,
         "last_login": "2025-07-15 09:52:23",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "194호",
+        "zipcode": "90580"
     },
     {
         "id": 39,
@@ -858,7 +934,7 @@ json_data = """
         "name": "박지준",
         "password": "359j0z46",
         "address": "인천광역시 송파구 테헤란로 91길 13",
-        "additional_address": null,
+        "additional_address": "부산광역시 해운대구 센텀중앙로 90",
         "birth_date": "1992-01-18",
         "status": [
             "Active"
@@ -870,7 +946,9 @@ json_data = """
         "loyalty_points": 935,
         "last_login": "2025-04-20 17:03:32",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "1650호",
+        "zipcode": "80175"
     },
     {
         "id": 40,
@@ -880,7 +958,7 @@ json_data = """
         "name": "정현준",
         "password": "e0rwk9k5",
         "address": "울산광역시 동작구 홍대로 12길 21",
-        "additional_address": null,
+        "additional_address": "경기도 성남시 분당구 판교역로 146",
         "birth_date": "1984-02-01",
         "status": [
             "Active"
@@ -892,7 +970,9 @@ json_data = """
         "loyalty_points": 769,
         "last_login": "2025-12-12 18:11:58",
         "created_at": "2025-02-07T03:12:30.000Z",
-        "updated_at": "2025-02-07T03:12:30.000Z"
+        "updated_at": "2025-02-07T03:12:30.000Z",
+        "detail_address": "727호",
+        "zipcode": "96252"
     }
 ]
 """
@@ -907,14 +987,23 @@ for customer in customers:
     updated_at = datetime.strptime(customer["updated_at"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
 
     cursor.execute("""
-        INSERT INTO customers (username, email, phone, name, password, address, birth_date, membership_level, last_login, created_at, updated_at)
-        VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    """, (
-        customer["username"], customer["email"], customer["phone"], 
-        customer["name"], customer["password"], customer["address"], 
-        customer["birth_date"], customer["membership_level"], 
-        customer["last_login"], created_at, updated_at
-    ))
+            INSERT INTO customers (
+                username, email, phone, name, password, address, detail_address, 
+                zipcode, additional_address, birth_date, status, gender, 
+                membership_level, loyalty_points, last_login
+            ) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """, (
+            customer["username"], customer["email"], customer["phone"], 
+            customer["name"], customer["password"], customer["address"], 
+            customer["detail_address"], customer["zipcode"], customer["additional_address"], 
+            customer["birth_date"], 
+            json.dumps(customer.get("status", [])),  # JSON 데이터 변환
+            json.dumps(customer.get("gender", [])),  # JSON 데이터 변환
+            customer["membership_level"], 
+            customer.get("loyalty_points", 0), 
+            customer["last_login"]
+        ))
 
 # 변경사항 저장
 db.commit()
