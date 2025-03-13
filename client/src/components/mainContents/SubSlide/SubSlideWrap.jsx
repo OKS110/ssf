@@ -10,7 +10,6 @@ export default function SubSlideWrap(){
             .catch(err => console.log(err));
     }, []);
 
-    console.log('subSlide :: dataList --> ', dataList);
 
     return (
     <>

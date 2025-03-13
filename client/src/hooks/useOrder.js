@@ -91,6 +91,8 @@ export function useOrder() {
     };
     const deleteOrderedCartItems = async (customerId, orderedItems) => {
         try {
+            console.log("🗑️ [DEBUG] 장바구니 삭제 함수 호출 - customer_id:", customerId?.customer_id);
+            console.log("🗑️ [DEBUG] 삭제할 주문 항목:", orderedItems);
             const response = await axios.post("http://localhost:9000/order/deleteOrderedItems", {
                 customer_id: customerId,
                 orderedItems: orderedItems, // 주문한 상품 리스트
