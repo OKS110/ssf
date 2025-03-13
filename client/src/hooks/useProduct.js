@@ -40,7 +40,7 @@ export function useProduct() {
     }, []);
 
     
-    /** 메인 - 아우터로~, 랭킹 리스트 필터링 */
+    /** 메인 - 새 감각~, 랭킹 리스트 필터링 */
     // 상품 데이터 필터링 등 작업이 필요할 때는 최대한 상품 전체 데이터를 호출하는 커스텀 훅에서 작업을 마친 후 반환해주는 것이 효율적
     const getFilterProducts = async(category, subCategory) => {
         const list = await getProductList();
@@ -49,9 +49,9 @@ export function useProduct() {
         let subCategoryList = [];
 
         if (list) {
-            // 아우터로~ 섹션 카테고리 데이터
+            // 새 감각~ 섹션 카테고리 데이터
             const filterCategory = list.filter(list => list.category === category);
-            categoryList = filterCategory.filter((item, i) => i < 6 && item);
+            categoryList = filterCategory.filter((item, i) => i < 6 && item); // 6개만 화면에 출력
             setDetailList(categoryList);
             
             // 서브 카테고리 데이터
