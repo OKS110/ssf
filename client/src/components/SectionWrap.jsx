@@ -103,7 +103,7 @@ export default function SectionWrap({id, title, children}) {
                         </li>
                     </ul>
             }
-            {id === 'outer' && 
+            {id === 'newSense' && 
             <div className='contents-box god-lists' >
                 <ul className='category-select'>
                     { tabList && tabList.map((list) => 

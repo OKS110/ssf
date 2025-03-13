@@ -26,8 +26,8 @@ export default function Home() {
       title: "이벤트",
     },
     {
-      id: "outer",
-      title: "아우터로 더하는 한 겹의 포근함",
+      id: "newSense",
+      title: "새 계절을 깨우는 나만의 감각",
     },
     {
       id: "rank",
