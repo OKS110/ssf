@@ -8,6 +8,7 @@ import axios from "axios";
 import { CustomersContext } from '../context/CustomersContext.js';
 import { useCustomers } from '../hooks/useCustomers.js';
 import { AuthContext } from "../auth/AuthContext.js";
+import SlideUp from "../commons/SlideUp.jsx";
 
 export default function Person() {
     const {isLoggedIn} = useContext(AuthContext);
@@ -324,6 +325,7 @@ export default function Person() {
                         </div>
                     </div>
                 )}
+                <SlideUp/>
         </div>
 
         

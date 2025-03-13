@@ -13,6 +13,7 @@ import Recommend from "../components/DetailProducts/tabsData/Recommend";
 import Review from "../components/DetailProducts/tabsData/Review";
 import Size from "../components/DetailProducts/tabsData/Size";
 import { DetailProductContext } from '../context/DetailProductContext.js';
+import SlideUp from '../commons/SlideUp.jsx';
 
 export default function DetailProducts() {
     const { pidItem } = useContext(ProductContext);
@@ -120,6 +121,7 @@ export default function DetailProducts() {
             <div ref={contentRef}>
                 {renderContent()}
             </div>
+            <SlideUp/>
         </div>
     );
 }

@@ -12,6 +12,7 @@ import PopUp from '../components/mainContents/PopUp.jsx';
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { DetailProductContext } from "../context/DetailProductContext.js";
+import SlideUp from "../commons/SlideUp.jsx";
 export default function Home() {
   const { pid } = useParams();
   
@@ -77,6 +78,7 @@ export default function Home() {
     }
   }
 
+
   return (
     <main id='content'>
       {/* 슬라이드 시작 */}
@@ -128,6 +130,9 @@ export default function Home() {
           ))}
           {/* 컨텐츠 끝   */}
           <PopUp />
+
+          {/* 위로 올라가는 슬라이드 버튼 */}
+          <SlideUp />
         </div>
       </div>
     </main>
