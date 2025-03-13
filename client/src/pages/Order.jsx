@@ -24,7 +24,7 @@ export default function Order() {
     const navigate = useNavigate();
     const location = useLocation(); //경로를 파악(장바구니, 바로구매)
     const { isLoggedIn, token } = useContext(AuthContext); //  로그인 상태 가져오기
-    const isAuthorized = token && !token.startsWith("guest_token_"); // 회원 비회원 여부 확인
+    const isAuthorized = Boolean(token) && !(token && token.startsWith("guest_token_")); // 회원 비회원 여부 확인
 
     const { pid } = useParams();
     const { pidItem } = useContext(ProductContext); //  개별 상품 데이터
