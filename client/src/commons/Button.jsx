@@ -4,7 +4,7 @@ export default function Button({ className, title, width, onClick }) {
             <button
                 className={`btn ${className}`}
                 style={{ backgroundColor: "", width: width }}
-                onClick={onClick} // ✅ 클릭 이벤트 추가
+                onClick={onClick} //  클릭 이벤트 추가
             >
                 {title}
             </button>

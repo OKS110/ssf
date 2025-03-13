@@ -8,7 +8,6 @@ import Image from './Image.jsx';
 export default function ProductSlider({slideArray, ulClassName, liClassName, className}) {
     const [ counter, setCounter ] = useState(0); // 인덱스
     const maxCount = Math.ceil(slideArray.length / 3) - 1; // 최대 슬라이드 개수
-    // console.log('maxCount --> ', maxCount);
 
     // 화살표 버튼 이벤트
     const handleSlideBtn = (value) => {
@@ -16,9 +15,7 @@ export default function ProductSlider({slideArray, ulClassName, liClassName, cla
         value === 'next' && counter < maxCount && setCounter(counter + 1);
     }
 
-    // 
-    let showLeftBtn = counter > 0;
-    const showRightBtn = counter < maxCount; // 마지막 슬라이드인지 체크
+
 
     return (
         <div className='productSlide-content-wrap'>
@@ -72,5 +69,3 @@ export default function ProductSlider({slideArray, ulClassName, liClassName, cla
         </div>
     );
 }
-
-// slideArray={brand1} ulClassName="hotBrand-tab" liClassName="hotBrand-tab-list" className="hotBrand-list"

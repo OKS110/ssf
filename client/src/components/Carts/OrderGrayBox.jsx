@@ -1,23 +1,23 @@
 export default function OrderGrayBox({ orderItems = [] }) {
-    // ✅ 상품 총 가격(정가 기준), 할인 금액, 배송비 변수 선언
+    //  상품 총 가격(정가 기준), 할인 금액, 배송비 변수 선언
     let totalPrice = 0;
     let totalDiscount = 0;
     let totalDeliveryFee = 0;
     let finalPrice = 0;
 
-    // ✅ 주문 상품 목록을 돌면서 총합 계산
+    //  주문 상품 목록을 돌면서 총합 계산
     orderItems.forEach((item) => {
         const originalPrice = Number(item.original_price || 0) * Number(item.quantity || 1);
         const discountedPrice = Number(item.discounted_price || 0) * Number(item.quantity || 1);
         const discountAmount = originalPrice - discountedPrice;
-        const deliveryFee = item.delivery_fee === "free" ? 0 : 3000; // ✅ 배송비 계산
+        const deliveryFee = item.delivery_fee === "free" ? 0 : 3000; //  배송비 계산
 
         totalPrice += originalPrice;
         totalDiscount += discountAmount;
         totalDeliveryFee += deliveryFee;
     });
 
-    // ✅ 최종 결제 금액 계산
+    //  최종 결제 금액 계산
     finalPrice = totalPrice + totalDeliveryFee - totalDiscount;
 
     return (
@@ -39,7 +39,7 @@ export default function OrderGrayBox({ orderItems = [] }) {
                 </span>
             </p>
 
-            {/* ✅ 주문 상품 목록 표시 */}
+            {/*  주문 상품 목록 표시 */}
             <h5>주문 상품 목록</h5>
             <ul>
                 {orderItems.length > 0 ? (

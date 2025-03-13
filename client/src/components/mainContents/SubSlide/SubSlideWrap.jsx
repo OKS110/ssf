@@ -18,7 +18,7 @@ export default function SubSlideWrap(){
         <div className="swiper-slide swiper-slide-active" role="group" aria-label="1 / 8" style={{"width": "692px", "marginRight": "16px"}}>
             <div className="gods-area">
                 <div className="gods-main subSlide-left-wrap">
-                    <a href="/special/102822/view?&amp;utag=ref_tpl:111942$ref_cnr:23360$set:2$dpos:1" onclick="cnrClickLoging('23360','세트 2','1','/special/102822/view');">
+                    <a href="#" >
                         <div className="gods-img">
                             <img src={list.mainImage} alt="" className="swiper-lazy swiper-lazy-loaded" />
                             <div className="gods-desc">
@@ -31,7 +31,7 @@ export default function SubSlideWrap(){
                 <div className="gods-list">
                     { list.items.map((item) => 
                         <div className="gods-item" view-godno="GM0024122750066">
-                            <a href="javascript:goToProductDetailCorner('8-seconds', 'GM0024122750066', '', 'ourPickOURPICK_AType23360',1,'23360','세트 2');">
+                            <a href="#">
                                 <div className="gods-img subSlide-subimage">
                                     <img className="swiper-lazy swiper-lazy-loaded" src={item.subImage} />
                                 </div>

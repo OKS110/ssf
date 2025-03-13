@@ -1,20 +1,20 @@
 import { db } from './db.js';
 
-// ✅ 비회원 정보 추가 또는 기존 ID 반환
+//  비회원 정보 추가 또는 기존 ID 반환
 export const addGuest = async (guestData) => {
     try {
-        // 1️⃣ 기존 비회원 확인
+        //  기존 비회원 확인
         const checkSql = `SELECT gid FROM guests WHERE name = ? AND email = ? AND phone = ?;`;
         const [existingGuest] = await db.execute(checkSql, [
             guestData.name, guestData.email || null, guestData.phone
         ]);
 
         if (existingGuest.length > 0) {
-            console.log("✅ 기존 비회원 존재:", existingGuest[0]);
+            console.log(" 기존 비회원 존재:", existingGuest[0]);
             return { gid: existingGuest[0].gid }; // 기존 `gid` 반환
         }
 
-        // 2️⃣ 새로운 비회원 추가
+        //  새로운 비회원 추가
         const insertSql = `
             INSERT INTO guests (name, phone, email, address, zipcode, detail_address)
             VALUES (?, ?, ?, ?, ?, ?);
@@ -24,15 +24,15 @@ export const addGuest = async (guestData) => {
             guestData.address || null, guestData.zipcode || null, guestData.detail_address || null
         ]);
 
-        console.log("✅ 신규 비회원 추가 완료:", result);
+        console.log(" 신규 비회원 추가 완료:", result);
         return { gid: result.insertId }; // 신규 `gid` 반환
     } catch (error) {
-        console.error("❌ 비회원 추가 오류:", error);
+        console.error("ERROR 비회원 추가 오류:", error);
         throw error;
     }
 };
 
-// ✅ 비회원 주문 추가 중복처리 필요
+//  비회원 주문 추가 중복처리 필요
 export const addGuestOrder = async (guestOrderData) => {
     try {
         if (!guestOrderData.guest_id) {
@@ -59,10 +59,10 @@ export const addGuestOrder = async (guestOrderData) => {
             guestOrderData.refund_amount ?? 0, guestOrderData.payment_method || null,
         ]);
 
-        console.log("✅ guest_orders 저장 완료:", result);
+        console.log(" guest_orders 저장 완료:", result);
         return { order_id: result.insertId, order_number: orderNumber, guest_id: guestOrderData.guest_id };
     } catch (error) {
-        console.error("❌ guest_orders 저장 오류:", error);
+        console.error("ERROR guest_orders 저장 오류:", error);
         throw error;
     }
 };

@@ -176,10 +176,7 @@ export default function SectionWrap({id, title, children}) {
                         ) }
                     </ul>
                 </div>
-                {/* <h2>슬라이더 테스트</h2>
-                <div className='contents-box god-lists'>
-                    <Slider slideArray={issueList} />
-                </div> */}
+
                 </>
             }
             {children}

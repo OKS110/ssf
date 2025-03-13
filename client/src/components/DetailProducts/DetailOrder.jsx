@@ -9,7 +9,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // ✅ pidItem.size, pidItem.color가 undefined일 경우 빈 배열 할당
+    //  pidItem.size, pidItem.color가 undefined일 경우 빈 배열 할당
     const sizePidItemList = pidItem?.size || []; 
     const colorPidItemList = pidItem?.color || [];
 
@@ -43,7 +43,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
         setSelectedSize(size);  
     };
 
-    // ✅ 회원 전용 장바구니 로직
+    //  회원 전용 장바구니 로직
     const addCart = () => {
         if (!loginAuth) return; 
         
@@ -72,7 +72,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
             saveToCart(formData);
         }
     
-        // ✅ 바로구매 관련 sessionStorage 데이터 초기화
+        //  바로구매 관련 sessionStorage 데이터 초기화
         sessionStorage.removeItem("pid");
         sessionStorage.removeItem("selectedColor");
         sessionStorage.removeItem("selectedSize");
@@ -85,7 +85,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
     
     
 
-    // ✅ 바로구매 로직
+    //  바로구매 로직
     const handleDirectPurchase = () => {
         if (!isLoggedIn) {
             const confirmLogin = window.confirm("로그인 하시겠습니까? (취소 시 비회원 구매 페이지로 이동)");
@@ -176,8 +176,8 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
                                     border: selectedSize === size.name ? "2px solid var(--gray600)" : "2px solid var(--gray350)",
                                     cursor: "pointer",
                                 }}
-                                onClick={() => handleSizeSelect(size.name)}>  {/* ✅ 객체에서 name 값을 추출하여 저장 */}
-                                {size.name}  {/* ✅ [object Object] 대신 name 출력 */}
+                                onClick={() => handleSizeSelect(size.name)}>  {/*  객체에서 name 값을 추출하여 저장 */}
+                                {size.name}  {/*  [object Object] 대신 name 출력 */}
                             </li>
                         )) : <li>사이즈 옵션 없음</li>}
                     </ul>

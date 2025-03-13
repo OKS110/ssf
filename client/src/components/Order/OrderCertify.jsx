@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React  from "react";
 
-export default function OrderCertify({ setIsAgreed }) {
-    const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+export default function OrderCertify() {
 
-    // ✅ 페이지 로드 시 `guest_token_` 여부 확인
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token && token.startsWith("guest_token_")) {
-            setIsAuthenticated(true);
-        }
-    }, []);
+
 
     const handleGuestAuth = async (event) => {
         event.preventDefault(); // 기본 링크 동작 방지
@@ -24,7 +15,7 @@ export default function OrderCertify({ setIsAgreed }) {
             localStorage.setItem("token", guestToken);
             console.log("비회원 인증 성공 - 발행된 토큰:", guestToken);
 
-            // ✅ 인증 완료 상태 변경 (컴포넌트 갱신)
+            //  인증 완료 상태 변경 (컴포넌트 갱신)
             window.location.reload();
             
         } catch (error) {
@@ -32,8 +23,6 @@ export default function OrderCertify({ setIsAgreed }) {
         }
     };
 
-    // ✅ 비회원 인증 완료 시 `OrderCertify` 숨김
-    if (isAuthenticated) return null;
 
     return (
         <div id="auth_layer" className="confirm_wrap">

@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import WishListBrand from './tabsData/WishListBrand.jsx';
-import WishListProduct from './tabsData/WishListProduct.jsx';
 import WishListContent from './tabsData/WishListContent.jsx';
 import { SlArrowRight } from "react-icons/sl";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import PersonUIform from './PersonUIform.jsx';
 import ProductMypage from '../../commons/ProductMypage.jsx';
-import { ProductContext } from '../../context/ProductContext.js';
-import { useContext } from 'react';
-import { useProduct } from '../../hooks/useProduct.js';
+
 
 export default function WishList() {
     const tabsData = [
-        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct", content: <WishListProduct /> },
+        { id: "mypageWishListProduct", label: "상품", href: "#mypageWishListProduct" },
         { id: "mypageWishListBrand", label: "브랜드", href: "#mypageWishListBrand", content: <WishListBrand /> },
         { id: "mypageWishListContent", label: "콘텐츠", href: "#mypageWishListContent", content: <WishListContent /> }
     ];

@@ -34,7 +34,7 @@ export default function LoginTab2({ isActive }) {
       setFormData({ ...formData, [name]: value });
     }
     // 콘솔에 현재 입력 필드의 값 출력
-    console.log(`${name}: ${value}`);
+    // console.log(`${name}: ${value}`);
   };
 
   const handleGuestLogin = (e) => {
@@ -52,12 +52,12 @@ export default function LoginTab2({ isActive }) {
       order_number: formData.ordNo,
   })
         .then(res => {
-            console.log('res.data --> ', res.data);
+            // console.log('res.data --> ', res.data);
 
             if (res.data.result_rows === 1) {
                 alert('비회원 로그인 성공!');
                 localStorage.setItem("token", res.data.token);
-                localStorage.setItem("user_id", `guest_${res.data.guest_id}`);
+                localStorage.setItem("guest_id", res.data.guest_id);
                 setIsLoggedIn(true);
 
                 // 이전에 보고있던 상품 데이터 주문 정보들을 가져와서 주문 페이지로 이동
@@ -134,17 +134,3 @@ export default function LoginTab2({ isActive }) {
     </div>
   );
 }
-
-    // // 가상의 주문 데이터 (실제 서버와 연결하려면 API 호출 필요)
-    // const existingOrders = [
-    //     { guestNm: "홍길동", mobileNo: "01012345678", ordNo: "ORD12345" },
-    //     { guestNm: "김철수", mobileNo: "01087654321", ordNo: "ORD67890" },
-    //     { guestNm: "이영희", mobileNo: "01011223344", ordNo: "ORD54321" }
-    //   ];
-      
-    //   // 이름, 번호, 주문번호가 일치하는지 확인
-    //   const match = existingOrders.find(order => 
-    //     order.guestNm === formData.guestNm && 
-    //     order.mobileNo === formData.mobileNo && 
-    //     order.ordNo === formData.ordNo
-    //   );

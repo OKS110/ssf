@@ -1,7 +1,7 @@
 import { db } from './db.js';
 
 /**
- * ✅ 새로운 주문을 데이터베이스에 저장하는 함수
+ *  새로운 주문을 데이터베이스에 저장하는 함수
  * @param {Object} orderData - 주문 정보 객체
  * @returns {Object} 삽입된 주문 정보 반환
  */
@@ -9,7 +9,7 @@ export const addOrderItem = async (orderDataList) => {
     try {
 
         for (const orderData of orderDataList) {
-            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`; // ✅ 동일 주문 번호 적용
+            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`; //  동일 주문 번호 적용
             
             const sql = `
                 INSERT INTO orders (
@@ -28,11 +28,11 @@ export const addOrderItem = async (orderDataList) => {
             ]);
         }
 
-        console.log("✅ 모든 주문 성공적으로 저장됨:", orderResults);
+        console.log(" 모든 주문 성공적으로 저장됨:", orderResults);
         return { success: true, error };
 
     } catch (error) {
-        console.error("❌ 주문 생성 오류:", error);
+        console.error("ERROR 주문 생성 오류:", error);
         return { success: false, error };
     }
 };
@@ -42,19 +42,19 @@ export const addOrderItem = async (orderDataList) => {
 
 export const pullOrderList = async (user_id) => {
     try {
-        // 1️⃣ customers 테이블에서 customer_id 가져오기
+        //  customers 테이블에서 customer_id 가져오기
         const customerSql = `SELECT customer_id FROM customers WHERE username = ?`;
         const [customerResult] = await db.execute(customerSql, [user_id]);
 
         if (customerResult.length === 0) {
-            console.warn(`❌ user_id(${user_id})에 해당하는 customer_id가 없음.`);
+            console.warn(`ERROR user_id(${user_id})에 해당하는 customer_id가 없음.`);
             return [];
         }
 
         const customer_id = customerResult[0].customer_id;
-        console.log(`🟢 user_id(${user_id}) → customer_id(${customer_id}) 매핑 완료`);
+        console.log(`user_id(${user_id}) → customer_id(${customer_id}) 매핑 완료`);
 
-        // 2️⃣ orders 테이블에서 customer_id로 주문 목록 조회 (products와 JOIN)
+        //  orders 테이블에서 customer_id로 주문 목록 조회 (products와 JOIN)
         const orderSql = `
             SELECT o.*, p.image, p.pid as product_id
             FROM orders o
@@ -64,11 +64,11 @@ export const pullOrderList = async (user_id) => {
         `;
 
         const [orders] = await db.execute(orderSql, [customer_id]);
-        console.log("🔵 회원 주문 조회 결과:", orders);
+        console.log(" 회원 주문 조회 결과:", orders);
         return orders;
 
     } catch (error) {
-        console.error("❌ 회원 주문 조회 오류:", error);
+        console.error("ERROR 회원 주문 조회 오류:", error);
         return [];
     }
 };
@@ -89,9 +89,9 @@ export const getCartOrderItems = async (selectedCids) => {
     return result;
 };
 
-// ✅ 주문된 상품을 cart 테이블에서 삭제
+//  주문된 상품을 cart 테이블에서 삭제
 export const deleteOrderedCartItems = async (customer_id, orderedItems) => {
-    console.log("📌 [DEBUG] 삭제할 주문 상품:", orderedItems);
+    console.log(" [DEBUG] 삭제할 주문 상품:", orderedItems);
 
     try {
         for (const item of orderedItems) {
@@ -105,10 +105,10 @@ export const deleteOrderedCartItems = async (customer_id, orderedItems) => {
             await db.execute(sql, [customer_id, item.product_id, item.size, item.color]);
         }
 
-        console.log("✅ 주문된 상품들이 장바구니에서 삭제됨!");
+        console.log(" 주문된 상품들이 장바구니에서 삭제됨!");
         return { message: "주문된 상품들이 장바구니에서 삭제되었습니다." };
     } catch (error) {
-        console.error("❌ 장바구니에서 주문된 상품 삭제 실패:", error);
+        console.error("ERROR 장바구니에서 주문된 상품 삭제 실패:", error);
         throw error;
     }
 };
@@ -118,10 +118,10 @@ export const deleteOrder = async (oid) => {
 
     try {
         const [result] = await db.execute(sql, [oid]);
-        console.log(`✅ 주문 취소 완료: oid=${oid}, 삭제된 행 수=${result.affectedRows}`);
+        console.log(` 주문 취소 완료: oid=${oid}, 삭제된 행 수=${result.affectedRows}`);
         return result;
     } catch (error) {
-        console.error("❌ 주문 삭제 오류:", error);
+        console.error("ERROR 주문 삭제 오류:", error);
         throw error;
     }
 };

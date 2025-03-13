@@ -295,7 +295,6 @@
     font-size: 3rem;
 }
 .slider-wrap {
-    border: 1px solid red;
     /* width: 600px; */
     height: 400px;
     position: relative;
@@ -308,7 +307,6 @@
     width: 100%;
 }
 .slide {
-    border: 1px solid blue;
     /* display: flex; */
     /* transition: transfrom 0.5s ease; */
     transform: translateX(-100%);
@@ -326,10 +324,8 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    border: 1px solid red;
 }
 .show {
-    border: 1px solid blue;
     width: 750px;
     height: 350px;
     display: flex;
@@ -444,7 +440,6 @@
     top: 50%;
 }
 .swiper-btn-container > button {
-    border: 1px solid red;
     border-radius: 15px;
     margin: 0px;
     font-size: 3.1rem;
@@ -607,7 +602,7 @@
     margin-top: 15px;
 }
 .search-modal-main-contents {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     margin-top: 20px;
 }
 .search-modal-main-contents > div {
@@ -641,7 +636,7 @@
  * YuNa
 **************************/
 .searchPage-header {
-    border: 1px solid #000;
+    border: 1px solid silver;
     margin: 30px auto;
     width: 700px;
     display: flex;
@@ -672,6 +667,7 @@
     font-size: 25px;
 }
 .search-page-products {
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;

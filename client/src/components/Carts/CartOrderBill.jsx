@@ -1,28 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../commons/Button";
-import { useEffect } from "react";
 
 export default function CartOrderBill({ totalPrice, totalDiscount, totalDeliveryFee, selectedItems = [] }) {
     const navigate = useNavigate();
 
-    // ✅ 선택한 상품 주문 페이지로 이동
+    //  선택한 상품 주문 페이지로 이동
     const handleOrder = () => {
-        console.log("선택된 상품들:", selectedItems);
 
         if (!selectedItems || selectedItems.length === 0) {
 
             alert("주문할 상품을 선택해주세요.");
             return;
         }
-        // ✅ 선택한 상품들의 cid 리스트를 sessionStorage에 저장
+        //  선택한 상품들의 cid 리스트를 sessionStorage에 저장
         sessionStorage.setItem("selectedCids", JSON.stringify(selectedItems));
-        // ✅ 선택한 상품들의 cid 리스트만 전달
+        //  선택한 상품들의 cid 리스트만 전달
         navigate("/cart/order"); // 주문 페이지로 이동
     };
-    // ✅ `selectedItems` 변경 사항을 추적하는 `useEffect`
-    useEffect(() => {
-        console.log("📌 선택된 상품 목록 변경:", selectedItems);
-    }, [selectedItems]);
+    //  `selectedItems` 변경 사항을 추적하는 `useEffect`
+    // useEffect(() => {
+    //     console.log("선택된 상품 목록 변경:", selectedItems);
+    // }, [selectedItems]);
 
     const totalOrderAmount = totalPrice + totalDeliveryFee - totalDiscount;
 
@@ -46,7 +44,7 @@ export default function CartOrderBill({ totalPrice, totalDiscount, totalDelivery
                 </span>
             </div>
             
-            {/* ✅ 주문하기 버튼 */}
+            {/*  주문하기 버튼 */}
             <div className="submit_order">
                 <Button className="bk" title="주문하기" onClick={handleOrder} />
             </div>

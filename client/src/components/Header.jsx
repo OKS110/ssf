@@ -6,6 +6,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import { CustomersContext } from "../context/CustomersContext.js";
 import Modal from 'react-modal';
 import SearchModal from "./Search/SearchModal.jsx";
 
@@ -39,6 +40,7 @@ export default function Header() {
     ];
 
     // 로그인 상태 관리
+    const { customer, setCustomer } = useContext(CustomersContext);
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isGuest, setIsGuest] = useState(false);
@@ -58,6 +60,7 @@ export default function Header() {
                 localStorage.removeItem('user_id'); 
                 localStorage.removeItem('guest_id'); 
                 setIsLoggedIn(false);
+                setCustomer({}); //  고객 정보 초기화
                 setIsGuest(false); // 비회원 여부 초기화
                 localStorage.removeItem("user_id");
                 

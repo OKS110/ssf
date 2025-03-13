@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState } from 'react';
 
-export default function DeliveryUpload({type,name,ref,onChange,value}) {
+export default function DeliveryUpload({type, name, value}) {
     const [inputValue, setInputValue] = useState("");
 
     const handleFileUpload = (e) => {

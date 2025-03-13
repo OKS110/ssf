@@ -1030,7 +1030,7 @@
     color: black;
 }
 .mypage-wishList-brandContent-box{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* height: 100px; */
     text-align: center;
     padding: 100px 0;

@@ -1,4 +1,4 @@
-
+// 회원가입 양식 폼
 export const signupValidate = (refs,error,setError,isChecked1,isChecked2) => {   
 
     if(refs.idRef.current.value === ''){
@@ -69,12 +69,12 @@ export const signupValidate = (refs,error,setError,isChecked1,isChecked2) => {
 export const validateOrder = (formData, refs) => {
     let missingFields = [];
 
-    if (!formData.name || !refs.nameRef?.current?.value) missingFields.push("이름");
-    if (!formData.phone || !refs.phoneRef?.current?.value) missingFields.push("휴대폰 번호");
-    if (!formData.email || !refs.emailRef?.current?.value) missingFields.push("이메일");
-    if (!formData.address || !refs.addressRef?.current?.value) missingFields.push("배송 주소");
-    if (!formData.detail_address || !refs.detail_addressRef?.current?.value) missingFields.push("배송 상세 주소");
-    if (!formData.message || !refs.messageRef?.current?.value) missingFields.push("배송 메시지");
+    if (!formData.name || !refs.name?.value) missingFields.push("이름");
+    if (!formData.phone || !refs.phone?.value) missingFields.push("휴대폰 번호");
+    if (!formData.email || !refs.email?.value) missingFields.push("이메일");
+    if (!formData.address || !refs.address?.value) missingFields.push("배송 주소");
+    if (!formData.detail_address || !refs.detail_address?.value) missingFields.push("배송 상세 주소");
+    if (!formData.message || !refs.message?.value) missingFields.push("배송 메시지");
 
     if (missingFields.length > 0) {
         console.log("입력되지 않은 필드:", missingFields.join(", "));
@@ -84,3 +84,4 @@ export const validateOrder = (formData, refs) => {
 
     return true;
 };
+

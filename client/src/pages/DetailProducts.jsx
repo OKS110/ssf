@@ -21,7 +21,7 @@ export default function DetailProducts() {
     const { setCount, setSelectColor, setSelectedSize } = useContext(DetailProductContext);
     const [reviews, setReviews] = useState([]);
     const [reviewsLength, setReviewsLength] = useState(0);
-    const [averageRating, setAverageRating] = useState(0); // ⭐ 평균 별점 상태 추가
+    const [averageRating, setAverageRating] = useState(0); //  평균 별점 상태 추가
     // 상품 상세페이지 진입 시 전역 변수(사이즈, 색상, 수량) 초기화
     useEffect(() => {
         setCount(1);  // 수량 초기화
@@ -65,14 +65,14 @@ export default function DetailProducts() {
         return activeContent ? activeContent.content : null;
     };
 
-    // ✅ 리뷰 데이터를 서버에서 가져오는 함수
+    //  리뷰 데이터를 서버에서 가져오는 함수
     const fetchReviews = async () => {
             try {
                 const response = await axios.post("http://localhost:9000/review/list", { product_id: pid });
                 if (response.data.success) {
                     setReviews(response.data.reviews);
                 }
-                // ⭐ 별점 평균 계산
+                //  별점 평균 계산
                 const totalRating = response.data.reviews.reduce((sum, review) => sum + Number(review.rating), 0);
                 const avgRating = response.data.reviews.length > 0 ? (totalRating / response.data.reviews.length).toFixed(1) : 0;
     
@@ -81,7 +81,7 @@ export default function DetailProducts() {
                 
                 setAverageRating(avgRating); // 부모 컴포넌트에 전달
             } catch (error) {
-                console.error("❌ 리뷰 데이터를 불러오는 중 오류 발생:", error);
+                console.error("ERROR 리뷰 데이터를 불러오는 중 오류 발생:", error);
             }
         };
     
