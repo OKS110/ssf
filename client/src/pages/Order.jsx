@@ -123,7 +123,7 @@ export default function Order() {
                 email: customer?.email || "",
                 address: customer?.address || "",
                 zipcode: customer?.zipcode || "",
-                detail_address: customer?.additional_address || "",
+                detail_address: customer?.detail_address || "",
             }));
         }
     }, [customer]); //  `customer`가 변경될 때만 실행
