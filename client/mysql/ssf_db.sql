@@ -196,3 +196,5 @@ CREATE TABLE admin_approval (
 select * from customers;
 select * from guests;
 select * from guest_orders;
+select * from cart;
+select * from orders;

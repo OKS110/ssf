@@ -1,3 +1,4 @@
+
 import { validateOrder } from "./validate.js";
 
 // 주문 결제 함수
@@ -95,7 +96,7 @@ export const handleOrderSubmit = async ({
                 zipcode: formData.zipcode,
                 detail_address: formData.detail_address
             };
-            console.log("  [DEBUG] 비회원 정보:", guestData);
+            // console.log(" 비회원 정보:", guestData);
         }
 
         //    카카오페이 결제 요청
@@ -108,7 +109,7 @@ export const handleOrderSubmit = async ({
             await saveToOrder(orderDataList.map(order => ({ ...order, customer_id: customer.customer_id })));
             await deleteOrderedCartItems(customer.customer_id, orderDataList);
         } else {
-            console.log("  [DEBUG] 비회원 주문 데이터:", orderDataList);
+            // console.log(" 비회원 주문 데이터:", orderDataList);
             await saveGuestOrder(guestData, orderDataList);
         }
 

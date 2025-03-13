@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { SlArrowRight } from "react-icons/sl";
@@ -20,7 +20,7 @@ export default function Person() {
 
     // 주문 목록 상태 추가
     const [orderList, setOrderList] = useState([]);
-
+    const hasFetchedOrders = useRef(false);  // 한 번만 실행되도록 설정
     // 리뷰
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
@@ -45,7 +45,9 @@ export default function Person() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                if (isLoggedIn) {
+                if (isLoggedIn && !hasFetchedOrders.current) {
+                    hasFetchedOrders.current = true;  // 첫 실행 이후 다시 실행되지 않음
+
                     const storedUserId = localStorage.getItem("user_id");
                     if (storedUserId) {
                         await getCustomer(storedUserId);
@@ -53,40 +55,41 @@ export default function Person() {
                     } else {
                         console.warn("ERROR! user_id가 localStorage에 없습니다.");
                     }
-                } 
-                // guest_id가 있는지 확인하고, 즉시 비회원 주문 가져오기 실행
-                const guestId = localStorage.getItem("guest_id");
-                if (guestId) {
-                    await fetchGuestOrders(guestId);
+                    
+                    // guest_id가 있는 경우 비회원 주문 가져오기
+                    const guestId = localStorage.getItem("guest_id");
+                    if (guestId) {
+                        await fetchGuestOrders(guestId);
+                    }
                 }
             } catch (error) {
                 console.error("ERROR! 사용자 데이터 가져오기 실패:", error);
             }
         };
-    
+
         fetchUserData();
-    }, [isLoggedIn, orderList]); // isLoggedIn & orderList가 변경될 때 다시 실행
+    }, [isLoggedIn]);  // orderList 제거 → 무한 루프 해결
     
 
 
 
-    /**   비회원 주문 목록 가져오기 */
-    const fetchGuestOrders = async (guestId) => {
-        try {
-            const response = await axios.post("http://localhost:9000/guest/orders", { guest_id: guestId });
-            setOrderList(response.data);
-        } catch (error) {
-            console.error("ERROR! 비회원 주문 조회 오류:", error);
-        }
-    };
-
-    /**   회원 주문 목록 가져오기 */
+    /** 회원 주문 목록 가져오기 */
     const fetchMemberOrders = async (userId) => {
         try {
             const response = await axios.post("http://localhost:9000/order/all", { id: userId });
             setOrderList(response.data);
         } catch (error) {
             console.error("ERROR! 회원 주문 조회 오류:", error);
+        }
+    };
+
+    /** 비회원 주문 목록 가져오기 */
+    const fetchGuestOrders = async (guestId) => {
+        try {
+            const response = await axios.post("http://localhost:9000/guest/orders", { guest_id: guestId });
+            setOrderList(response.data);
+        } catch (error) {
+            console.error("ERROR! 비회원 주문 조회 오류:", error);
         }
     };
     
