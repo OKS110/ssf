@@ -28,11 +28,16 @@ export default function HotBrand(){
                 </div>
                 
 
-                {/* 슬라이드 버튼 - 컴포넌트로 만들 지 고민 중 */}
                 <div className="swiper-button-control">
-                    <div className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="true" onClick={() => moveToSlide("prev")}></div>
-                    <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">{curSlide + 1}</span> / <span className="swiper-pagination-total">3</span></div>
-                    <div className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-513dfba940703eb2" aria-disabled="false" onClick={() => moveToSlide("next")}></div>
+                    <div className="swiper-button-prev swiper-button-disabled" 
+                    tabindex="-1" role="button" onClick={() => moveToSlide("prev")}>
+
+                    </div>
+                    <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal">
+                        <span className="swiper-pagination-current">{curSlide + 1}</span> / <span className="swiper-pagination-total">3</span>
+                    </div>
+                    <div className="swiper-button-next" 
+                    tabindex="0" role="button"  onClick={() => moveToSlide("next")}></div>
                 </div>
             <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
         </section>

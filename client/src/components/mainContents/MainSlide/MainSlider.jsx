@@ -7,7 +7,6 @@ import '../../../slider/slick-theme.css';
 
 export default function MainSlider() {
     const [dataList, setDataList] = useState([]);
-    const [btnControll, setBtnControll] = useState(true);
 
     useEffect(() => {
         axios.get("/data/main.json")
@@ -61,13 +60,7 @@ export default function MainSlider() {
                 </div>
             ) }
         </Slider>
-        {/* <div onClick={() => setBtnControll(!btnControll)}>
-            {
-                btnControll
-                ? <img className='mainSlider-contoller-btn' src="/image/play-button.png" alt="" />
-                : <img className='mainSlider-contoller-btn' src="/image/pause.png" alt="" />
-            }
-        </div> */}
+        
         </>
     );
 }

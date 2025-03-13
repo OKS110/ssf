@@ -71,10 +71,6 @@ export default function SearchModal({event}) {
                             )
                         )
                         : (
-                            // <div>
-                            //     <span>최근검색어</span>
-                            //     <span>전체삭제</span>
-                            // </div>
                             []
                         )
                     }

@@ -27,7 +27,7 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
     // 모든 input 변경을 관리하는 핸들러 함수
     const handleChange = (event) => {
         const { name, value } = event.target;
-
+        
         // 휴대폰 번호 입력 시 숫자만 허용
         if (name === "phone") {
             setFormData({ ...formData, [name]: value.replace(/[^0-9]/g, "") });
@@ -65,19 +65,19 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                 <div className="row">
                     <label htmlFor="name" className="required">이름</label>
                     <span className="input_box">
-                        <input id="name" name="name" type="text" ref={refs.nameRef} value={formData.name} onChange={handleChange} placeholder="이름 입력" className="reset" />
+                        <input id="name" name="name" type="text" ref={(el) => (refs.name = el)} value={formData.name} onChange={handleChange} placeholder="이름 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
                     <label htmlFor="phone" className="required">휴대폰</label>
                     <span className="input_box">
-                        <input id="phone" name="phone" type="text" ref={refs.phoneRef} value={formData.phone} onChange={handleChange} placeholder="휴대폰 입력" className="reset" />
+                        <input id="phone" name="phone" type="text" ref={(el) => (refs.phone = el)} value={formData.phone} onChange={handleChange} placeholder="휴대폰 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
                     <label htmlFor="email" className="required">이메일 주소</label>
                     <span className="input_box">
-                        <input id="email" name="email" type="text" ref={refs.emailRef} value={formData.email} onChange={handleChange} placeholder="이메일 입력" className="reset" />
+                        <input id="email" name="email" type="text" ref={(el) => (refs.email = el)} value={formData.email} onChange={handleChange} placeholder="이메일 입력" className="reset" />
                     </span>
                 </div>
                 <div className="row">
@@ -93,9 +93,9 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                              >주소 찾기</button>
 
                             <input id="address" name="address" type="text" style={{display:"block", margin:"0"}}
-                                value={formData.address} ref={refs.addressRef} onChange={handleChange} placeholder="배송 주소 입력" className="reset" readOnly />
+                                value={formData.address} ref={(el) => (refs.address = el)} onChange={handleChange} placeholder="배송 주소 입력" className="reset" readOnly />
                             <input id="detail_address" name="detail_address" type="text" style={{display:"block", margin:"0"}}
-                                value={formData.detail_address} ref={refs.detail_addressRef} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
+                                value={formData.detail_address} ref={(el) => (refs.detail_address = el)} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
                         </span>
                     
                 </div>
@@ -103,7 +103,7 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                     <label htmlFor="message" className="required">배송 메시지</label>
                     <span className="input_box">
                         <input id="message" name="message" type="text" 
-                        ref={refs.messageRef} value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
+                        ref={(el) => (refs.message = el)} value={formData.message} onChange={handleChange} placeholder="배송 메시지 입력" className="reset" />
                     </span>
                 </div>
             </div>

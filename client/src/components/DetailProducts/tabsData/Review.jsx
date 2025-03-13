@@ -8,26 +8,26 @@ import { FaAnglesLeft } from "react-icons/fa6";
 import ReviewFilterTab from "./ReviewFilterTab.jsx";
 
 export default function Review({reviews }) {
-    const [currentPage, setCurrentPage] = useState(1); // ⭐ 현재 페이지 상태
-	const [sortedReviews, setSortedReviews] = useState([...reviews]); // ⭐ 정렬된 리뷰 상태
-	const [selectedSort, setSelectedSort] = useState("lately"); // ⭐ 선택된 정렬 옵션 상태 추가
+    const [currentPage, setCurrentPage] = useState(1); //  현재 페이지 상태
+	const [sortedReviews, setSortedReviews] = useState([...reviews]); //  정렬된 리뷰 상태
+	const [selectedSort, setSelectedSort] = useState("lately"); //  선택된 정렬 옵션 상태 추가
 
-    const reviewsPerPage = 5; // ⭐ 한 페이지당 5개의 리뷰
-    const pagesPerGroup = 5; // ⭐ 페이지네이션 그룹 (1~5, 6~10, ...)
-    const totalPages = Math.ceil(sortedReviews.length / reviewsPerPage); // ⭐ 총 페이지 개수
+    const reviewsPerPage = 5; //  한 페이지당 5개의 리뷰
+    const pagesPerGroup = 5; //  페이지네이션 그룹 (1~5, 6~10, ...)
+    const totalPages = Math.ceil(sortedReviews.length / reviewsPerPage); //  총 페이지 개수
 
-    // ⭐ 현재 페이지 그룹 계산
+    //  현재 페이지 그룹 계산
     const currentGroup = Math.ceil(currentPage / pagesPerGroup); // 현재 페이지가 속한 그룹
     const startPage = (currentGroup - 1) * pagesPerGroup + 1; // 현재 그룹의 첫 번째 페이지
     const endPage = Math.min(startPage + pagesPerGroup - 1, totalPages); // 현재 그룹의 마지막 페이지
 
-    // ⭐ 현재 페이지의 리뷰 목록을 가져오기
-   // ⭐ 현재 페이지의 리뷰 목록을 가져오기 (sortedReviews에서 slice)
+    //  현재 페이지의 리뷰 목록을 가져오기
+   //  현재 페이지의 리뷰 목록을 가져오기 (sortedReviews에서 slice)
    	const indexOfLastReview = currentPage * reviewsPerPage;
    	const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
    	const currentReviews = sortedReviews.slice(indexOfFirstReview, indexOfLastReview);
 
-	// ⭐ 정렬 함수
+	//  정렬 함수
     const handleSortChange = (sortType) => {
         let sortedData = [...reviews]; // 원본 데이터 유지
 
@@ -41,34 +41,34 @@ export default function Review({reviews }) {
 		
         setSortedReviews(sortedData);
         setCurrentPage(1); // 정렬 변경 시 첫 페이지로 이동
-		setSelectedSort(sortType); // ⭐ 선택된 정렬 옵션 업데이트
+		setSelectedSort(sortType); //  선택된 정렬 옵션 업데이트
     };
-	// ⭐ reviews가 변경될 때마다 정렬 상태 업데이트
+	//  reviews가 변경될 때마다 정렬 상태 업데이트
     useEffect(() => {
         setSortedReviews([...reviews]); // 원본 리뷰 리스트로 초기화
     }, [reviews]);
 
-    // ⭐ 페이지 변경 핸들러
+    //  페이지 변경 핸들러
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
 
-    // ⭐ 가장 처음 페이지로 이동
+    //  가장 처음 페이지로 이동
     const goToFirstPage = () => {
         setCurrentPage(1);
     };
 
-    // ⭐ 이전 페이지 그룹으로 이동
+    //  이전 페이지 그룹으로 이동
     const goToPreviousGroup = () => {
         setCurrentPage(Math.max(1, startPage - pagesPerGroup));
     };
 
-    // ⭐ 다음 페이지 그룹으로 이동
+    //  다음 페이지 그룹으로 이동
     const goToNextGroup = () => {
         setCurrentPage(Math.min(totalPages, startPage + pagesPerGroup));
     };
 
-    // ⭐ 가장 마지막 페이지로 이동
+    //  가장 마지막 페이지로 이동
     const goToLastPage = () => {
         setCurrentPage(totalPages);
     };
@@ -90,7 +90,7 @@ export default function Review({reviews }) {
                         <ReviewFilterTab />
                     </div>
 
-                    {/* ✅ 리뷰 리스트 UI */}
+                    {/*  리뷰 리스트 UI */}
                     <div className="review-detail-lists" id="searchGoodsReviewList">
                         <ul>
                             {currentReviews.map((review) => (
@@ -114,7 +114,7 @@ export default function Review({reviews }) {
                             ))}
                         </ul>
 
-                        {/* ✅ 페이지네이션 UI (5개 이상일 때만 표시) */}
+                        {/*  페이지네이션 UI (5개 이상일 때만 표시) */}
                         {totalPages > 1 && (
                             <div className="page">
                                 <button onClick={goToFirstPage} disabled={currentPage === 1}><FaAnglesLeft /></button>

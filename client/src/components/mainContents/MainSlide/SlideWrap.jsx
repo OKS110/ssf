@@ -21,7 +21,7 @@ export default function SlideWrap(){
                 <div className="slide-lists">
                 {array.items.map((item) => 
                     <div className="slide-item">
-                        <a href="javascript:undefined;" onclick="cnrClickLoging('23357','세트10(28~30)','151','/special/101010/view');javascript:location.href='/special/101010/view?utag=ref_tpl:111942$ref_cnr:23357$set:1$dpos:1';">
+                        <a href="#">
                             <div className="brand-info-area">
                                 <p className="brand-name">{item.name}</p>
                                 <p className="brand-tit">{item.tit}</p>

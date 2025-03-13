@@ -5,7 +5,6 @@ import { useCart } from "../../hooks/useCart.js";
 import { useProduct } from "../../hooks/useProduct.js";
 import Modal from 'react-modal';
 import CartOptionModal from "./CartOptionModal.jsx";
-import OrderGrayBox from "./OrderGrayBox.jsx";
 import CartOrderBill from './CartOrderBill.jsx';
 import { ProductContext } from "../../context/ProductContext.js";
 
@@ -26,7 +25,7 @@ export default function CartOrderMain() {
         }
     }, [isLoggedIn]);
 
-    // ✅ 선택된 상품 삭제
+    //  선택된 상품 삭제
     const handleDeleteSelectedItems = async () => {
         if (selectedItems.length === 0) {
             alert("삭제할 상품을 선택해주세요.");
@@ -43,11 +42,11 @@ export default function CartOrderMain() {
             setIsAllSelected(false);
             getCartItems();
         } catch (error) {
-            console.error("❌ 선택 삭제 중 오류 발생:", error);
+            console.error("ERROR 선택 삭제 중 오류 발생:", error);
         }
     };
 
-    // ✅ 개별 상품 선택 / 해제
+    //  개별 상품 선택 / 해제
     const handleSelectItem = (cid) => {
         setSelectedItems((prevSelected) =>
             prevSelected.includes(cid)
@@ -56,7 +55,7 @@ export default function CartOrderMain() {
         );
     };
 
-    // ✅ 전체 선택 / 해제
+    //  전체 선택 / 해제
     const handleSelectAll = () => {
         if (isAllSelected) {
             setSelectedItems([]); // 전체 해제
@@ -66,7 +65,7 @@ export default function CartOrderMain() {
         setIsAllSelected(!isAllSelected);
     };
 
-    // ✅ 모달 오픈 시 해당 상품의 product_id를 이용해 상품 정보 불러오기
+    //  모달 오픈 시 해당 상품의 product_id를 이용해 상품 정보 불러오기
     const openModal = async (item) => {
         const productData = await getPidItem(item.product_id);
         setSelectedItem({
@@ -77,20 +76,20 @@ export default function CartOrderMain() {
         setIsOpen(true);
     };
 
-    // ✅ 가격 변환 함수 (NaN 방지)
+    //  가격 변환 함수 (NaN 방지)
     const formatPrice = (price) => {
         if (!price) return 0;
         return parseFloat(price.toString().replace(/,/g, "")) || 0;
     };
 
-    // ✅ 선택된 상품의 총 상품 금액 (정가 기준)
+    //  선택된 상품의 총 상품 금액 (정가 기준)
     const selectedTotalPrice = cartList
         .filter((item) => selectedItems.includes(item.cid))
         .reduce((acc, item) => {
             return acc + formatPrice(item.original_price) * (item.quantity ?? 1);
         }, 0);
 
-    // ✅ 선택된 상품의 총 할인 금액
+    //  선택된 상품의 총 할인 금액
     const selectedTotalDiscount = cartList
         .filter((item) => selectedItems.includes(item.cid))
         .reduce((acc, item) => {
@@ -99,7 +98,7 @@ export default function CartOrderMain() {
             return acc + (originalPrice - discountedPrice) * (item.quantity ?? 1);
         }, 0);
 
-    // ✅ 선택된 상품의 총 배송비
+    //  선택된 상품의 총 배송비
     const selectedTotalDeliveryFee = cartList
         .filter((item) => selectedItems.includes(item.cid))
         .reduce((acc, item) => acc + (item.deliveryFee !== "free" ? 3000 : 0), 0);

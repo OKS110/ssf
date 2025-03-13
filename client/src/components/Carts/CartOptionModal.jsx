@@ -6,7 +6,7 @@ import { useCart } from "../../hooks/useCart";
 export default function CartOptionModal({ item, event }) {
     const { updateCartItemOptions } = useCart();
 
-    // ✅ 선택된 옵션 상태 관리
+    //  선택된 옵션 상태 관리
     const [count, setCount] = useState(item.quantity);
     const [selectedSize, setSelectedSize] = useState(item.size);
     const [selectedColor, setSelectedColor] = useState(item.color);
@@ -17,12 +17,12 @@ export default function CartOptionModal({ item, event }) {
         setSelectedColor(item.color);
     }, [item]);
 
-    // ✅ 수량 변경 핸들러
+    //  수량 변경 핸들러
     const handleQty = (type) => {
         setCount((prev) => (type === "increase" ? prev + 1 : Math.max(1, prev - 1)));
     };
 
-    // ✅ 변경 버튼 클릭 시 서버 & UI 반영
+    //  변경 버튼 클릭 시 서버 & UI 반영
     const onChange = () => {
         if (count <= 0) return;
         updateCartItemOptions(item.cid, selectedSize, selectedColor, count);
@@ -42,7 +42,7 @@ export default function CartOptionModal({ item, event }) {
                         {item.availableSizes.length > 0 ? (
                             item.availableSizes.map((size, index) => (
                                 <option key={index} value={size.name}>{size.name}</option>  
-                                // {/* ✅ size 객체가 아니라 size.name 사용 */}
+                                // {/*  size 객체가 아니라 size.name 사용 */}
                             ))
                         ) : (
                             <option>사이즈 없음</option>

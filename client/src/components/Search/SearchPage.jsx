@@ -9,11 +9,6 @@ export default function SearchPage() {
     const { getSearchList } = useProduct();
     const [searchKey, setSearchKey] = useState(""); // 해당 페이지 검색어 관리
     const [inputDefault, setInputDefault] = useState(""); // 해당 페이지 검색창 기본값 관리
-    
-    // console.log("searchKey --> ", searchKey);
-    // console.log("inputDefault --> ", inputDefault);
-    // console.log("searchList --> ", searchList);
-
 
     useEffect(() => {
         const key = localStorage.getItem("search_key");

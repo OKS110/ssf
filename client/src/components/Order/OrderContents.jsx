@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../commons/Button.jsx";
 import OrderGrayBox from "../Carts/OrderGrayBox.jsx";
 import PayOption from "../PayOption.jsx";
@@ -12,30 +12,30 @@ export default function OrderContents({
     refs,
     formData,
     setFormData,
-    isAgreed, // ✅ 구매 동의 상태 추가
-    setIsAgreed, // ✅ 부모에서 전달받아 업데이트
+    isAgreed, //  구매 동의 상태 추가
+    setIsAgreed, //  부모에서 전달받아 업데이트
     totalPrice,
     totalDiscount,
     totalDeliveryFee,
     orderItemsToContent
 }) {
     const location = useLocation();
-    // ✅ 특정 경로에 따라 OrderGrayBox 숨기기
+    //  특정 경로에 따라 OrderGrayBox 숨기기
     const shouldHideOrderGrayBox = location.pathname.startsWith("/order/");
 
-    // ✅ 입력 값 초기화 함수
+    //  입력 값 초기화 함수
     const resetForm = () => {
         setFormData({ name: "", phone: "", email: "", zipcode: "", address: "", detail_address: "", message: "" });
         console.log("입력값 초기화 완료");
     };
 
-    // ✅ 구매 동의 체크박스 핸들러
+    //  구매 동의 체크박스 핸들러
     const handleCheckboxChange = (event) => {
         setIsAgreed(event.target.checked); // 부모 상태 업데이트
     };
 
     console.log("현재 입력된 formData:", formData);
-    console.log("✅ 구매 동의 상태:", isAgreed);
+    console.log(" 구매 동의 상태:", isAgreed);
 
     return (
         <>
@@ -68,7 +68,7 @@ export default function OrderContents({
                 <Button 
                     className="bk" 
                     title="결제하기" 
-                    onClick={(e) => handleOrderSubmit(e, formData, isAgreed)} // ✅ 구매 동의 상태 전달
+                    onClick={(e) => handleOrderSubmit(e, formData, isAgreed)} //  구매 동의 상태 전달
                 />
             </div>
         </>

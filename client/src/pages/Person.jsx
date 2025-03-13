@@ -7,28 +7,27 @@ import PersonUIform from "../components/person/PersonUIform.jsx";
 import axios from "axios";
 import { CustomersContext } from '../context/CustomersContext.js';
 import { useCustomers } from '../hooks/useCustomers.js';
-import { MypageContext } from "../context/MypageContext.js";
+import { AuthContext } from "../auth/AuthContext.js";
 
 export default function Person() {
-    // ✅ LocalStorage에서 user_id 가져오기
+    const {isLoggedIn} = useContext(AuthContext);
+    //   LocalStorage에서 user_id 가져오기
     const userId = localStorage.getItem("user_id");
 
     const { customer } = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
-    const { setNotMypage } = useContext(MypageContext);
 
     // 주문 목록 상태 추가
     const [orderList, setOrderList] = useState([]);
-    const [isGuest, setIsGuest] = useState(false);
 
     // 리뷰
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [reviewText, setReviewText] = useState(""); // 리뷰 내용
-    const [rating, setRating] = useState(5); // ⭐ 기본 별점 5점
+    const [rating, setRating] = useState(5); // 기본 별점 5점
     
 
-        /** ✅ 리뷰 작성 버튼 클릭 시 모달 열기 */
+        /**   리뷰 작성 버튼 클릭 시 모달 열기 */
         const openReviewModal = (order) => {
             setSelectedOrder(order); // 선택한 주문 정보 저장
             setReviewModalOpen(true);
@@ -36,7 +35,7 @@ export default function Person() {
             setReviewText(""); // 리뷰 내용 초기화
         };
         
-    /** ✅ 리뷰 모달 닫기 */
+    /**   리뷰 모달 닫기 */
     const closeReviewModal = () => {
         setReviewModalOpen(false);
         setReviewText(""); // 입력 필드 초기화
@@ -44,80 +43,69 @@ export default function Person() {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const token = localStorage.getItem("token");
-
-            if (token && token.startsWith("guest_token_")) {
-                setIsGuest(true);
-                const guestId = localStorage.getItem("guest_id");
-
-                if (guestId) {
-                    await fetchGuestOrders(guestId);
+            try {
+                if (isLoggedIn) {
+                    const storedUserId = localStorage.getItem("user_id");
+                    if (storedUserId) {
+                        await getCustomer(storedUserId);
+                        await fetchMemberOrders(storedUserId);
+                    } else {
+                        console.warn("ERROR! user_id가 localStorage에 없습니다.");
+                    }
                 } else {
-                    console.warn("❌ guest_id가 localStorage에 없습니다.");
+                    await fetchGuestOrders(localStorage.getItem("guest_id"));
                 }
-            } else {
-                setIsGuest(false);
-                const userId = localStorage.getItem("user_id");
-
-                if (userId) {
-                    await getCustomer(userId);
-                    await fetchMemberOrders(userId);
-                } else {
-                    console.warn("❌ user_id가 localStorage에 없습니다.");
-                }
+            } catch (error) {
+                console.error("ERROR! 사용자 데이터 가져오기 실패:", error);
             }
         };
-
+    
         fetchUserData();
-    }, []);
+    }, [isLoggedIn, orderList]); // isLoggedIn & orderList가 변경될 때 다시 실행
+    
 
-    useEffect(() => {
-        setNotMypage(false);
-    }, []);
 
-    /** ✅ 비회원 주문 목록 가져오기 */
+
+    /**   비회원 주문 목록 가져오기 */
     const fetchGuestOrders = async (guestId) => {
         try {
             const response = await axios.post("http://localhost:9000/guest/orders", { guest_id: guestId });
             setOrderList(response.data);
         } catch (error) {
-            console.error("❌ 비회원 주문 조회 오류:", error);
+            console.error("ERROR! 비회원 주문 조회 오류:", error);
         }
     };
 
-    /** ✅ 회원 주문 목록 가져오기 */
+    /**   회원 주문 목록 가져오기 */
     const fetchMemberOrders = async (userId) => {
         try {
             const response = await axios.post("http://localhost:9000/order/all", { id: userId });
             setOrderList(response.data);
         } catch (error) {
-            console.error("❌ 회원 주문 조회 오류:", error);
+            console.error("ERROR! 회원 주문 조회 오류:", error);
         }
     };
     
-    console.log("orderList", orderList);
     
 
     const handleCancelOrder = async (oid) => {
         if (!window.confirm("정말로 주문을 취소하시겠습니까?")) return;
-    
-        // ✅ UI에서 먼저 해당 주문 제거
+        // UI에서 먼저 해당 주문 제거
         setOrderList((prevOrders) => prevOrders.filter((order) => order.oid !== oid));
     
         try {
             const response = await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
-            console.log("✅ 주문 취소 응답:", response.data);
+            // console.log("주문 취소 응답:", response.data);
             alert("주문이 취소되었습니다.");
         } catch (error) {
-            console.error("❌ 주문 취소 오류:", error.response ? error.response.data : error);
+            console.error("ERROR! 주문 취소 오류:", error.response ? error.response.data : error);
             alert("주문 취소에 실패했습니다.");
     
-            // ❌ 오류 발생 시 UI 복구 (취소된 주문 다시 추가)
+            // ERROR! 오류 발생 시 UI 복구 (취소된 주문 다시 추가)
             setOrderList((prevOrders) => [...prevOrders, orderList.find((order) => order.oid === oid)]);
         }
     };
     
-    console.log("selectedOrder", selectedOrder);
     
     // 리뷰 서버에 전달
     const submitReview = async () => {
@@ -126,7 +114,7 @@ export default function Person() {
             return;
         }
         if (!selectedOrder.customer_id || !selectedOrder.product_id || !selectedOrder.oid) {
-            console.error("❌ 필수 값 누락: ", {
+            console.error("ERROR! 필수 값 누락: ", {
                 customer_id: selectedOrder.customer_id,
                 product_id: selectedOrder.product_id,
                 order_id: selectedOrder.oid,
@@ -135,7 +123,7 @@ export default function Person() {
             return;
         }
         try {
-            // ✅ 리뷰 저장 요청
+            //   리뷰 저장 요청
             const response = await axios.post("http://localhost:9000/review/add", {
                 customer_id: selectedOrder.customer_id,
                 product_id: selectedOrder.product_id,
@@ -148,7 +136,7 @@ export default function Person() {
             if (response.data.success) {
                 alert("리뷰가 등록되었고, 주문 상태가 업데이트되었습니다.");
     
-                // ✅ 주문 리스트에서 상태 업데이트
+                //   주문 리스트에서 상태 업데이트
                 setOrderList((prevOrders) =>
                     prevOrders.map(order =>
                         order.oid === selectedOrder.oid ? { ...order, status: "Reviewed" } : order
@@ -157,35 +145,35 @@ export default function Person() {
                 closeReviewModal();
             }
         } catch (error) {
-            console.error("❌ 리뷰 저장 오류:", error);
+            console.error("ERROR! 리뷰 저장 오류:", error);
             alert("리뷰 등록에 실패했습니다.");
         }
     };
     
     useEffect(() => {
-        // ✅ WebSocket 연결
+        //   WebSocket 연결
         const socket = new WebSocket("ws://localhost:9002");
     
         socket.onopen = () => {
-            console.log("📡 WebSocket 연결 성공! (고객 페이지)");
+            console.log(" WebSocket 연결 성공! (고객 페이지)");
         };
     
         socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            console.log("📩 WebSocket 메시지 수신 (고객 페이지):", data);
+            console.log(" WebSocket 메시지 수신 (고객 페이지):", data);
     
             if (data.type === "orderUpdate") {
-                console.log(`📦 주문 ${data.oid} 상태가 ${data.status}로 변경됨 (isGuest: ${data.isGuest})`);
+                console.log(`주문 ${data.oid} 상태가 ${data.status}로 변경됨 (isGuest: ${data.isGuest})`);
     
                 if (data.isGuest) {
-                    // ✅ 비회원 주문 리스트 업데이트
+                    //   비회원 주문 리스트 업데이트
                     setOrderList((prevOrders) =>
                         prevOrders.map(order =>
                             order.g_oid === data.oid ? { ...order, status: data.status } : order
                         )
                     );
                 } else {
-                    // ✅ 회원 주문 리스트 업데이트
+                    //   회원 주문 리스트 업데이트
                     setOrderList((prevOrders) =>
                         prevOrders.map(order =>
                             order.oid === data.oid ? { ...order, status: data.status } : order
@@ -224,7 +212,7 @@ export default function Person() {
                         </div>
                     </div>
 
-                    {/* ✅ 최근 주문 상품 표시 (테이블 형태) */}
+                    {/*   최근 주문 상품 표시 (테이블 형태) */}
                     <div className="mypage-order-product">
                         <div className="mypage-order-product-top">
                             <h2>최근 주문 상품</h2>
@@ -272,7 +260,7 @@ export default function Person() {
                                                 </td>
                                                 {userId && 
                                                 <td>
-                                                    {/* ✅ 주문 상태가 "Delivered"일 경우 */}
+                                                    {/*   주문 상태가 "Delivered"일 경우 */}
                                                         {order.status === "Reviewed" ? (
                                                             <span className="review-done">리뷰 완료</span>
                                                         ) : order.status === "Delivered" ? (
@@ -300,14 +288,14 @@ export default function Person() {
                 </article>
             </div>
 
-            {/* ✅ 리뷰 작성 모달 */}
+            {/*   리뷰 작성 모달 */}
                 {userId && reviewModalOpen && (
                     <div className="review-modal">
                         <div className="modal-content">
                             <h2>리뷰 작성</h2>
                             <p>{selectedOrder?.brand} - {selectedOrder?.title}</p>
 
-                            {/* ⭐ 별점 선택 추가 */}
+                            {/* 별점 선택 추가 */}
                             <div className="rating">
                                 {[1, 2, 3, 4, 5].map((star) => (
                                     <span

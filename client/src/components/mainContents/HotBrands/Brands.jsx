@@ -18,7 +18,7 @@ export default function Brands2(){
                     <ul>
                         { array.items.map((item) => 
                             <li>
-                                <a href="/BEANPOLE/main?dspCtgryNo=&amp;brandShopNo=BDMA01&amp;brndShopId=BPBR&amp;utag=ref_tpl:111942$ref_cnr:23368$set:1$dpos:1" onclick="cnrClickLoging('23368','1','1','/BEANPOLE/main?dspCtgryNo=&amp;brandShopNo=BDMA01&amp;brndShopId=BPBR');">
+                                <a href="#">
                                     <div className="brand-box">
                                         <img className="swiper-lazy swiper-lazy-loaded" src={item.img}/>
                                     </div>

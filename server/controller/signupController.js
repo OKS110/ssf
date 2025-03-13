@@ -26,24 +26,24 @@ export const registCustomer = async (req, res) => {
             'addressDetail': req.body.data.addressDetail
         };
 
-        // ✅ 회원가입 요청 실행
+        //  회원가입 요청 실행
         const result = await repository.registCustomer(data);
-        console.log("✅ DB Insert 결과:", result);
+        console.log(" DB Insert 결과:", result);
 
-        // ✅ `affectedRows` 값을 정확히 참조하도록 수정
+        //  `affectedRows` 값을 정확히 참조하도록 수정
         const affectedRows = result.affectedRows || result[0]?.affectedRows || result.result;
 
         if (affectedRows === 1) {
-            console.log("✅ 회원가입 성공! 관리자에게 알림 전송...");
-            notifyAdminNewCustomer();  // ✅ WebSocket 알림 전송
+            console.log(" 회원가입 성공! 관리자에게 알림 전송...");
+            notifyAdminNewCustomer();  //  WebSocket 알림 전송
         } else {
-            console.log("❌ 회원가입 실패: affectedRows = ", affectedRows);
+            console.log("ERROR 회원가입 실패: affectedRows = ", affectedRows);
         }
 
-        // ✅ 응답을 보내고 종료
+        //  응답을 보내고 종료
         res.json(result);
     } catch (error) {
-        console.error("❌ 회원가입 오류:", error);
+        console.error("ERROR 회원가입 오류:", error);
         res.status(500).json({ success: false, message: "서버 오류 발생" });
     }
 };

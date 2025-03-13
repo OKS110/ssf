@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { FaStar, FaHeart } from "react-icons/fa";
 import Image from './Image.jsx';
 

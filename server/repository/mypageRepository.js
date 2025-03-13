@@ -10,7 +10,6 @@ export const getMyinfo = async ({ id }) => { // 이거 안씀 겟 커스터머 �
                 `;
 
     const [result] = await db.execute(sql1, [id]);
-    // console.log('haon',result[0]);
 
     return result[0];
 }
@@ -28,7 +27,6 @@ export const updateMyinfo = async ({ id, colName, value }) => {
     }
     else {
         const sql = `update customers set ${colName} = ? where username = ? `;
-        // const values1 = updateData;
         console.log(sql);
         const [result] = await db.execute(sql, [value, id]);
         return { 'result': result.affectedRows };
@@ -55,14 +53,12 @@ export const updateMyinfo2 = async ({ id, colName, value, colName2, value2 }) =>
 
 
 export const updateDelivery = async ({ deliForm, id }) => {
-    // console.log('de',deliForm, 'id',id );
 
     const sql1 = `
                update customers set name = ? , phone = ?, zipcode = ?, address = ?, detail_address = ? where username = ?
                 `;
 
     const [result] = await db.execute(sql1, [deliForm.name, deliForm.phone, deliForm.zoneCode, deliForm.address, deliForm.extraAddress, id]);
-    // console.log(result.affectedRows );
 
     return { 'result': result.affectedRows };
 }
@@ -70,13 +66,11 @@ export const updateDelivery = async ({ deliForm, id }) => {
 
 // 배송지 추가 개별   
 export const updateDeliveryExtra = async (all, id) => {
-    // console.log(add,id);
 
     const sql1 = `
             update customers set additional_address =?  where username = ?
      `;
     const [result] = await db.execute(sql1, [all, id]);
-    // console.log(['lolololol', result]);
     return { 'result': result.affectedRows };
 }
 
@@ -93,44 +87,28 @@ export const deleteDelivery = async ({ id }) => {
     return result;
 }
 
-// customer_id 가져오기
-// export const getId = async ({id}) => {
-//     const sql = `
-//                 select customer_id from customers where username = ?
-//                     `;
-
-//     const [result] = await db.execute(sql, [id]);
-//     // console.log('ddddd',result[0].customer_id);
-//     return result[0];
-// }
-
 export const addLike = async (cid,pid) => {
-    // console.log(cid,pid);
     const sql = `
                insert into favorites( customer_id, product_id ) 
                values( ?, ?)
                     `;
 
     const [result] = await db.execute(sql, [cid,pid]);
-    // console.log('ddddd',result[0]);
     
     return result[0];
 }
 
 export const deleteLike = async (cid,pid) => {
-    // console.log(cid,pid);
     const sql = `
                delete from favorites where customer_id = ? and product_id =?
                     `;
 
     const [result] = await db.execute(sql, [cid,pid]);
-    // console.log('ddddd', result.affectedRows );
     
     return { 'result': result.affectedRows };
 }
 
 export const getAllLike = async (cid) => {
-    // console.log('=============',cid);
     const sql = `
                select fid, customer_id, product_id
                 from favorites 
@@ -138,7 +116,6 @@ export const getAllLike = async (cid) => {
                
                     `;
     const [result] = await db.execute(sql,[cid]);
-    console.log('ddddd', result);
     
     return result;
 }

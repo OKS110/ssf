@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import { OrderContext } from '../context/OrderContext';
-// import { useCart } from '../hooks/useCart.js';
 import axios from 'axios';
 
 export function useOrder() {
-    // const { calculateTotalPrice } = useCart();
     const { orderList, setOrderList,
             orderPrice, setOrderPrice,
             member, setMember
@@ -17,72 +15,70 @@ export function useOrder() {
     const getOrderList = async(id) => {
         // const id = localStorage.getItem("user_id"); // dxzf76
         const result = await axios.post("http://localhost:9000/order/all", {"id": id});  //해당 아이디의 주문 정보
-        console.log('order list-->', result.data);
+        // console.log('order list-->', result.data);
         setOrderList(result.data);
         setMember(result.data[0]);
-        // calculateTotalPrice(result.data);
         
         return result.data;
     }
     
-    /** ✅ 회원 주문 정보 저장 */
+    /**    회원 주문 정보 저장 */
     const saveToOrder = async(orderData) => {
         
         const result = await axios.post("http://localhost:9000/order/add", orderData);  
-        console.log('order add : result --> ', result.data);
-        // setOrderList(result.data);
-        // setMember(result.data[0]);
+        // console.log('order add : result --> ', result.data);
+
     };
 
-    /** ✅ 비회원 주문 정보 저장 */
+    /**    비회원 주문 정보 저장 */
     const saveGuestOrder = async (guestData, orderData) => {
         try {
-            // 1️⃣ guests 테이블에 비회원 정보 저장
+            // guests 테이블에 비회원 정보 저장
             const guestResponse = await axios.post("http://localhost:9000/guest/add", guestData);
-            console.log("✅ [DEBUG] 비회원 추가 응답:", guestResponse.data);
+            console.log("   [DEBUG] 비회원 추가 응답:", guestResponse.data);
     
             const guestId = guestResponse.data.gid; // 자동 생성된 guest_id 가져오기
     
             if (!guestId) {
-                console.error("❌ guest_id가 응답에서 없음");
+                console.error("ERROR guest_id가 응답에서 없음");
                 return { error: "guest_id가 생성되지 않았습니다." };
             }
     
-            // ✅ guest_id를 localStorage에 저장
+            //    guest_id를 localStorage에 저장
             localStorage.setItem("guest_id", guestId);
-            console.log("📌 guest_id가 localStorage에 저장됨:", guestId);
+            // console.log(" guest_id가 localStorage에 저장됨:", guestId);
     
-            // 2️⃣ guest_orders 테이블에 주문 데이터 저장
+            // guest_orders 테이블에 주문 데이터 저장
             const guestOrderData = {
                 guest_id: guestId,
                 ...orderData
             };
     
             const orderResponse = await axios.post("http://localhost:9000/guest/addOrder", guestOrderData);
-            console.log("✅ 비회원 주문 저장 완료:", orderResponse.data);
+            // console.log(" 비회원 주문 저장 완료:", orderResponse.data);
     
             return { guest_id: guestId, orders: orderResponse.data };
         } catch (error) {
-            console.error("❌ 비회원 주문 처리 중 오류 발생:", error);
+            console.error("ERROR 비회원 주문 처리 중 오류 발생:", error);
             return { error: error.message };
         }
     };
     
-// ✅ 장바구니에서 선택한 상품 가져오기
+//    장바구니에서 선택한 상품 가져오기
     const getCartOrderItems = async (selectedCids) => {
         try {
             const response = await axios.post("http://localhost:9000/order/cartOrderItems", {
                 cids: selectedCids,
             });
-            // ✅ 서버에서 가져온 데이터에 `deliveryFee` 추가
+            //    서버에서 가져온 데이터에 `deliveryFee` 추가
             const updatedItems = response.data.map(item => ({
                 ...item,
-                deliveryFee: item.deliveryFee || "free" // ✅ 기본값 "free" 설정
+                deliveryFee: item.deliveryFee || "free" //   기본값 "free" 설정
             }));
             console.log(updatedItems);
             return updatedItems;
         } catch (error) {
-            console.error("❌ 장바구니 주문 상품 가져오기 실패:", error);
+            console.error("ERROR 장바구니 주문 상품 가져오기 실패:", error);
             return [];
         }
     };
@@ -90,7 +86,7 @@ export function useOrder() {
         try {
             await axios.post("http://localhost:9000/order/addCartOrders", { orders: orderDataList });
         } catch (error) {
-            console.error("❌ 장바구니 주문 저장 중 오류 발생:", error);
+            console.error("ERROR 장바구니 주문 저장 중 오류 발생:", error);
         }
     };
     const deleteOrderedCartItems = async (customerId, orderedItems) => {
@@ -100,9 +96,9 @@ export function useOrder() {
                 orderedItems: orderedItems, // 주문한 상품 리스트
             });
     
-            console.log("✅ 장바구니에서 주문된 상품 삭제 완료:", response.data);
+            console.log("   장바구니에서 주문된 상품 삭제 완료:", response.data);
         } catch (error) {
-            console.error("❌ 장바구니에서 주문된 상품 삭제 중 오류 발생:", error);
+            console.error("ERROR 장바구니에서 주문된 상품 삭제 중 오류 발생:", error);
         }
     };
     return { getOrderList, saveToOrder, saveGuestOrder, saveCartOrders, getCartOrderItems,

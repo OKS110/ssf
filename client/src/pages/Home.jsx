@@ -14,7 +14,6 @@ import { useContext } from "react";
 import { DetailProductContext } from "../context/DetailProductContext.js";
 export default function Home() {
   const { pid } = useParams();
-  const {count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize, cartList, userId} = useContext(DetailProductContext);
   
   useEffect(() => { // 메인으로 돌아갈 때마다 이전에 봤던 상품 아이디 삭제
     sessionStorage.removeItem("pid", pid);

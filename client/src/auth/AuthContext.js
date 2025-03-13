@@ -2,27 +2,19 @@ import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    //     try{
-    //       const tokens = localStorage.getItem('token');
+    const [token, setToken] = useState(null); //    token 상태 추가
 
-    //       return tokens ? true : false;
-    
-    //     }catch(error){
-    //         console.log('로컬스토리지 JSON 파싱 오류', error);
-    //         return []; // 오류 발생 시 빈 배열 반환
-    //     }});
-
-    // 토큰이 있으면 로그인 상태 유지
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token); //token이 null이면 false, 값이 있으면 true - !!는 불리언(Boolean) 값으로 변환
+        const storedToken = localStorage.getItem("token");
+        setIsLoggedIn(!!storedToken); //    token이 있으면 로그인 상태 true
+        setToken(storedToken); //    token 상태 업데이트
     }, []);
+
     return (
-        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken }}>
             {children}
         </AuthContext.Provider>
     );
-}
+};

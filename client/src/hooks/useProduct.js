@@ -8,7 +8,7 @@ export function useProduct() {
         productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList, setSearchList,setPidItem2
     } = useContext(ProductContext);
     
-    const [socket, setSocket] = useState(null); // ✅ WebSocket 상태 관리
+    const [socket, setSocket] = useState(null); //  WebSocket 상태 관리
 
     /** 상품 데이터 전체 호출 **/
     const getProductList = async() => {
@@ -19,7 +19,7 @@ export function useProduct() {
     }
     /** WebSocket을 이용해 상품 업데이트 감지 **/
     useEffect(() => {
-        const newSocket = new WebSocket("ws://localhost:9002"); // ✅ WebSocket 연결
+        const newSocket = new WebSocket("ws://localhost:9002"); //  WebSocket 연결
         setSocket(newSocket);
 
         newSocket.onopen = () => {
@@ -30,14 +30,16 @@ export function useProduct() {
             const data = JSON.parse(event.data);
             if (data.type === "update_products") {
                 console.log("🔄 상품 데이터 변경 감지! 목록 업데이트 중...");
-                getProductList(); // ✅ WebSocket 메시지를 수신하면 즉시 최신 데이터 반영
+                getProductList(); //  WebSocket 메시지를 수신하면 즉시 최신 데이터 반영
             }
         };
 
         return () => {
             newSocket.close();
-        }; // ✅ 언마운트 시 WebSocket 종료
+        }; //  언마운트 시 WebSocket 종료
     }, []);
+
+    
     /** 메인 - 아우터로~, 랭킹 리스트 필터링 */
     // 상품 데이터 필터링 등 작업이 필요할 때는 최대한 상품 전체 데이터를 호출하는 커스텀 훅에서 작업을 마친 후 반환해주는 것이 효율적
     const getFilterProducts = async(category, subCategory) => {
@@ -64,7 +66,7 @@ export function useProduct() {
     const getPidItem = async (pid) => {
         const result = await axios.post("http://localhost:9000/product/item", { pid });
         setPidItem(result.data);
-        return result.data;  // ✅ 상품 정보를 반환하도록 수정
+        return result.data;  //  상품 정보를 반환하도록 수정
     };
 
     /** 모달창 상품 검색 필터링 **/

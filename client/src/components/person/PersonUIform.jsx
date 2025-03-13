@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { MypageContext } from '../../context/MypageContext';
 // 마이페이지 왼쪽 탭중 만들고있는 컴포넌트는 빨간색표시함
