@@ -19,7 +19,7 @@ import { calculateOrderSummary } from "../utils/orderCalculate.js";
 import { handleOrderSubmit } from "../utils/handleOrderSubmit.js";
 import SlideUp from "../commons/SlideUp.jsx";
 
-
+// Order에서 Person으로 넘어갈 때 guest_id 발급됨
 export default function Order() {
     const navigate = useNavigate();
     const location = useLocation(); //경로를 파악(장바구니, 바로구매)
