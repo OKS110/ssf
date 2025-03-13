@@ -17,6 +17,7 @@ import { useLocation } from "react-router-dom";
 import { DetailProductContext } from "../context/DetailProductContext.js";
 import { calculateOrderSummary } from "../utils/orderCalculate.js";
 import { handleOrderSubmit } from "../utils/handleOrderSubmit.js";
+import SlideUp from "../commons/SlideUp.jsx";
 
 
 export default function Order() {
@@ -313,6 +314,7 @@ const onSubmitOrder = async (e) => {
             </div>
 
             <OrderModal isModalOpen={isModalOpen} handleConfirmOrder={() => navigate("/person")} setIsModalOpen={setIsModalOpen} />
+            <SlideUp/>
         </section>
     );
 }
