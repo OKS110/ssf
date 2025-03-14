@@ -23,20 +23,30 @@ export function useProduct() {
         setSocket(newSocket);
 
         newSocket.onopen = () => {
-            console.log("📡 WebSocket 연결됨 (고객 → 관리자)");
+            console.log(" WebSocket 연결 성공! (고객 서버)");
         };
 
         newSocket.onmessage = (event) => {
+            console.log(" WebSocket 메시지 수신:", event.data);
             const data = JSON.parse(event.data);
+
             if (data.type === "update_products") {
-                console.log("🔄 상품 데이터 변경 감지! 목록 업데이트 중...");
-                getProductList(); //  WebSocket 메시지를 수신하면 즉시 최신 데이터 반영
+                console.log(" 상품 데이터 변경 감지! 목록 업데이트 실행...");
+                getProductList(); // 최신 상품 목록 반영
             }
+        };
+
+        newSocket.onerror = (error) => {
+            console.error(" WebSocket 오류 발생:", error);
+        };
+
+        newSocket.onclose = () => {
+            console.warn(" WebSocket 연결이 종료되었습니다.");
         };
 
         return () => {
             newSocket.close();
-        }; //  언마운트 시 WebSocket 종료
+        };
     }, []);
 
     
