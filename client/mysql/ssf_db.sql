@@ -22,7 +22,7 @@ INSERT INTO admins (username, email, password, role, is_active) VALUES
 ('superadmin', 'superadmin@google.com', 'superadmin123', 'super_admin', TRUE),
 ('manager1', 'manager1@naver.com', 'manager1123', 'product_manager', TRUE),
 ('manager2', 'manager2@daum.com', 'manager2123', 'product_manager', TRUE);
-
+select * from admins;
 -- 관리자 권한 테이블
 CREATE TABLE admin_permissions (
     id INT AUTO_INCREMENT PRIMARY KEY,
