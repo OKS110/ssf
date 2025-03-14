@@ -43,10 +43,11 @@ export const useKakaoPayment = () => {
                 });
 
                 console.log(" 카카오페이 응답:", res.data);
+                console.log(" 카카오페이 응답:", res.data.next_redirect_pc_url);
 
                 if (res.data.next_redirect_pc_url) {
                     localStorage.setItem("tid", res.data.tid); //  결제 고유번호(TID) 저장
-                    localStorage.setItem("orderDataList", JSON.stringify(orderDataList)); //  주문 데이터 저장
+                    // localStorage.setItem("orderDataList", JSON.stringify(orderDataList)); //  주문 데이터 저장
                     localStorage.setItem("userData", JSON.stringify(userData)); //  사용자 정보 저장
                     window.location.href = res.data.next_redirect_pc_url; //  카카오페이 결제 창으로 이동
                 }

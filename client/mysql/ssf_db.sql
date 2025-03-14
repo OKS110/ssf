@@ -57,7 +57,7 @@ CREATE TABLE customers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
+select * from customers;
 -- 비회원 테이블
 CREATE TABLE guests (
     gid INT AUTO_INCREMENT PRIMARY KEY,

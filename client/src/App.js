@@ -27,6 +27,9 @@ import { DetailProductProvider } from './context/DetailProductContext.js';
 import DeliveryMyinfo from './components/person/MyInfo/DeliveryMyinfo.jsx';
 import SearchPage from './components/Search/SearchPage.jsx';
 import WishList from './components/person/WishList.jsx';
+import PaymentSuccess from './pages/PaymentSuccess.jsx';
+import PaymentCancel from './pages/PaymentCancel.jsx';
+import PaymentFail from './pages/PaymentFail.jsx';
 
 function App() {
   return (
@@ -58,6 +61,10 @@ function App() {
                     <Route path='/order/:pid' element={<Order/>}></Route>
                     <Route path='/cart/order' element={<Order />} /><Route/>
                     <Route path='/searchPage' element={<SearchPage />}></Route>
+                    <Route path='/payment/success' element={<PaymentSuccess />}></Route>
+                    <Route path='/payment/cancel' element={<PaymentCancel />}></Route>
+                    <Route path='/payment/fail' element={<PaymentFail />}></Route>
+                    
             </Route>
           </Routes>
           {/* </ScrollToTop>  ScrollTop */} 
