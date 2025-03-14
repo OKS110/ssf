@@ -10,10 +10,9 @@ import { ProductContext } from "../../context/ProductContext.js";
 
 export default function CartOrderMain() {
     const { isLoggedIn } = useContext(AuthContext);
-    const { cartList, setCartList } = useContext(DetailProductContext);
+    const { cartList } = useContext(DetailProductContext);
     const { getCartItems, cartDeleteItem } = useCart();
     const { getPidItem } = useProduct();
-    const {pid, pidList} = useContext(ProductContext);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedItems, setSelectedItems] = useState([]);

@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import LoginCartsNav from "../commons/LoginCartsNav";
 
 import CartOrderDesc from "../components/Carts/CartOrderDesc";
-import OrderGrayBox from "../components/Carts/OrderGrayBox";
 import CartOrderMain from "../components/Carts/CartOrderMain";
 import SlideUp from "../commons/SlideUp";
 

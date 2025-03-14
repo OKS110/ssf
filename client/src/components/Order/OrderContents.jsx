@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 
 export default function OrderContents({ 
     handleOrderSubmit, 
-    selectedPayMethod, 
     setSelectedPayMethod, 
     refs,
     formData,

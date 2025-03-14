@@ -8,15 +8,11 @@ import DaumPostcode from "react-daum-postcode";
 import { CustomersContext } from '../../../context/CustomersContext.js';
 import { useCustomers } from '../../../hooks/useCustomers.js';
 import axios from 'axios';
-import DeliveryMyinfo from './DeliveryMyinfo.jsx';
 
 
 export default function UpdateInfo() {
     const [addressValue, setAddressValue] = useState('');
-    const handleChangeInputAddressData = (e) => {
-        setAddressValue(e.target.value);
-    };
-    // console.log('addressValue',addressValue);
+
 
     const [adata, setAdata] = useState({});
     /** 주소검색 버튼Toggle */
@@ -332,7 +328,7 @@ export default function UpdateInfo() {
                                         onChange={btnChangeClick.address === true ? handleChangeInputData : null}
                                         className={btnChangeClick.address ? 'mypage-myinfo-update-input' : 'mypage-myinfo-none-update-input'}
                                         value={btnChangeClick.extra ? null : (
-                                            updateData.extra === undefined ? customer.detail_address : updateData.extra
+                                            updateData.extra === undefined ? customer.additional_address : updateData.extra
                                         )}
                                     />
                                 </li>

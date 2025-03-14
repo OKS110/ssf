@@ -3,7 +3,7 @@ import { DetailProductContext } from "../context/DetailProductContext.js";
 import axios from "axios";
 
 export function useCart() {
-    const { cartList, setCartList, userId, setUserId } = useContext(DetailProductContext);
+    const { cartList, setCartList, setUserId } = useContext(DetailProductContext);
 
     //  장바구니 내 동일한 상품 찾는 함수 (중복 제거)
     const findExistingItem = (pid, size, color) => {

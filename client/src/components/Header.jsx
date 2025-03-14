@@ -40,7 +40,7 @@ export default function Header() {
     ];
 
     // 로그인 상태 관리
-    const { customer, setCustomer } = useContext(CustomersContext);
+    const { setCustomer } = useContext(CustomersContext);
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isGuest, setIsGuest] = useState(false);
@@ -104,7 +104,7 @@ export default function Header() {
     return (
         <header className='wrap-header'>
             <div className='header-top-wrap'>
-                <ul className='header-top content-wrap'>
+                <div className='header-top content-wrap'>
                     <Link to='/person' className="person">마이페이지</Link>
                     {/* 비회원 여부에 따라 로그인 버튼 텍스트 변경 */}
                     <button  className="login" onClick={handleLoginToggle}>
@@ -114,7 +114,7 @@ export default function Header() {
                     
 
                     {/* Link 태그에서 button으로 변경 -> window.confirm 취소 시 Link 의 주소 참조로 인한 오류 발생 */}
-                </ul>
+                </div>
             </div>
 
             <div className='header-middle-wrap'>

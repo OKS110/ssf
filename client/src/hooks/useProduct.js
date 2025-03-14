@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ProductContext } from "../context/ProductContext.js";
 
 export function useProduct() {
     
     const { 
-        productList, setProductList, pidItem, setPidItem, setCategory, setSubcategory, setDetailList, setRankList, setSearchList,setPidItem2
+         setProductList, setPidItem, setDetailList, setRankList, setSearchList,
     } = useContext(ProductContext);
     
     const [socket, setSocket] = useState(null); //  WebSocket 상태 관리

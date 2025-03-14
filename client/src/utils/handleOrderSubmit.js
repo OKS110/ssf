@@ -23,6 +23,7 @@ export const handleOrderSubmit = async ({
     deleteOrderedCartItems, 
     setIsModalOpen
 }) => {
+    console.log("🚀 주문 시 현재 isAuthorized 상태:", isAuthorized);
     console.log("  결제 버튼 클릭 - 현재 토큰:", token);
 
     if (!isVerified) {
