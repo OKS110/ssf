@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom';
 import { SlArrowRight } from "react-icons/sl";
 import PersonUIform from './PersonUIform.jsx';
 import ProductMypage from '../../commons/ProductMypage.jsx';
-import { SlArrowDown } from "react-icons/sl";
-import { SlArrowUp } from "react-icons/sl";
 import MypageCancle from './orderCancle/tabsData/MypageCancle.jsx';
 import MypageOrder from './orderCancle/tabsData/MypageOrder.jsx';
 import MypageReturn from './orderCancle/tabsData/MypageReturn.jsx';

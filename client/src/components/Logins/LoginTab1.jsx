@@ -1,10 +1,8 @@
-import Button from "../../commons/Button.jsx";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext.js";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function LoginTab1({ isActive }) {
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);

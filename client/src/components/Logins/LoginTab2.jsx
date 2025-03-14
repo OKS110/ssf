@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthContext.js";
@@ -52,8 +51,6 @@ export default function LoginTab2({ isActive }) {
       order_number: formData.ordNo,
   })
         .then(res => {
-            // console.log('res.data --> ', res.data);
-
             if (res.data.result_rows === 1) {
                 alert('비회원 로그인 성공!');
                 localStorage.setItem("token", res.data.token);

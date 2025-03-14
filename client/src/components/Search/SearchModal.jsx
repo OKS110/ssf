@@ -1,12 +1,12 @@
-import React, { use, useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import React, {  useContext, useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { useProduct } from '../../hooks/useProduct.js';
 import { ProductContext } from '../../context/ProductContext.js';
 
 export default function SearchModal({event}) {
-    const { productList, searchList, search, setSearch } = useContext(ProductContext);
+    const { productList, search, setSearch } = useContext(ProductContext);
     const { getSearchList } = useProduct();
     const navigate = useNavigate();
 

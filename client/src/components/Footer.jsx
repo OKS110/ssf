@@ -1,6 +1,5 @@
 import Nav from '../commons/Nav.jsx';
 
-
 export default function Footer(){
   // 푸터 메뉴 시작
   const categories = [

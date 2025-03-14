@@ -1,11 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductBlock from '../commons/ProductBlock';
-import { FaStar, FaHeart } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
-import Image from '../commons/Image.jsx';
-import Button from '../commons/Button.jsx';
 import { ProductContext } from '../context/ProductContext.js';
 import { useProduct } from '../hooks/useProduct.js';
 import ProductSlider from '../commons/ProductSlider.jsx';

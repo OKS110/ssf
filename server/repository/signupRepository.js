@@ -48,7 +48,7 @@ export const registCustomer = async(data) => {
     try {
         const [result] = await db.execute(sql, values);
         console.log(" DB Insert 결과:", result);
-            return {'result' : result.affectedRows};
+        return {'result' : result.affectedRows};
 
     } catch (error) {
         console.error("ERROR DB Insert 오류:", error);

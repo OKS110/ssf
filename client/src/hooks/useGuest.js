@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import axios from "axios";
 import { GuestContext } from "../context/GuestContext.js"
 
 export function useGuests() {
-    const { guestList, setGuestList, guest, setGuest } = useContext(GuestContext);
+    const {  setGuestList, setGuest } = useContext(GuestContext);
 
     /** 비회원 데이터 전체 호출 **/
     const getGuestList = async() => {

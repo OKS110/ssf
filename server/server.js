@@ -1,8 +1,6 @@
 import express from 'express';
-import mysql from 'mysql2/promise';
 import cors from 'cors';
-import { WebSocketServer } from 'ws';
-import path from 'path';
+
 
 //  라우터 모듈 가져오기
 import loginRouter from './router/loginRouter.js';

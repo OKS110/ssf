@@ -10,8 +10,6 @@ import SubSlideWrap from "../components/mainContents/SubSlide/SubSlideWrap.jsx";
 import HotBrand from "../components/mainContents/HotBrands/HotBrand.jsx";
 import PopUp from '../components/mainContents/PopUp.jsx';
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
-import { DetailProductContext } from "../context/DetailProductContext.js";
 import SlideUp from "../commons/SlideUp.jsx";
 export default function Home() {
   const { pid } = useParams();

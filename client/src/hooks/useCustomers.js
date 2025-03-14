@@ -3,8 +3,8 @@ import axios from "axios";
 import { CustomersContext } from "../context/CustomersContext.js"
 
 export function useCustomers() {
-    const { customersList, setCustomersList, customer, setCustomer,
-        emailDomain, setEmailDomain, email, setEmail,
+    const {  setCustomersList, setCustomer,
+         setEmailDomain, setEmail,
         
     } = useContext(CustomersContext);
 
@@ -18,23 +18,33 @@ export function useCustomers() {
 
     /** 고객 별 데이터 호출 **/
     const getCustomer = async (username) => {
+        if (!username) {
+            console.error("❌ getCustomer() 호출 시 username이 없습니다.");
+            return;
+        }
+    
         try {
+            console.log("🚀 API 요청: 고객 데이터 가져오기 - username:", username);
             const result = await axios.post("http://localhost:9000/customers/member", { username });
-            setCustomer(result.data);            
-            if(result.data.email){
-                let emailName = result.data.email.replace('@naver.com', '').replace('@gmail.com', '').replace('@daum.net', '');
-                const emailDomainLengthCheck = result.data.email.indexOf('@');  // @ 있는 위치 찾기
+            console.log("✅ 고객 데이터 응답:", result.data);
+    
+            setCustomer(result.data);
+            
+            if (result.data?.email) {
+                let emailName = result.data.email.replace('@naver.com', '')
+                                                 .replace('@gmail.com', '')
+                                                 .replace('@daum.net', '');
+                const emailDomainLengthCheck = result.data.email.indexOf('@');
                 const emailDomain = result.data.email.slice(emailDomainLengthCheck + 1, result.data.email.length);
+                
                 setEmailDomain(emailDomain);
                 setEmail(emailName);
             }
-
         } catch (error) {
-            // alert('비회원은 상품주문 후에 마이페이지 이용이 가능합니다.')
+            console.error("❌ 고객 데이터 요청 중 오류 발생:", error);
         }
-
-        // console.log(result.data.email);   
-    }
+    };
+    
 
 
     return { getCustomersList, getCustomer };

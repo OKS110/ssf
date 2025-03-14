@@ -24,8 +24,9 @@ export default function Order() {
     const navigate = useNavigate();
     const location = useLocation(); //경로를 파악(장바구니, 바로구매)
     const { isLoggedIn, token } = useContext(AuthContext); //  로그인 상태 가져오기
-    const isAuthorized = Boolean(token) && !(token && token.startsWith("guest_token_")); // 회원 비회원 여부 확인
 
+
+    
     const { pid } = useParams();
     const { pidItem } = useContext(ProductContext); //  개별 상품 데이터
     const { getPidItem } = useProduct();
@@ -60,7 +61,7 @@ export default function Order() {
     });
 
     const [selectedPayMethod, setSelectedPayMethod] = useState("CREDIT_CARD_PAY"); // 결제 수단
-    const { handleKakaoPayment, loading, error } = useKakaoPayment(); //  커스텀 훅 사용
+    const { handleKakaoPayment } = useKakaoPayment(); //  커스텀 훅 사용
 
     const [isModalOpen, setIsModalOpen] = useState(false); //결제 완료 시 모달창 오픈
     const [orderSummary, setOrderSummary] = useState({ //주문 결제 금액
@@ -174,18 +175,19 @@ export default function Order() {
 
 
 
-
     //  주문폼 제출 핸들러
 //  주문폼 제출 핸들러
 const onSubmitOrder = async (e) => {
     e.preventDefault();
-    
+    // 🚀 강제 업데이트 (임시 해결책)
+    const storedToken = localStorage.getItem("token") || "";
+    const authStatus = storedToken && !storedToken.startsWith("guest_token_");
     await handleOrderSubmit({
         formData,
         formRefs,
-        token,
+        token: storedToken, // 🔥 최신 token 사용
         isVerified,
-        isAuthorized,
+        isAuthorized: authStatus, // 🔥 최신 상태 적용
         isAgreed,
         pidItem,
         count,
