@@ -19,7 +19,10 @@ export default function OrderGrayBox({ orderItems = [] }) {
 
     //  최종 결제 금액 계산
     finalPrice = totalPrice + totalDeliveryFee - totalDiscount;
-
+    if (finalPrice >= 39900) {
+        totalDeliveryFee = 0;
+        finalPrice = totalPrice - totalDiscount; // 배송비 제외 후 재계산
+    }
     return (
         <div className="gray_box">
             <h5>스토어 주문금액 합계</h5>
