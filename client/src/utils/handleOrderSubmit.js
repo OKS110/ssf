@@ -1,10 +1,5 @@
-
-import { validateOrder } from "./validate.js";
-
-// 주문 결제 함수
 export const handleOrderSubmit = async ({
     formData, 
-    formRefs, 
     token, 
     isVerified, 
     isAuthorized, 
@@ -23,29 +18,30 @@ export const handleOrderSubmit = async ({
     deleteOrderedCartItems, 
     setIsModalOpen
 }) => {
-    console.log("🚀 주문 시 현재 isAuthorized 상태:", isAuthorized);
-    console.log("  결제 버튼 클릭 - 현재 토큰:", token);
-
     if (!isVerified) {
         alert("휴대폰 인증을 먼저 완료해주세요.");
         return;
     }
 
-    //    유효성 검사
-    if (!validateOrder(formData, formRefs.current)) {
+    if (!isAgreed) {
+        alert("구매 동의에 체크해주세요.");
         return;
     }
 
     let orderDataList = [];
+    let totalOrderPrice = 0;  // 총 주문 금액 (배송비 포함 전)
 
-    //    개별 구매 상품 (바로구매)
     if (pidItem) {
+        const productTotalPrice = (Number(pidItem.saleprice.replace(/,/g, "")) || 0) * count;
+        totalOrderPrice += productTotalPrice;
+        
+        // 배송비 설정 (기본 3,000원, free이면 0원)
+        let deliveryFee = pidItem.deliveryFee === "free" ? 0 : 3000;
+
         orderDataList.push({
             brand: pidItem?.brand || "브랜드 정보 없음",
             title: pidItem?.title || "상품명 없음",
-            total_price: (typeof pidItem.saleprice === "string" 
-                ? Number(pidItem.saleprice.replace(/,/g, "")) 
-                : Number(pidItem.saleprice) || 0) * count,
+            total_price: productTotalPrice + deliveryFee, // 배송비 포함
             size: selectedSize,
             color: selectColor,
             quantity: count || 1,
@@ -56,37 +52,52 @@ export const handleOrderSubmit = async ({
             status: "Pending",
             refund_amount: 0,
             payment_method: selectedPayMethod || null,
+            delivery_fee: deliveryFee
         });
     }
 
-    //    장바구니에서 선택한 상품 추가 (기존 데이터 버리고 최신 데이터만 포함)
     if (isAuthorized && location.pathname === "/cart/order" && cartOrderItems.length > 0) {
-        console.log("  [DEBUG] 장바구니에서 가져온 최신 데이터:", cartOrderItems);
+        const validCartOrders = cartOrderItems.map(item => {
+            const itemTotalPrice = Number(item.discounted_price) * item.quantity;
+            totalOrderPrice += itemTotalPrice;
+            
+            // 배송비 설정 (기본 3,000원, free이면 0원)
+            let deliveryFee = item.delivery_fee === "free" ? 0 : 3000;
 
-        const validCartOrders = cartOrderItems.map(item => ({
-            product_id: item.product_id,
-            brand: item.brand || "브랜드 정보 없음",
-            title: item.name || "상품명 없음",
-            total_price: item.discounted_price * item.quantity,
-            size: item.size,
-            color: item.color,
-            quantity: item.quantity,
-            zipcode: formData.zipcode || null,
-            shipping_address: formData.address || null,
-            delivery_message: formData.message || null,
-            detail_address: formData.detail_address || null,
-            status: "Pending",
-            refund_amount: 0,
-            payment_method: selectedPayMethod || null,
-        }));
+            return {
+                product_id: item.product_id,
+                brand: item.brand || "브랜드 정보 없음",
+                title: item.name || "상품명 없음",
+                total_price: itemTotalPrice + deliveryFee, // 배송비 포함
+                size: item.size,
+                color: item.color,
+                quantity: item.quantity,
+                zipcode: formData.zipcode || null,
+                shipping_address: formData.address || null,
+                delivery_message: formData.message || null,
+                detail_address: formData.detail_address || null,
+                status: "Pending",
+                refund_amount: 0,
+                payment_method: selectedPayMethod || null,
+                delivery_fee: deliveryFee
+            };
+        });
 
         orderDataList = [...validCartOrders];
+    }
+
+    //  39,900원 이상이면 배송비를 0원으로 조정 (주문 목록 수정)
+    if (totalOrderPrice >= 39900) {
+        orderDataList = orderDataList.map(order => ({
+            ...order,
+            total_price: order.total_price - order.delivery_fee, // 배송비 차감
+            delivery_fee: 0
+        }));
     }
 
     console.log("  [DEBUG] 최종 주문 데이터:", orderDataList);
 
     try {
-        //    비회원 정보 정의
         let guestData = null;
         if (!isAuthorized) {
             guestData = {
@@ -97,27 +108,20 @@ export const handleOrderSubmit = async ({
                 zipcode: formData.zipcode,
                 detail_address: formData.detail_address
             };
-            // console.log(" 비회원 정보:", guestData);
         }
 
-        //    카카오페이 결제 요청
         if (orderDataList[0]?.payment_method === "kakao") {
             await handleKakaoPayment(orderDataList, isAuthorized ? customer : guestData);
         }
 
-        //    주문 정보 저장 (회원/비회원 분기 처리)
         if (isAuthorized) {
-            await saveToOrder(orderDataList.map(order => ({ ...order, customer_id: customer.customer_id })));
+            await saveToOrder(orderDataList.map(order => ({
+                ...order, 
+                customer_id: customer.customer_id 
+            })));
             await deleteOrderedCartItems(customer.customer_id, orderDataList);
         } else {
-            // console.log(" 비회원 주문 데이터:", orderDataList);
             await saveGuestOrder(guestData, orderDataList);
-        }
-
-        //    구매 동의 확인 후 모달 열기
-        if (!isAgreed) {
-            alert("구매 동의에 체크해주세요.");
-            return;
         }
 
         setIsModalOpen(true);
