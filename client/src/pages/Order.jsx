@@ -25,8 +25,6 @@ export default function Order() {
     const location = useLocation(); //경로를 파악(장바구니, 바로구매)
     const { isLoggedIn, token } = useContext(AuthContext); //  로그인 상태 가져오기
 
-
-    
     const { pid } = useParams();
     const { pidItem } = useContext(ProductContext); //  개별 상품 데이터
     const { getPidItem } = useProduct();
@@ -71,8 +69,6 @@ export default function Order() {
         finalPrice: 0,
     });
 
-    
-
     //  상품 정보 가져오기 (개별 상품 바로구매 시 필요)
     useEffect(() => {
         const fetchProductData = async () => {
@@ -82,7 +78,6 @@ export default function Order() {
                 console.error("ERROR 상품 데이터 가져오기 실패:", error);
             }
         };
-
         if (pid) {
             fetchProductData();
         }
@@ -113,8 +108,6 @@ export default function Order() {
         fetchUserData();
         setIsVerified(isLoggedIn); // 휴대폰 인증상태
     }, [isLoggedIn]); //  로그인 상태가 변경될 때만 실행
-    
-
     
     //  `customer` 정보가 변경될 때 formData 자동 업데이트
     useEffect(() => {
@@ -179,15 +172,15 @@ export default function Order() {
 //  주문폼 제출 핸들러
 const onSubmitOrder = async (e) => {
     e.preventDefault();
-    // 🚀 강제 업데이트 (임시 해결책)
+    //  강제 업데이트
     const storedToken = localStorage.getItem("token") || "";
     const authStatus = storedToken && !storedToken.startsWith("guest_token_");
     await handleOrderSubmit({
         formData,
         formRefs,
-        token: storedToken, // 🔥 최신 token 사용
+        token: storedToken, // 최신 token 사용
         isVerified,
-        isAuthorized: authStatus, // 🔥 최신 상태 적용
+        isAuthorized: authStatus, // 최신 상태 적용
         isAgreed,
         pidItem,
         count,
