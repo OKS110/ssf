@@ -105,14 +105,12 @@ export default function Header() {
         <header className='wrap-header'>
             <div className='header-top-wrap'>
                 <div className='header-top content-wrap'>
-                    <Link to='/person' className="person">마이페이지</Link>
+                    {isLoggedIn ? <Link to='/person' className="person">마이페이지</Link> : ""}
                     {/* 비회원 여부에 따라 로그인 버튼 텍스트 변경 */}
                     <button  className="login" onClick={handleLoginToggle}>
                         {isLoggedIn ? (isGuest ? "(비회원) 로그아웃" : "로그아웃") : "로그인" }
                     </button>
                     {isLoggedIn ? "" : <Link to='/signup' className="person">회원가입</Link>}
-                    
-
                     {/* Link 태그에서 button으로 변경 -> window.confirm 취소 시 Link 의 주소 참조로 인한 오류 발생 */}
                 </div>
             </div>
@@ -142,9 +140,9 @@ export default function Header() {
                         </div>
                         <span>|</span>
                         <div className='shop-wrap'>
-                            <a href='#'>site1</a>
-                            <a href='#'>site2</a>
-                            <a href='#'>site3</a>
+                            <a href='#'>10 CORSO COMO</a>
+                            <a href='#'>BEAKER</a>
+                            <a href='#'>ANOTHER#</a>
                         </div>
                     </div>
                 </div>

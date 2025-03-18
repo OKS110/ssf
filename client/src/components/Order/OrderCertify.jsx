@@ -2,8 +2,6 @@ import React  from "react";
 
 export default function OrderCertify() {
 
-
-
     const handleGuestAuth = async (event) => {
         event.preventDefault(); // 기본 링크 동작 방지
 

@@ -34,8 +34,7 @@ export default function SearchModal({event}) {
 
     return (
         <div className='header-search-modal-wrap'>
-            <div className='search-modal-off'
-            >
+            <div className='search-modal-off'>
                 <span onClick={() => event(false)}><IoCloseSharp /></span>
             </div>
             <div className='search-modal-main'>
