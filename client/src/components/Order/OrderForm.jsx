@@ -97,7 +97,6 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                             <input id="detail_address" name="detail_address" type="text" style={{display:"block", margin:"0"}}
                                 value={formData.detail_address} ref={(el) => (refs.detail_address = el)} onChange={handleChange} placeholder="상세정보 입력" className="reset" />
                         </span>
-                    
                 </div>
                 <div className="row">
                     <label htmlFor="message" className="required">배송 메시지</label>
@@ -107,7 +106,6 @@ export default function OrderForm({ formData, setFormData, resetForm, refs }) {
                     </span>
                 </div>
             </div>
-
             {/* react-modal을 활용한 DaumPostcode 모달 */}
             <Modal isOpen={isOpen} onRequestClose={handleToggle} style={modalStyles} ariaHideApp={false}>
                 <h2>주소 검색</h2>

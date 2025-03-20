@@ -5,9 +5,9 @@ export default function PaymentFail() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.warn("❌ 결제 실패: 사용자 결제 진행 중 오류 발생");
+        console.warn("결제 실패: 사용자 결제 진행 중 오류 발생");
 
-        // ✅ 3초 후 메인 페이지로 이동
+        // 3초 후 메인 페이지로 이동
         setTimeout(() => {
             navigate("/", { replace: true });
         }, 3000);

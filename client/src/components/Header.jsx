@@ -6,7 +6,6 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { CustomersContext } from "../context/CustomersContext.js";
 import Modal from 'react-modal';
 import SearchModal from "./Search/SearchModal.jsx";
 
@@ -40,7 +39,6 @@ export default function Header() {
     ];
 
     // 로그인 상태 관리
-    const { setCustomer } = useContext(CustomersContext);
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isGuest, setIsGuest] = useState(false);
@@ -60,7 +58,6 @@ export default function Header() {
                 localStorage.removeItem('user_id'); 
                 localStorage.removeItem('guest_id'); 
                 setIsLoggedIn(false);
-                setCustomer({}); //  고객 정보 초기화
                 setIsGuest(false); // 비회원 여부 초기화
                 localStorage.removeItem("user_id");
                 
@@ -69,9 +66,7 @@ export default function Header() {
                     navigate('/');
                 }, 0);
             }else if(select === false){
-                console.log('로그아웃 취소');
-                console.log(select);
-                
+
                 return; // 현재 상태 유지
             }
         } else { // 로그인 버튼 클릭
@@ -99,7 +94,7 @@ export default function Header() {
             justifyContent: "center",
         }
     }
-    console.log("modal status --> ", isOpen);
+    // console.log("modal status --> ", isOpen);
 
     return (
         <header className='wrap-header'>
@@ -122,7 +117,7 @@ export default function Header() {
 
                     <div className='icon-shop-wrap'>
                         <div className='icon-wrap'>
-                            {/* <Link to='/detail'> */}
+                            {/* 검색버튼 */}
                                 <button type='button' onClick={() => setIsOpen(true)} style={{backgroundColor:"white"}}><CiSearch /></button>
                                 <Modal
                                     isOpen={isOpen}
@@ -134,7 +129,6 @@ export default function Header() {
                                 >
                                     <SearchModal event={setIsOpen} />
                                 </ Modal>
-                            {/* </Link> */}
                             <button type='button' style={{backgroundColor:"white"}}><CiHeart /></button>
                             <button type='button' style={{backgroundColor:"white"}}><Link to='/carts'><AiOutlineShopping /></Link></button>
                         </div>

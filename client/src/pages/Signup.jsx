@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 export default function Signup(){
-    const [adata, setAdata] = useState({});
+    const navigate = useNavigate();
+    const [adata, setAdata] = useState({}); // 주소 정보 저장
     
     /** 주소검색 버튼Toggle */
     const [isOpen, setIsOpen] = useState(false);
@@ -14,24 +15,22 @@ export default function Signup(){
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
+
     //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
     const themeObj = {
         bgColor: "#FFFFFF",
         pageBgColor: "#FFFFFF",
         postcodeTextColor: "#C05850",
-        emphTextColor: "#222222",
+        emphTextColor: "#222222"
     };
     const postCodeStyle = {
         width: "480px",
-        height: "480px",
+        height: "480px"
     };
 
     const completeHandler = (data) => {
-        // console.log(data.zonecode);
-        // console.log(data.address);     
         setAdata({...adata, zoneCode: data.zonecode, address: data.address });
     };
-    // console.log('주소',adata);
 
     const closeHandler = (state) => {
         if (state === "FORCE_CLOSE") {
@@ -42,9 +41,8 @@ export default function Signup(){
     };
     //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
 
-    const navigate = useNavigate();
-
-    const formData = {'id':'',
+    const formData = {
+                    'id':'',
                     'pwd':'',
                     'cpwd':'',
                     'username':'',
@@ -55,7 +53,6 @@ export default function Signup(){
                     'email':'',
                     'emailDomain':''
                 }
-  
     const [data, setData] = useState(formData);
     const [error, setError] = useState({});
 
@@ -79,12 +76,12 @@ export default function Signup(){
     }
 
     //체크박스 상태 관리
-    const [isChecked1, setIsChecked1] = useState(false);
-    const [isChecked2, setIsChecked2] = useState(false);
+    const [isChecked1, setIsChecked1] = useState(false); // 이용약관 동의 여부
+    const [isChecked2, setIsChecked2] = useState(false); // 개인정보 수집 동의 여부
     const handleChecked1 = (e) => {setIsChecked1(e.target.checked);}
     const handleChecked2 = (e) => {setIsChecked2(e.target.checked);}
-    // 아디중복체크 눌럿는지 안눌럿는지
-    const [idCheckClick,setIdCheckClick] = useState(false);
+    
+    const [idCheckClick, setIdCheckClick] = useState(false);  // 아이디 중복 확인 여부
 
     const handleSignupForm = (e) => {
         const {name, value} = e.target;
@@ -94,30 +91,27 @@ export default function Signup(){
         }        
         setData({...data, [name]:value});
     }
-    // console.log(data);
 
     // 아이디 중복체크 클릭여부 함수
     const handleIdCheck = () => {
-        
         //서버연동해서 아이디 중복체크 진행
-            const idV = refs.idRef.current;
-            if(idV.value===''){
+            const did = refs.idRef.current; //did = duplicateId
+            if(did.value===''){
                 setError({...error, ['id']:'아이디를 입력해주세요'});
-                idV.focus();
-            }else if(idV.value.length < 6){
+                did.focus();
+            }else if(did.value.length < 6){
                 setError({...error, ['id']:'6자 이상 아이디를 입력해주세요'});
-                idV.value = '';
-                idV.focus();     
+                did.value = '';
+                did.focus();     
             }else {
                 axios
-                    .post('http://localhost:9000/member/idCheck',{'id' : idV.value})
+                    .post('http://localhost:9000/member/idCheck',{'id' : did.value})
                     .then(res =>{ 
-                        // console.log('sqlresult',res.data.count);
                         if(res.data.count === 1){
                             setError({...error,['id']:'사용중인 아이디입니다'});
                             msgRefs.idMsgRef.current.style.setProperty('color','red');
-                            idV.value = '';
-                            idV.focus();
+                            did.value = '';
+                            did.focus();
                         }else{
                             setError({...error,['id']:'사용가능한 아이디입니다'});
                             msgRefs.idMsgRef.current.style.setProperty('color','blue');
@@ -137,7 +131,7 @@ export default function Signup(){
             setError({...error,['pwd']:'비밀번호를 입력해주세요'});
             pwdCheck.focus();
         } else if(cpwdCheck.value===''){
-            setError({...error,['pwd']:'비밀번호 확인을 입력해주세요'});
+            setError({...error,['cpwd']:'비밀번호 확인을 입력해주세요'});
             cpwdCheck.focus();            
         }else if(pwdCheck.value.length < 10){
             setError({...error, ['pwd']:'10자 이상 비밀번호를 입력해주세요'});
@@ -148,6 +142,7 @@ export default function Signup(){
         }else{
             if(pwdCheck.value===cpwdCheck.value){
                 setError({...error,['pwd']:'비밀번호가 일치합니다'});
+                setError({...error,['cpwd']:''});
                 msgRefs.pwdMsgRef.current.style.setProperty('color','blue');
             }else{
                 setError({...error,['pwd']:'비밀번호가 동일하지않습니다 다시 입력해주세요'});
@@ -168,9 +163,8 @@ export default function Signup(){
                 return false;
             } else {
                 axios
-                    .post('http://localhost:9000/member/signup',{data,adata})
+                    .post('http://localhost:9000/member/signup',{data, adata})
                     .then(res =>{
-                        // console.log('회원가입성공데이터',res.data);
                         if(res.data.result === 1 ){
                             alert('회원가입성공'); 
                             navigate('/login');
@@ -180,7 +174,6 @@ export default function Signup(){
 
             }  
         }
-        // console.log('폼',data,adata);
     }
     
     return (

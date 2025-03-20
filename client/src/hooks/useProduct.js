@@ -83,8 +83,8 @@ export function useProduct() {
     const getSearchList = async(search) => {
         const list = await getProductList();
 
-        const filterData = list.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
-        const filterData2 = list.filter((item) => item.category.toLowerCase().includes(search.toLowerCase()));
+        const filterData = list.filter((item) => item.title.toLowerCase().includes(search.toLowerCase())); // 상품명
+        const filterData2 = list.filter((item) => item.category.toLowerCase().includes(search.toLowerCase())); // 카테고리
 
         if (filterData.length !== 0) {
             setSearchList(filterData);

@@ -7,7 +7,7 @@ import Image from './Image.jsx';
 
 export default function ProductSlider({slideArray, ulClassName, liClassName, className}) {
     const [ counter, setCounter ] = useState(0); // 인덱스
-    const maxCount = Math.ceil(slideArray.length / 3) - 1; // 최대 슬라이드 개수
+    const maxCount = Math.ceil(slideArray.length / 3) - 1; // 최대 슬라이드 개수 (한 화면에 3개씩)
 
     // 화살표 버튼 이벤트
     const handleSlideBtn = (value) => {

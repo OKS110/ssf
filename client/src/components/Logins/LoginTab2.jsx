@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function LoginTab2({ isActive }) {
 
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -91,6 +91,7 @@ export default function LoginTab2({ isActive }) {
                 type="text"
                 placeholder="이름"
                 ref={refs.guestNmRef}
+                value={formData.guestNm}
                 onChange={handleChangeForm}
               />
             </div>

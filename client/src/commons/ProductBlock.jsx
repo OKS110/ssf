@@ -5,7 +5,6 @@ import Image from './Image.jsx';
 
 export default function ProductBlock({detailList, ulClassName, liClassName, className}) {
     const name = className.substring(0, 12);
-    // const [image, setImage] = useState();
 
     return (
         <ul className={ulClassName}>
@@ -44,13 +43,3 @@ export default function ProductBlock({detailList, ulClassName, liClassName, clas
         </ul>
     );
 }
-
-/**
- * 호출 시 npm react-icons 설치 필수
- * 단독으로 쓰이지 않는 것 같아 처음부터 리스트로 컴포넌트 생성. 필요시 분리
- * 호출하는 곳에서 detailList, ulClassName, liClassName, className 지정하여 구조분해할당으로 받을 것
- *  className : 세부 태그들 클래스명 지정 위해 사용
- * 데이터 수정 필요
-**/
-
-// a 태그 -> 텍스트 수정

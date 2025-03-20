@@ -10,8 +10,6 @@ export const getId = async (req, res) => {
 // 회원 등록
 export const registCustomer = async (req, res) => {
     try {
-        console.log(req.body.data.phone);
-
         let ph = req.body.data.phone.substring(0, 3)
             .concat('-', req.body.data.phone.substring(3, 7), '-', req.body.data.phone.substring(7, 11));
 
@@ -39,7 +37,6 @@ export const registCustomer = async (req, res) => {
         } else {
             console.log("ERROR 회원가입 실패: affectedRows = ", affectedRows);
         }
-
         //  응답을 보내고 종료
         res.json(result);
     } catch (error) {

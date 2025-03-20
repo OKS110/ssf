@@ -5,7 +5,7 @@ export default function SizeGuide() {
 
     // 사이즈 가이드 유형 목록
     const sizeGuideType = [
-        { "id": 1, "label": "남성", "image":"/images/sizeGuideMan.png" },
+        { "id": 1, "label": "남성" },
         { "id": 2, "label": "여성" },
         { "id": 3, "label": "남녀공용" },
         { "id": 4, "label": "신발" }
@@ -20,7 +20,6 @@ export default function SizeGuide() {
     return (
         <div style={{ textAlign: "center", padding: "20px" }}>
             <h2>사이즈 가이드</h2>
-
             {/* 사이즈 버튼 리스트 */}
             <ul style={{ display: "flex", justifyContent: "center", gap: "30px", listStyle: "none", padding: "0" }}>
                 {sizeGuideType.map((item) => (

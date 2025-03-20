@@ -23,10 +23,8 @@ export default function Carts(){
                                     menuListName={menuListName} />
                     
                     <div className="order_wrap on all-group">
-                        {/* 장바구니에 상품이 없는 경우 Head에서 관리*/}
                         <div className="order_set" id="cartSubGroup1">
                             <CartOrderMain></CartOrderMain>
-                            {/* table을 컴포넌트로 */}
                         </div>
                         <CartOrderDesc></CartOrderDesc>
                         

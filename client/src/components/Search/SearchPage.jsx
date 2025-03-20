@@ -8,7 +8,6 @@ export default function SearchPage() {
     const { searchList, search, setSearch } = useContext(ProductContext);
     const { getSearchList } = useProduct();
     const [searchKey, setSearchKey] = useState(""); // 해당 페이지 검색어 관리
-    const [inputDefault, setInputDefault] = useState(""); // 해당 페이지 검색창 기본값 관리
 
     useEffect(() => {
         const key = localStorage.getItem("search_key");
@@ -21,7 +20,6 @@ export default function SearchPage() {
             localStorage.removeItem("search_key");
             localStorage.setItem("search_key", searchKey);
             getSearchList(searchKey);
-            setInputDefault(searchKey);
         } else {
             alert("검색어를 입력해주세요!");
         }
@@ -31,7 +29,7 @@ export default function SearchPage() {
         <div className='searchPage-wrap'>
             <div className='searchPage-header'>
                 <input type="text"
-                    defaultValue={!inputDefault ? search : inputDefault}
+                    defaultValue={search}
                     onChange={(event) => setSearchKey(event.target.value)}
                 />
                 <span onClick={onSubmit}><IoIosSearch /></span>
@@ -42,7 +40,7 @@ export default function SearchPage() {
                     ? (
                         <>
                             <div className='searchPage-result'>
-                                <p>'{!inputDefault ? search : inputDefault}'에 대한 검색 결과입니다.</p>
+                                <p>'{ search }'에 대한 검색 결과입니다.</p>
                             </div>
                             <ProductBlock
                                 detailList={searchList}
@@ -55,7 +53,7 @@ export default function SearchPage() {
                     : (
                         <>
                             <div className='searchPage-result'>
-                                <p>'{searchKey}'에 대한 검색 결과입니다.</p>
+                                <p>'{search}'에 대한 검색 결과입니다.</p>
                             </div>
                             <div className='searchPage-result-non'>
                                 <p>검색된 상품이 없습니다.</p>

@@ -16,16 +16,14 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
     const { count, setCount, selectColor, setSelectColor, selectedSize, setSelectedSize, cartList, userId } = useContext(DetailProductContext);
     const { saveToCart, getCartItems, updateDetailQty } = useCart();
 
-    const [loginAuth, setLoginAuth] = useState(false);
-
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token && !token.startsWith("guest_token_")) {
-            setLoginAuth(true);
             getCartItems();
         }
     }, []);
-
+    
+    // 상품 수량, 색상, 사이즈 선택 시
     const handleCount = (e, type) => {
         e.preventDefault();
         if (type === "decrease" && count > 1) {
@@ -34,24 +32,20 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
             setCount(count + 1);
         }
     };
-
     const handleColorSelect = (color) => {
         setSelectColor(color);  
     };
-
     const handleSizeSelect = (size) => {
         setSelectedSize(size);  
     };
 
     //  회원 전용 장바구니 로직
     const addCart = () => {
-        if (!loginAuth) return; 
-        
+        if (!isLoggedIn) return; 
         if (!selectedSize || !selectColor) {
             alert("색상과 사이즈를 선택해주세요.");
             return;
         }
-    
         const formData = {
             id: userId,
             pid: pid,
@@ -59,19 +53,16 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
             color: selectColor,
             size: selectedSize
         };
-    
-        const findItem = cartList?.find((item) => 
+        const findItem = cartList?.find((item) =>  // 장바구니에 같은 정보의 상품이 있는지 확인
             item.product_id === pidItem.pid &&
             item.size === selectedSize &&
             item.color === selectColor
         );
-    
         if (findItem) {
-            updateDetailQty(findItem.cid, findItem.size, findItem.color, findItem.quantity + count);
+            updateDetailQty(findItem.cid, findItem.size, findItem.color, findItem.quantity + count); //옵션 업데이트
         } else {
             saveToCart(formData);
         }
-    
         //  바로구매 관련 sessionStorage 데이터 초기화
         sessionStorage.removeItem("pid");
         sessionStorage.removeItem("selectedColor");
@@ -87,10 +78,14 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
 
     //  바로구매 로직
     const handleDirectPurchase = () => {
+        if (!selectedSize || !selectColor) {
+            alert("색상과 사이즈를 선택해주세요.");
+            return;
+        }
         if (!isLoggedIn) {
             const confirmLogin = window.confirm("로그인 하시겠습니까? (취소 시 비회원 구매 페이지로 이동)");
             if (confirmLogin) {
-                sessionStorage.setItem('DirectOrder', true);
+                sessionStorage.setItem('DirectOrder', true); // 바로구매에서 login으로 이동 확인
                 navigate('/login');
             } else {
                 navigate(`/order/${pidItem?.pid}`);
@@ -177,7 +172,7 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
                                     cursor: "pointer",
                                 }}
                                 onClick={() => handleSizeSelect(size.name)}>  {/*  객체에서 name 값을 추출하여 저장 */}
-                                {size.name}  {/*  [object Object] 대신 name 출력 */}
+                                {size.name}
                             </li>
                         )) : <li>사이즈 옵션 없음</li>}
                     </ul>
@@ -199,10 +194,10 @@ export default function DetailOrder({ pid, pidItem, averageRating, reviewsLength
             <div className="goods-info-btns">
                 <button 
                     onClick={addCart} 
-                    disabled={!loginAuth} 
-                    style={{ backgroundColor: loginAuth ? "black" : "gray",
+                    disabled={!isLoggedIn} 
+                    style={{ backgroundColor: isLoggedIn ? "black" : "gray",
                     color:"white",
-                    cursor: loginAuth ? "pointer" : "not-allowed" }}>
+                    cursor: isLoggedIn ? "pointer" : "not-allowed" }}>
                     장바구니
                 </button>
                 

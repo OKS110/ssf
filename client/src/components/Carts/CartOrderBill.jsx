@@ -3,12 +3,9 @@ import Button from "../../commons/Button";
 
 export default function CartOrderBill({ totalPrice, totalDiscount, totalDeliveryFee, selectedItems = [] }) {
     const navigate = useNavigate();
-
     //  선택한 상품 주문 페이지로 이동
     const handleOrder = () => {
-
         if (!selectedItems || selectedItems.length === 0) {
-
             alert("주문할 상품을 선택해주세요.");
             return;
         }
@@ -17,10 +14,6 @@ export default function CartOrderBill({ totalPrice, totalDiscount, totalDelivery
         //  선택한 상품들의 cid 리스트만 전달
         navigate("/cart/order"); // 주문 페이지로 이동
     };
-    //  `selectedItems` 변경 사항을 추적하는 `useEffect`
-    // useEffect(() => {
-    //     console.log("선택된 상품 목록 변경:", selectedItems);
-    // }, [selectedItems]);
 
     const totalOrderAmount = totalPrice + totalDeliveryFee - totalDiscount;
 

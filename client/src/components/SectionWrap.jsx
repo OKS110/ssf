@@ -7,9 +7,8 @@ import { useProduct } from '../hooks/useProduct.js';
 import ProductSlider from '../commons/ProductSlider.jsx';
 
 export default function SectionWrap({id, title, children}) {
-    // const { pid } = useParams();
     const { productList, detailList, rankList, category, subCategory, setCategory, setSubCategory } = useContext(ProductContext); // 전역 관리
-    const { getFilterProducts } = useProduct(); // custom hooks
+    const { getFilterProducts } = useProduct();
 
     const [issueList, setIssueList] = useState([]); // 브랜드 이슈 리스트
 
@@ -29,17 +28,10 @@ export default function SectionWrap({id, title, children}) {
         { tabName: "청바지" },
         { tabName: "슬랙스" },
     ];
-
-    const brandList = [
-        { brandName: "NIKE" },
-        { brandName: "GUCCI" },
-        { brandName: "PRADA" }
-    ];
-    
     
     useEffect(() => {
         // 필터링 완료된 상품 데이터 호출
-        const result = getFilterProducts(category, subCategory);
+        getFilterProducts(category, subCategory);
     }, [category, subCategory]);
     
     // 이 주의 브랜드 이슈
@@ -54,13 +46,12 @@ export default function SectionWrap({id, title, children}) {
     const brand2 = productList.filter((list) => list.brand === "GUCCI");
     const brand3 = productList.filter((list) => list.brand === "BEANPOLE");
 
-    // console.log('isOpened --> ', isOpened);
 
     return (
         <section id={id}>
             <h2>{title}</h2>
-            {/* {id === 'skill' && <p class="description">Skills & Attributes</p>} */}
             {id === "event" && 
+            // Event
                 <ul class="ssf-events">
                 <li>
                             <a href="" 
