@@ -18,11 +18,11 @@ export default function Person() {
 
     // 주문 목록 상태 추가
     const [orderList, setOrderList] = useState([]);
-    const hasFetchedOrders = useRef(false);  // 한 번만 실행되도록 설정
+    const hasFetchedOrders = useRef(false);  // useRef를 사용하면 API 요청이 한 번만 실행되고, isLoggedIn이 변하더라도 중복 요청이 발생하지 않도록 방지하는 역할
 
     // 리뷰
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
-    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [selectedOrder, setSelectedOrder] = useState(null); // 해당 주문 정보(order)를 저장
     const [reviewText, setReviewText] = useState(""); // 리뷰 내용
     const [rating, setRating] = useState(5); // 기본 별점 5점
 
@@ -53,7 +53,6 @@ export default function Person() {
                     } else {
                         console.warn("ERROR! user_id가 localStorage에 없습니다.");
                     }
-                    
                     // guest_id가 있는 경우 비회원 주문 가져오기
                     const guestId = localStorage.getItem("guest_id");
                     if (guestId) {
@@ -88,6 +87,7 @@ export default function Person() {
         }
     };
     
+    /** 주문 취소 */
     const handleCancelOrder = async (oid) => {
         if (!window.confirm("정말로 주문을 취소하시겠습니까?")) return;
         // UI에서 먼저 해당 주문 제거
@@ -95,18 +95,17 @@ export default function Person() {
     
         try {
             const response = await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
-            // console.log("주문 취소 응답:", response.data);
+            // await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
             alert("주문이 취소되었습니다.");
         } catch (error) {
             console.error("ERROR! 주문 취소 오류:", error.response ? error.response.data : error);
             alert("주문 취소에 실패했습니다.");
-    
             // ERROR! 오류 발생 시 UI 복구 (취소된 주문 다시 추가)
             setOrderList((prevOrders) => [...prevOrders, orderList.find((order) => order.oid === oid)]);
         }
     };
     
-    // 리뷰 서버에 전달
+    // 리뷰 등록
     const submitReview = async () => {
         if (!reviewText.trim()) {
             alert("리뷰 내용을 입력해주세요.");
@@ -134,7 +133,7 @@ export default function Person() {
     
             if (response.data.success) {
                 alert("리뷰가 등록되었고, 주문 상태가 업데이트되었습니다.");
-    
+
                 //   주문 리스트에서 상태 업데이트
                 setOrderList((prevOrders) =>
                     prevOrders.map(order =>
