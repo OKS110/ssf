@@ -2,15 +2,14 @@ import { db } from './db.js';
 
 /**
  *  새로운 주문을 데이터베이스에 저장하는 함수
- * @param {Object} orderData - 주문 정보 객체
+ * @param {Object} orderDataList - 주문 정보 객체
  * @returns {Object} 삽입된 주문 정보 반환
  */
 export const addOrderItem = async (orderDataList) => {
     try {
 
         for (const orderData of orderDataList) {
-            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`; //  동일 주문 번호 적용
-            
+            const orderNumber = `ORD-${Date.now()}-${orderData.customer_id}`; // 주문 번호 생성
             const sql = `
                 INSERT INTO orders (
                     customer_id, order_number, brand, title, total_price, size, color, quantity,
@@ -18,7 +17,6 @@ export const addOrderItem = async (orderDataList) => {
                     status, refund_amount, order_date, payment_method
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?);
             `;
-
             const [result] = await db.execute(sql, [
                 orderData.customer_id, orderNumber, orderData.brand, orderData.title,
                 orderData.total_price, orderData.size, orderData.color, orderData.quantity,
@@ -27,7 +25,6 @@ export const addOrderItem = async (orderDataList) => {
                 orderData.payment_method
             ]);
         }
-
         console.log(" 모든 주문 성공적으로 저장됨:", orderResults);
         return { success: true, error };
 

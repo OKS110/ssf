@@ -1,6 +1,5 @@
 export const handleOrderSubmit = async ({
     formData, 
-    token, 
     isVerified, 
     isAuthorized, 
     isAgreed, 
@@ -31,7 +30,7 @@ export const handleOrderSubmit = async ({
     let orderDataList = [];
     let totalOrderPrice = 0;  // 총 주문 금액 (배송비 포함 전)
 
-    if (pidItem) {
+    if (pidItem) { //개별 주문 시
         const productTotalPrice = (Number(pidItem.saleprice.replace(/,/g, "")) || 0) * count;
         totalOrderPrice += productTotalPrice;
         
@@ -56,11 +55,11 @@ export const handleOrderSubmit = async ({
         });
     }
 
-    if (isAuthorized && location.pathname === "/cart/order" && cartOrderItems.length > 0) {
+    if (isAuthorized && location.pathname === "/cart/order" && cartOrderItems.length > 0) { //장바구니 구매 시
         const validCartOrders = cartOrderItems.map(item => {
             const itemTotalPrice = Number(item.discounted_price) * item.quantity;
             totalOrderPrice += itemTotalPrice;
-            
+
             // 배송비 설정 (기본 3,000원, free이면 0원)
             let deliveryFee = item.delivery_fee === "free" ? 0 : 3000;
 
@@ -82,10 +81,8 @@ export const handleOrderSubmit = async ({
                 delivery_fee: deliveryFee
             };
         });
-
         orderDataList = [...validCartOrders];
     }
-
     //  39,900원 이상이면 배송비를 0원으로 조정 (주문 목록 수정)
     if (totalOrderPrice >= 39900) {
         orderDataList = orderDataList.map(order => ({
@@ -95,11 +92,9 @@ export const handleOrderSubmit = async ({
         }));
     }
 
-    console.log("  [DEBUG] 최종 주문 데이터:", orderDataList);
-
-    try {
+    try { 
         let guestData = null;
-        if (!isAuthorized) {
+        if (!isAuthorized) { //비회원 주문 시
             guestData = {
                 name: formData.name,
                 phone: formData.phone,
@@ -110,21 +105,19 @@ export const handleOrderSubmit = async ({
             };
         }
 
-        if (orderDataList[0]?.payment_method === "kakao") {
+        if (orderDataList[0]?.payment_method === "kakao") { //카카오 페이 결제 시
             await handleKakaoPayment(orderDataList, isAuthorized ? customer : guestData);
         }
-
-        if (isAuthorized) {
+        if (isAuthorized) { //회원 주문 시
             await saveToOrder(orderDataList.map(order => ({
                 ...order, 
                 customer_id: customer.customer_id 
             })));
-            await deleteOrderedCartItems(customer.customer_id, orderDataList);
+            await deleteOrderedCartItems(customer.customer_id, orderDataList); //장바구니 아이템 삭제
         } else {
-            await saveGuestOrder(guestData, orderDataList);
+            await saveGuestOrder(guestData, orderDataList); // 비회원 주문 시
         }
-
-        setIsModalOpen(true);
+        setIsModalOpen(true); // 모달창 오픈
     } catch (error) {
         console.error("ERROR 주문 처리 중 오류 발생:", error);
     }

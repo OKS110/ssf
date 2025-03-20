@@ -5,24 +5,17 @@ import { AuthContext } from "../../auth/AuthContext.js";
 import axios from "axios";
 
 export default function LoginTab1({ isActive }) {
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const initForm = { 'id': '', 'pwd': '' };
+    const [errMsg, setErrMsg] = useState(initForm);
 
     // useState 초기값을 localStorage에서 가져오기
     const [formData, setFormData] = useState({
         id: localStorage.getItem("savedId") || "",
         pwd: "",
     });
-    const [errMsg, setErrMsg] = useState(initForm);
-    const [isSaveIdChecked, setIsSaveIdChecked] = useState(localStorage.getItem("saveId") === "true");
-                          //localStorage.getItem("saveId") === "true"이면 체크 상태 유지. - 불리언 반환
-    const refs = {
-        idRef: useRef(null),
-        pwdRef: useRef(null),
-    };
-
     // 입력값 변경 핸들러
     const handleChangeForm = (event) => {
         const { name, value } = event.target;
@@ -30,10 +23,18 @@ export default function LoginTab1({ isActive }) {
         setErrMsg({ ...errMsg, err: "" });
     };
 
+    const refs = {
+        idRef: useRef(null),
+        pwdRef: useRef(null),
+    };
+    
+    
+    const [isSaveIdChecked, setIsSaveIdChecked] = useState(localStorage.getItem("saveId") === "true");
+    //localStorage.getItem("saveId") === "true"이면 체크 상태 유지. - 불리언 반환
+
     // "아이디 저장" 체크박스 핸들러
     const handleSaveIdChange = (event) => {
         const checked = event.target.checked; //true, false
-        // console.log(checked);
         setIsSaveIdChecked(checked);
 
         if (!checked) {
@@ -46,11 +47,11 @@ export default function LoginTab1({ isActive }) {
         event.preventDefault();
 
         if (validate()) {
-            console.log('send data --> ', formData);
+            // console.log('send data --> ', formData);
 
             axios.post('http://localhost:9000/user/login', formData)
                 .then(res => {
-                    console.log('res.data --> ', res.data);
+                    // console.log('res.data --> ', res.data);
                     if (res.data.result_rows === 1) {
                         alert('로그인 성공!');
                         localStorage.setItem("token", res.data.token);
@@ -59,17 +60,17 @@ export default function LoginTab1({ isActive }) {
                         setIsLoggedIn(true);
 
 
-                    // 로그인 시 이전에 상품 상세 페이지에서 바로구매 버튼을 눌렀을 경우
-                    // 세션 스토리지에서 주문 상품 ID 가져오기
-                    const orderPid = sessionStorage.getItem('pid');
-                    const directOrder = sessionStorage.getItem('DirectOrder'); //바로구매 버튼 여부
-                    if (directOrder && orderPid) {
-                        navigate(`/order/${orderPid}`); // 주문 페이지로 이동
-                        sessionStorage.removeItem('DirectOrder');
-                        
-                    } else {
-                        navigate('/'); // 바로구매 버튼 X, 주문 정보가 없으면 메인으로 이동
-                    }
+                        // 로그인 시 이전에 상품 상세 페이지에서 바로구매 버튼을 눌렀을 경우
+                        // 세션 스토리지에서 주문 상품 ID 가져오기
+                        const orderPid = sessionStorage.getItem('pid');
+                        const directOrder = sessionStorage.getItem('DirectOrder'); //바로구매 버튼 여부
+                        if (directOrder && orderPid) {
+                            navigate(`/order/${orderPid}`); // 주문 페이지로 이동
+                            sessionStorage.removeItem('DirectOrder');
+                            
+                        } else {
+                            navigate('/'); // 바로구매 버튼 X, 주문 정보가 없으면 메인으로 이동
+                        }
 
                         // "아이디 저장"이 체크된 경우, localStorage에 저장
                         if (isSaveIdChecked) {
@@ -77,12 +78,14 @@ export default function LoginTab1({ isActive }) {
                             localStorage.setItem("saveId", "true");
                         }
                     } else {
-                        alert('아이디 또는 비밀번호가 일치하지 않습니다.');
                         setErrMsg({ ...errMsg, err: "아이디 또는 비밀번호가 일치하지 않습니다." });
-
-                        refs.idRef.current.value = '';
-                        refs.pwdRef.current.value = '';
-                        refs.idRef.current.focus();
+                        // setErrMsg 이후 렌더링이 발생하면서 refs.idRef.current.value = ''가 덮어씌워질 가능성이 있음
+                        // setTimeout(() => {...}, 0);을 사용하면 렌더링 이후 실행
+                        setTimeout(() => {
+                            if (refs.idRef.current) refs.idRef.current.value = '';
+                            if (refs.pwdRef.current) refs.pwdRef.current.value = '';
+                            if (refs.idRef.current) refs.idRef.current.focus();
+                        }, 100);
                     }
                 })
                 .catch(err => console.log(err));

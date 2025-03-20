@@ -4,7 +4,7 @@ export default function DetailThumb({ pidItem, setClickActive, clickActive }) {
     // 썸네일 클릭 시 active 상태 변경
     const handleThumbImage = (index) => {
         setClickActive(index);
-        console.log("현재 활성화된 썸네일 index:", index);
+        // console.log("현재 활성화된 썸네일 index:", index);
     };
 
     return (

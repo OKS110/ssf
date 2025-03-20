@@ -34,8 +34,6 @@ export default function Size({ pidItem }) {
                 <SizeChart pidItem={pidItem} sizeTab={sizeTab} />
             </div>
 
-
-
             {/* 사이즈 가이드 토글 */}
             <div style={{ marginTop: "10px", padding: "10px" }}>
                 <button 

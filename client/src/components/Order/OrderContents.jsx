@@ -33,9 +33,6 @@ export default function OrderContents({
         setIsAgreed(event.target.checked); // 부모 상태 업데이트
     };
 
-    console.log("현재 입력된 formData:", formData);
-    console.log(" 구매 동의 상태:", isAgreed);
-
     return (
         <>
             {/* 주문서 입력 폼 */}

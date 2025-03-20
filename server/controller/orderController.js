@@ -1,27 +1,22 @@
 import * as repository from '../repository/orderRepository.js';
 
 export const addOrderItem = async(req, res) => {
-    // console.log(" [DEBUG] 요청된 orderData:", req.body); //  디버깅용 로그 추가
     const result = await repository.addOrderItem(req.body);
     res.json(result);
     res.end();
 }
 
 export const pullOrderList = async(req, res) => {
-    // console.log(" [DEBUG] 해당하는 아이디 주문 정보 요청:", req.body.id); //  디버깅용 로그 추가
     const result = await repository.pullOrderList(req.body.id);
     res.json(result);
     res.end();
 }
 
-
 export const getCartOrderItems = async (req, res) => {
     const { cids } = req.body;
-
     if (!cids || cids.length === 0) {
         return res.status(400).json({ message: "선택된 상품이 없습니다." });
     }
-
     const result = await repository.getCartOrderItems(cids);
     res.json(result);
 };

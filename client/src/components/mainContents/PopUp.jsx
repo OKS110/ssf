@@ -31,7 +31,7 @@ export default function PopUp() {
             {isOpened && (
                 <div className='mainAdPopup-wrap'>
                     <div className='mainAdPopup-content'>
-                        <img src="https://img.ssfshop.com/display/html/PROMT/20250114/p_w3_261506_con01.png" alt="" />
+                        <img src="https://img.ssfshop.com/display/html/PROMT/20250114/p_w3_261506_con01.png" alt="팝업 창" />
                     </div>
                     <div className='mainAdPopup-btns'>
                         <button onClick={handleDayClosed}>오늘 하루 보지 않기</button>

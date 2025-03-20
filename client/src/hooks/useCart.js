@@ -41,17 +41,14 @@ export function useCart() {
     const saveToCart = async (formData) => {
         try {
             const existingItem = findExistingItem(formData.pid, formData.size, formData.color);
-
             if (existingItem) {
                 //  같은 상품, 같은 옵션이 있으면 수량 업데이트
                 const updatedQuantity = existingItem.quantity + formData.count;
-
                 await axios.post("http://localhost:9000/cart/changeQty", {
                     cid: existingItem.cid,
                     count: updatedQuantity
                 });
-
-                //  UI 업데이트
+                // 장바구니 업데이트
                 setCartList((prevList) =>
                     prevList.map((item) =>
                         item.cid === existingItem.cid ? { ...item, quantity: updatedQuantity } : item
@@ -64,14 +61,9 @@ export function useCart() {
                     size: formData.size.toString().trim(),
                     color: formData.color.toString().trim(),
                 };
-
-                console.log("📤 장바구니 추가 요청:", requestData);
-
                 const response = await axios.post("http://localhost:9000/cart/add", requestData);
-
                 if (response.data.result_row > 0) {
-                    console.log(" 장바구니에 상품 추가 성공");
-
+                    // console.log(" 장바구니에 상품 추가 성공");
                     setCartList((prevList) => [
                         ...prevList,
                         {
@@ -104,19 +96,15 @@ export function useCart() {
                 newSize,
                 newColor
             );
-    
             if (existingItem && existingItem.cid !== cid) {
                 //  같은 옵션이 존재하면 기존 항목과 병합 (수량 증가)
                 const updatedQuantity = existingItem.quantity + newQuantity;
-    
                 await axios.post("http://localhost:9000/cart/changeQty", {
                     cid: existingItem.cid,
                     count: updatedQuantity
                 });
-    
                 //  기존 `cid` 항목 삭제 (중복 제거)
                 await axios.post("http://localhost:9000/cart/deleteItem", { cid });
-    
                 setCartList((prevList) =>
                     prevList
                         .filter((item) => item.cid !== cid) //  기존 아이템 삭제
@@ -132,7 +120,6 @@ export function useCart() {
                     color: newColor,
                     quantity: newQuantity,
                 });
-    
                 setCartList((prevList) =>
                     prevList.map((item) =>
                         item.cid === cid
@@ -149,7 +136,7 @@ export function useCart() {
 
     //  장바구니 페이지 상품 수량 업데이트
     const updateDetailQty = async (cid, size, color, quantity) => {
-        console.log("📤 updateDetailQty 요청:", { cid, size, color, quantity });
+        console.log(" updateDetailQty 요청:", { cid, size, color, quantity });
     
         if (!cid || !size || !color || quantity === undefined) {
             console.error("ERROR 잘못된 수량 업데이트 요청:", { cid, size, color, quantity });
@@ -163,10 +150,10 @@ export function useCart() {
     
             console.log(" 수량 업데이트 응답:", response.data);
             if (response.data.result_row > 0) {
-                console.log("🔄 수량 업데이트 완료, 장바구니 데이터 새로고침");
+                console.log(" 수량 업데이트 완료, 장바구니 데이터 새로고침");
                 await getCartItems();
             } else {
-                console.warn("⚠️ 수량 업데이트 실패: 서버에서 반영되지 않음 (cid가 존재하지 않을 가능성 있음)");
+                console.warn(" 수량 업데이트 실패: 서버에서 반영되지 않음 (cid가 존재하지 않을 가능성 있음)");
             }
         } catch (error) {
             console.error("ERROR 수량 업데이트 중 오류 발생:", error.response?.data || error.message);
@@ -180,7 +167,7 @@ export function useCart() {
             const result = await axios.post("http://localhost:9000/cart/deleteItem", { cid });
 
             if (result.data.result_row > 0) {
-                console.log(`🗑️ 상품 삭제 완료: CID ${cid}`);
+                console.log(` 상품 삭제 완료: CID ${cid}`);
                 await getCartItems();
             }
         } catch (error) {

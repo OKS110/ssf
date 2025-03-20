@@ -3,7 +3,7 @@ import * as guestController from '../controller/guestController.js'; // 여기�
 
 const router = express.Router();
 
-router.post('/add', guestController.addGuest);  // 여기가 undefined일 가능성 있음
+router.post('/add', guestController.addGuest); 
 router.post('/addOrder', guestController.addGuestOrder)
     .post("/orders", guestController.getGuestOrders);
 

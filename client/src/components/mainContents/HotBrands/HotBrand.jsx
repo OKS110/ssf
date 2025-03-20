@@ -2,7 +2,6 @@ import { useState } from "react";
 import Brands from "./Brands.jsx";
 
 export default function HotBrand(){
-    // 이미지 슬라이드 버튼 관련
     const [ curSlide, setCurSlide ] = useState(0); // 이미지 인덱스 번호
 
     const moveToSlide = (value) => {
@@ -18,7 +17,7 @@ export default function HotBrand(){
         <section className="hot-brand">
             <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight swiper-backface-hidden"
                 style={{overflow: "hidden"}}>
-                <div className="swiper-wrapper" id="swiper-wrapper-513dfba940703eb2" aria-live="polite" 
+                <div className="swiper-wrapper" id="swiper-wrapper-513dfba940703eb2"
                     style={{
                         "height": "260px",
                         transform: `translateX(${-100 * curSlide}%)`,
@@ -30,8 +29,7 @@ export default function HotBrand(){
 
                 <div className="swiper-button-control">
                     <div className="swiper-button-prev swiper-button-disabled" 
-                    tabindex="-1" role="button" onClick={() => moveToSlide("prev")}>
-
+                     onClick={() => moveToSlide("prev")}>
                     </div>
                     <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal">
                         <span className="swiper-pagination-current">{curSlide + 1}</span> / <span className="swiper-pagination-total">3</span>
@@ -39,7 +37,7 @@ export default function HotBrand(){
                     <div className="swiper-button-next" 
                     tabindex="0" role="button"  onClick={() => moveToSlide("next")}></div>
                 </div>
-            <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            <span className="swiper-notification"></span></div>
         </section>
     );
 }

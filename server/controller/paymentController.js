@@ -1,14 +1,11 @@
 import axios from 'axios';
 
 export const paymentKakaopay = async(req, res) => {
-
-
     try {
         console.log(req.body);
         const {id, item_name, total_amount} = req.body;
         const KAKAO_ADMIN_KEY = "bb96eb0771fed829c0d688a64cea8262";
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-
         const response = await axios.post(
             "https://kapi.kakao.com/v1/payment/ready", //  카카오페이 결제 요청 API
             {

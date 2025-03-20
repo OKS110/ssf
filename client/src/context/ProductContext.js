@@ -6,7 +6,7 @@ export const ProductProvider = ({children}) => {
     // 전역 공간에서 자동 업데이트 되도록 관리
     const [productList, setProductList] = useState([]); 
     const [pidItem, setPidItem] = useState([]);
-    const [category, setCategory] = useState("상의"); // 아우터로~ 탭 메뉴 관리
+    const [category, setCategory] = useState("상의"); // 새 계절을 깨우는 나만의 감각 탭 메뉴 관리
     const [subCategory, setSubCategory] = useState("코트"); // 랭킹 탭 메뉴 관리
     const [detailList, setDetailList] = useState([]); // 필터링을 거친 상품 데이터(대분류용)
     const [rankList, setRankList] = useState([]); // 필터링을 거친 상품 데이터(중분류용)

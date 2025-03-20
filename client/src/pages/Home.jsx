@@ -12,34 +12,19 @@ import PopUp from '../components/mainContents/PopUp.jsx';
 import { useParams } from "react-router-dom";
 import SlideUp from "../commons/SlideUp.jsx";
 export default function Home() {
+
   const { pid } = useParams();
   
   useEffect(() => { // 메인으로 돌아갈 때마다 이전에 봤던 상품 아이디 삭제
     sessionStorage.removeItem("pid", pid);
   }, []);
 
-
   const sectionList = [
-    {
-      id: "event",
-      title: "이벤트",
-    },
-    {
-      id: "newSense",
-      title: "새 계절을 깨우는 나만의 감각",
-    },
-    {
-      id: "rank",
-      title: "랭킹",
-    },
-    {
-      id: "brands",
-      title: "주목할 브랜드",
-    },
-    {
-      id: "issue",
-      title: "이 주의 브랜드 이슈",
-    },
+    { id: "event", title: "이벤트"},
+    { id: "newSense", title: "새 계절을 깨우는 나만의 감각"},
+    { id: "rank", title: "랭킹" },
+    { id: "brands", title: "주목할 브랜드" },
+    { id: "issue", title: "이 주의 브랜드 이슈" }
   ];
 
   const componentMap = { //컴포넌트 자동 생성
@@ -65,53 +50,50 @@ export default function Home() {
   };
 
   // 서브 슬라이드 버튼 이벤트
-  const [curSlide2, setCurSlide2] = useState(0); // 이미지 인덱스 번호
+  const [curSlide, setcurSlide] = useState(0); // 이미지 인덱스 번호
 
   const moveToSubSlide = (value) => {
-    if (value === 'next' && curSlide2 < 3) {
-      setCurSlide2(curSlide2 + 1);
+    if (value === 'next' && curSlide < 3) {
+      setcurSlide(curSlide + 1);
     }
-    if (value === 'prev' && curSlide2 > 0) {
-      setCurSlide2(curSlide2 - 1);
+    if (value === 'prev' && curSlide > 0) {
+      setcurSlide(curSlide - 1);
     }
   }
-
 
   return (
     <main id='content'>
       {/* 슬라이드 시작 */}
       <div className="key-visual mainSlider-container">
         <MainSlider />
-        {/* <div>
-            <img className='mainSlider-contoller-btn' src="/image/pause.png" alt="" />
-        </div> */}
       </div>
 
       {/* 컨텐츠 시작 */}
       <div className='contents content-wrap'>
         <div className="corner-section">
-          <section className="our-picks-gods" cnr="23360" id="ourPickOURPICK_AType23360" utag="utag=ref_tpl:111942$ref_cnr:23360">
+          <section className="our-picks-gods"  id="ourPickOURPICK_AType23360">
             <div className="subSlide-container swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-              <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608" aria-live="polite"
+                {/* 서브 슬라이드 */}
+              <div className="swiper-wrapper" id="swiper-wrapper-17c64f0812c5c608"
                 style={{
-                  transform: `translateX(${-1415 * curSlide2}px)`,
+                  transform: `translateX(${-1415 * curSlide}px)`,
                   transition: 'all 0.4s ease-in-out'
                 }}
               >
-                {/* <SubSlideWrap></SubSlideWrap> */}
                 <SubSlideWrap />
               </div>
-              {/* 슬라이드 버튼 - 컴포넌트로 생각 중 미정*/}
+              {/* 서브 슬라이드 버튼 */}
               <div className="swiper-button-control">
-                <div onClick={() => moveToSubSlide("prev")} className="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="true"></div>
-                <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"><span className="swiper-pagination-current">{curSlide2 + 1}</span> / <span className="swiper-pagination-total">4</span></div>
-                <div onClick={() => moveToSubSlide("next")} className="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-17c64f0812c5c608" aria-disabled="false"></div>
+                <div onClick={() => moveToSubSlide("prev")} className="swiper-button-prev swiper-button-disabled" ></div>
+                <div className="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal">
+                  <span className="swiper-pagination-current">{curSlide + 1}</span> / <span className="swiper-pagination-total">4</span>
+                  </div>
+                <div onClick={() => moveToSubSlide("next")} className="swiper-button-next"></div>
               </div>
-              <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+              <span className="swiper-notification"></span>
             </div>
           </section>
-
-
+          {/* 브랜드 슬라이드 */}
           <HotBrand></HotBrand>
 
           {/* 이벤트부터 컴포넌트 자동으로 만들어가기 스타트 */}

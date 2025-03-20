@@ -10,11 +10,11 @@ export default function SearchModal({event}) {
     const { getSearchList } = useProduct();
     const navigate = useNavigate();
 
-    const [ auto, setAuto ] = useState("");
+    const [ auto, setAuto ] = useState(""); // 자동 완성 기능을 적용하기 위함
 
     useEffect(() => {
         getSearchList(search);
-    }, []);
+    }, [search]);
         
     // 검색버튼 클릭시 이벤트
     const onSubmit = () => {
@@ -29,7 +29,7 @@ export default function SearchModal({event}) {
         }
     }
 
-    // 기준점
+    // 자동 완성 필터링 로직
     const filter = productList.filter((item) => item.title.toLowerCase().includes(auto.toLowerCase()));
 
     return (
@@ -55,16 +55,18 @@ export default function SearchModal({event}) {
                         ? (
                             filter.length > 0
                             ? (
+                                // 상품 이름으로 검색
                                 productList && productList.filter((item) => item.title.toLowerCase().includes(auto.toLowerCase()))
                                             .map((item, i) => 
-                                                i < 5 &&
+                                                i < 10 &&
                                                 <p>{item.title}</p>
                                             )
                             )
                             : (
+                                // 카테고리로 검색
                                 productList && productList.filter((item) => item.category.toLowerCase().includes(auto.toLowerCase()))
                                             .map((item, i) => 
-                                                i < 5 &&
+                                                i < 10 &&
                                                 <p>{item.title}</p>
                                             )
                             )

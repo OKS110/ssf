@@ -16,9 +16,9 @@ import { DetailProductContext } from '../context/DetailProductContext.js';
 import SlideUp from '../commons/SlideUp.jsx';
 
 export default function DetailProducts() {
-    const { pidItem } = useContext(ProductContext);
-    const { pid } = useParams();
-    const { getPidItem } = useProduct();
+    const { pidItem } = useContext(ProductContext); // 상품 정보
+    const { getPidItem } = useProduct(); //상품 정보 가져오기
+    const { pid } = useParams(); //상품 번호
     const { setCount, setSelectColor, setSelectedSize } = useContext(DetailProductContext);
     const [reviews, setReviews] = useState([]);
     const [reviewsLength, setReviewsLength] = useState(0);
@@ -30,9 +30,6 @@ export default function DetailProducts() {
         setSelectedSize(0);  // 사이즈 초기화
     }, [pidItem]); // 새로운 상품이 로드될 때 초기화
 
-    console.log("평점", averageRating);
-    console.log("리뷰 개수", reviews.length);
-    
     useEffect(() => {
         getPidItem(pid);
         sessionStorage.setItem("pid", pid);
@@ -45,7 +42,6 @@ export default function DetailProducts() {
         { id: "recommendTab", label: "추천", href: "#goodsDetailTabs", content: <Recommend /> }
     ];
     
-
     const [activeTab, setActiveTab] = useState(tabsData[0]?.id || "");
     const contentRef = useRef(null); // 콘텐츠 위치 추적 Ref
     const { ref: tabRef, isFixed } = useFixedScroll(); // 커스텀 훅 사용하여 스크롤 고정 관리
@@ -63,7 +59,7 @@ export default function DetailProducts() {
     // 현재 활성화된 탭의 콘텐츠 찾기
     const renderContent = () => {
         const activeContent = tabsData.find(tab => tab.id === activeTab);
-        return activeContent ? activeContent.content : null;
+        return activeContent ? activeContent.content : null; //tabsData의 content 키 활성화
     };
 
     //  리뷰 데이터를 서버에서 가져오는 함수
@@ -75,20 +71,18 @@ export default function DetailProducts() {
                 }
                 //  별점 평균 계산
                 const totalRating = response.data.reviews.reduce((sum, review) => sum + Number(review.rating), 0);
-                const avgRating = response.data.reviews.length > 0 ? (totalRating / response.data.reviews.length).toFixed(1) : 0;
+                const avgRating = response.data.reviews.length > 0 ? (totalRating / response.data.reviews.length).toFixed(1) : 0; //toFixed 소수점 1자리까지 계산
     
-                setReviewsLength(response.data.reviews.length); //리뷰 길이
-                
-                
-                setAverageRating(avgRating); // 부모 컴포넌트에 전달
+                setReviewsLength(response.data.reviews.length); //리뷰 길이            
+                setAverageRating(avgRating);
             } catch (error) {
                 console.error("ERROR 리뷰 데이터를 불러오는 중 오류 발생:", error);
             }
         };
     
-        useEffect(() => {
-            fetchReviews();
-        }, [pid]); // 상품 ID가 변경될 때마다 실행
+    useEffect(() => {
+        fetchReviews();
+    }, [pid]); // 상품 ID가 변경될 때마다 실행
 
     return (
         <div className="detail-wrap content-wrap" style={{ position: "relative" }}>
@@ -110,6 +104,7 @@ export default function DetailProducts() {
                     zIndex: 1000,
                 }}
             >
+                {/* 탭 메뉴 */}
                 <ProductMypage
                     pidItem={pidItem}
                     tabs={tabsData}

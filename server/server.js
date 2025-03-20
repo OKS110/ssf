@@ -52,16 +52,16 @@ server.route('/product/update')
     });
 
 //  WebSocket 설정 (고객 서버 → 관리자 서버)
-const wsAdmin = new WebSocket('ws://localhost:9002');
+const wss = new WebSocket('ws://localhost:9002');
 
-wsAdmin.onopen = () => console.log(' 고객 서버 → 관리자 서버 WebSocket 연결됨');
-wsAdmin.onerror = (error) => console.error('ERROR WebSocket 오류:', error);
+wss.onopen = () => console.log(' 고객 서버 → 관리자 서버 WebSocket 연결됨');
+wss.onerror = (error) => console.error('ERROR WebSocket 오류:', error);
 
 //  회원가입 후 관리자에게 실시간 알림 전송
 export const notifyAdminNewCustomer = () => {
-    if (wsAdmin.readyState === WebSocket.OPEN) {
+    if (wss.readyState === WebSocket.OPEN) {
         console.log(" 고객 페이지 → 관리자 페이지 WebSocket 메시지 전송 중...");
-        wsAdmin.send(JSON.stringify({ type: "new_customer" }));
+        wss.send(JSON.stringify({ type: "new_customer" }));
     } else {
         console.log("ERROR WebSocket이 아직 연결되지 않음 (고객 페이지)");
     }

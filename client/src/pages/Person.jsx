@@ -12,29 +12,27 @@ import SlideUp from "../commons/SlideUp.jsx";
 
 export default function Person() {
     const {isLoggedIn} = useContext(AuthContext);
-    //   LocalStorage에서 user_id 가져오기
     const userId = localStorage.getItem("user_id");
-
     const { customer } = useContext(CustomersContext);
     const { getCustomer } = useCustomers();
 
     // 주문 목록 상태 추가
     const [orderList, setOrderList] = useState([]);
     const hasFetchedOrders = useRef(false);  // 한 번만 실행되도록 설정
+
     // 리뷰
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [reviewText, setReviewText] = useState(""); // 리뷰 내용
     const [rating, setRating] = useState(5); // 기본 별점 5점
-    
 
-        /**   리뷰 작성 버튼 클릭 시 모달 열기 */
-        const openReviewModal = (order) => {
-            setSelectedOrder(order); // 선택한 주문 정보 저장
-            setReviewModalOpen(true);
-            setRating(5); // 기본 별점 5점으로 설정
-            setReviewText(""); // 리뷰 내용 초기화
-        };
+    /**   리뷰 작성 버튼 클릭 시 모달 열기 */
+    const openReviewModal = (order) => {
+        setSelectedOrder(order); // 선택한 주문 정보 저장
+        setReviewModalOpen(true);
+        setRating(5); // 기본 별점 5점으로 설정
+        setReviewText(""); // 리뷰 내용 초기화
+    };
         
     /**   리뷰 모달 닫기 */
     const closeReviewModal = () => {
@@ -69,9 +67,6 @@ export default function Person() {
 
         fetchUserData();
     }, [isLoggedIn]);  // orderList 제거 → 무한 루프 해결
-    
-
-
 
     /** 회원 주문 목록 가져오기 */
     const fetchMemberOrders = async (userId) => {
@@ -93,8 +88,6 @@ export default function Person() {
         }
     };
     
-    
-
     const handleCancelOrder = async (oid) => {
         if (!window.confirm("정말로 주문을 취소하시겠습니까?")) return;
         // UI에서 먼저 해당 주문 제거
@@ -112,7 +105,6 @@ export default function Person() {
             setOrderList((prevOrders) => [...prevOrders, orderList.find((order) => order.oid === oid)]);
         }
     };
-    
     
     // 리뷰 서버에 전달
     const submitReview = async () => {
@@ -160,11 +152,9 @@ export default function Person() {
     useEffect(() => {
         //   WebSocket 연결
         const socket = new WebSocket("ws://localhost:9002");
-    
         socket.onopen = () => {
             console.log(" WebSocket 연결 성공! (고객 페이지)");
         };
-    
         socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
             console.log(" WebSocket 메시지 수신 (고객 페이지):", data);
@@ -189,7 +179,6 @@ export default function Person() {
                 }
             }
         };
-    
         return () => {
             socket.close();
         };
@@ -218,7 +207,6 @@ export default function Person() {
                             </div>
                         </div>
                     </div>
-
                     {/*   최근 주문 상품 표시 (테이블 형태) */}
                     <div className="mypage-order-product">
                         <div className="mypage-order-product-top">
@@ -228,7 +216,6 @@ export default function Person() {
                                 <span><MdKeyboardArrowRight /></span>
                             </div>
                         </div>
-
                         <div className="mypage-order-product-bottom">
                             {orderList.length === 0 ? (
                                 <span>최근 주문 내역이 없습니다. 마음에 드는 상품을 찾아보세요.</span>
@@ -275,10 +262,7 @@ export default function Person() {
                                                         ) : (
                                                             <button className="cancel-btn" onClick={() => handleCancelOrder(order.oid)}>취소</button>
                                                         )}
-
                                                 </td>}
-                                                
-
                                             </tr>
                                         ))}
                                     </tbody>
@@ -294,7 +278,6 @@ export default function Person() {
                     </div>
                 </article>
             </div>
-
             {/*   리뷰 작성 모달 */}
                 {userId && reviewModalOpen && (
                     <div className="review-modal">
@@ -314,13 +297,11 @@ export default function Person() {
                                     </span>
                                 ))}
                             </div>
-
                             <textarea 
                                 value={reviewText}
                                 onChange={(e) => setReviewText(e.target.value)}
                                 placeholder="리뷰를 작성해주세요..."
                             />
-
                             <div className="modal-actions">
                                 <button className="submit-review" onClick={submitReview}>등록</button>
                                 <button className="close-modal" onClick={closeReviewModal}>취소</button>

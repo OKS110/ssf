@@ -7,7 +7,7 @@ export default function PayOption({ onPaymentMethodChange }) {
     // 결제 수단 변경 핸들러
     const handlePaymentChange = (event) => {
         const newPaymentMethod = event.target.value;
-        console.log("선택된 결제 수단:", newPaymentMethod); // 선택된 결제수단 출력
+        // console.log("선택된 결제 수단:", newPaymentMethod); // 선택된 결제수단 출력
         setSelectedPayMethod(newPaymentMethod);
         onPaymentMethodChange(newPaymentMethod); // 부모에 전달
     };

@@ -6,7 +6,6 @@ import { useProduct } from "../../hooks/useProduct.js";
 import Modal from 'react-modal';
 import CartOptionModal from "./CartOptionModal.jsx";
 import CartOrderBill from './CartOrderBill.jsx';
-import { ProductContext } from "../../context/ProductContext.js";
 
 export default function CartOrderMain() {
     const { isLoggedIn } = useContext(AuthContext);
@@ -14,8 +13,8 @@ export default function CartOrderMain() {
     const { getCartItems, cartDeleteItem } = useCart();
     const { getPidItem } = useProduct();
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null); // 모달 오픈 시 필요한 상품 데이터 정보
+    const [selectedItems, setSelectedItems] = useState([]); // 장바구니에 담긴 상품들 중 선택된 상품들
     const [isAllSelected, setIsAllSelected] = useState(false);
 
     useEffect(() => {
@@ -30,13 +29,9 @@ export default function CartOrderMain() {
             alert("삭제할 상품을 선택해주세요.");
             return;
         }
-
         if (!window.confirm("선택한 상품을 삭제하시겠습니까?")) return;
-
         try {
-            for (const cid of selectedItems) {
-                await cartDeleteItem(cid);
-            }
+            for (const cid of selectedItems) { await cartDeleteItem(cid); }
             setSelectedItems([]);
             setIsAllSelected(false);
             getCartItems();
@@ -44,7 +39,6 @@ export default function CartOrderMain() {
             console.error("ERROR 선택 삭제 중 오류 발생:", error);
         }
     };
-
     //  개별 상품 선택 / 해제
     const handleSelectItem = (cid) => {
         setSelectedItems((prevSelected) =>
@@ -53,7 +47,6 @@ export default function CartOrderMain() {
                 : [...prevSelected, cid] // 선택되지 않은 경우 추가
         );
     };
-
     //  전체 선택 / 해제
     const handleSelectAll = () => {
         if (isAllSelected) {
@@ -75,15 +68,14 @@ export default function CartOrderMain() {
         setIsOpen(true);
     };
 
-    //  가격 변환 함수 (NaN 방지)
+    //  가격 변환 함수 (,로 인한 NaN 방지)
     const formatPrice = (price) => {
         if (!price) return 0;
         return parseFloat(price.toString().replace(/,/g, "")) || 0;
     };
 
     //  선택된 상품의 총 상품 금액 (정가 기준)
-    const selectedTotalPrice = cartList
-        .filter((item) => selectedItems.includes(item.cid))
+    const selectedTotalPrice = cartList.filter((item) => selectedItems.includes(item.cid)) //cid가 selectedItems에 포함된 상품만 남김.
         .reduce((acc, item) => {
             return acc + formatPrice(item.original_price) * (item.quantity ?? 1);
         }, 0);
@@ -108,7 +100,7 @@ export default function CartOrderMain() {
                 cartList.length > 0 ? (
                     <>
                         <div className="cart-actions">
-                            <label>
+                            <label style={{marginRight:"20px"}}>
                                 <input
                                     type="checkbox"
                                     checked={isAllSelected}
@@ -117,7 +109,6 @@ export default function CartOrderMain() {
                             </label>
                             <button onClick={handleDeleteSelectedItems}>선택 삭제</button>
                         </div>
-
                         <table>
                             <colgroup>
                                 <col width="40"></col>
@@ -145,7 +136,6 @@ export default function CartOrderMain() {
                                                 />
                                             </label>
                                         </td>
-
                                         <td>
                                             <a className="list_goods" href="#">
                                                 <img
@@ -155,7 +145,6 @@ export default function CartOrderMain() {
                                                 />
                                             </a>
                                         </td>
-
                                         <td>
                                             <div className="info">
                                                 <span className="brand">{item.brand}</span>
@@ -181,13 +170,11 @@ export default function CartOrderMain() {
                                                 </div>
                                             </div>
                                         </td>
-
                                         <td className="shipping">
                                             <span className="cost">
                                                 {item.deliveryFee === "free" ? "무료배송" : "유료배송 3000원"}
                                             </span>
                                         </td>
-
                                         <td className="price">
                                             <del className="original_price">{formatPrice(item.original_price).toLocaleString()}원</del>
                                             <br />
@@ -200,7 +187,6 @@ export default function CartOrderMain() {
                                 ))}
                             </tbody>
                         </table>
-
                         <CartOrderBill 
                         totalPrice={selectedTotalPrice} 
                         totalDiscount={selectedTotalDiscount} 

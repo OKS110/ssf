@@ -19,28 +19,20 @@ export const addGuest = async (req, res) => {
 //  비회원 주문 추가 (비회원 ID를 이용해 주문 저장)
 export const addGuestOrder = async (req, res) => {
     try {
-        // console.log(" [DEBUG] guest_orders 요청 데이터:", req.body);
-
         const guest_id = req.body.guest_id;
         const orders = Object.values(req.body).filter(order => typeof order === 'object');  //  숫자 키 제거 후 배열 변환
-
         if (!guest_id) {
             throw new Error("guest_id가 없습니다.");
         }
-
         if (!orders || orders.length === 0) {
             throw new Error("주문 데이터가 없습니다.");
         }
-
-        console.log(" [DEBUG] 변환된 주문 데이터:", orders);
-
         let savedOrders = [];
         for (const order of orders) {
             const guestOrderData = { ...order, guest_id };
             const newGuestOrder = await repository.addGuestOrder(guestOrderData);
             savedOrders.push(newGuestOrder);
         }
-
         // console.log(" 모든 주문 저장 완료:", savedOrders);
         res.json({ success: true, orders: savedOrders });
     } catch (error) {

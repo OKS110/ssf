@@ -20,18 +20,16 @@ export const useKakaoPayment = () => {
             return;
         }
         if (isProcessing.current) {
-            console.warn("⚠️ 이미 결제가 진행 중입니다.");
+            console.warn(" 이미 결제가 진행 중입니다.");
             return;
         }
         isProcessing.current = true;
         setLoading(true);
-        setError(null);
 
         try {
             //  주문 목록에서 상품명과 총 가격 계산
             const itemNames = orderDataList.map(order => order.title);
             const totalPrice = orderDataList.reduce((sum, order) => sum + order.total_price, 0);
-
             if (orderDataList[0].payment_method === "kakao") {
                 const isGuest = !userData.customer_id; //  비회원 여부 확인
                 const userId = isGuest ? userData.name : userData.customer_id; //  회원이면 customer_id, 비회원이면 name
@@ -41,9 +39,6 @@ export const useKakaoPayment = () => {
                     item_name: formatTitle(itemNames), //  상품명 축약
                     total_amount: totalPrice, //  모든 상품 가격 합산
                 });
-
-                console.log(" 카카오페이 응답:", res.data);
-                console.log(" 카카오페이 응답:", res.data.next_redirect_pc_url);
 
                 if (res.data.next_redirect_pc_url) {
                     localStorage.setItem("tid", res.data.tid); //  결제 고유번호(TID) 저장
