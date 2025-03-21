@@ -65,7 +65,7 @@ export default function Person() {
         };
 
         fetchUserData();
-    }, [isLoggedIn]);  // orderList 제거 → 무한 루프 해결
+    }, [isLoggedIn]); 
 
     /** 회원 주문 목록 가져오기 */
     const fetchMemberOrders = async (userId) => {
@@ -94,8 +94,7 @@ export default function Person() {
         setOrderList((prevOrders) => prevOrders.filter((order) => order.oid !== oid));
     
         try {
-            const response = await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
-            // await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
+            await axios.delete(`http://localhost:9000/order/cancel/${oid}`);
             alert("주문이 취소되었습니다.");
         } catch (error) {
             console.error("ERROR! 주문 취소 오류:", error.response ? error.response.data : error);
@@ -185,24 +184,22 @@ export default function Person() {
 
     return (
         <div className="mypage-box">
-            <div className="mypage-top-menu">
-                <span>Home</span>
-                <SlArrowRight className="mypage-top-menu-icon" />
-                <span><Link to='/person' className='mypage-link'>마이페이지</Link></span>
-            </div>
+
             <div className="mypage-top-box-flex">
                 <div className="mypage-top-box-empty"></div>
                 <div className="mypage-top-box">마이페이지</div>
             </div>
             <div className="mypage-bottom-box">
-                <PersonUIform />
+                {/* 마이페이지 왼쪽 메뉴 */}
+                <PersonUIform /> 
+
                 <article className="mypage-bottom-right">
                     <div className="mypage-bottom-my">
                         <div className="mypage-bottom-my-top">
                             <div className="mypage-bottom-my-top-left">
                                 <span><MdOutlineCardMembership /></span>
                                 <span>{customer?.name}님</span>
-                                <span><SlArrowRight /></span>
+                                <span>  <SlArrowRight /></span>
                             </div>
                         </div>
                     </div>

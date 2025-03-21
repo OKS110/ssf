@@ -5,13 +5,11 @@ import cors from 'cors';
 import loginRouter from './router/loginRouter.js';
 import productRouter from './router/productRouter.js';
 import signupRouter from './router/signupRouter.js';
-import mypageRouter from './router/mypageRouter.js';
 import orderRouter from './router/orderRouter.js';
 import paymentRouter from './router/paymentRouter.js';
 import customerRouter from './router/customerRouter.js';
 import guestRouter from './router/guestRouter.js';
 import cartRouter from './router/cartRouter.js';
-import deliUploadRouter from './router/deliUploadRouter.js';
 import reviewRouter from './router/reviewRouter.js';
 
 //  서버 설정
@@ -30,7 +28,6 @@ server.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파
 //  라우터 연결
 server.use('/user', loginRouter);          // 로그인
 server.use('/member', signupRouter);       // 회원가입
-server.use('/mypage', mypageRouter);       // 마이페이지
 server.use('/product', productRouter);     // 상품 관련
 server.use('/customers', customerRouter);  // 고객 관련
 server.use('/guest', guestRouter);         // 비회원 관련
@@ -38,7 +35,6 @@ server.use('/order', orderRouter);         // 주문 관련
 server.use('/payment', paymentRouter);     // 결제 관련
 server.use('/cart', cartRouter);           // 장바구니
 server.use('/review', reviewRouter);       // 리뷰
-server.use('/deliveryUploads', deliUploadRouter); // 배송 관련 파일 업로드
 
 //  상품 데이터 업데이트 요청 처리 (GET, POST 지원)
 server.route('/product/update')
