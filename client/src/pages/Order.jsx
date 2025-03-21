@@ -9,7 +9,6 @@ import { useProduct } from "../hooks/useProduct.js";
 import { ProductContext } from '../context/ProductContext.js';
 import { useCustomers } from "../hooks/useCustomers.js"; 
 import { CustomersContext } from "../context/CustomersContext.js";
-// import { useGuests } from "../hooks/useGuest.js";
 import {AuthContext} from '../auth/AuthContext.js';
 import { useOrder } from "../hooks/useOrder.js";
 import { useKakaoPayment } from "../hooks/useKaKaoPayment.js";
@@ -32,7 +31,6 @@ export default function Order() {
     //  고객 정보
     const { customer } = useContext(CustomersContext); 
     const { getCustomer } = useCustomers();
-    // const { getGuestList } = useGuests();
     const [isVerified, setIsVerified] = useState(!!token); // 휴대폰 인증 상태
     const [isAgreed, setIsAgreed] = useState(false); // 구매 동의 상태
     const { saveToOrder, saveGuestOrder, getCartOrderItems, deleteOrderedCartItems } = useOrder(); // 주문 데이터(테이블 insert)
