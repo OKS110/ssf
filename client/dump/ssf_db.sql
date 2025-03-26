@@ -1,8 +1,8 @@
 -- 데이터베이스 설정
 SHOW DATABASES;
-CREATE DATABASE shopping_mall;
+-- CREATE DATABASE shopping_mall;
 USE shopping_mall;
-DROP DATABASE shopping_mall;
+-- DROP DATABASE shopping_mall;
 SHOW TABLES;
 
 -- 관리자 테이블
@@ -193,8 +193,13 @@ CREATE TABLE admin_approval (
     FOREIGN KEY (admin_id) REFERENCES admins(aid) ON DELETE CASCADE
 );
 
+select * from admins;
 select * from customers;
 select * from guests;
 select * from guest_orders;
 select * from cart;
 select * from orders;
+select * from reviews;
+select * from products;
+use shopping_mall;
+show databases;
