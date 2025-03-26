@@ -4,8 +4,8 @@ from datetime import datetime
 
 # MySQL 연결 설정
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
+    host="ssf-react-db.c70maeu0qcke.ap-northeast-2.rds.amazonaws.com",
+    user="ohkwangseok",
     password="mysql1234",
     database="shopping_mall"
 )
