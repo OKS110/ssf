@@ -8,10 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Modal from 'react-modal';
 import SearchModal from "./Search/SearchModal.jsx";
+import { CustomersContext } from "../context/CustomersContext.js";
 
 export default function Header() {
     // 검색 모달창 관리
     const [isOpen, setIsOpen] = useState(false);
+    
+    const {setCustomer} = useContext(CustomersContext);
 
     // 헤더 메뉴 시작
     const categories = [
@@ -59,6 +62,8 @@ export default function Header() {
                 localStorage.removeItem('guest_id'); 
                 setIsLoggedIn(false);
                 setIsGuest(false); // 비회원 여부 초기화
+                setCustomer({}); // CustomersContext 안에 있는 고객 정보도 초기화
+
                 localStorage.removeItem("user_id");
                 
                 // 상태 업데이트 후 메인 페이지 이동
