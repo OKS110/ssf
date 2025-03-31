@@ -200,6 +200,7 @@ node server.js
 
 ✅ 배포 링크
 고객 페이지: http://ssf-client.s3-website.ap-northeast-2.amazonaws.com/
-
 관리자 페이지: http://ssf-admin-client.s3-website.ap-northeast-2.amazonaws.com/
+
+반드시 관리자 -> 고객페이지 순으로 열어주세요.
 ```
