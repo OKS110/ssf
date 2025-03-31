@@ -31,7 +31,7 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 
 ## 📋 ERD
 
-![image.png](attachment:c416352d-d0f3-4000-a7ee-357e8ae2f96b:image.png)
+![ERD](./assets/erd.png)
 
 ## 🛍️ 주요 기능
 
@@ -109,51 +109,51 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 
 **1️⃣ 로그인**
 
-![image.png](attachment:9f547a36-3ed8-4847-9291-5fdd0660992d:image.png)
+![login](./assets/login.png)
 
 **2️⃣ 회원가입**
 
-![image.png](attachment:850ac6bd-d95e-43fb-93bc-6c6c8d60b81c:image.png)
+![join](./assets/join.png)
 
 **3️⃣ 메인**
 
-![image.png](attachment:f7570bae-ae4d-4576-a083-45427bcce76f:image.png)
+![main1](./assets/main1.png)
 
-![image.png](attachment:dd089aa9-5743-4636-bfa1-1c5952b53088:image.png)
+![main2](./assets/main2.png)
 
 **4️⃣ 상세페이지**
 
-![image.png](attachment:c7f8b5da-75f5-41e4-85d8-6fdba89277dc:image.png)
+![detail](./assets/detail1.png)
 
-![image.png](attachment:d54fb9aa-ba3d-41b5-ada5-a52667a2e07f:image.png)
+![detail](./assets/detail2.png)
 
 5️⃣ **장바구니**
 
-![image.png](attachment:c9764ec5-3e5d-4c50-b1b3-97fb836deaa8:image.png)
+![cart1](./assets/cart1.png)
 
-![image.png](attachment:f7b4adf9-4b1c-47f2-90ed-829070d1abde:image.png)
+![cart2](./assets/cart2.png)
 
 6️⃣ **주문**
 
-![image.png](attachment:cb285f82-f420-4fa9-9192-302fe47c007f:image.png)
+![order1](./assets/order1.png)
 
-![image.png](attachment:5ab37e88-692f-4ea4-9982-36142abd3c2a:image.png)
+![order2](./assets/order2.png)
 
 7️⃣ **마이페이지**
 
-![image.png](attachment:c062f77a-b41f-4fc6-b715-620b0a7bb67d:image.png)
+![mypage1](./assets/mypage1.png)
 
-![image.png](attachment:e0053867-485e-4fed-9896-8336a87f7ebc:image.png)
+![mypage2](./assets/mypage2.png)
 
 8️⃣ **검색 페이지**
 
-![image.png](attachment:d0e81569-c12b-4dfe-aff2-e8ba03a66d8a:image.png)
+![search](./assets/search.png)
 
 9️⃣ **관리자 페이지**
 
-![image.png](attachment:0c6322f7-b546-4af1-8cea-7dab41607ea4:image.png)
+![admin1](./assets/admin1.png)
 
-![image.png](attachment:257c8000-71ef-4ee7-a253-7d0c7d811871:357acd14-3d3d-43d6-91fa-cac356d862c2.png)
+![admin2](./assets/admin2.png)
 
 ---
 
