@@ -45,18 +45,18 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 - 이미지 슬라이드 (swiper)
 - DB연동 하여 제품 정보 조회 후 상품 출력
 - 컴포넌트 분리하여 UI 및 CSS 구현
-- 
+
 
 ### 📦 상품 상세페이지
 
 - 상품명, 리뷰개수, 가격정보 출력
 - 상품 상세정보, 사이즈, 리뷰, 추천 메뉴 하단 제공
-- 
+
 
 ### 🔍 검색
 
 - 메인에서 검색 키워드 입력 시 해당 상품 목록 출력
-- 
+
 
 ### 🛒 쇼핑/결제 기능
 
@@ -93,7 +93,7 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 - Axios
 - KakaoPay API
 - WebSocket (소켓 통신)
-- 
+
 
 ### Server (`/server`)
 
