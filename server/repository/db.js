@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     port: 3306,
     user: 'root',
     password: 'mysql1234',
-    database: 'shopping_mall'
+    database: 'shopping_mall' //ssf_db
 });
 
 export const db = pool.promise();
