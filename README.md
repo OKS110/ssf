@@ -158,8 +158,8 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 ---
 
 ---
-## http://ssf-client.s3-website.ap-northeast-2.amazonaws.com/ 고객페이지 배포 주소
-## http://ssf-admin-client.s3-website.ap-northeast-2.amazonaws.com/ 관리자 페이지 배포 주소
+#### http://ssf-client.s3-website.ap-northeast-2.amazonaws.com/ 고객페이지 배포 주소
+#### http://ssf-admin-client.s3-website.ap-northeast-2.amazonaws.com/ 관리자 페이지 배포 주소
 
 관리자 -> 고객페이지 순으로 열어야 함.
 
