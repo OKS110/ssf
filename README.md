@@ -24,9 +24,10 @@ Node.js 기반의 서버와 WebSocket, KakaoPay 결제 시스템을 연동했으
 3. MySQL을 활용한 데이터 관리
 4. Client와 Server, DB간의 연동 경험
 
-## **🗂️ 메뉴구조도**
+## **🗂️ 전체 구조도**
 
-![image.png](attachment:690dbf55-34b9-435f-9897-76c3b7966ba6:image.png)
+![구조도](./assets/relationship.png)
+
 
 ## 📋 ERD
 
