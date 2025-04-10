@@ -1,5 +1,5 @@
 import { CiCircleQuestion } from "react-icons/ci";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { DetailProductContext } from "../../context/DetailProductContext";
 import { AuthContext } from "../../auth/AuthContext.js";
 import { useCart } from "../../hooks/useCart.js";

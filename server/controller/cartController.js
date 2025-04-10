@@ -21,7 +21,7 @@ export const getCartItems = async(req, res) => {
     res.end();
 }
 
-// 상품 상세 페이지 상품 수량 업데이트
+// 상품 상세 페이지 상품 업데이트
 export const updateDetailQty = async(req, res) => {
     const result = await repository.updateDetailQty(req.body);
     res.json(result);
